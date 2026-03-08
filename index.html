@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simon H.J. Bjørkå Flatin</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #f4f1ec;
+      --dark:  #1c1c1a;
+      --muted: #6b6860;
+      --accent:#3d3b35;
+      --serif: 'Georgia', serif;
+      --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--dark); font-family: var(--sans); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero__bg--placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #2d3d2e 0%, #4a6741 35%, #7a9e6e 60%, #c9d9b8 100%);
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.32) 100%);
+    }
+
+    /* NAV */
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      z-index: 10;
+    }
+    .nav__name {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.35);
+    }
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav__links a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav__links a:hover { color: #fff; }
+
+    /* SCROLL CUE */
+    .hero__scroll-cue {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .hero__scroll-cue span {
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: rgba(255,255,255,0.5);
+      animation: lineGrow 1.8s ease-in-out infinite;
+    }
+    @keyframes lineGrow {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      50%  { opacity: 1; }
+      100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+    }
+
+    /* FEATURED */
+    .featured {
+      background: var(--cream);
+      padding: 6rem 4rem 8rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .featured__header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.4rem;
+      margin-bottom: 4rem;
+    }
+    .featured__label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .featured__title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      color: var(--dark);
+    }
+
+    /* GRID */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card--large  { grid-column: span 7; }
+    .card--medium { grid-column: span 5; }
+    .card--wide   { grid-column: span 6; }
+
+    .card__img-wrap { width: 100%; overflow: hidden; }
+    .card--large  .card__img-wrap { aspect-ratio: 4/3; }
+    .card--medium .card__img-wrap { aspect-ratio: 3/4; }
+    .card--wide   .card__img-wrap { aspect-ratio: 16/9; }
+
+    .card__placeholder {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .card:hover .card__placeholder { transform: scale(1.04); }
+
+    .card--arctic  .card__placeholder { background: linear-gradient(135deg, #1a2a3a 0%, #2d4a6b 50%, #8fb3c8 100%); }
+    .card--venice  .card__placeholder { background: linear-gradient(135deg, #3d2a1a 0%, #8b6340 50%, #c4a882 100%); }
+    .card--chicken .card__placeholder { background: linear-gradient(135deg, #1e2d1a 0%, #3a5c30 50%, #7ea86e 100%); }
+    .card--oud     .card__placeholder { background: linear-gradient(135deg, #2a1f1a 0%, #6b4a35 50%, #b08060 100%); }
+
+    .card__info { padding: 1rem 0 0.4rem; }
+    .card__category {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .card__name {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.25;
+    }
+    .card__year { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+    .card__arrow {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .card:hover .card__arrow { opacity: 1; transform: translateX(0); }
+
+    /* ALL WORK */
+    .all-work { margin-top: 4rem; text-align: right; }
+    .all-work a {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--dark);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .all-work a:hover { color: var(--muted); border-color: var(--muted); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.45);
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+    }
+    footer a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+    .footer__links { display: flex; gap: 2rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .featured { padding: 4rem 1.5rem 5rem; }
+      .projects { grid-template-columns: 1fr; }
+      .card--large, .card--medium, .card--wide { grid-column: span 1; }
+      .card--medium .card__img-wrap { aspect-ratio: 4/3; }
+      footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg--placeholder"></div>
+    <div class="hero__overlay"></div>
+    <nav>
+      <div class="nav__name">Simon H.J. Bjørkå Flatin</div>
+      <ul class="nav__links">
+        <li><a href="index.html">Main</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <div class="hero__scroll-cue">
+      <span></span>
+      Scroll
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section class="featured">
+    <div class="featured__header">
+      <span class="featured__label">Selected Work</span>
+      <h2 class="featured__title">Signature Projects</h2>
+    </div>
+
+    <div class="projects">
+
+      <!-- Arctic Symphony — large left -->
+      <a class="card card--large card--arctic" href="projects/arctic-symphony.html">
+        <div class="card__img-wrap">
+          <div class="card__placeholder"></div>
+        </div>
+        <div class="card__info">
+          <div class="card__category">Performance · Architecture · Photography</div>
+          <div class="card__name">Arctic Symphony</div>
+          <div class="card__year">2020 — Graduation Project, TU Delft</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Venice Biennale — tall right -->
+      <a class="card card--medium card--venice" href="projects/venice-biennale.html">
+        <div class="card__img-wrap">
+          <div class="card__placeholder"></div>
+        </div>
+        <div class="card__info">
+          <div class="card__category">Architectural Model</div>
+          <div class="card__name">Venice Biennale 2023</div>
+          <div class="card__year">2023 — TU Delft Commission</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Chicken Coop — wide bottom-left -->
+      <a class="card card--wide card--chicken" href="projects/chicken-coop.html">
+        <div class="card__img-wrap">
+          <div class="card__placeholder"></div>
+        </div>
+        <div class="card__info">
+          <div class="card__category">Craft · Making</div>
+          <div class="card__name">Chicken Coop</div>
+          <div class="card__year">2022 — Personal Build</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Oud Alblas — wide bottom-right -->
+      <a class="card card--wide card--oud" href="projects/oud-alblas.html">
+        <div class="card__img-wrap">
+          <div class="card__placeholder"></div>
+        </div>
+        <div class="card__info">
+          <div class="card__category">Form Studies · Modelmaking</div>
+          <div class="card__name">Oud Alblas</div>
+          <div class="card__year">2021 — Ebano AS / AKSIE AS</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="all-work">
+      <a href="work.html">See all work</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© 2026 Simon H.J. Bjørkå Flatin</div>
+    <div class="footer__links">
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+    </div>
+  </footer>
+
+</body>
+</html>
