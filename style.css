@@ -1,0 +1,180 @@
+/* =====================================================
+   SIMON H.J. BJØRKÅ FLATIN — Shared Styles
+   ===================================================== */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream:  #f4f1ec;
+  --dark:   #1c1c1a;
+  --muted:  #6b6860;
+  --accent: #3d3b35;
+  --serif:  'Georgia', serif;
+  --sans:   'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--dark); font-family: var(--sans); }
+
+/* ---- NAV ---- */
+nav {
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+/* Hero mode: overlaid on full-screen image */
+nav.nav--hero {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+}
+
+/* Page mode: sits on cream background */
+nav.nav--page {
+  position: relative;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(28,28,26,0.1);
+  padding: 1.6rem 3rem;
+}
+
+.nav__name {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+nav.nav--hero .nav__name  { color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,0.35); }
+nav.nav--page .nav__name  { color: var(--dark); }
+
+.nav__links { display: flex; gap: 2.5rem; list-style: none; }
+.nav__links a {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+nav.nav--hero .nav__links a       { color: rgba(255,255,255,0.85); }
+nav.nav--hero .nav__links a:hover { color: #fff; }
+nav.nav--page .nav__links a       { color: var(--muted); }
+nav.nav--page .nav__links a:hover { color: var(--dark); }
+
+/* ---- PROJECT CARDS ---- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+.card {
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.card--large  { grid-column: span 7; }
+.card--medium { grid-column: span 5; }
+.card--wide   { grid-column: span 6; }
+.card--third  { grid-column: span 4; }
+
+.card__img-wrap { width: 100%; overflow: hidden; }
+.card--large  .card__img-wrap { aspect-ratio: 4/3; }
+.card--medium .card__img-wrap { aspect-ratio: 3/4; }
+.card--wide   .card__img-wrap { aspect-ratio: 16/9; }
+.card--third  .card__img-wrap { aspect-ratio: 4/3; }
+
+.card__img-wrap img,
+.card__placeholder {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.card:hover .card__img-wrap img,
+.card:hover .card__placeholder { transform: scale(1.04); }
+
+.card__info   { padding: 1rem 0 0.4rem; }
+.card__category {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.35rem;
+}
+.card__name {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-weight: 400; color: var(--dark); line-height: 1.25;
+}
+.card__year { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+.card__arrow {
+  display: inline-block; margin-top: 0.6rem;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--accent); opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.card:hover .card__arrow { opacity: 1; transform: translateX(0); }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.45);
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  margin-top: 6rem;
+}
+footer a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: #fff; }
+.footer__links { display: flex; gap: 2rem; }
+
+/* ---- PAGE SECTIONS ---- */
+.page-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 4rem 0;
+}
+.page-section + .page-section { padding-top: 3rem; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  margin-bottom: 3.5rem;
+}
+.section-label {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted);
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400; color: var(--dark);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  nav, nav.nav--page { padding: 1.5rem; }
+  .nav__links { gap: 1.5rem; }
+  .page-section { padding: 3rem 1.5rem 0; }
+  .projects { grid-template-columns: 1fr; gap: 2.5rem; }
+  .card--large, .card--medium, .card--wide, .card--third { grid-column: span 1; }
+  .card--medium .card__img-wrap { aspect-ratio: 4/3; }
+  footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; margin-top: 3rem; }
+}
+
+@media (max-width: 500px) {
+  .nav__name { font-size: 1.15rem; }
+  .nav__links { gap: 1rem; }
+  .nav__links a { font-size: 0.7rem; letter-spacing: 0.12em; }
+}

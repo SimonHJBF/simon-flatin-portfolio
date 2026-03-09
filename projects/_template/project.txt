@@ -1,0 +1,33 @@
+title: Your Project Title
+category: Architecture · Competition
+year: 2024
+location: City, Country
+typology: Residential / Pavilion / Installation / etc.
+size: (optional) e.g. 120 m²
+status: Concept / In progress / Realised
+organization: Client or Institution name (shown as "Year — Organization")
+collaborators: Name One, Name Two
+exhibitions: Gallery Name, Month Year
+grid: large
+featured: no
+
+---
+
+Write your project description here. This first paragraph introduces the project — what it is, where it is, and the core idea behind it.
+
+This second paragraph can go deeper into the process, materials, or research. Each blank line creates a new paragraph.
+
+Add as many paragraphs as you need. Keep it concise — two to four paragraphs works well for most projects.
+
+---
+IMAGES:
+- Name your hero/cover image "cover.jpg" (or cover.png / cover.webp)
+- All other images in this folder appear as the gallery below, sorted alphabetically
+- Recommended: image-01.jpg, image-02.jpg, image-03.jpg etc.
+
+GRID SIZE OPTIONS (the grid: field above):
+- large  — wide card, good for your best projects (spans 7/12 columns)
+- medium — tall portrait card (spans 5/12 columns)
+- wide   — landscape card, half-width (spans 6/12 columns)
+- third  — compact card, one-third width (spans 4/12 columns)
+- Leave blank to auto-assign based on position

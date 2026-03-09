@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Simon H.J. Bjørkå Flatin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .work-intro {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 4rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 1.4rem;
+      border-bottom: 1px solid rgba(28,28,26,0.1);
+      padding-bottom: 3rem;
+    }
+    .work-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 4rem 0;
+    }
+    /* Gradient placeholders per project */
+    .p--arctic      { background: linear-gradient(135deg, #1a2a3a 0%, #2d4a6b 50%, #8fb3c8 100%); }
+    .p--terracotta  { background: linear-gradient(135deg, #3d2a1a 0%, #8b6340 50%, #c4a882 100%); }
+    .p--forest      { background: linear-gradient(135deg, #1e2d1a 0%, #3a5c30 50%, #7ea86e 100%); }
+    .p--umber       { background: linear-gradient(135deg, #2a1f1a 0%, #6b4a35 50%, #b08060 100%); }
+    .p--slate       { background: linear-gradient(135deg, #1f2535 0%, #3d4f6b 50%, #8a9bb5 100%); }
+    .p--moss        { background: linear-gradient(135deg, #22301f 0%, #4a6640 50%, #9ab588 100%); }
+    .p--dusk        { background: linear-gradient(135deg, #2a1f2d 0%, #5a3f65 50%, #a88bb5 100%); }
+    .p--sand        { background: linear-gradient(135deg, #2d2a1a 0%, #7a6840 50%, #c8b882 100%); }
+    .p--steel       { background: linear-gradient(135deg, #1a2030 0%, #3a4a5a 50%, #8aaabb 100%); }
+    .p--clay        { background: linear-gradient(135deg, #301a14 0%, #7a3a28 50%, #c07055 100%); }
+    .p--fog         { background: linear-gradient(135deg, #282828 0%, #5a5a5a 50%, #aaaaaa 100%); }
+    .p--peat        { background: linear-gradient(135deg, #1c2218 0%, #3a4a30 50%, #7a8a6a 100%); }
+
+    @media (max-width: 900px) {
+      .work-intro, .work-grid { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav--page">
+    <a href="index.html" class="nav__name">Simon H.J. Bjørkå Flatin</a>
+    <ul class="nav__links">
+      <li><a href="index.html">Main</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="work-intro">
+    <span class="section-label">Portfolio</span>
+    <h1 class="section-title">All Work</h1>
+  </div>
+
+  <div class="work-grid">
+    <div class="projects">
+
+      <!-- Row 1 -->
+      <a class="card card--large" href="projects/arctic-symphony/">
+        <div class="card__img-wrap"><div class="card__placeholder p--arctic"></div></div>
+        <div class="card__info">
+          <div class="card__category">Performance · Architecture · Photography</div>
+          <div class="card__name">Arctic Symphony</div>
+          <div class="card__year">2023 — Graduation Project, TU Delft</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--medium" href="projects/lalibela-modelmaking/">
+        <div class="card__img-wrap"><div class="card__placeholder p--terracotta"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architectural Model</div>
+          <div class="card__name">Lalibela Modelmaking</div>
+          <div class="card__year">2024 — TU Delft Exhibition</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Row 2 -->
+      <a class="card card--medium" href="projects/meqdela-gebbi/">
+        <div class="card__img-wrap"><div class="card__placeholder p--umber"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architectural Model</div>
+          <div class="card__name">Meqdela Gebbi Modelmaking</div>
+          <div class="card__year">2023 — Venice Biennale Commission</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--large" href="projects/bjornasen-house/">
+        <div class="card__img-wrap"><div class="card__placeholder p--forest"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Residential</div>
+          <div class="card__name">Bjørnåsen House Addition</div>
+          <div class="card__year">2022 — Personal Project</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Row 3 -->
+      <a class="card card--wide" href="projects/chicken-coop/">
+        <div class="card__img-wrap"><div class="card__placeholder p--forest"></div></div>
+        <div class="card__info">
+          <div class="card__category">Craft · Making</div>
+          <div class="card__name">Chicken Coop</div>
+          <div class="card__year">2022 — Personal Build</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--wide" href="projects/oud-alblas/">
+        <div class="card__img-wrap"><div class="card__placeholder p--umber"></div></div>
+        <div class="card__info">
+          <div class="card__category">Form Studies · Modelmaking</div>
+          <div class="card__name">Oud Alblas</div>
+          <div class="card__year">2021 — Ebano AS / AKSIE AS</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Row 4 -->
+      <a class="card card--third" href="projects/von-sauna/">
+        <div class="card__img-wrap"><div class="card__placeholder p--slate"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Competition</div>
+          <div class="card__name">Von Sauna — Floating Saunas</div>
+          <div class="card__year">2022</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--third" href="projects/stilt-house/">
+        <div class="card__img-wrap"><div class="card__placeholder p--sand"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Competition</div>
+          <div class="card__name">Stilt House</div>
+          <div class="card__year">2021</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--third" href="projects/sesc-mogi-das-cruzes/">
+        <div class="card__img-wrap"><div class="card__placeholder p--moss"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Competition</div>
+          <div class="card__name">SESC Mogi Das Cruzes</div>
+          <div class="card__year">2021</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Row 5 -->
+      <a class="card card--large" href="projects/symphony-time-architecture/">
+        <div class="card__img-wrap"><div class="card__placeholder p--peat"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Research</div>
+          <div class="card__name">Symphony of Time and Architecture</div>
+          <div class="card__year">2023 — TU Delft</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--medium" href="projects/borders-transitions/">
+        <div class="card__img-wrap"><div class="card__placeholder p--dusk"></div></div>
+        <div class="card__info">
+          <div class="card__category">Photography · Research</div>
+          <div class="card__name">Borders and Transitions</div>
+          <div class="card__year">2022</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Row 6 -->
+      <a class="card card--wide" href="projects/billow-maas/">
+        <div class="card__img-wrap"><div class="card__placeholder p--steel"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Competition</div>
+          <div class="card__name">Billow by the Maas</div>
+          <div class="card__year">2020</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--wide" href="projects/staircase-home/">
+        <div class="card__img-wrap"><div class="card__placeholder p--clay"></div></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Competition</div>
+          <div class="card__name">The Staircase Home</div>
+          <div class="card__year">2020</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- Row 7 -->
+      <a class="card card--third" href="projects/assembling-arctic-symphony/">
+        <div class="card__img-wrap"><div class="card__placeholder p--arctic"></div></div>
+        <div class="card__info">
+          <div class="card__category">Performance · Making</div>
+          <div class="card__name">Assembling the Arctic Symphony</div>
+          <div class="card__year">2023</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--third" href="projects/form-studies/">
+        <div class="card__img-wrap"><div class="card__placeholder p--fog"></div></div>
+        <div class="card__info">
+          <div class="card__category">Research · Making</div>
+          <div class="card__name">Form Studies</div>
+          <div class="card__year">2021</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+      <a class="card card--third" href="projects/erosion/">
+        <div class="card__img-wrap"><div class="card__placeholder p--peat"></div></div>
+        <div class="card__info">
+          <div class="card__category">Photography · Research</div>
+          <div class="card__name">Erosion</div>
+          <div class="card__year">2022</div>
+          <div class="card__arrow">View project →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <div>© 2026 Simon H.J. Bjørkå Flatin</div>
+    <div class="footer__links">
+      <a href="about.html">About</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+    </div>
+  </footer>
+
+</body>
+</html>
