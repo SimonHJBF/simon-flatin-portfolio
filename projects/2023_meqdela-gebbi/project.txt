@@ -1,0 +1,14 @@
+title: Meqdela Gebbi Modelmaking
+category: Architectural Model
+year: 2023
+location: Delft, The Netherlands
+typology: Architectural Model
+status: Realised
+organization: Venice Biennale Commission
+collaborators: Alex Kirschstein, Prof. Dirk van Gameren
+exhibitions: Venice Architecture Biennale 2023
+grid: medium
+
+---
+
+Add your description here.

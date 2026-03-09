@@ -1,0 +1,9 @@
+# List the 4 project slugs you want featured on the homepage.
+# The slug is the folder name WITHOUT the year prefix.
+# Order matters: first = large card (left), second = tall card (right),
+# third and fourth = two wide cards below.
+
+arctic-symphony
+lalibela-modelmaking
+chicken-coop
+oud-alblas

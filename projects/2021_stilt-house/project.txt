@@ -1,0 +1,11 @@
+title: Stilt House
+category: Architecture · Competition
+year: 2021
+location: Netherlands
+typology: Competition
+status: Concept
+grid: third
+
+---
+
+Add your description here.

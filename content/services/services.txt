@@ -1,0 +1,39 @@
+# Services list
+# Format: each service starts with [service]
+# Fields: name, desc
+
+[service]
+name: Integrated Architecture · Urbanism · Landscape
+desc: Full-service design from site analysis and concept through planning, detailing and construction oversight. I work across scales — from a single room to an urban quarter — always grounding proposals in the specific character of place, light and material.
+
+[service]
+name: BIM Coordination & Digital Twin Libraries
+desc: Revit-based BIM coordination for complex multi-disciplinary projects, including clash detection, information management and digital twin library development for ongoing facility management.
+
+[service]
+name: CAD / BIM Drafting & Documentation
+desc: Precise technical drawing packages — plans, sections, elevations and details — for planning applications, building permits and contractor tendering. Fluent in AutoCAD, Revit and Vectorworks.
+
+[service]
+name: Physical Model Making & Prototyping
+desc: Exhibition-quality architectural models at any scale, from study maquettes to museum commission pieces. My models for TU Delft have been exhibited at the Venice Architecture Biennale 2023. Materials range from laser-cut plywood and card to hand-carved stone and resin.
+
+[service]
+name: Drone Photogrammetry & 3D Site Analysis
+desc: Aerial photogrammetry surveys producing high-resolution point clouds and 3D meshes of sites, landscapes and existing buildings. Useful for planning, heritage recording, contractor briefings and spatial research.
+
+[service]
+name: Research, Material & Form Studies
+desc: Focused research into material behaviour, tectonic systems, and formal strategies. Suitable for academic institutions, design competitions, and practices wanting rigorous conceptual groundwork before committing to a design direction.
+
+[service]
+name: Planning Applications & Regulatory Compliance
+desc: Preparation and management of planning submissions in Norway and the Netherlands, including neighbourhood consultation documents, heritage impact assessments, and responses to authority queries.
+
+[service]
+name: Sustainable & Circular Design Consulting
+desc: Integrating circular material flows, passive systems and low-carbon strategies into projects from the outset. I draw on both Nordic and international precedent to find solutions that reduce embodied energy without sacrificing quality or character.
+
+[service]
+name: Remote Consultations & Virtual Collaboration
+desc: I work regularly across Norway, the Netherlands, Poland and Brazil. All services are available remotely via structured video consultations, shared cloud models and collaborative drawing reviews.

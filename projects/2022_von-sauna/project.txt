@@ -1,0 +1,11 @@
+title: Von Sauna — Floating Saunas
+category: Architecture · Competition
+year: 2022
+location: Norway
+typology: Pavilion / Competition
+status: Concept
+grid: third
+
+---
+
+Add your description here.

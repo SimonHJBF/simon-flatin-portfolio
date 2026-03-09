@@ -1,0 +1,12 @@
+title: Assembling the Arctic Symphony
+category: Performance · Making
+year: 2020
+location: Delft, The Netherlands
+typology: Installation / Performance
+organization: TU Delft
+status: Realised
+grid: third
+
+---
+
+Add your description here.

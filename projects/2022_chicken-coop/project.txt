@@ -1,0 +1,11 @@
+title: Chicken Coop
+category: Craft · Making
+year: 2022
+location: Oslo, Norway
+typology: Personal Build
+status: Realised
+grid: wide
+
+---
+
+Add your description here.

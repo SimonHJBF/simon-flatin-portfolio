@@ -1,0 +1,11 @@
+title: Bjørnåsen House Addition
+category: Architecture · Residential
+year: 2022
+location: Oslo, Norway
+typology: House Extension
+status: In progress
+grid: large
+
+---
+
+Add your description here.

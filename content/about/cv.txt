@@ -1,0 +1,52 @@
+# CV — Simon H.J. Bjørkå Flatin
+# Format: each entry starts with [experience] or [education]
+# Fields: period, role, org, location, desc
+
+[experience]
+period: 2023 — Ongoing
+role: Co-Founder & Research Architect
+org: Alternative Realities
+location: Norway · Poland · Netherlands · Belgium
+desc: A small research and design studio co-founded with Ewa Ziemiecka and Zofia Sosnierz, developing focused research projects within architecture and the urban context.
+
+[experience]
+period: 2015 — Present
+role: Technical Designer → Architect
+org: Ebano AS / AKSIE AS
+location: Drøbak, Norway
+desc: Design and production of service industry environments and custom stainless steel kitchen products. Projects range from restaurant layout to bespoke industrial fabrication for a variety of clients.
+
+[experience]
+period: Autumn 2021
+role: Intern
+org: Lüchinger Architects / Mieke Vink
+location: Rotterdam, The Netherlands
+desc: Creative and innovative workplace designing restaurants, bars and cafés — working on everything from layout to custom stainless steel products for a variety of clients.
+
+[education]
+period: 2020 — 2023
+role: Master of Science in Architecture
+org: TU Delft
+location: Delft, The Netherlands
+desc: Developing innovative building projects that use design to address technical, social and spatial challenges in the built environment.
+
+[education]
+period: 2017 — 2020
+role: Bachelor of Architecture, Urbanism & Building Sciences
+org: TU Delft
+location: Delft, The Netherlands
+desc: Foundations in architecture, urbanism and building sciences.
+
+[education]
+period: 2014 — 2015
+role: One Year Technical Design
+org: Noroff Vocational School
+location: Oslo, Norway
+desc: Technical design skills including AutoCAD, 3ds Max, Revit and Inventor.
+
+[education]
+period: 2013 — 2014
+role: One Year Study Abroad
+org: La Trobe University
+location: Melbourne, Australia
+desc: International architectural impulses and an expanded network of global contacts.

@@ -1,0 +1,11 @@
+title: The Staircase Home
+category: Architecture · Competition
+year: 2020
+location: The Netherlands
+typology: Residential / Competition
+status: Concept
+grid: wide
+
+---
+
+Add your description here.

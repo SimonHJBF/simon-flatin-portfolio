@@ -1,0 +1,11 @@
+title: Form Studies
+category: Research · Making
+year: 2021
+location: Delft, The Netherlands
+typology: Material Research
+status: Realised
+grid: third
+
+---
+
+Add your description here.
