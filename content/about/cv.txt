@@ -3,6 +3,13 @@
 # Fields: period, role, org, location, desc
 
 [experience]
+period: May 2025 — Present
+role: Founder & Principal Architect
+org: Bjørkå Flatin ENK
+location: Norway · Brazil
+desc: An independent architecture and design practice, founded in Norway and operating between Norway and São Paulo. Taking on projects worldwide — working digitally across borders while also engaging locally wherever situated.
+
+[experience]
 period: 2023 — Ongoing
 role: Co-Founder & Research Architect
 org: Alternative Realities

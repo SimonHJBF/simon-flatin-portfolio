@@ -165,12 +165,19 @@ const LANG_SCRIPT = `<script>
 
 const LANG_TOGGLE_SCRIPT = `<script>
   document.addEventListener('DOMContentLoaded',function(){
-    document.querySelectorAll('.lang-toggle').forEach(function(btn){
+    var cur=document.documentElement.getAttribute('data-lang')||'en';
+    function setActive(lang){
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.lang===lang);
+      });
+    }
+    setActive(cur);
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
       btn.addEventListener('click',function(){
-        var cur=document.documentElement.getAttribute('data-lang')||'en';
-        var next=cur==='en'?'no':'en';
-        document.documentElement.setAttribute('data-lang',next);
-        localStorage.setItem('lang',next);
+        var lang=btn.dataset.lang;
+        document.documentElement.setAttribute('data-lang',lang);
+        localStorage.setItem('lang',lang);
+        setActive(lang);
       });
     });
   });
@@ -187,8 +194,9 @@ const GA_TAG = `<!-- Google tag (gtag.js) -->
 
 // Language CSS (goes in <head>)
 const LANG_CSS = `
-  [data-lang="en"] .l-no { display:none }
-  [data-lang="no"] .l-en { display:none }`;
+  [data-lang="en"] .l-no,[data-lang="en"] .l-pt { display:none }
+  [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
+  [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }`;
 
 function navHtml(prefix) {
   const p = prefix || '';
@@ -196,13 +204,19 @@ function navHtml(prefix) {
     <a href="${p}index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
-        <li><a href="${p}index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
-        <li><a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
-        <li><a href="${p}services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
-        <li><a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
-        <li><a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
+        <li><a href="${p}index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
+        <li><a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+        <li><a href="${p}services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+        <li><a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+        <li><a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
       </ul>
-      <button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button>
+      <div class="lang-toggle" role="group" aria-label="Select language">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep">&middot;</span>
+        <button class="lang-btn" data-lang="no">NO</button>
+        <span class="lang-sep">&middot;</span>
+        <button class="lang-btn" data-lang="pt">PT</button>
+      </div>
     </div>
   </nav>`;
 }
@@ -212,9 +226,9 @@ function footerHtml(prefix) {
   return `  <footer>
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span></a>
-      <a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a>
-      <a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a>
+      <a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
+      <a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
+      <a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
     </div>
   </footer>`;
 }
@@ -346,7 +360,7 @@ ${heroHtml}
     <div class="project-content">
       <h1 class="project-title">${esc(title)}</h1>
       ${data.paragraphs.map(p => `<p>${esc(p)}</p>`).join('\n      ')}
-      <a href="../../work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span></a>
+      <a href="../../work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
     </div>
   </div>
 ${galleryHtml}
@@ -405,8 +419,8 @@ function generateWorkPage(projects) {
 ${navHtml()}
 
   <div class="work-intro">
-    <span class="section-label"><span class="l-en">Portfolio</span><span class="l-no">Portefølje</span></span>
-    <h1 class="section-title"><span class="l-en">All Work</span><span class="l-no">Alle prosjekter</span></h1>
+    <span class="section-label"><span class="l-en">Portfolio</span><span class="l-no">Portef&oslash;lje</span><span class="l-pt">Portf&oacute;lio</span></span>
+    <h1 class="section-title"><span class="l-en">All Work</span><span class="l-no">Alle prosjekter</span><span class="l-pt">Todo o Trabalho</span></h1>
   </div>
 
   <div class="work-filters">
@@ -489,18 +503,29 @@ function generateIndexPage(allProjects, featuredSlugs) {
     ? `<img class="hero__bg" src="${heroImgPath}" alt="">`
     : `<div class="hero__bg" style="background:linear-gradient(160deg,#2d3d2e 0%,#4a6741 35%,#7a9e6e 60%,#c9d9b8 100%);"></div>`;
 
-  // SVG water ripple — overlaid on bottom ~45% of image (the water area)
+  // SVG water ripple — calm upward flow on bottom ~45% (the water area).
+  // feOffset animates the noise upward (dy goes negative) at constant speed.
+  // stitchTiles="stitch" makes the noise tile seamlessly; JS corrects the
+  // loop period to match the exact filter subregion height so there is no
+  // visible jump at the repeat point.
   const heroWaterHtml = heroImgPath ? `  <svg class="hero__water" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <filter id="water-ripple" x="-3%" y="-3%" width="106%" height="106%">
-        <feTurbulence type="turbulence" baseFrequency="0.012 0.008"
-                      numOctaves="3" seed="5" result="noise">
-          <animate attributeName="baseFrequency"
-                   values="0.012 0.008; 0.010 0.012; 0.014 0.007; 0.012 0.008"
-                   dur="12s" repeatCount="indefinite"/>
-        </feTurbulence>
+      <filter id="water-ripple" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise"
+                      baseFrequency="0.015 0.025"
+                      numOctaves="3" seed="7"
+                      stitchTiles="stitch"
+                      result="rawNoise"/>
+        <feOffset in="rawNoise" result="noise" dx="0" dy="0">
+          <animate id="water-flow-anim"
+                   attributeName="dy"
+                   from="0" to="-1000"
+                   dur="22s"
+                   repeatCount="indefinite"
+                   calcMode="linear"/>
+        </feOffset>
         <feDisplacementMap in="SourceGraphic" in2="noise"
-                           scale="14" xChannelSelector="R" yChannelSelector="G"/>
+                           scale="8" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
       <clipPath id="water-clip" clipPathUnits="objectBoundingBox">
         <rect x="0" y="0.55" width="1" height="0.45"/>
@@ -554,33 +579,57 @@ function generateIndexPage(allProjects, featuredSlugs) {
       <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
       <div class="nav__link-row">
         <ul class="nav__links">
-          <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
-          <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
-          <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
-          <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
-          <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
+          <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
+          <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+          <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+          <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+          <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
         </ul>
-        <button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button>
+        <div class="lang-toggle" role="group" aria-label="Select language">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-lang="no">NO</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-lang="pt">PT</button>
+        </div>
       </div>
     </nav>
     <div class="hero__scroll-cue">
-      <span class="l-en">Scroll</span><span class="l-no">Rull</span>
-      <span class="hero__scroll-arrow" aria-hidden="true"></span>
+      <span class="l-en">Scroll</span><span class="l-no">Rull</span><span class="l-pt">Rolar</span>
+      <span class="hero__scroll-arrow-wrap" aria-hidden="true"><span class="hero__scroll-arrow"></span></span>
     </div>
   </section>
 
   <section class="featured">
     <div class="featured__header">
-      <span class="section-label"><span class="l-en">Selected Work</span><span class="l-no">Utvalgte prosjekter</span></span>
-      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">Signaturprosjekter</span></h2>
+      <span class="section-label"><span class="l-en">Selected Work</span><span class="l-no">Utvalgte prosjekter</span><span class="l-pt">Trabalho Selecionado</span></span>
+      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">Signaturprosjekter</span><span class="l-pt">Projetos de Destaque</span></h2>
     </div>
     <div class="projects">
 ${cards}
     </div>
-    <div class="all-work"><a href="work.html"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span></a></div>
+    <div class="all-work"><a href="work.html"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span><span class="l-pt">Ver todos os projetos</span></a></div>
   </section>
 
 ${footerHtml()}
+<script>
+  /* Fix water animation loop period for a perfectly seamless tile on any screen size. */
+  (function(){
+    function syncWater(){
+      var s=document.querySelector('.hero__water');
+      var a=document.getElementById('water-flow-anim');
+      if(!s||!a) return;
+      var h=s.getBoundingClientRect().height;
+      if(!h) return;
+      a.setAttribute('to',String(-Math.round(h*1.1)));
+      try{a.beginElement();}catch(e){}
+    }
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',syncWater);
+    } else { syncWater(); }
+    window.addEventListener('resize',syncWater);
+  })();
+</script>
 ${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
@@ -661,7 +710,7 @@ ${navHtml()}
 
   <div class="about-body">
     <div class="about-bio">
-      <div class="about-bio__label"><span class="l-en">About</span><span class="l-no">Om</span></div>
+      <div class="about-bio__label"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></div>
       <h1 class="about-bio__name">Simon H.J.<br>Bj&oslash;rk&aring; Flatin</h1>
       <div class="about-bio__text">
 ${bioHtml}
@@ -675,10 +724,10 @@ ${bioHtml}
     <div class="about-cv">
       <div class="cv-label">CV</div>
       ${expHtml.trim() ? `<div class="cv-section">
-        <div class="cv-section__title"><span class="l-en">Working Experience</span><span class="l-no">Arbeidserfaring</span></div>${expHtml}
+        <div class="cv-section__title"><span class="l-en">Working Experience</span><span class="l-no">Arbeidserfaring</span><span class="l-pt">Experi&ecirc;ncia Profissional</span></div>${expHtml}
       </div>` : ''}
       ${eduHtml.trim() ? `<div class="cv-section">
-        <div class="cv-section__title"><span class="l-en">Education</span><span class="l-no">Utdanning</span></div>${eduHtml}
+        <div class="cv-section__title"><span class="l-en">Education</span><span class="l-no">Utdanning</span><span class="l-pt">Educa&ccedil;&atilde;o</span></div>${eduHtml}
       </div>` : ''}
     </div>
   </div>
@@ -783,6 +832,7 @@ ${navHtml()}
       <h1>
         <span class="l-en">Crafting Places that Echo Mountains,<br>Rivers &amp; the Spaces Between</span>
         <span class="l-no">Skaper steder som gjenspeiler fjell,<br>elver og rommene imellom</span>
+        <span class="l-pt">Criando Lugares que Ecoam Montanhas,<br>Rios e os Espa&ccedil;os Entre Eles</span>
       </h1>
     </div>
   </div>
@@ -790,9 +840,10 @@ ${navHtml()}
   <div class="services-body">
     <div class="services-intro">
       <p class="l-en">My practice is a dialogue between two worlds: the crisp Nordic light that shaped my childhood and the layered landscapes where I now design. I read terrain first &mdash; through drone photogrammetry, hand sketches or a block of clay &mdash; then guide projects from concept through construction. The goal: architecture that matures gracefully, treads lightly and feels inevitable in its setting.</p>
-      <p class="l-no">Min praksis er en dialog mellom to verdener: det klare nordiske lyset som formet barndommen min, og de lagdelte landskapene der jeg nå designer. Jeg leser terrenget først &mdash; gjennom dronebasert fotogrammetri, håndskisser eller en klump leire &mdash; og leder deretter prosjekter fra konsept til ferdigstillelse. Målet: arkitektur som modnes med verdighet, trår lett og virker uunngåelig i sin setting.</p>
+      <p class="l-no">Min praksis er en dialog mellom to verdener: det klare nordiske lyset som formet barndommen min, og de lagdelte landskapene der jeg n&aring; designer. Jeg leser terrenget f&oslash;rst &mdash; gjennom dronebasert fotogrammetri, h&aring;ndskisser eller en klump leire &mdash; og leder deretter prosjekter fra konsept til ferdigstillelse. M&aring;let: arkitektur som modnes med verdighet, tr&aring;r lett og virker uunng&aring;elig i sin setting.</p>
+      <p class="l-pt">Minha pr&aacute;tica &eacute; um di&aacute;logo entre dois mundos: a luz n&oacute;rdica que moldou minha inf&acirc;ncia e as paisagens em camadas onde agora projeto. Leio o terreno primeiro &mdash; por fotogrametria com drone, esbo&ccedil;os &agrave; m&atilde;o ou um bloco de argila &mdash; e conduzo projetos do conceito &agrave; constru&ccedil;&atilde;o. O objetivo: arquitetura que amadurece com gra&ccedil;a, pisa levemente e parece inevit&aacute;vel em seu contexto.</p>
     </div>
-    <div class="services-label"><span class="l-en">Services</span><span class="l-no">Tjenester</span></div>
+    <div class="services-label"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></div>
     <div class="services-list">
 ${serviceItems}
     </div>
@@ -800,10 +851,10 @@ ${serviceItems}
 
   <div class="contact-cta">
     <div class="contact-cta__text">
-      <h2><span class="l-en">Let&rsquo;s work together</span><span class="l-no">La oss samarbeide</span></h2>
-      <p><span class="l-en">Available for commissions, collaborations and consultations.</span><span class="l-no">Tilgjengelig for oppdrag, samarbeid og konsultasjoner.</span></p>
+      <h2><span class="l-en">Let&rsquo;s work together</span><span class="l-no">La oss samarbeide</span><span class="l-pt">Vamos trabalhar juntos</span></h2>
+      <p><span class="l-en">Available for commissions, collaborations and consultations.</span><span class="l-no">Tilgjengelig for oppdrag, samarbeid og konsultasjoner.</span><span class="l-pt">Dispon&iacute;vel para comiss&otilde;es, colabora&ccedil;&otilde;es e consultas.</span></p>
     </div>
-    <a href="contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span></a>
+    <a href="contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span><span class="l-pt">Entre em contato &rarr;</span></a>
   </div>
 
 ${footerHtml()}
