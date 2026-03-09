@@ -1,32 +1,20 @@
 title: Omsorgsgruppen Våler
-category: Architecture · Healthcare
+category: Application · Healthcare
 year: 2025
 location: Våler, Norway
-typology: Assisted Living / Care Facility
+typology: Regulatory Application / Change of Use
 organization: Bjørkå Flatin ENK
 status: In Progress
-grid: large
+grid: third
 
 ---
 
-The Omsorgsgruppen Våler project is an assisted living and care facility commission in the municipality of Våler, Innlandet. The design addresses the growing demand for dignified residential care environments in rural Norway — spaces that prioritise daylight, connection to landscape and a domestic scale that resists institutional character.
-
-The proposal organises the programme around a series of clustered residential wings, each of twelve units, connected by a shared common spine. This spine — containing communal living areas, a kitchen and an activity room — is oriented south toward the agricultural landscape, with generous glazing that brings the changing of the seasons directly into the shared life of the building.
-
-Material choices respond to the region's timber building tradition: cross-laminated timber structure, façades in vertical untreated pine, and interiors that use natural materials throughout. The project is currently in the design development phase.
+Omsorgsgruppen Våler is a planning application project for the municipality of Våler, Innlandet. The work involved assessing an existing single-family home and preparing the necessary documentation to obtain municipal approval for its conversion to assisted living use. The focus was on compliance with local planning regulations and care-facility standards — not the architectural design of a new building.
 
 ===no===
 
-Omsorgsgruppen Våler-prosjektet er et omsorgs- og assistert boligoppdrag i kommunen Våler, Innlandet. Designet adresserer den voksende etterspørselen etter verdige omsorgsmiljøer i landlige norske strøk — rom som prioriterer dagslys, tilknytning til landskap og en domestisk skala som motstår institusjonell karakter.
-
-Forslaget organiserer programmet rundt en serie grupperte boligfløyer, hver med tolv enheter, koblet av en felles sentral akse. Denne aksen — som inneholder fellesrom, kjøkken og aktivitetsrom — er orientert mot sør mot det landbrukslandskapet, med romslig glassfarge som bringer årstidsskiftene direkte inn i bygningens felles liv.
-
-Materialvalg responderer på regionens tømmerbygningstradisjoner: krysslimtre-konstruksjon, fasader i vertikal ubehandlet furu og interiører som bruker naturlige materialer gjennom hele. Prosjektet er for øyeblikket i designutviklingsfasen.
+Omsorgsgruppen Våler er et søknadsprosjekt for Våler kommune i Innlandet. Arbeidet innebar å vurdere en eksisterende enebolig og utarbeide nødvendig dokumentasjon for å oppnå kommunal godkjenning av bruksendring til omsorgsbolig. Fokuset var på overholdelse av lokale planbestemmelser og omsorgsfaglige krav — ikke arkitektonisk utforming av en ny bygning.
 
 ===pt===
 
-O projeto Omsorgsgruppen Våler é uma encomenda de instalação de moradia assistida e cuidados no município de Våler, Innlandet. O design aborda a crescente demanda por ambientes de cuidado dignos na Noruega rural — espaços que priorizam a luz do dia, a conexão com a paisagem e uma escala doméstica que resiste ao caráter institucional.
-
-A proposta organiza o programa em torno de uma série de alas residenciais agrupadas, cada uma com doze unidades, conectadas por uma espinha dorsal comum compartilhada. Esta espinha dorsal — contendo salas de estar comuns, uma cozinha e uma sala de atividades — é orientada para o sul em direção à paisagem agrícola, com envidraçamento generoso que traz as mudanças das estações diretamente para a vida compartilhada do edifício.
-
-As escolhas de materiais respondem à tradição de construção em madeira da região: estrutura em madeira lamelada cruzada, fachadas em pinho vertical não tratado e interiores que utilizam materiais naturais em toda a extensão. O projeto está atualmente na fase de desenvolvimento do projeto.
+Omsorgsgruppen Våler é um projeto de licenciamento para o município de Våler, Innlandet. O trabalho envolveu a avaliação de uma residência unifamiliar existente e a preparação da documentação necessária para obter aprovação municipal para sua conversão em moradia assistida. O foco foi na conformidade com os regulamentos de planejamento local e padrões de instalações de cuidado — não no projeto arquitetônico de um novo edifício.
