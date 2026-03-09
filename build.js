@@ -176,6 +176,15 @@ const LANG_TOGGLE_SCRIPT = `<script>
   });
 </script>`;
 
+const GA_TAG = `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VBPFZJZXY9');
+</script>`;
+
 // Language CSS (goes in <head>)
 const LANG_CSS = `
   [data-lang="en"] .l-no { display:none }
@@ -311,6 +320,7 @@ function generateProjectPage(data, folderName, images) {
     ${LANG_CSS}
   </style>
   ${LANG_SCRIPT}
+  ${GA_TAG}
 </head>
 <body>
 
@@ -388,6 +398,7 @@ function generateWorkPage(projects) {
     ${LANG_CSS}
   </style>
   ${LANG_SCRIPT}
+  ${GA_TAG}
 </head>
 <body>
 
@@ -467,25 +478,39 @@ function generateIndexPage(allProjects, featuredSlugs) {
       </a>`;
   }).join('');
 
-  // Check for hero video first, then image, then gradient fallback
-  const mainDir      = path.join(CONTENT_DIR, 'main');
-  const heroVideoFile = fs.existsSync(mainDir)
-    ? fs.readdirSync(mainDir).find(f => /\.(mp4|webm)$/i.test(f))
+  // Hero: static image only (no video)
+  const mainDir     = path.join(CONTENT_DIR, 'main');
+  const heroImgFile = fs.existsSync(mainDir)
+    ? findImages(mainDir).find(f => /^(hero|cover|mirror)\./i.test(f)) || findImages(mainDir)[0]
     : null;
-  const heroImgFile = !heroVideoFile && fs.existsSync(mainDir)
-    ? findImages(mainDir).find(f => /^(hero|cover)\./i.test(f))
-    : null;
+  const heroImgPath = heroImgFile ? `content/main/${heroImgFile}` : null;
 
-  const heroBg = heroImgFile
-    ? `background: url('content/main/${heroImgFile}') center/cover no-repeat;`
-    : heroVideoFile ? ''
-    : `background: linear-gradient(160deg, #2d3d2e 0%, #4a6741 35%, #7a9e6e 60%, #c9d9b8 100%);`;
+  const heroBgHtml = heroImgPath
+    ? `<img class="hero__bg" src="${heroImgPath}" alt="">`
+    : `<div class="hero__bg" style="background:linear-gradient(160deg,#2d3d2e 0%,#4a6741 35%,#7a9e6e 60%,#c9d9b8 100%);"></div>`;
 
-  const heroBgHtml = heroVideoFile
-    ? `<video class="hero__bg" autoplay muted loop playsinline>
-      <source src="content/main/${heroVideoFile}" type="video/${heroVideoFile.endsWith('.webm') ? 'webm' : 'mp4'}" />
-    </video>`
-    : `<div class="hero__bg"></div>`;
+  // SVG water ripple — overlaid on bottom ~45% of image (the water area)
+  const heroWaterHtml = heroImgPath ? `  <svg class="hero__water" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="water-ripple" x="-3%" y="-3%" width="106%" height="106%">
+        <feTurbulence type="turbulence" baseFrequency="0.012 0.008"
+                      numOctaves="3" seed="5" result="noise">
+          <animate attributeName="baseFrequency"
+                   values="0.012 0.008; 0.010 0.012; 0.014 0.007; 0.012 0.008"
+                   dur="12s" repeatCount="indefinite"/>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise"
+                           scale="14" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <clipPath id="water-clip" clipPathUnits="objectBoundingBox">
+        <rect x="0" y="0.55" width="1" height="0.45"/>
+      </clipPath>
+    </defs>
+    <image href="${heroImgPath}" width="100%" height="100%"
+           preserveAspectRatio="xMidYMid slice"
+           filter="url(#water-ripple)"
+           clip-path="url(#water-clip)"/>
+  </svg>` : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -496,7 +521,8 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <link rel="stylesheet" href="style.css" />
   <style>
     .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
-    .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; ${heroBg} }
+    .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .hero__water { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
     .hero__overlay { position:absolute; inset:0;
       background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
     .hero__scroll-cue { position:absolute; bottom:2.2rem; left:50%;
@@ -516,11 +542,13 @@ function generateIndexPage(allProjects, featuredSlugs) {
     /* lang-toggle hero styles handled in style.css */
   </style>
   ${LANG_SCRIPT}
+  ${GA_TAG}
 </head>
 <body>
 
   <section class="hero">
     ${heroBgHtml}
+    ${heroWaterHtml}
     <div class="hero__overlay"></div>
     <nav class="nav--hero">
       <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
@@ -625,6 +653,7 @@ function generateAboutPage(paragraphs, cv) {
     ${LANG_CSS}
   </style>
   ${LANG_SCRIPT}
+  ${GA_TAG}
 </head>
 <body>
 
@@ -741,6 +770,7 @@ function generateServicesPage(services) {
     ${LANG_CSS}
   </style>
   ${LANG_SCRIPT}
+  ${GA_TAG}
 </head>
 <body>
 
@@ -850,6 +880,7 @@ function generateContactPage() {
     }
   </style>
   ${LANG_SCRIPT}
+  ${GA_TAG}
 </head>
 <body>
 
