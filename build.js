@@ -516,14 +516,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
                       numOctaves="3" seed="7"
                       stitchTiles="stitch"
                       result="rawNoise"/>
-        <feOffset in="rawNoise" result="noise" dx="0" dy="0">
-          <animate id="water-flow-anim"
-                   attributeName="dy"
-                   from="0" to="-1000"
-                   dur="22s"
-                   repeatCount="indefinite"
-                   calcMode="linear"/>
-        </feOffset>
+        <feOffset id="water-offset" in="rawNoise" result="noise" dx="0" dy="0"/>
         <feDisplacementMap in="SourceGraphic" in2="noise"
                            scale="8" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
@@ -613,21 +606,25 @@ ${cards}
 
 ${footerHtml()}
 <script>
-  /* Fix water animation loop period for a perfectly seamless tile on any screen size. */
+  /* rAF water animation — truly seamless loop, no SMIL reset glitch, no pause. */
   (function(){
-    function syncWater(){
+    var offset=0,lastTs=null,speed=40,period=0;
+    function updatePeriod(){
       var s=document.querySelector('.hero__water');
-      var a=document.getElementById('water-flow-anim');
-      if(!s||!a) return;
-      var h=s.getBoundingClientRect().height;
-      if(!h) return;
-      a.setAttribute('to',String(-Math.round(h*1.1)));
-      try{a.beginElement();}catch(e){}
+      if(s){var h=s.getBoundingClientRect().height*1.1;if(h>0){if(period>0)offset=offset%h;period=h;}}
+    }
+    function step(ts){
+      if(lastTs===null)lastTs=ts;
+      var dt=(ts-lastTs)/1000;lastTs=ts;
+      if(dt>0.1)dt=0.1; /* clamp if tab was hidden */
+      var f=document.getElementById('water-offset');
+      if(f&&period>0){offset=(offset+speed*dt)%period;f.setAttribute('dy',String(-offset));}
+      requestAnimationFrame(step);
     }
     if(document.readyState==='loading'){
-      document.addEventListener('DOMContentLoaded',syncWater);
-    } else { syncWater(); }
-    window.addEventListener('resize',syncWater);
+      document.addEventListener('DOMContentLoaded',function(){updatePeriod();requestAnimationFrame(step);});
+    } else {updatePeriod();requestAnimationFrame(step);}
+    window.addEventListener('resize',updatePeriod);
   })();
 </script>
 ${LANG_TOGGLE_SCRIPT}
