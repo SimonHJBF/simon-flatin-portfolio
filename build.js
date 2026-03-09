@@ -198,9 +198,10 @@ const LANG_CSS = `
   [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
   [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }`;
 
-function navHtml(prefix) {
+function navHtml(prefix, mode) {
   const p = prefix || '';
-  return `  <nav class="nav--page">
+  const navClass = mode === 'hero' ? 'nav--hero' : 'nav--page';
+  return `  <nav class="${navClass}">
     <a href="${p}index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
@@ -279,9 +280,21 @@ function generateProjectPage(data, folderName, images) {
   // Images live in the source folder (YYYY_slug), referenced from the output folder (slug/)
   const imgBase  = `../${folderName}/`;
 
+  const META_LABELS = {
+    'Category':      { no:'Kategori',             pt:'Categoria' },
+    'Year':          { no:'År',                   pt:'Ano' },
+    'Location':      { no:'Sted',                 pt:'Localização' },
+    'Typology':      { no:'Typologi',             pt:'Tipologia' },
+    'Size':          { no:'Størrelse',            pt:'Tamanho' },
+    'Status':        { no:'Status',               pt:'Status' },
+    'Client':        { no:'Klient',               pt:'Cliente' },
+    'Collaborators': { no:'Samarbeidspartnere',   pt:'Colaboradores' },
+    'Exhibitions':   { no:'Utstillinger',         pt:'Exposições' },
+  };
   function mRow(label, val) {
     if (!val) return '';
-    return `\n          <dt>${esc(label)}</dt><dd>${esc(val)}</dd>`;
+    const t = META_LABELS[label] || { no:label, pt:label };
+    return `\n          <dt><span class="l-en">${esc(label)}</span><span class="l-no">${esc(t.no)}</span><span class="l-pt">${esc(t.pt)}</span></dt><dd>${esc(val)}</dd>`;
   }
 
   const heroHtml = cover
@@ -512,13 +525,13 @@ function generateIndexPage(allProjects, featuredSlugs) {
     <defs>
       <filter id="water-ripple" x="-5%" y="-5%" width="110%" height="110%">
         <feTurbulence type="fractalNoise"
-                      baseFrequency="0.015 0.025"
-                      numOctaves="3" seed="7"
+                      baseFrequency="0.012 0.018"
+                      numOctaves="2" seed="7"
                       stitchTiles="stitch"
                       result="rawNoise"/>
         <feOffset id="water-offset" in="rawNoise" result="noise" dx="0" dy="0"/>
         <feDisplacementMap in="SourceGraphic" in2="noise"
-                           scale="8" xChannelSelector="R" yChannelSelector="G"/>
+                           scale="5" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
       <clipPath id="water-clip" clipPathUnits="objectBoundingBox">
         <rect x="0" y="0.55" width="1" height="0.45"/>
@@ -608,7 +621,7 @@ ${footerHtml()}
 <script>
   /* rAF water animation — truly seamless loop, no SMIL reset glitch, no pause. */
   (function(){
-    var offset=0,lastTs=null,speed=40,period=0;
+    var offset=0,lastTs=null,speed=8,period=0;
     function updatePeriod(){
       var s=document.querySelector('.hero__water');
       if(s){var h=s.getBoundingClientRect().height*1.1;if(h>0){if(period>0)offset=offset%h;period=h;}}
@@ -737,15 +750,15 @@ ${LANG_TOGGLE_SCRIPT}
 }
 
 function generateServicesPage(services) {
-  // Check for hero image
-  const servDir     = path.join(CONTENT_DIR, 'services');
-  const heroFile    = fs.existsSync(servDir)
-    ? findImages(servDir).find(f => f.toLowerCase().startsWith('hero'))
+  const servDir  = path.join(CONTENT_DIR, 'services');
+  // Use any image found — prefer one named 'hero', else first image
+  const heroFile = fs.existsSync(servDir)
+    ? (findImages(servDir).find(f => f.toLowerCase().startsWith('hero')) || findImages(servDir)[0])
     : null;
 
-  const heroBg = heroFile
-    ? `background: url('content/services/${heroFile}') center/cover no-repeat;`
-    : `background: linear-gradient(160deg, #1a2535 0%, #2d4058 40%, #8aaabb 100%);`;
+  const heroBgHtml = heroFile
+    ? `<img class="services-hero__bg" src="content/services/${heroFile}" alt="">`
+    : `<div class="services-hero__bg" style="background:linear-gradient(160deg,#1a2535 0%,#2d4058 40%,#8aaabb 100%);"></div>`;
 
   const serviceItems = services.map((s, i) => {
     const num = String(i + 1).padStart(2, '0');
@@ -768,13 +781,15 @@ function generateServicesPage(services) {
   <title>Services &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .services-hero { position:relative; height:50vh; min-height:320px; overflow:hidden; }
-    .services-hero__bg { width:100%; height:100%; ${heroBg} }
-    .services-hero__overlay { position:absolute; inset:0; background:rgba(0,0,0,.35); }
-    .services-hero__text { position:absolute; bottom:3rem; left:50%;
-      transform:translateX(-50%); text-align:center; color:#fff; width:90%; max-width:700px; }
+    .services-hero { position:relative; height:100vh; overflow:hidden; }
+    .services-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .services-hero__overlay { position:absolute; inset:0;
+      background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 100%); }
+    .services-hero__text { position:absolute; bottom:8rem; left:50%;
+      transform:translateX(-50%); text-align:center; width:90%; max-width:700px; }
     .services-hero__text h1 { font-family:var(--serif);
-      font-size:clamp(1.6rem,3.5vw,2.6rem); font-weight:400; line-height:1.3; }
+      font-size:clamp(1.6rem,3.5vw,2.6rem); font-weight:400; line-height:1.4;
+      color:var(--cream); text-shadow:0 2px 24px rgba(0,0,0,.55); }
     .services-body { max-width:900px; margin:0 auto; padding:5rem 4rem 0; }
     .services-intro { margin-bottom:4rem; }
     .services-intro p { font-size:1.05rem; line-height:1.8; color:var(--accent); max-width:640px; }
@@ -820,17 +835,20 @@ function generateServicesPage(services) {
 </head>
 <body>
 
-${navHtml()}
-
   <div class="services-hero">
-    <div class="services-hero__bg"></div>
+    ${heroBgHtml}
     <div class="services-hero__overlay"></div>
+    ${navHtml('', 'hero')}
     <div class="services-hero__text">
       <h1>
         <span class="l-en">Crafting Places that Echo Mountains,<br>Rivers &amp; the Spaces Between</span>
         <span class="l-no">Skaper steder som gjenspeiler fjell,<br>elver og rommene imellom</span>
         <span class="l-pt">Criando Lugares que Ecoam Montanhas,<br>Rios e os Espa&ccedil;os Entre Eles</span>
       </h1>
+    </div>
+    <div class="hero__scroll-cue">
+      <span class="l-en">Scroll</span><span class="l-no">Rull</span><span class="l-pt">Rolar</span>
+      <span class="hero__scroll-arrow-wrap" aria-hidden="true"><span class="hero__scroll-arrow"></span></span>
     </div>
   </div>
 
@@ -877,11 +895,11 @@ ${LANG_TOGGLE_SCRIPT}
 
 function generateContactPage() {
   return `<!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><span class="l-en">Contact</span><span class="l-no">Kontakt</span> &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <title>Contact &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>${LANG_CSS}
     .contact-wrap { max-width:900px; margin:0 auto; padding:5rem 4rem 0;
@@ -920,9 +938,6 @@ function generateContactPage() {
       transition:background .2s; }
     .contact-form__btn:hover { background:var(--muted); }
     .contact-form__note { font-size:.75rem; color:var(--muted); }
-    .contact-success { display:none; padding:1.5rem; background:rgba(61,59,53,.06);
-      border-left:3px solid var(--dark); font-size:.9rem; color:var(--accent);
-      margin-top:1.5rem; }
     @media(max-width:800px) {
       .contact-wrap { grid-template-columns:1fr; gap:3rem; padding:3rem 1.5rem 0; }
     }
@@ -936,14 +951,18 @@ ${navHtml()}
 
   <div class="contact-wrap">
     <div class="contact-info">
-      <div class="contact-info__label"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></div>
+      <div class="contact-info__label">
+        <span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span>
+      </div>
       <h1 class="contact-info__name">
         <span class="l-en">Let&rsquo;s work<br>together</span>
         <span class="l-no">La oss<br>samarbeide</span>
+        <span class="l-pt">Vamos trabalhar<br>juntos</span>
       </h1>
       <p class="contact-info__text">
         <span class="l-en">Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in Oslo, working across Norway, the Netherlands and beyond.</span>
-        <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og rådgivning. Basert i Oslo, med oppdrag i Norge, Nederland og internasjonalt.</span>
+        <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og r&aring;dgivning. Basert i Oslo, med oppdrag i Norge, Nederland og internasjonalt.</span>
+        <span class="l-pt">Dispon&iacute;vel para comiss&otilde;es de arquitetura, colabora&ccedil;&otilde;es de pesquisa, modelagem e consultoria. Baseado em Oslo, atuando na Noruega, Pa&iacute;ses Baixos e al&eacute;m.</span>
       </p>
       <div class="contact-info__detail">
         <a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a>
@@ -954,22 +973,30 @@ ${navHtml()}
       <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
         <input type="hidden" name="form-name" value="contact" />
         <p class="contact-form__honeypot">
-          <label>Don&rsquo;t fill this in: <input name="bot-field" /></label>
+          <label><span class="l-en">Don&rsquo;t fill this in</span><span class="l-no">Ikke fyll ut dette</span><span class="l-pt">N&atilde;o preencha</span>: <input name="bot-field" /></label>
         </p>
 
-        <label for="name"><span class="l-en">Name</span><span class="l-no">Navn</span></label>
+        <label for="name">
+          <span class="l-en">Name</span><span class="l-no">Navn</span><span class="l-pt">Nome</span>
+        </label>
         <input type="text" id="name" name="name" required autocomplete="name"
           placeholder="Your name" />
 
-        <label for="email"><span class="l-en">Email</span><span class="l-no">E-post</span></label>
+        <label for="email">
+          <span class="l-en">Email</span><span class="l-no">E-post</span><span class="l-pt">E-mail</span>
+        </label>
         <input type="email" id="email" name="email" required autocomplete="email"
           placeholder="your@email.com" />
 
-        <label for="subject"><span class="l-en">Subject</span><span class="l-no">Emne</span></label>
+        <label for="subject">
+          <span class="l-en">Subject</span><span class="l-no">Emne</span><span class="l-pt">Assunto</span>
+        </label>
         <input type="text" id="subject" name="subject"
           placeholder="e.g. Commission inquiry" />
 
-        <label for="message"><span class="l-en">Message</span><span class="l-no">Melding</span></label>
+        <label for="message">
+          <span class="l-en">Message</span><span class="l-no">Melding</span><span class="l-pt">Mensagem</span>
+        </label>
         <textarea id="message" name="message" required
           placeholder="Tell me about your project or question..."></textarea>
 
@@ -977,10 +1004,12 @@ ${navHtml()}
           <button type="submit" class="contact-form__btn">
             <span class="l-en">Send message</span>
             <span class="l-no">Send melding</span>
+            <span class="l-pt">Enviar mensagem</span>
           </button>
           <span class="contact-form__note">
             <span class="l-en">I usually reply within 2 business days.</span>
             <span class="l-no">Jeg svarer vanligvis innen 2 arbeidsdager.</span>
+            <span class="l-pt">Geralmente respondo em at&eacute; 2 dias &uacute;teis.</span>
           </span>
         </div>
       </form>
