@@ -185,14 +185,16 @@ function navHtml(prefix) {
   const p = prefix || '';
   return `  <nav class="nav--page">
     <a href="${p}index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
-    <ul class="nav__links">
-      <li><a href="${p}index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
-      <li><a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
-      <li><a href="${p}services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
-      <li><a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
-      <li><a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
-      <li><button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button></li>
-    </ul>
+    <div class="nav__link-row">
+      <ul class="nav__links">
+        <li><a href="${p}index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
+        <li><a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
+        <li><a href="${p}services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
+        <li><a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
+        <li><a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
+      </ul>
+      <button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button>
+    </div>
   </nav>`;
 }
 
@@ -227,9 +229,11 @@ function cardHtml(data, index, prefix) {
   const year    = data.year || '';
   const org     = data.organization || '';
   const sub     = [year, org].filter(Boolean).join(' — ');
+  // Comma-separated individual tags for JS filtering
+  const cats    = (data.category || '').split('·').map(t => t.trim()).filter(Boolean).join(',');
 
   return `
-      <a class="card ${cls}" href="${p}projects/${esc(slug)}/">
+      <a class="card ${cls}" href="${p}projects/${esc(slug)}/" data-categories="${esc(cats)}">
         <div class="card__img-wrap">${imgHtml}</div>
         <div class="card__info">
           <div class="card__category">${esc(data.category || '')}</div>
@@ -347,6 +351,16 @@ ${LANG_TOGGLE_SCRIPT}
 function generateWorkPage(projects) {
   const cards = projects.map((d, i) => cardHtml(d, i, '')).join('');
 
+  // Collect unique individual category tags (sorted alphabetically)
+  const tagSet = new Set();
+  projects.forEach(p => {
+    (p.category || '').split('·').map(t => t.trim()).filter(Boolean).forEach(t => tagSet.add(t));
+  });
+  const filterTags = ['All', ...Array.from(tagSet).sort()];
+  const filterBtns = filterTags.map(tag =>
+    `<button class="work-filter-btn${tag === 'All' ? ' active' : ''}" data-filter="${esc(tag)}">${esc(tag)}</button>`
+  ).join('\n      ');
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -355,12 +369,21 @@ function generateWorkPage(projects) {
   <title>Work &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .work-intro { max-width:1400px; margin:0 auto; padding:4rem 4rem 3rem;
-      display:flex; align-items:baseline; gap:1.4rem;
+    .work-intro { max-width:1400px; margin:0 auto; padding:4rem 4rem 2rem;
+      display:flex; align-items:baseline; gap:1.4rem; }
+    .work-filters { max-width:1400px; margin:0 auto; padding:0 4rem 2.5rem;
+      display:flex; flex-wrap:wrap; gap:0.4rem 1.4rem;
       border-bottom:1px solid rgba(28,28,26,.1); }
+    .work-filter-btn { background:none; border:none; cursor:pointer;
+      font-size:0.68rem; font-weight:700; letter-spacing:0.18em;
+      text-transform:uppercase; color:var(--muted); padding:0.2rem 0;
+      font-family:var(--sans); border-bottom:1.5px solid transparent;
+      transition:color 0.2s, border-color 0.2s; }
+    .work-filter-btn:hover { color:var(--dark); }
+    .work-filter-btn.active { color:var(--dark); border-bottom-color:var(--dark); }
     .work-grid  { max-width:1400px; margin:0 auto; padding:4rem 4rem 0; }
     @media(max-width:900px) {
-      .work-intro, .work-grid { padding-left:1.5rem; padding-right:1.5rem; }
+      .work-intro, .work-filters, .work-grid { padding-left:1.5rem; padding-right:1.5rem; }
     }
     ${LANG_CSS}
   </style>
@@ -375,13 +398,38 @@ ${navHtml()}
     <h1 class="section-title"><span class="l-en">All Work</span><span class="l-no">Alle prosjekter</span></h1>
   </div>
 
+  <div class="work-filters">
+      ${filterBtns}
+  </div>
+
   <div class="work-grid">
-    <div class="projects">
+    <div class="projects" id="work-projects">
 ${cards}
     </div>
   </div>
 
 ${footerHtml()}
+  <script>
+    (function(){
+      var btns  = document.querySelectorAll('.work-filter-btn');
+      var cards = document.querySelectorAll('#work-projects .card');
+      btns.forEach(function(btn){
+        btn.addEventListener('click', function(){
+          btns.forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          var filter = btn.dataset.filter;
+          cards.forEach(function(card){
+            if(filter === 'All'){
+              card.style.display = '';
+            } else {
+              var cats = card.dataset.categories ? card.dataset.categories.split(',') : [];
+              card.style.display = cats.indexOf(filter) > -1 ? '' : 'none';
+            }
+          });
+        });
+      });
+    })();
+  </script>
 ${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
@@ -453,16 +501,8 @@ function generateIndexPage(allProjects, featuredSlugs) {
       background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
     .hero__scroll-cue { position:absolute; bottom:2.2rem; left:50%;
       transform:translateX(-50%); display:flex; flex-direction:column;
-      align-items:center; gap:.5rem; color:rgba(255,255,255,.65);
-      font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; }
-    .hero__scroll-cue span { display:block; width:1px; height:48px;
-      background:rgba(255,255,255,.5);
-      animation:lineGrow 1.8s ease-in-out infinite; }
-    @keyframes lineGrow {
-      0%   { transform:scaleY(0); transform-origin:top; opacity:0; }
-      50%  { opacity:1; }
-      100% { transform:scaleY(1); transform-origin:top; opacity:0; }
-    }
+      align-items:center; gap:.6rem; color:rgba(255,255,255,.65);
+      font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; }
     .featured { max-width:1400px; margin:0 auto; padding:6rem 4rem 0; }
     .featured__header { display:flex; align-items:baseline; gap:1.4rem; margin-bottom:4rem; }
     .all-work { margin-top:4rem; text-align:right; }
@@ -473,10 +513,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     .all-work a:hover { color:var(--muted); border-color:var(--muted); }
     @media(max-width:900px) { .featured { padding:3rem 1.5rem 0; } }
     ${LANG_CSS}
-    .nav--hero .lang-toggle { background:none; border:1px solid rgba(255,255,255,.5);
-      color:#fff; cursor:pointer; font-size:.68rem; font-weight:700;
-      letter-spacing:.14em; padding:.3rem .6rem; transition:border-color .2s; }
-    .nav--hero .lang-toggle:hover { border-color:#fff; }
+    /* lang-toggle hero styles handled in style.css */
   </style>
   ${LANG_SCRIPT}
 </head>
@@ -487,16 +524,21 @@ function generateIndexPage(allProjects, featuredSlugs) {
     <div class="hero__overlay"></div>
     <nav class="nav--hero">
       <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
-      <ul class="nav__links">
-        <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
-        <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
-        <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
-        <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
-        <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
-        <li><button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button></li>
-      </ul>
+      <div class="nav__link-row">
+        <ul class="nav__links">
+          <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
+          <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
+          <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
+          <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
+          <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
+        </ul>
+        <button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button>
+      </div>
     </nav>
-    <div class="hero__scroll-cue"><span></span><span class="l-en">Scroll</span><span class="l-no">Rull</span></div>
+    <div class="hero__scroll-cue">
+      <span class="l-en">Scroll</span><span class="l-no">Rull</span>
+      <span class="hero__scroll-arrow" aria-hidden="true"></span>
+    </div>
   </section>
 
   <section class="featured">
