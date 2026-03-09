@@ -18,3 +18,19 @@ As part of my work on Ethiopian architecture and modelmaking, I collaborated wit
 To authentically capture the essence of this iconic structure, we studied Lino Bianchi Barriviera's 1938 drawings of Lalibela, which vividly depict the churches and their surrounding landscapes, along with contemporary photography and 3D scans of the site. We focused on meticulously replicating the textures of stone and lichen to emphasise the seamless integration of the architecture with its natural environment.
 
 This project reflects my fascination for historical research and making it into tangible, high-quality representations in architectural modeling, bringing to life the intricate details and cultural significance of this extraordinary site.
+
+===no===
+
+Som del av mitt arbeid med etiopisk arkitektur og modellbygging samarbeidet jeg med Alex Kirschstein om å lage en detaljert modell av Biet Gabriel-Rufael i Lalibela — et UNESCO-verdensarvsted. Monumentet er kjent for sine bergkirkene, hugget ut av en enkelt masse vulkansk stein. Den intrikate utformingen, med indre kamre, passasjer og unike geometriske former, gjenspeiler skapernes bemerkelsesverdige oppfinnsomhet og åndelige hengivenhet.
+
+For å autentisk fange essensen av denne ikoniske strukturen studerte vi Lino Bianchi Barrivieras Lalibela-tegninger fra 1938, som levende fremstiller kirkene og det omkringliggende landskapet, together med samtids fotografi og 3D-skanninger av stedet. Vi fokuserte på å nøye replikere teksturene av stein og lav for å understreke den sømløse integrasjonen mellom arkitekturen og det naturlige miljøet.
+
+Dette prosjektet gjenspeiler min fascinasjon for historisk forskning og det å gjøre den håndgripelig gjennom høykvalitetsrepresentasjoner i arkitektonisk modellbygging — og bringer til live de intrikate detaljene og den kulturelle betydningen til dette ekstraordinære stedet.
+
+===pt===
+
+Como parte do meu trabalho sobre arquitetura etíope e construção de maquetes, colaborei com Alex Kirschstein para criar um modelo detalhado de Biet Gabriel-Rufael em Lalibela — um Patrimônio Mundial da UNESCO. O monumento é conhecido por suas igrejas escavadas na rocha, talhadas inteiramente em uma única massa de rocha vulcânica. Seu design intrincado, com câmaras internas, passagens e formas geométricas únicas, reflete a notável engenhosidade e devoção espiritual de seus criadores.
+
+Para capturar autenticamente a essência dessa estrutura icônica, estudamos os desenhos de Lalibela de Lino Bianchi Barriviera de 1938, que representam vividamente as igrejas e as paisagens ao redor, juntamente com fotografias contemporâneas e varreduras 3D do local. Concentramo-nos em replicar meticulosamente as texturas da pedra e do líquen para enfatizar a integração perfeita da arquitetura com seu ambiente natural.
+
+Este projeto reflete minha fascinação pela pesquisa histórica e por transformá-la em representações tangíveis e de alta qualidade na construção de maquetes arquitetônicas, dando vida aos detalhes intrincados e à importância cultural deste extraordinário local.

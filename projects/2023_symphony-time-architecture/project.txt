@@ -1,0 +1,32 @@
+title: Symphony of Time and Architecture
+category: Architecture · Research
+year: 2020
+location: Delft, The Netherlands
+typology: Research / Theoretical Project
+organization: TU Delft
+status: Realised
+grid: large
+
+---
+
+Symphony of Time and Architecture is a research project that examines time as an architectural material. Drawing a structural parallel between musical composition and spatial design, it asks: how does a building unfold in time the way a symphony unfolds across movements?
+
+The research traces four temporal dimensions — lived time, geological time, seasonal time and the time of decay — through historical and contemporary architecture. Case studies range from the Pantheon's oculus (which makes solar time visible) to Sverre Fehn's manipulation of light and shadow, to the radical ephemerality of Japanese Metabolism. Each project is understood as a kind of score: a set of instructions for the experience of time in space.
+
+The work culminated in a written argument for architecture as duration rather than object — a discipline that should embrace, rather than suppress, the inevitability of change. This research became the theoretical foundation for Arctic Symphony.
+
+===no===
+
+Symphony of Time and Architecture er et forskningsprosjekt som undersøker tid som et arkitektonisk materiale. Med et strukturelt parallell mellom musikalsk komposisjon og romlig design spør det: hvordan utfolder en bygning seg i tid slik en symfoni utfolder seg over satser?
+
+Forskningen sporer fire tidsmessige dimensjoner — levd tid, geologisk tid, sesongtid og forfallstid — gjennom historisk og moderne arkitektur. Casestudier spenner fra Pantheons oculus (som gjør soltiden synlig) til Sverre Fehns manipulasjon av lys og skygge, til den radikale flyktigheten til japansk Metabolisme. Hvert prosjekt forstås som et slags partitur: et sett instruksjoner for opplevelsen av tid i rom.
+
+Arbeidet kulminerte i et skriftlig argument for arkitektur som varighet snarere enn objekt — en disiplin som bør omfavne, snarere enn undertrykke, uunngåeligheten av forandring. Denne forskningen ble det teoretiske grunnlaget for Arctic Symphony.
+
+===pt===
+
+Symphony of Time and Architecture é um projeto de pesquisa que examina o tempo como material arquitetônico. Traçando um paralelo estrutural entre composição musical e design espacial, pergunta: como um edifício se desdobra no tempo da mesma forma que uma sinfonia se desdobra ao longo de movimentos?
+
+A pesquisa traça quatro dimensões temporais — tempo vivido, tempo geológico, tempo sazonal e o tempo do decaimento — através da arquitetura histórica e contemporânea. Os estudos de caso vão desde o óculo do Pantheon (que torna o tempo solar visível) até a manipulação de luz e sombra de Sverre Fehn, passando pela efemeridade radical do Metabolismo japonês. Cada projeto é entendido como uma espécie de partitura: um conjunto de instruções para a experiência do tempo no espaço.
+
+O trabalho culminou em um argumento escrito pela arquitetura como duração em vez de objeto — uma disciplina que deve abraçar, em vez de suprimir, a inevitabilidade da mudança. Esta pesquisa tornou-se o fundamento teórico para Arctic Symphony.

@@ -14,3 +14,19 @@ Form Studies is a series of hands-on material investigations conducted in the mo
 Each study began with a constraint — a specific material, a specific force, a specific scale — and proceeded through making rather than drawing. The results record a vocabulary of forms discovered through process: the way wet clay remembers a hand, the way plaster sets around air, the way foam compresses and springs back.
 
 This tactile approach to design research has become central to my practice. The form studies act as a material library: a set of spatial instincts accumulated through repetition, that inform decisions in larger architectural and modelmaking projects.
+
+===no===
+
+Form Studies er en serie praktiske materialundersøkelser utført i modellverkstedene ved TU Delft. Primært arbeidende med leire, gips og skum utforsket studiene hvordan form fremkommer fra materiallogikk snarere enn fra forhåndsbestemt geometri.
+
+Hver studie begynte med en begrensning — et spesifikt materiale, en spesifikk kraft, en spesifikk skala — og gikk videre gjennom produksjon snarere enn tegning. Resultatene registrerer et vokabular av former oppdaget gjennom prosessen: måten våt leire husker en hånd, måten gips stivner rundt luft, måten skum komprimerer og fjærer tilbake.
+
+Denne taktile tilnærmingen til designforskning har blitt sentral for min praksis. Formstudiene fungerer som et materialbibliotek: et sett romlige instinkter akkumulert gjennom gjentagelse, som informerer beslutninger i større arkitektoniske og modellbyggingsprosjekter.
+
+===pt===
+
+Form Studies é uma série de investigações materiais práticas realizadas nas oficinas de maquetes da TU Delft. Trabalhando principalmente com argila, gesso e espuma, os estudos exploraram como a forma emerge da lógica dos materiais em vez de geometrias predeterminadas.
+
+Cada estudo começou com uma restrição — um material específico, uma força específica, uma escala específica — e prosseguiu pela fabricação em vez do desenho. Os resultados registram um vocabulário de formas descobertas pelo processo: a maneira como a argila úmida guarda a memória de uma mão, como o gesso endurece ao redor do ar, como a espuma comprime e se recupera.
+
+Essa abordagem tátil à pesquisa de design tornou-se central em minha prática. Os estudos de forma funcionam como uma biblioteca material: um conjunto de instintos espaciais acumulados pela repetição, que informam decisões em projetos maiores de arquitetura e construção de maquetes.

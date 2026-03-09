@@ -14,3 +14,19 @@ High-Density Harbour District is a design proposal for a post-industrial waterfr
 Developed as part of the ON3 design studio at TU Delft, the project proposes a new urban grain — a mixture of housing typologies, shared spaces and public waterfront — structured around the existing dock infrastructure. Warehouses are partially retained as civic anchors; new construction fills in the gaps with a finer-grained residential fabric.
 
 The central design question was how density and intimacy can coexist: how a high-density quarter can feel inhabited rather than overwhelming, human-scaled rather than monumental. The proposal achieves this through careful section work, varied courtyard sizes and the preservation of key sightlines to the water.
+
+===no===
+
+High-Density Harbour District er et designforslag for et post-industrielt strandsoneområde i Sør-Holland, og utforsker hvordan tett bybeboelse kan gjeninnføres i et tidligere havneområde uten å slette sporene av dets industrielle fortid.
+
+Utviklet som del av ON3-designstudioet ved TU Delft foreslår prosjektet et nytt urbant korn — en blanding av boligtypologier, fellesrom og offentlig strandpromenade — strukturert rundt den eksisterende dokkinfrastrukturen. Lagerhus bevares delvis som sivile ankerpunkter; ny konstruksjon fyller hullene med et finere boligfabrikk.
+
+Det sentrale designspørsmålet var hvordan tetthet og intimitet kan sameksistere: hvordan et høytetthetskvarter kan føles bebodd snarere enn overveldende, menneskeskalert snarere enn monumentalt. Forslaget oppnår dette gjennom nøye snittverk, varierte gårdsplassestørrelser og bevaring av viktige siktlinjer mot vannet.
+
+===pt===
+
+High-Density Harbour District é uma proposta de design para um local de orla pós-industrial no sul da Holanda, explorando como a habitação urbana densa pode ser reintroduzida em uma antiga área portuária sem apagar os vestígios de seu passado industrial.
+
+Desenvolvido como parte do estúdio de design ON3 da TU Delft, o projeto propõe um novo tecido urbano — uma mistura de tipologias habitacionais, espaços compartilhados e orla pública — estruturado em torno da infraestrutura de docas existente. Os armazéns são parcialmente preservados como âncoras cívicas; a nova construção preenche as lacunas com um tecido residencial de grão mais fino.
+
+A questão central de design foi como densidade e intimidade podem coexistir: como um quarteirão de alta densidade pode parecer habitado em vez de avassalador, em escala humana em vez de monumental. A proposta alcança isso por meio de cuidadoso trabalho de seção, tamanhos variados de pátio e preservação de visuais importantes para a água.

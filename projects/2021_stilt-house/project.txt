@@ -14,3 +14,19 @@ Stilt House is a design proposal for a dwelling in an extreme flood environment,
 The proposal elevates the living programme high above the flood plain on a structural stilts system, freeing the ground level for water to pass through unimpeded. The dwelling is organised vertically rather than horizontally: a tight core of services at the centre, with living spaces arranged around it at different heights, each oriented to a specific view or quality of light.
 
 The project investigates how constraints imposed by an extreme environment — structural, programmatic, material — can become generative forces rather than mere problems to solve. The result is a dwelling that is, paradoxically, most at home when surrounded by water.
+
+===no===
+
+Stilt House er et designforslag for en bolig i et ekstremt flomfremkallende miljø, utviklet som del av Extreme-studioet ved TU Delft. Oppgaven ba studentene om å designe for forhold ved kanten av bebobarhet — i dette tilfellet et sted som periodisk oversvømmes av stigende vannstander.
+
+Forslaget hever bolignprogrammet høyt over flomslettet på et strukturelt pelarsystem og frigjør bakkenivået slik at vann kan passere uhindret. Boligen er organisert vertikalt snarere enn horisontalt: en tett servicekjerne i sentrum, med boligrom arrangert rundt den på ulike høyder, hver orientert mot en spesifikk utsikt eller lyskvalitet.
+
+Prosjektet undersøker hvordan begrensninger pålagt av et ekstremt miljø — strukturelle, programmatiske, materielle — kan bli generative krefter snarere enn bare problemer å løse. Resultatet er en bolig som paradoksalt nok er mest hjemme når den er omgitt av vann.
+
+===pt===
+
+Stilt House é uma proposta de design para uma habitação em um ambiente de enchente extremo, desenvolvida como parte do estúdio Extreme da TU Delft. O briefing pedia que os alunos projetassem para condições no limite da habitabilidade — neste caso, um local periodicamente submerso por níveis crescentes de água.
+
+A proposta eleva o programa habitacional bem acima da planície de inundação em um sistema estrutural de pilotis, liberando o nível do solo para que a água passe sem impedimentos. A habitação é organizada verticalmente em vez de horizontalmente: um núcleo compacto de serviços no centro, com espaços de estar dispostos ao redor em diferentes alturas, cada um orientado para uma vista ou qualidade de luz específica.
+
+O projeto investiga como as restrições impostas por um ambiente extremo — estruturais, programáticas, materiais — podem se tornar forças geradoras em vez de meros problemas a serem resolvidos. O resultado é uma habitação que, paradoxalmente, está mais em casa quando rodeada de água.

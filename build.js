@@ -77,7 +77,8 @@ function parseFolderName(name) {
   return m ? { year: m[1], slug: m[2] } : { year: null, slug: name };
 }
 
-/** Parse project.txt → data object with .paragraphs[] */
+/** Parse project.txt → data object with .paragraphs[], .paragraphs_no[], .paragraphs_pt[]
+ *  Description block may contain ===no=== and ===pt=== section markers for translations. */
 function parseProjectTxt(content) {
   const sep  = content.indexOf('\n---');
   const meta = sep > -1 ? content.slice(0, sep) : content;
@@ -90,10 +91,35 @@ function parseProjectTxt(content) {
     const v = line.slice(ci + 1).trim();
     if (k && v && !k.startsWith('#')) data[k] = v;
   });
-  data.paragraphs = desc
-    .split(/\n\n+/)
-    .map(p => p.replace(/\n/g, ' ').trim())
-    .filter(p => p && !p.startsWith('-') && !p.startsWith('HOW') && !p.startsWith('GRID') && !p.startsWith('─'));
+  // Split description into language sections via ===no=== / ===pt=== markers
+  function splitLang(text) {
+    const noIdx = text.search(/===no===/i);
+    const ptIdx = text.search(/===pt===/i);
+    let en = text, no = '', pt = '';
+    const markers = [];
+    if (noIdx > -1) markers.push({ lang:'no', idx:noIdx });
+    if (ptIdx > -1) markers.push({ lang:'pt', idx:ptIdx });
+    markers.sort(function(a,b){ return a.idx - b.idx; });
+    if (markers.length > 0) {
+      en = text.slice(0, markers[0].idx).trim();
+      for (var i = 0; i < markers.length; i++) {
+        var start = markers[i].idx + 8; // len('===no===') == 8
+        var end   = (i + 1 < markers.length) ? markers[i+1].idx : text.length;
+        if (markers[i].lang === 'no') no = text.slice(start, end).trim();
+        if (markers[i].lang === 'pt') pt = text.slice(start, end).trim();
+      }
+    }
+    return { en: en, no: no, pt: pt };
+  }
+  function toParagraphs(text) {
+    return (text || '').split(/\n\n+/)
+      .map(function(p){ return p.replace(/\n/g, ' ').trim(); })
+      .filter(function(p){ return p && !p.startsWith('-') && !p.startsWith('HOW') && !p.startsWith('GRID') && !p.startsWith('─'); });
+  }
+  const langs = splitLang(desc);
+  data.paragraphs    = toParagraphs(langs.en);
+  data.paragraphs_no = toParagraphs(langs.no);
+  data.paragraphs_pt = toParagraphs(langs.pt);
   return data;
 }
 
@@ -372,7 +398,9 @@ ${heroHtml}
     </div>
     <div class="project-content">
       <h1 class="project-title">${esc(title)}</h1>
-      ${data.paragraphs.map(p => `<p>${esc(p)}</p>`).join('\n      ')}
+      <div class="l-en">${data.paragraphs.map(p => `<p>${esc(p)}</p>`).join('\n      ')}</div>
+      <div class="l-no">${(data.paragraphs_no && data.paragraphs_no.length ? data.paragraphs_no : data.paragraphs).map(p => `<p>${esc(p)}</p>`).join('\n      ')}</div>
+      <div class="l-pt">${(data.paragraphs_pt && data.paragraphs_pt.length ? data.paragraphs_pt : data.paragraphs).map(p => `<p>${esc(p)}</p>`).join('\n      ')}</div>
       <a href="../../work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
     </div>
   </div>
