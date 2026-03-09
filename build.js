@@ -387,19 +387,25 @@ function generateIndexPage(allProjects, featuredSlugs) {
       </a>`;
   }).join('');
 
-  // Check if a hero image exists
-  const heroImgPath = path.join(CONTENT_DIR, 'main', 'hero.jpg');
-  const hasHero     = fs.existsSync(heroImgPath) ||
-                      fs.existsSync(path.join(CONTENT_DIR, 'main', 'hero.jpeg')) ||
-                      fs.existsSync(path.join(CONTENT_DIR, 'main', 'hero.png')) ||
-                      fs.existsSync(path.join(CONTENT_DIR, 'main', 'hero.webp'));
-  const heroImgFile = hasHero
-    ? findImages(path.join(CONTENT_DIR, 'main')).find(f => f.toLowerCase().startsWith('hero'))
+  // Check for hero video first, then image, then gradient fallback
+  const mainDir      = path.join(CONTENT_DIR, 'main');
+  const heroVideoFile = fs.existsSync(mainDir)
+    ? fs.readdirSync(mainDir).find(f => /\.(mp4|webm)$/i.test(f))
+    : null;
+  const heroImgFile = !heroVideoFile && fs.existsSync(mainDir)
+    ? findImages(mainDir).find(f => /^(hero|cover)\./i.test(f))
     : null;
 
   const heroBg = heroImgFile
     ? `background: url('content/main/${heroImgFile}') center/cover no-repeat;`
+    : heroVideoFile ? ''
     : `background: linear-gradient(160deg, #2d3d2e 0%, #4a6741 35%, #7a9e6e 60%, #c9d9b8 100%);`;
+
+  const heroBgHtml = heroVideoFile
+    ? `<video class="hero__bg" autoplay muted loop playsinline>
+      <source src="content/main/${heroVideoFile}" type="video/${heroVideoFile.endsWith('.webm') ? 'webm' : 'mp4'}" />
+    </video>`
+    : `<div class="hero__bg"></div>`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -410,7 +416,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <link rel="stylesheet" href="style.css" />
   <style>
     .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
-    .hero__bg { width:100%; height:100%; ${heroBg} }
+    .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; ${heroBg} }
     .hero__overlay { position:absolute; inset:0;
       background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
     .hero__scroll-cue { position:absolute; bottom:2.2rem; left:50%;
@@ -439,7 +445,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
 <body>
 
   <section class="hero">
-    <div class="hero__bg"></div>
+    ${heroBgHtml}
     <div class="hero__overlay"></div>
     <nav class="nav--hero">
       <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
