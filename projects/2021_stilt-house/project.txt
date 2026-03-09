@@ -1,5 +1,5 @@
 title: Stilt House
-category: Architecture · Extreme Environment
+category: Architecture
 year: 2021
 location: The Netherlands
 typology: Residential / Flood-Adaptive

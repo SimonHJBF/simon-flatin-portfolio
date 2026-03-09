@@ -1,6 +1,6 @@
 title: Symphony of Time and Architecture
 category: Architecture · Research
-year: 2020
+year: 2023
 location: Delft, The Netherlands
 typology: Research / Theoretical Project
 organization: TU Delft

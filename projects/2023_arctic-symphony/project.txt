@@ -9,6 +9,7 @@ collaborators: Ewa Ziemiecka, Zofia Sosnierz
 exhibitions: TU Delft Graduation Show 2023
 grid: large
 featured: yes
+video: https://youtu.be/4jFVfVUMrHc
 
 ---
 

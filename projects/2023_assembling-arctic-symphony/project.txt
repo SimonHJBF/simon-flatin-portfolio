@@ -1,6 +1,6 @@
 title: Assembling the Arctic Symphony
 category: Performance · Installation
-year: 2020
+year: 2023
 location: Delft, The Netherlands
 typology: Live Performance / Installation
 organization: TU Delft

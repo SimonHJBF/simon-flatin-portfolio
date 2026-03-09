@@ -52,6 +52,13 @@ function esc(s) {
 
 function grad(i) { return GRADIENTS[i % GRADIENTS.length]; }
 
+/** Extract YouTube embed URL from various YouTube URL formats */
+function youtubeEmbedUrl(url) {
+  if (!url) return null;
+  const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/);
+  return m ? `https://www.youtube.com/embed/${m[1]}` : null;
+}
+
 function findImages(dir) {
   return fs.readdirSync(dir)
     .filter(f => IMAGE_EXTS.has(path.extname(f).toLowerCase()))
@@ -333,6 +340,11 @@ function generateProjectPage(data, folderName, images) {
       `\n  </div>`
     : '';
 
+  const embedUrl = youtubeEmbedUrl(data.video);
+  const videoHtml = embedUrl
+    ? `\n  <div class="project-video">\n    <iframe src="${embedUrl}" title="${esc(title)}" allowfullscreen loading="lazy"></iframe>\n  </div>`
+    : '';
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -366,6 +378,8 @@ function generateProjectPage(data, folderName, images) {
       display:flex; flex-direction:column; gap:1.5rem; }
     .project-gallery figure { margin:0; }
     .project-gallery img { width:100%; display:block; }
+    .project-video { max-width:1200px; margin:4rem auto 0; padding:0 4rem; }
+    .project-video iframe { width:100%; aspect-ratio:16/9; border:none; display:block; }
     @media(max-width:800px) {
       .project-body { grid-template-columns:1fr; gap:3rem; padding:3rem 1.5rem 0; }
       .project-gallery { padding:0 1.5rem; }
@@ -405,6 +419,7 @@ ${heroHtml}
     </div>
   </div>
 ${galleryHtml}
+${videoHtml}
 
 ${footerHtml('../../')}
 ${LANG_TOGGLE_SCRIPT}
