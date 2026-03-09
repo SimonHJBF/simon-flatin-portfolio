@@ -1,4 +1,4 @@
-title: SESC Mogi Das Cruzes
+title: SESC Mogi das Cruzes
 category: Architecture · Competition
 year: 2021
 location: São Paulo, Brazil
@@ -8,4 +8,8 @@ grid: third
 
 ---
 
-Add your description here.
+SESC Mogi das Cruzes is a competition entry for a new cultural and leisure centre in the municipality of Mogi das Cruzes, east of São Paulo. The SESC (Serviço Social do Comércio) network has a long tradition of commissioning architecturally ambitious public buildings — most famously Lina Bo Bardi's SESC Pompéia — and this proposal continues in that spirit.
+
+The design proposes a building that is simultaneously civic infrastructure and landscape. A series of terraced platforms descends toward a public park, housing a theatre, workshops, a library, sports facilities and a public swimming pool. The platforms are planted with native Atlantic Forest species, so that the building is gradually claimed by the landscape over time.
+
+The project reflects my interest in architecture that serves as common ground — spaces that belong to everyone, structured by topography rather than walls, and that age into their setting with increasing grace.

@@ -155,15 +155,43 @@ function parseFeaturedTxt(content) {
 //  Shared HTML blocks
 // ─────────────────────────────────────────────
 
+// Language toggle script (inline, tiny, no flash)
+const LANG_SCRIPT = `<script>
+  (function(){
+    var l=localStorage.getItem('lang')||'en';
+    document.documentElement.setAttribute('data-lang',l);
+  })();
+</script>`;
+
+const LANG_TOGGLE_SCRIPT = `<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('.lang-toggle').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var cur=document.documentElement.getAttribute('data-lang')||'en';
+        var next=cur==='en'?'no':'en';
+        document.documentElement.setAttribute('data-lang',next);
+        localStorage.setItem('lang',next);
+      });
+    });
+  });
+</script>`;
+
+// Language CSS (goes in <head>)
+const LANG_CSS = `
+  [data-lang="en"] .l-no { display:none }
+  [data-lang="no"] .l-en { display:none }`;
+
 function navHtml(prefix) {
   const p = prefix || '';
   return `  <nav class="nav--page">
-    <a href="${p}index.html" class="nav__name">Simon H.J. Bjørkå Flatin</a>
+    <a href="${p}index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <ul class="nav__links">
-      <li><a href="${p}index.html">Main</a></li>
-      <li><a href="${p}work.html">Work</a></li>
-      <li><a href="${p}services.html">Services</a></li>
-      <li><a href="${p}about.html">About</a></li>
+      <li><a href="${p}index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
+      <li><a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
+      <li><a href="${p}services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
+      <li><a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
+      <li><a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
+      <li><button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button></li>
     </ul>
   </nav>`;
 }
@@ -171,11 +199,11 @@ function navHtml(prefix) {
 function footerHtml(prefix) {
   const p = prefix || '';
   return `  <footer>
-    <div>&copy; ${new Date().getFullYear()} Simon H.J. Bjørkå Flatin</div>
+    <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="${p}about.html">About</a>
-      <a href="${p}work.html">Work</a>
-      <a href="${p}services.html">Services</a>
+      <a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span></a>
+      <a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a>
+      <a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a>
     </div>
   </footer>`;
 }
@@ -276,7 +304,9 @@ function generateProjectPage(data, folderName, images) {
       .project-body { grid-template-columns:1fr; gap:3rem; padding:3rem 1.5rem 0; }
       .project-gallery { padding:0 1.5rem; }
     }
+    ${LANG_CSS}
   </style>
+  ${LANG_SCRIPT}
 </head>
 <body>
 
@@ -302,13 +332,13 @@ ${heroHtml}
     <div class="project-content">
       <h1 class="project-title">${esc(title)}</h1>
       ${data.paragraphs.map(p => `<p>${esc(p)}</p>`).join('\n      ')}
-      <a href="../../work.html" class="project-back">&larr; All work</a>
+      <a href="../../work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span></a>
     </div>
   </div>
 ${galleryHtml}
 
 ${footerHtml('../../')}
-
+${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
 `;
@@ -322,7 +352,7 @@ function generateWorkPage(projects) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work &mdash; Simon H.J. Bjørkå Flatin</title>
+  <title>Work &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .work-intro { max-width:1400px; margin:0 auto; padding:4rem 4rem 3rem;
@@ -332,15 +362,17 @@ function generateWorkPage(projects) {
     @media(max-width:900px) {
       .work-intro, .work-grid { padding-left:1.5rem; padding-right:1.5rem; }
     }
+    ${LANG_CSS}
   </style>
+  ${LANG_SCRIPT}
 </head>
 <body>
 
 ${navHtml()}
 
   <div class="work-intro">
-    <span class="section-label">Portfolio</span>
-    <h1 class="section-title">All Work</h1>
+    <span class="section-label"><span class="l-en">Portfolio</span><span class="l-no">Portefølje</span></span>
+    <h1 class="section-title"><span class="l-en">All Work</span><span class="l-no">Alle prosjekter</span></h1>
   </div>
 
   <div class="work-grid">
@@ -350,7 +382,7 @@ ${cards}
   </div>
 
 ${footerHtml()}
-
+${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
 `;
@@ -440,7 +472,13 @@ function generateIndexPage(allProjects, featuredSlugs) {
       transition:color .2s,border-color .2s; }
     .all-work a:hover { color:var(--muted); border-color:var(--muted); }
     @media(max-width:900px) { .featured { padding:3rem 1.5rem 0; } }
+    ${LANG_CSS}
+    .nav--hero .lang-toggle { background:none; border:1px solid rgba(255,255,255,.5);
+      color:#fff; cursor:pointer; font-size:.68rem; font-weight:700;
+      letter-spacing:.14em; padding:.3rem .6rem; transition:border-color .2s; }
+    .nav--hero .lang-toggle:hover { border-color:#fff; }
   </style>
+  ${LANG_SCRIPT}
 </head>
 <body>
 
@@ -450,28 +488,30 @@ function generateIndexPage(allProjects, featuredSlugs) {
     <nav class="nav--hero">
       <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
       <ul class="nav__links">
-        <li><a href="index.html">Main</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span></a></li>
+        <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span></a></li>
+        <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span></a></li>
+        <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span></a></li>
+        <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></a></li>
+        <li><button class="lang-toggle" aria-label="Switch language">EN&nbsp;/&nbsp;NO</button></li>
       </ul>
     </nav>
-    <div class="hero__scroll-cue"><span></span>Scroll</div>
+    <div class="hero__scroll-cue"><span></span><span class="l-en">Scroll</span><span class="l-no">Rull</span></div>
   </section>
 
   <section class="featured">
     <div class="featured__header">
-      <span class="section-label">Selected Work</span>
-      <h2 class="section-title">Signature Projects</h2>
+      <span class="section-label"><span class="l-en">Selected Work</span><span class="l-no">Utvalgte prosjekter</span></span>
+      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">Signaturprosjekter</span></h2>
     </div>
     <div class="projects">
 ${cards}
     </div>
-    <div class="all-work"><a href="work.html">See all work</a></div>
+    <div class="all-work"><a href="work.html"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span></a></div>
   </section>
 
 ${footerHtml()}
-
+${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
 `;
@@ -540,7 +580,9 @@ function generateAboutPage(paragraphs, cv) {
     @media(max-width:1000px) {
       .about-body { grid-template-columns:1fr; gap:4rem; padding:3rem 1.5rem 0; }
     }
+    ${LANG_CSS}
   </style>
+  ${LANG_SCRIPT}
 </head>
 <body>
 
@@ -548,7 +590,7 @@ ${navHtml()}
 
   <div class="about-body">
     <div class="about-bio">
-      <div class="about-bio__label">About</div>
+      <div class="about-bio__label"><span class="l-en">About</span><span class="l-no">Om</span></div>
       <h1 class="about-bio__name">Simon H.J.<br>Bj&oslash;rk&aring; Flatin</h1>
       <div class="about-bio__text">
 ${bioHtml}
@@ -562,16 +604,16 @@ ${bioHtml}
     <div class="about-cv">
       <div class="cv-label">CV</div>
       ${expHtml.trim() ? `<div class="cv-section">
-        <div class="cv-section__title">Working Experience</div>${expHtml}
+        <div class="cv-section__title"><span class="l-en">Working Experience</span><span class="l-no">Arbeidserfaring</span></div>${expHtml}
       </div>` : ''}
       ${eduHtml.trim() ? `<div class="cv-section">
-        <div class="cv-section__title">Education</div>${eduHtml}
+        <div class="cv-section__title"><span class="l-en">Education</span><span class="l-no">Utdanning</span></div>${eduHtml}
       </div>` : ''}
     </div>
   </div>
 
 ${footerHtml()}
-
+${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
 `;
@@ -654,7 +696,9 @@ function generateServicesPage(services) {
       .services-body, .contact-cta { padding-left:1.5rem; padding-right:1.5rem; }
       .service-body, .service-item.open .service-body { padding-left:1rem; }
     }
+    ${LANG_CSS}
   </style>
+  ${LANG_SCRIPT}
 </head>
 <body>
 
@@ -664,15 +708,19 @@ ${navHtml()}
     <div class="services-hero__bg"></div>
     <div class="services-hero__overlay"></div>
     <div class="services-hero__text">
-      <h1>Crafting Places that Echo Mountains,<br>Rivers &amp; the Spaces Between</h1>
+      <h1>
+        <span class="l-en">Crafting Places that Echo Mountains,<br>Rivers &amp; the Spaces Between</span>
+        <span class="l-no">Skaper steder som gjenspeiler fjell,<br>elver og rommene imellom</span>
+      </h1>
     </div>
   </div>
 
   <div class="services-body">
     <div class="services-intro">
-      <p>My practice is a dialogue between two worlds: the crisp Nordic light that shaped my childhood and the layered landscapes where I now design. I read terrain first &mdash; through drone photogrammetry, hand sketches or a block of clay &mdash; then guide projects from concept through construction. The goal: architecture that matures gracefully, treads lightly and feels inevitable in its setting.</p>
+      <p class="l-en">My practice is a dialogue between two worlds: the crisp Nordic light that shaped my childhood and the layered landscapes where I now design. I read terrain first &mdash; through drone photogrammetry, hand sketches or a block of clay &mdash; then guide projects from concept through construction. The goal: architecture that matures gracefully, treads lightly and feels inevitable in its setting.</p>
+      <p class="l-no">Min praksis er en dialog mellom to verdener: det klare nordiske lyset som formet barndommen min, og de lagdelte landskapene der jeg nå designer. Jeg leser terrenget først &mdash; gjennom dronebasert fotogrammetri, håndskisser eller en klump leire &mdash; og leder deretter prosjekter fra konsept til ferdigstillelse. Målet: arkitektur som modnes med verdighet, trår lett og virker uunngåelig i sin setting.</p>
     </div>
-    <div class="services-label">Services</div>
+    <div class="services-label"><span class="l-en">Services</span><span class="l-no">Tjenester</span></div>
     <div class="services-list">
 ${serviceItems}
     </div>
@@ -680,10 +728,10 @@ ${serviceItems}
 
   <div class="contact-cta">
     <div class="contact-cta__text">
-      <h2>Let&rsquo;s work together</h2>
-      <p>Available for commissions, collaborations and consultations.</p>
+      <h2><span class="l-en">Let&rsquo;s work together</span><span class="l-no">La oss samarbeide</span></h2>
+      <p><span class="l-en">Available for commissions, collaborations and consultations.</span><span class="l-no">Tilgjengelig for oppdrag, samarbeid og konsultasjoner.</span></p>
     </div>
-    <a href="mailto:simon@simonflatin.com" class="contact-cta__link">Get in touch &rarr;</a>
+    <a href="contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span></a>
   </div>
 
 ${footerHtml()}
@@ -701,7 +749,125 @@ ${footerHtml()}
       });
     });
   </script>
+${LANG_TOGGLE_SCRIPT}
+</body>
+</html>
+`;
+}
 
+function generateContactPage() {
+  return `<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><span class="l-en">Contact</span><span class="l-no">Kontakt</span> &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>${LANG_CSS}
+    .contact-wrap { max-width:900px; margin:0 auto; padding:5rem 4rem 0;
+      display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; }
+    .contact-info__label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+    .contact-info__name { font-family:var(--serif); font-size:clamp(1.8rem,3vw,2.4rem);
+      font-weight:400; line-height:1.2; margin-bottom:2rem; }
+    .contact-info__text { font-size:.9rem; line-height:1.85; color:var(--accent);
+      margin-bottom:2rem; }
+    .contact-info__detail { display:flex; flex-direction:column; gap:.6rem;
+      font-size:.85rem; color:var(--muted); }
+    .contact-info__detail a { color:var(--dark); text-decoration:none;
+      border-bottom:1px solid rgba(28,28,26,.2); padding-bottom:1px;
+      transition:border-color .2s; }
+    .contact-info__detail a:hover { border-color:var(--dark); }
+    .contact-form label { display:block; font-size:.68rem; font-weight:700;
+      letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
+      margin-bottom:.5rem; margin-top:1.8rem; }
+    .contact-form label:first-of-type { margin-top:0; }
+    .contact-form input, .contact-form textarea {
+      width:100%; box-sizing:border-box;
+      background:rgba(28,28,26,.04); border:1px solid rgba(28,28,26,.15);
+      border-radius:2px; padding:.75rem 1rem; font-size:.9rem;
+      font-family:var(--sans); color:var(--dark);
+      transition:border-color .2s, background .2s; }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline:none; border-color:var(--dark); background:#fff; }
+    .contact-form textarea { min-height:160px; resize:vertical; }
+    .contact-form__honeypot { display:none; }
+    .contact-form__submit { margin-top:2rem; display:flex;
+      align-items:center; gap:1.5rem; flex-wrap:wrap; }
+    .contact-form__btn { background:var(--dark); color:#fff;
+      border:none; padding:.9rem 2.2rem; font-size:.78rem; font-weight:700;
+      letter-spacing:.16em; text-transform:uppercase; cursor:pointer;
+      transition:background .2s; }
+    .contact-form__btn:hover { background:var(--muted); }
+    .contact-form__note { font-size:.75rem; color:var(--muted); }
+    .contact-success { display:none; padding:1.5rem; background:rgba(61,59,53,.06);
+      border-left:3px solid var(--dark); font-size:.9rem; color:var(--accent);
+      margin-top:1.5rem; }
+    @media(max-width:800px) {
+      .contact-wrap { grid-template-columns:1fr; gap:3rem; padding:3rem 1.5rem 0; }
+    }
+  </style>
+  ${LANG_SCRIPT}
+</head>
+<body>
+
+${navHtml()}
+
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="contact-info__label"><span class="l-en">Contact</span><span class="l-no">Kontakt</span></div>
+      <h1 class="contact-info__name">
+        <span class="l-en">Let&rsquo;s work<br>together</span>
+        <span class="l-no">La oss<br>samarbeide</span>
+      </h1>
+      <p class="contact-info__text">
+        <span class="l-en">Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in Oslo, working across Norway, the Netherlands and beyond.</span>
+        <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og rådgivning. Basert i Oslo, med oppdrag i Norge, Nederland og internasjonalt.</span>
+      </p>
+      <div class="contact-info__detail">
+        <a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="contact-form__honeypot">
+          <label>Don&rsquo;t fill this in: <input name="bot-field" /></label>
+        </p>
+
+        <label for="name"><span class="l-en">Name</span><span class="l-no">Navn</span></label>
+        <input type="text" id="name" name="name" required autocomplete="name"
+          placeholder="Your name" />
+
+        <label for="email"><span class="l-en">Email</span><span class="l-no">E-post</span></label>
+        <input type="email" id="email" name="email" required autocomplete="email"
+          placeholder="your@email.com" />
+
+        <label for="subject"><span class="l-en">Subject</span><span class="l-no">Emne</span></label>
+        <input type="text" id="subject" name="subject"
+          placeholder="e.g. Commission inquiry" />
+
+        <label for="message"><span class="l-en">Message</span><span class="l-no">Melding</span></label>
+        <textarea id="message" name="message" required
+          placeholder="Tell me about your project or question..."></textarea>
+
+        <div class="contact-form__submit">
+          <button type="submit" class="contact-form__btn">
+            <span class="l-en">Send message</span>
+            <span class="l-no">Send melding</span>
+          </button>
+          <span class="contact-form__note">
+            <span class="l-en">I usually reply within 2 business days.</span>
+            <span class="l-no">Jeg svarer vanligvis innen 2 arbeidsdager.</span>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+${footerHtml()}
+${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
 `;
@@ -779,6 +945,10 @@ function build() {
   const services    = parseServicesTxt(servicesTxt);
   writeFile(path.join(ROOT, 'services.html'), generateServicesPage(services));
   console.log(`  built services.html`);
+
+  // 6. Generate contact.html
+  writeFile(path.join(ROOT, 'contact.html'), generateContactPage());
+  console.log(`  built contact.html`);
 
   console.log(`\n── Build complete. ${projects.length} project(s). ──\n`);
 }

@@ -1,11 +1,16 @@
 title: Stilt House
-category: Architecture · Competition
+category: Architecture · Extreme Environment
 year: 2021
-location: Netherlands
-typology: Competition
+location: The Netherlands
+typology: Residential / Flood-Adaptive
+organization: TU Delft
 status: Concept
 grid: third
 
 ---
 
-Add your description here.
+Stilt House is a design proposal for a dwelling in an extreme flood environment, developed as part of the Extreme studio at TU Delft. The brief asked students to design for conditions at the edge of habitability — in this case, a site periodically submerged by rising water levels.
+
+The proposal elevates the living programme high above the flood plain on a structural stilts system, freeing the ground level for water to pass through unimpeded. The dwelling is organised vertically rather than horizontally: a tight core of services at the centre, with living spaces arranged around it at different heights, each oriented to a specific view or quality of light.
+
+The project investigates how constraints imposed by an extreme environment — structural, programmatic, material — can become generative forces rather than mere problems to solve. The result is a dwelling that is, paradoxically, most at home when surrounded by water.

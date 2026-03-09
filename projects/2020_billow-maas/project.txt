@@ -1,11 +1,16 @@
 title: Billow by the Maas
-category: Architecture · Competition
+category: Architecture · Urban Design
 year: 2020
 location: Rotterdam, The Netherlands
-typology: Mixed-Use / Competition
+typology: Mixed-Use / Waterfront
+organization: TU Delft
 status: Concept
 grid: wide
 
 ---
 
-Add your description here.
+Billow by the Maas is a waterfront design proposal for a site along the Maas river in Rotterdam. The project responds to the industrial heritage of the port city while proposing a new urban typology that flows with the river — undulating, layered and in constant dialogue with water.
+
+Developed as part of the ON6 design studio at TU Delft, the work challenged designing at the scale of the city block. Billow proposes a mixed-use programme woven into a structural form that mirrors the rhythmic motion of the river: rippled facades, cascading terraces and a public waterfront promenade that connects the project to the surrounding city.
+
+The proposal investigates how contemporary waterfront development can acknowledge Rotterdam's history as a port city — not by mimicking the past, but by channelling the energy and logic of water into architectural form.

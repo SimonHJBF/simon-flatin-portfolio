@@ -1,11 +1,16 @@
 title: The Staircase Home
-category: Architecture · Competition
+category: Architecture · Residential
 year: 2020
-location: The Netherlands
-typology: Residential / Competition
+location: Rotterdam, The Netherlands
+typology: Single-Family Residence
+organization: TU Delft
 status: Concept
 grid: wide
 
 ---
 
-Add your description here.
+The Staircase Home is a residential design proposal in which the staircase is elevated from circulation element to the spatial and social heart of the dwelling. Developed as part of the ON1 studio at TU Delft, the project explores how a single architectural gesture — the continuous stair — can organise an entire home.
+
+The stair winds through the section, creating split levels and unexpected adjacencies: a reading nook tucked beneath a landing, a kitchen that opens onto a half-level garden terrace, a bedroom suspended above the entrance. Each floor plate is slightly rotated, so that ascending through the house also means turning gradually to face different directions — a slow architectural promenade.
+
+The project reflects an interest in section as the primary design tool, and in how everyday domestic movements can be choreographed by the geometry of a building.

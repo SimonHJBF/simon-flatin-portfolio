@@ -1,12 +1,16 @@
-title: Oud Alblas
-category: Form Studies · Modelmaking
+title: High-Density Harbour District
+category: Architecture · Urban Design
 year: 2021
-location: Netherlands
-typology: Form Study
-organization: Ebano AS / AKSIE AS
-status: Realised
+location: South Holland, The Netherlands
+typology: Mixed-Use Urban Quarter
+organization: TU Delft
+status: Concept
 grid: wide
 
 ---
 
-Add your description here.
+High-Density Harbour District is a design proposal for a post-industrial waterfront site in South Holland, exploring how dense urban living can be reintroduced to a former harbour area without erasing the traces of its industrial past.
+
+Developed as part of the ON3 design studio at TU Delft, the project proposes a new urban grain — a mixture of housing typologies, shared spaces and public waterfront — structured around the existing dock infrastructure. Warehouses are partially retained as civic anchors; new construction fills in the gaps with a finer-grained residential fabric.
+
+The central design question was how density and intimacy can coexist: how a high-density quarter can feel inhabited rather than overwhelming, human-scaled rather than monumental. The proposal achieves this through careful section work, varied courtyard sizes and the preservation of key sightlines to the water.

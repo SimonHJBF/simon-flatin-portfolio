@@ -2,10 +2,14 @@ title: Von Sauna — Floating Saunas
 category: Architecture · Competition
 year: 2022
 location: Norway
-typology: Pavilion / Competition
+typology: Pavilion / Floating Structure
 status: Concept
 grid: third
 
 ---
 
-Add your description here.
+Von Sauna is a competition entry for a series of floating saunas to be moored along the Norwegian coastline. The brief called for structures that could be towed to different locations across a season, combining the Nordic bathing tradition with an architecture of lightness and impermanence.
+
+The proposal consists of three interconnected volumes — a dry sauna, a steam room and a cooling deck — set on a low timber pontoon. The volumes are clad in charred larch, darkened to absorb the low Nordic sun and to age with dignity. The pontoon deck is left in pale untreated pine, bleaching over time to a silver that mirrors the sea.
+
+Each Von Sauna unit is designed to be assembled by a small team in a single day, connecting to existing maritime infrastructure with standard mooring hardware. The aim was an architecture that belongs to the water as naturally as it belongs to the Norwegian bathing tradition.

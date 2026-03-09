@@ -2,11 +2,15 @@ title: Symphony of Time and Architecture
 category: Architecture · Research
 year: 2020
 location: Delft, The Netherlands
-typology: Research Project
+typology: Research / Theoretical Project
 organization: TU Delft
 status: Realised
 grid: large
 
 ---
 
-Add your description here.
+Symphony of Time and Architecture is a research project that examines time as an architectural material. Drawing a structural parallel between musical composition and spatial design, it asks: how does a building unfold in time the way a symphony unfolds across movements?
+
+The research traces four temporal dimensions — lived time, geological time, seasonal time and the time of decay — through historical and contemporary architecture. Case studies range from the Pantheon's oculus (which makes solar time visible) to Sverre Fehn's manipulation of light and shadow, to the radical ephemerality of Japanese Metabolism. Each project is understood as a kind of score: a set of instructions for the experience of time in space.
+
+The work culminated in a written argument for architecture as duration rather than object — a discipline that should embrace, rather than suppress, the inevitability of change. This research became the theoretical foundation for Arctic Symphony.

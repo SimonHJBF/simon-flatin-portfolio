@@ -65,6 +65,22 @@ nav.nav--hero .nav__links a:hover { color: #fff; }
 nav.nav--page .nav__links a       { color: var(--muted); }
 nav.nav--page .nav__links a:hover { color: var(--dark); }
 
+/* Language toggle button */
+.lang-toggle {
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 0.25rem 0.5rem;
+  transition: background 0.2s, color 0.2s;
+  font-family: var(--sans);
+}
+nav.nav--page .lang-toggle { color: var(--muted); }
+nav.nav--page .lang-toggle:hover { background: var(--dark); color: var(--cream); border-color: var(--dark); }
+
 /* ---- PROJECT CARDS ---- */
 .projects {
   display: grid;

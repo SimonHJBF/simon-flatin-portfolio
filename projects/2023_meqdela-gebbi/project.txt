@@ -4,11 +4,15 @@ year: 2023
 location: Delft, The Netherlands
 typology: Architectural Model
 status: Realised
-organization: Venice Biennale Commission
+organization: TU Delft / Venice Architecture Biennale
 collaborators: Alex Kirschstein, Prof. Dirk van Gameren
 exhibitions: Venice Architecture Biennale 2023
 grid: medium
 
 ---
 
-Add your description here.
+Meqdela Gebbi is a physical model of the royal compound of Emperor Tewodros II at Meqdela, the mountain fortress in northern Ethiopia that served as his last stronghold and the site of the 1868 Battle of Maqdala. The model was commissioned as part of a research initiative into Ethiopian highland architecture and contributed to the Venice Architecture Biennale 2023.
+
+Working in close collaboration with Alex Kirschstein and guided by Prof. Dirk van Gameren, the model was constructed from white plaster and basswood at a scale that allows the intricate spatial hierarchy of the compound to be legible — the progression from outer enclosure to inner court to the intimate royal quarters at the summit.
+
+Historical documentation for Meqdela is fragmentary, making the modelmaking process an act of architectural interpretation as much as representation. The model proposes a spatial reading of the site based on surviving photographs, oral histories and analysis of comparable highland Ethiopian building traditions.
