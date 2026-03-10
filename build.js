@@ -689,9 +689,10 @@ ${cards}
 
 ${footerHtml()}
 <script>
-// Mist: fog streams entering from left/right edges along the shore, scroll-driven.
-// Starts 30% in at rest; as scroll increases, mist pours down from shore to cover water.
-// Quilez 2-level domain warp + anisotropic UV creates visible stream tendrils.
+// Mist: 3 floating layers above the waterline, scroll-driven.
+// Each layer has a sharp-defined top + soft draping bottom → 3D levitating look.
+// Two noise fields at different scales/speeds give parallax depth between layers.
+// Horizontal sweep 25%→85%: streams dramatically meet at centre on full scroll.
 (function(){
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var c=document.getElementById('mc');
@@ -710,29 +711,33 @@ ${footerHtml()}
     'for(int i=0;i<4;i++){v+=a*n(p);p=rot*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
     'void main(){'+
     'vec2 uv=gl_FragCoord.xy/u_r;'+
-    // Vertical: starts as a tight band at shore (y=0.44), expands down with scroll
-    'float yShore=0.44;'+
-    'float bandH=mix(0.07,0.36,u_s);'+
-    'float yMid=yShore-bandH*0.42;'+
-    'float vert=1.-smoothstep(bandH*0.4,bandH,abs(uv.y-yMid));'+
-    'vert*=smoothstep(0.06,0.12,uv.y)*(1.-smoothstep(0.43,0.47,uv.y));'+
-    // Horizontal: starts 30% in from each edge, grows to ~65% with scroll
-    'float sp=0.30+u_s*0.35;'+
+    'float s=u_s*u_s*(3.-2.*u_s);'+
+    'float sp=0.25+s*0.60;'+
     'float edge=min(uv.x,1.-uv.x);'+
-    'float hm=1.-smoothstep(sp*0.3,sp,edge);'+
-    // Anisotropic UV: wide horizontal, tall vertical → wispy stream-like features
-    // Slow inward drift on each side makes streams "dance" toward center
-    'float di=(uv.x>0.5?-1.:1.)*u_t*0.006;'+
-    'vec2 st=vec2(uv.x*2.5+di+u_t*0.006,(uv.y-0.30)*14.0);'+
-    // 2-level Quilez domain warp for organic, non-repeating stream shapes
-    'vec2 q=vec2(fbm(st),fbm(st+vec2(5.2,1.3)));'+
-    'vec2 r=vec2(fbm(st+2.5*q+vec2(1.7,9.2)+0.12*u_t),'+
-               'fbm(st+2.5*q+vec2(8.3,2.8)+0.09*u_t));'+
-    'float cloud=fbm(st+3.0*r);'+
-    // S-curve contrast: pulls apart bright streams from dark gaps
-    'cloud=smoothstep(0.28,0.72,cloud);'+
-    'float d=hm*vert*cloud;'+
-    'd=smoothstep(0.10,0.90,d)*0.72;'+
+    'float hm=1.-smoothstep(sp*0.15,sp,edge);'+
+    'hm=hm*hm*(3.-2.*hm);'+
+    'float di=(uv.x>0.5?-1.:1.)*(u_t*0.007+0.03*sin(u_t*0.4));'+
+    'vec2 stA=vec2(uv.x*3.0+di*1.4+u_t*0.012,(uv.y-0.55)*18.0);'+
+    'vec2 qA=vec2(fbm(stA),fbm(stA+vec2(5.2,1.3)));'+
+    'float cA=fbm(stA+2.2*qA);'+
+    'cA=smoothstep(0.32,0.76,cA);'+
+    'vec2 stB=vec2(uv.x*1.8+di*0.6+u_t*0.006,(uv.y-0.42)*11.0);'+
+    'vec2 qB=vec2(fbm(stB),fbm(stB+vec2(5.2,1.3)));'+
+    'vec2 rB=vec2(fbm(stB+2.5*qB+vec2(1.7,9.2)+0.10*u_t),'+
+                'fbm(stB+2.5*qB+vec2(8.3,2.8)+0.08*u_t));'+
+    'float cB=fbm(stB+3.0*rB);'+
+    'cB=smoothstep(0.26,0.70,cB);'+
+    'float yA=mix(0.60,0.54,s);'+
+    'float v1=(1.-smoothstep(yA,yA+0.03,uv.y))*smoothstep(yA-0.08,yA-0.01,uv.y);'+
+    'float d1=hm*v1*cA*0.65;'+
+    'float yB=mix(0.53,0.44,s);'+
+    'float v2=(1.-smoothstep(yB,yB+0.04,uv.y))*smoothstep(yB-0.14,yB-0.01,uv.y);'+
+    'float d2=hm*v2*cB;'+
+    'float yC=mix(0.47,0.26,s);'+
+    'float v3=(1.-smoothstep(yC,yC+0.03,uv.y))*smoothstep(yC-0.18,yC-0.01,uv.y);'+
+    'float d3=hm*v3*cB*0.50;'+
+    'float d=clamp(d1+d2+d3,0.,1.)*smoothstep(0.05,0.13,uv.y);'+
+    'd=smoothstep(0.08,0.88,d)*0.82;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
   var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
