@@ -689,9 +689,10 @@ ${cards}
 
 ${footerHtml()}
 <script>
-// Mist: WebGL procedural fog from top-left + top-right corners, scroll-triggered.
-// Ambient fbm drift keeps the mist alive even at scroll=0 (like the water ripple).
-// String-concatenated GLSL avoids any comment/encoding issues in all browsers.
+// Mist: thin fog band entering from left/right edges of water zone, scroll-driven.
+// Quilez-style domain-warped fBm gives organic, cloud-like wispy texture.
+// Vertical mask matches .hero__water zone (hero bottom 8-47%).
+// Horizontal spread grows inward from both edges as scroll increases.
 (function(){
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var c=document.getElementById('mc');
@@ -699,9 +700,6 @@ ${footerHtml()}
   var gl=c.getContext('webgl')||c.getContext('experimental-webgl');
   if(!gl)return;
   var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}';
-  // GLSL: uv(0,0)=bottom-left (1,1)=top-right; mist enters from (0,1) and (1,1).
-  // sp (spread) grows from 0.28 at rest to 1.2 at full scroll, filling toward centre.
-  // f is 3-octave fBm noise drifting slowly with time for organic wisp texture.
   var fs=
     'precision mediump float;'+
     'uniform float u_t,u_s;'+
@@ -709,18 +707,22 @@ ${footerHtml()}
     'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}'+
     'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);'+
     'return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
-    'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<3;i++){v+=a*n(p);p=p*2.+vec2(1.7,9.2);a*=.5;}return v;}'+
+    'float fbm(vec2 p){float v=0.,a=.5;mat2 rot=mat2(.8,.6,-.6,.8);'+
+    'for(int i=0;i<4;i++){v+=a*n(p);p=rot*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
     'void main(){'+
     'vec2 uv=gl_FragCoord.xy/u_r;'+
-    'float f=fbm(uv*3.0+vec2(u_t*0.04,u_t*0.02));'+
-    'float sp=0.28+u_s*0.92;'+
-    'float dl=length(vec2(uv.x*0.5,(1.-uv.y)*0.75));'+
-    'float ml=1.-smoothstep(sp*0.5,sp,dl);'+
-    'float dr=length(vec2((1.-uv.x)*0.5,(1.-uv.y)*0.75));'+
-    'float mr=1.-smoothstep(sp*0.5,sp,dr);'+
-    'float mask=max(ml,mr)*(0.55+0.45*f);'+
-    'float d=smoothstep(0.15,0.72,mask)*0.45;'+
-    'gl_FragColor=vec4(0.97*d,0.96*d,0.95*d,d);}';
+    'float wT=0.47,wB=0.08;'+
+    'float vert=smoothstep(wB,wB+0.08,uv.y)*(1.-smoothstep(wT-0.16,wT,uv.y));'+
+    'float band=1.-smoothstep(0.,0.15,abs(uv.y-0.34));'+
+    'float sp=0.04+u_s*0.58;'+
+    'float edge=min(uv.x,1.-uv.x);'+
+    'float hm=1.-smoothstep(sp*0.3,sp,edge);'+
+    'vec2 st=vec2(uv.x*4.0+u_t*0.018,uv.y*8.0);'+
+    'vec2 q=vec2(fbm(st),fbm(st+vec2(5.2,1.3)));'+
+    'float cloud=fbm(st+1.8*q+vec2(u_t*0.01,0.));'+
+    'float d=hm*(vert*0.45+band*0.55)*(0.30+0.70*cloud);'+
+    'd=smoothstep(0.10,0.80,d)*0.50;'+
+    'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
   var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
   if(!sv||!sf)return;
