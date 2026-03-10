@@ -578,17 +578,15 @@ function generateIndexPage(allProjects, featuredSlugs) {
     : `<div class="hero__bg" style="background:linear-gradient(160deg,#2d3d2e 0%,#4a6741 35%,#7a9e6e 60%,#c9d9b8 100%);"></div>`;
 
   // Water ripple on the lower ~45% of the hero (where the water/fjord is).
-  // Technique: a <div> with the same background-image is clipped to the
-  // bottom 45% via a wrapper with overflow:hidden. A CSS filter (referencing
-  // an inline SVG <filter>) applies feTurbulence displacement to it.
-  // The noise uses stitchTiles="stitch" so it tiles seamlessly at exactly
-  // the filter-subregion height; JS scrolls the feOffset by that period for
-  // a perfect infinite loop with zero visible jump.
+  // Technique: an SVG <image> (same src as static hero) clipped to y=55–100%
+  // via objectBoundingBox clipPath. An SVG-native filter (feTurbulence +
+  // feDisplacementMap) ripples the image. feOffset oscillates sinusoidally
+  // so there is NO scroll-period boundary and NO visible seam — ever.
+  // SVG-native filters work on iOS Safari; CSS filter:url(#id) does not.
+  // A CSS mask-image gradient softly fades the water at the waterline and
+  // bottom edge for a natural blend with the shore.
   const heroWaterHtml = heroImgPath ? `
-  <div class="hero__water-wrap">
-    <div class="hero__water" style="background-image:url('${heroImgPath}')"></div>
-  </div>
-  <svg class="hero__water-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <svg class="hero__water" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <filter id="wf" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
         <feTurbulence type="fractalNoise" baseFrequency="0.009 0.014"
@@ -597,7 +595,14 @@ function generateIndexPage(allProjects, featuredSlugs) {
         <feDisplacementMap in="SourceGraphic" in2="s"
                            scale="22" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
+      <clipPath id="wc" clipPathUnits="objectBoundingBox">
+        <rect x="0" y="0.55" width="1" height="0.45"/>
+      </clipPath>
     </defs>
+    <image href="${heroImgPath}" width="100%" height="100%"
+           preserveAspectRatio="xMidYMid slice"
+           filter="url(#wf)"
+           clip-path="url(#wc)"/>
   </svg>` : '';
 
   return `<!DOCTYPE html>
@@ -610,14 +615,12 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <style>
     .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
     .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    /* Water ripple — wrapper clips to bottom 45%, inner div is full-hero sized
-       so background-size:cover aligns perfectly with the static hero__bg */
-    .hero__water-defs { position:absolute; width:0; height:0; overflow:hidden; }
-    .hero__water-wrap { position:absolute; top:55%; left:0; right:0; bottom:0;
-      overflow:hidden; pointer-events:none; }
-    .hero__water { position:absolute; bottom:0; left:0; right:0; height:100vh;
-      background-size:cover; background-position:center center;
-      filter:url(#wf); }
+    /* Water ripple — full-screen SVG, image clipped to bottom 45% via clipPath.
+       Mask fades the water softly at the waterline (top) and bottom edge. */
+    .hero__water { position:absolute; inset:0; width:100%; height:100%;
+      pointer-events:none;
+      -webkit-mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%);
+      mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%); }
     .hero__overlay { position:absolute; inset:0;
       background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
     .hero__scroll-cue { position:absolute; bottom:2.2rem; left:50%;
@@ -673,7 +676,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <section class="featured">
     <div class="featured__header">
       <span class="section-label"><span class="l-en">Selected Work</span><span class="l-no">Utvalgte prosjekter</span><span class="l-pt">Trabalho Selecionado</span></span>
-      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">Signaturprosjekter</span><span class="l-pt">Projetos de Destaque</span></h2>
+      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">Signatur&shy;prosjekter</span><span class="l-pt">Projetos de Destaque</span></h2>
     </div>
     <div class="projects">
 ${cards}
@@ -683,31 +686,23 @@ ${cards}
 
 ${footerHtml()}
 <script>
-  /* Water ripple — seamless upward scroll via feTurbulence + stitchTiles.
-   * The noise tiles at period = element_height × 1.1 (the filter subregion).
-   * With stitchTiles="stitch", noise(y) == noise(y + period), so scrolling
-   * feOffset.dy by exactly one period loops with zero visible discontinuity. */
+  /* Water ripple — sinusoidal feOffset oscillation, zero seam, works on iOS.
+   * dy and dx oscillate at different periods so the combined motion never
+   * exactly repeats, giving endlessly varied, natural-looking ripple. */
   (function(){
-    var el=document.querySelector('.hero__water');
     var fo=document.getElementById('wo');
-    if(!el||!fo)return;
-    var offset=0,lastTs=null,speed=5,period=0;
-    function calcPeriod(){ return el.getBoundingClientRect().height*1.1; }
+    if(!fo)return;
+    var t=0,lastTs=null;
     function step(ts){
-      if(lastTs===null){ lastTs=ts; period=calcPeriod(); }
-      var dt=Math.min((ts-lastTs)/1000,0.1); lastTs=ts;
-      if(period<=0){ period=calcPeriod(); requestAnimationFrame(step); return; }
-      offset=(offset+speed*dt)%period;
-      fo.setAttribute('dy',String(-offset));
+      if(lastTs===null)lastTs=ts;
+      var dt=Math.min((ts-lastTs)/1000,0.1); lastTs=ts; t+=dt;
+      fo.setAttribute('dy',String(-35*Math.sin(t*0.25)));
+      fo.setAttribute('dx',String(12*Math.sin(t*0.4+1.0)));
       requestAnimationFrame(step);
     }
     if(document.readyState==='loading'){
-      document.addEventListener('DOMContentLoaded',function(){ period=calcPeriod(); requestAnimationFrame(step); });
-    } else { period=calcPeriod(); requestAnimationFrame(step); }
-    window.addEventListener('resize',function(){
-      var h=calcPeriod();
-      if(h>0){ if(period>0) offset=offset*(h/period); period=h; }
-    });
+      document.addEventListener('DOMContentLoaded',function(){requestAnimationFrame(step);});
+    }else{requestAnimationFrame(step);}
   })();
 </script>
 ${LANG_TOGGLE_SCRIPT}
