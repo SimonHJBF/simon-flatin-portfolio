@@ -712,15 +712,15 @@ ${footerHtml()}
     'void main(){'+
     'vec2 uv=gl_FragCoord.xy/u_r;'+
     'float s=u_s*u_s*(3.-2.*u_s);'+
-    // sp=0.816 at u_s=0.75 → centre (edge=0.5) fully covered: (0.816-0.5)/0.32=0.9875
-    'float sp=0.20+s*0.73;'+
+    // sp=0.925 at u_s=0.75; at full scroll fog crosses well past centre to opposite side
+    'float sp=0.25+s*0.80;'+
     'float edge=min(uv.x,1.-uv.x);'+
-    // Wide lateral fade 0.32 (was 0.22) = much softer horizontal edges
+    // Wide lateral fade 0.32 = soft horizontal edges
     'float hm=clamp((sp-edge)/0.32,0.,1.);'+
     'hm=hm*hm*(3.-2.*hm);'+
-    // Slow dreamy drift
-    'float dt=u_t*0.003;'+
-    'float di=(uv.x>0.5?-1.:1.)*(u_t*0.003+0.012*sin(u_t*0.18));'+
+    // Drift speed ×2 vs v4 (0.006 vs 0.003) — still slow but perceptibly moving
+    'float dt=u_t*0.006;'+
+    'float di=(uv.x>0.5?-1.:1.)*(u_t*0.006+0.024*sin(u_t*0.18));'+
     // Braiding: 1.5 sine cycles across width (9.42≈3π), grows with scroll+proximity
     // L1&L4 add braid, L2&L3 subtract → layers interweave as they enter centre
     'float braid=s*hm*0.030*sin(uv.x*9.42+u_t*0.09);'+
@@ -729,35 +729,35 @@ ${footerHtml()}
     'vec2 qA=vec2(fbm(stA),fbm(stA+vec2(5.2,1.3)));'+
     'vec2 rA=vec2(fbm(stA+3.5*qA+vec2(1.7,9.2)+dt*0.5),fbm(stA+3.5*qA+vec2(8.3,2.8)+dt*0.4));'+
     'float cA=fbm(stA+4.0*rA);'+
-    // Soft linear ramp: no S-curve hardening — preserves wispy low-density tendrils
-    'cA=clamp((cA-0.28)*1.6,0.,1.);'+
+    // Lower threshold + higher scale → ~1.7× more visible density vs v4
+    'cA=clamp((cA-0.25)*1.8,0.,1.);'+
     // Field B: 1.5:3.5 UV — coarser, broader masses
     'vec2 stB=vec2(uv.x*1.5+di*0.5+dt*0.6,uv.y*3.5+1.5);'+
     'vec2 qB=vec2(fbm(stB),fbm(stB+vec2(5.2,1.3)));'+
     'vec2 rB=vec2(fbm(stB+3.5*qB+vec2(1.7,9.2)+dt*0.3),fbm(stB+3.5*qB+vec2(8.3,2.8)+dt*0.25));'+
     'float cB=fbm(stB+4.0*rB);'+
-    'cB=clamp((cB-0.28)*1.6,0.,1.);'+
+    'cB=clamp((cB-0.25)*1.8,0.,1.);'+
     // Layer 1 — upper wisp: braids UP. Wide soft top (0.10) + bottom (0.22)
     'float yA=mix(0.63,0.57,s)+braid;'+
     'float v1=(1.-smoothstep(yA-0.02,yA+0.10,uv.y))*smoothstep(yA-0.22,yA+0.02,uv.y);'+
-    'float d1=hm*v1*cA*0.42;'+
+    'float d1=hm*v1*cA*0.63;'+
     // Layer 2 — main bank: braids DOWN. Deep soft bottom (0.28)
     'float yB=mix(0.53,0.44,s)-braid;'+
     'float v2=(1.-smoothstep(yB-0.02,yB+0.10,uv.y))*smoothstep(yB-0.28,yB+0.02,uv.y);'+
-    'float d2=hm*v2*cB*0.52;'+
+    'float d2=hm*v2*cB*0.75;'+
     // Layer 3 — mid wisp: braids DOWN with L2
     'float yC=mix(0.58,0.51,s)-braid*0.6;'+
     'float v3=(1.-smoothstep(yC-0.01,yC+0.08,uv.y))*smoothstep(yC-0.18,yC+0.01,uv.y);'+
-    'float d3=hm*v3*cA*0.35;'+
+    'float d3=hm*v3*cA*0.52;'+
     // Layer 4 — deep cloud: braids UP with L1. Sweeps far down at full scroll
     'float yD=mix(0.46,0.20,s)+braid*0.7;'+
     'float v4=(1.-smoothstep(yD-0.01,yD+0.07,uv.y))*smoothstep(yD-0.32,yD+0.01,uv.y);'+
-    'float d4=hm*v4*cB*0.38;'+
-    // Very thin base haze
-    'float base=hm*s*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.09;'+
+    'float d4=hm*v4*cB*0.56;'+
+    // Base haze
+    'float base=hm*s*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.13;'+
     'float d=clamp(d1+d2+d3+d4+base,0.,1.)*smoothstep(0.03,0.10,uv.y);'+
-    // Max 0.78 opacity — atmospheric and always see-through
-    'd=smoothstep(0.02,0.96,d)*0.78;'+
+    // Max 0.86 — more visible than v4 (0.78) but softer than old (0.88)
+    'd=smoothstep(0.02,0.96,d)*0.86;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
   var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
