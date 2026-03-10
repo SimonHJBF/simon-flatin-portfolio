@@ -718,6 +718,8 @@ ${footerHtml()}
     // Wide lateral fade 0.32 = soft horizontal edges
     'float hm=clamp((sp-edge)/0.32,0.,1.);'+
     'hm=hm*hm*(3.-2.*hm);'+
+    // Left-side balance: smooth +18% boost at far left, tapers to 0 at centre/right
+    'hm=clamp(hm*(1.0+0.18*clamp((0.5-uv.x)*2.0,0.,1.)),0.,1.);'+
     // Drift speed ×2 vs v4 (0.006 vs 0.003) — still slow but perceptibly moving
     'float dt=u_t*0.006;'+
     'float di=(uv.x>0.5?-1.:1.)*(u_t*0.006+0.024*sin(u_t*0.18));'+
