@@ -130,9 +130,19 @@ function parseProjectTxt(content) {
   return data;
 }
 
-/** Parse bio.txt → array of paragraph strings */
+/** Parse bio.txt → { en, no, pt } arrays of paragraph strings.
+ *  Supports ===no=== and ===pt=== section markers (same as project.txt). */
 function parseBioTxt(content) {
-  return content.split(/\n\n+/).map(p => p.replace(/\n/g, ' ').trim()).filter(Boolean);
+  const parse = s => s.split(/\n\n+/).map(p => p.replace(/\n/g, ' ').trim()).filter(Boolean);
+  const noIdx = content.indexOf('\n===no===');
+  const ptIdx = content.indexOf('\n===pt===');
+  const enEnd = noIdx > -1 ? noIdx : (ptIdx > -1 ? ptIdx : content.length);
+  const noEnd = ptIdx > -1 ? ptIdx : content.length;
+  return {
+    en: parse(content.slice(0, enEnd)),
+    no: noIdx > -1 ? parse(content.slice(noIdx + 9, noEnd)) : [],
+    pt: ptIdx > -1 ? parse(content.slice(ptIdx + 9)) : []
+  };
 }
 
 /** Parse cv.txt → { experience: [], education: [] } */
@@ -696,7 +706,17 @@ function generateAboutPage(paragraphs, cv) {
     ? findImages(aboutDir).find(f => /portrait|photo|headshot/i.test(f))
     : null;
 
-  const bioHtml = paragraphs.map(p => `        <p>${esc(p)}</p>`).join('\n');
+  const makeBio = (paras, fallback) =>
+    (paras && paras.length ? paras : fallback).map(p => `<p>${esc(p)}</p>`).join('\n          ');
+  const bioHtml = `        <div class="l-en">
+          ${makeBio(paragraphs.en, [])}
+        </div>
+        <div class="l-no">
+          ${makeBio(paragraphs.no, paragraphs.en)}
+        </div>
+        <div class="l-pt">
+          ${makeBio(paragraphs.pt, paragraphs.en)}
+        </div>`;
 
   const photoHtml = portraitFile
     ? `<img src="content/about/${portraitFile}" alt="Simon H.J. Bjørkå Flatin" />`
@@ -733,7 +753,7 @@ function generateAboutPage(paragraphs, cv) {
     .about-bio__text p { font-size:.92rem; line-height:1.85; color:var(--accent);
       margin-bottom:1.4rem; }
     .about-photo { margin-top:3rem; }
-    .about-photo img { width:100%; max-width:380px; display:block; object-fit:cover; }
+    .about-photo img { width:100%; max-width:380px; display:block; object-fit:cover; aspect-ratio:3/4; object-position:center top; }
     .about-photo__caption { font-size:.72rem; color:var(--muted); margin-top:.75rem; }
     .cv-label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
       text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
@@ -936,6 +956,60 @@ ${LANG_TOGGLE_SCRIPT}
 `;
 }
 
+function generateContactSuccessPage() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message sent &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>${LANG_CSS}
+    .success-wrap { max-width:600px; margin:0 auto; padding:8rem 4rem; text-align:center; }
+    .success-wrap__label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+    .success-wrap__heading { font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.8rem);
+      font-weight:400; line-height:1.2; margin-bottom:1.5rem; }
+    .success-wrap__text { font-size:.9rem; line-height:1.85; color:var(--accent); margin-bottom:2.5rem; }
+    .success-wrap__back { display:inline-block; font-size:.78rem; font-weight:700;
+      letter-spacing:.16em; text-transform:uppercase; color:var(--dark);
+      text-decoration:none; border-bottom:1px solid var(--dark); padding-bottom:2px; }
+    @media(max-width:600px){ .success-wrap { padding:5rem 1.5rem; } }
+  </style>
+  ${LANG_SCRIPT}
+  ${GA_TAG}
+</head>
+<body>
+${navHtml()}
+  <div class="success-wrap">
+    <div class="success-wrap__label">
+      <span class="l-en">Message sent</span>
+      <span class="l-no">Melding sendt</span>
+      <span class="l-pt">Mensagem enviada</span>
+    </div>
+    <h1 class="success-wrap__heading">
+      <span class="l-en">Thank you!</span>
+      <span class="l-no">Takk!</span>
+      <span class="l-pt">Obrigado!</span>
+    </h1>
+    <p class="success-wrap__text">
+      <span class="l-en">Your message has been received. I&rsquo;ll be in touch within 2 business days.</span>
+      <span class="l-no">Meldingen din er mottatt. Jeg tar kontakt innen 2 virkedager.</span>
+      <span class="l-pt">Sua mensagem foi recebida. Entrarei em contato em at&eacute; 2 dias &uacute;teis.</span>
+    </p>
+    <a href="index.html" class="success-wrap__back">
+      <span class="l-en">&larr; Back to home</span>
+      <span class="l-no">&larr; Tilbake til forsiden</span>
+      <span class="l-pt">&larr; Voltar ao in&iacute;cio</span>
+    </a>
+  </div>
+${footerHtml()}
+${LANG_TOGGLE_SCRIPT}
+</body>
+</html>
+`;
+}
+
 function generateContactPage() {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1013,7 +1087,7 @@ ${navHtml()}
     </div>
 
     <div class="contact-form-wrap">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="contact-success.html" class="contact-form">
         <input type="hidden" name="form-name" value="contact" />
         <p class="contact-form__honeypot">
           <label><span class="l-en">Don&rsquo;t fill this in</span><span class="l-no">Ikke fyll ut dette</span><span class="l-pt">N&atilde;o preencha</span>: <input name="bot-field" /></label>
@@ -1139,9 +1213,11 @@ function build() {
   writeFile(path.join(ROOT, 'services.html'), generateServicesPage(services));
   console.log(`  built services.html`);
 
-  // 6. Generate contact.html
+  // 6. Generate contact.html + success page
   writeFile(path.join(ROOT, 'contact.html'), generateContactPage());
   console.log(`  built contact.html`);
+  writeFile(path.join(ROOT, 'contact-success.html'), generateContactSuccessPage());
+  console.log(`  built contact-success.html`);
 
   console.log(`\n── Build complete. ${projects.length} project(s). ──\n`);
 }
