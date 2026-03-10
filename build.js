@@ -689,10 +689,9 @@ ${cards}
 
 ${footerHtml()}
 <script>
-// Mist: 3 floating layers above the waterline, scroll-driven.
-// Each layer has a sharp-defined top + soft draping bottom → 3D levitating look.
-// Two noise fields at different scales/speeds give parallax depth between layers.
-// Horizontal sweep 25%→85%: streams dramatically meet at centre on full scroll.
+// Mist: 3 wide cloud layers + thin base atmosphere. UV 2.5:6 ratio (not 2:18)
+// gives cloud puffs not water streaks. Linear hm ramp with sp>0.5 = full centre
+// overlap at max scroll. All u_t coeffs ÷4 for slow dreamy drift.
 (function(){
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var c=document.getElementById('mc');
@@ -708,36 +707,46 @@ ${footerHtml()}
     'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);'+
     'return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
     'float fbm(vec2 p){float v=0.,a=.5;mat2 rot=mat2(.8,.6,-.6,.8);'+
-    'for(int i=0;i<4;i++){v+=a*n(p);p=rot*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
+    'for(int i=0;i<5;i++){v+=a*n(p);p=rot*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
     'void main(){'+
     'vec2 uv=gl_FragCoord.xy/u_r;'+
     'float s=u_s*u_s*(3.-2.*u_s);'+
-    'float sp=0.25+s*0.60;'+
+    // Linear ramp: sp>0.5 → centre fully covered at max scroll
+    'float sp=0.28+s*0.45;'+
     'float edge=min(uv.x,1.-uv.x);'+
-    'float hm=1.-smoothstep(sp*0.15,sp,edge);'+
+    'float hm=clamp((sp-edge)/0.22,0.,1.);'+
     'hm=hm*hm*(3.-2.*hm);'+
-    'float di=(uv.x>0.5?-1.:1.)*(u_t*0.007+0.03*sin(u_t*0.4));'+
-    'vec2 stA=vec2(uv.x*3.0+di*1.4+u_t*0.012,(uv.y-0.55)*18.0);'+
+    // Slow time: dreamy not twitchy (all coeffs ÷4 vs previous)
+    'float dt=u_t*0.003;'+
+    'float di=(uv.x>0.5?-1.:1.)*(u_t*0.003+0.015*sin(u_t*0.18));'+
+    // Field A — 2.5:6 UV → moderate anisotropy = cloud puffs not water streaks
+    'vec2 stA=vec2(uv.x*2.5+di+dt,uv.y*6.0+0.5);'+
     'vec2 qA=vec2(fbm(stA),fbm(stA+vec2(5.2,1.3)));'+
-    'float cA=fbm(stA+2.2*qA);'+
-    'cA=smoothstep(0.32,0.76,cA);'+
-    'vec2 stB=vec2(uv.x*1.8+di*0.6+u_t*0.006,(uv.y-0.42)*11.0);'+
+    'vec2 rA=vec2(fbm(stA+3.0*qA+vec2(1.7,9.2)+dt*0.5),fbm(stA+3.0*qA+vec2(8.3,2.8)+dt*0.4));'+
+    'float cA=fbm(stA+4.0*rA);'+
+    'cA=smoothstep(0.18,0.64,cA);'+
+    // Field B — coarser 1.6:4 UV for main body + deep layer
+    'vec2 stB=vec2(uv.x*1.6+di*0.5+dt*0.6,uv.y*4.0+1.5);'+
     'vec2 qB=vec2(fbm(stB),fbm(stB+vec2(5.2,1.3)));'+
-    'vec2 rB=vec2(fbm(stB+2.5*qB+vec2(1.7,9.2)+0.10*u_t),'+
-                'fbm(stB+2.5*qB+vec2(8.3,2.8)+0.08*u_t));'+
-    'float cB=fbm(stB+3.0*rB);'+
-    'cB=smoothstep(0.26,0.70,cB);'+
-    'float yA=mix(0.60,0.54,s);'+
-    'float v1=(1.-smoothstep(yA,yA+0.03,uv.y))*smoothstep(yA-0.08,yA-0.01,uv.y);'+
-    'float d1=hm*v1*cA*0.65;'+
-    'float yB=mix(0.53,0.44,s);'+
-    'float v2=(1.-smoothstep(yB,yB+0.04,uv.y))*smoothstep(yB-0.14,yB-0.01,uv.y);'+
+    'vec2 rB=vec2(fbm(stB+3.0*qB+vec2(1.7,9.2)+dt*0.3),fbm(stB+3.0*qB+vec2(8.3,2.8)+dt*0.25));'+
+    'float cB=fbm(stB+4.0*rB);'+
+    'cB=smoothstep(0.15,0.60,cB);'+
+    // Layer 1: upper wisp — wide band (0.16 deep), floats above shore
+    'float yA=mix(0.62,0.56,s);'+
+    'float v1=(1.-smoothstep(yA,yA+0.04,uv.y))*smoothstep(yA-0.16,yA,uv.y);'+
+    'float d1=hm*v1*cA*0.70;'+
+    // Layer 2: main fog bank — very wide (0.24 deep), pours down dramatically
+    'float yB=mix(0.54,0.44,s);'+
+    'float v2=(1.-smoothstep(yB,yB+0.05,uv.y))*smoothstep(yB-0.24,yB,uv.y);'+
     'float d2=hm*v2*cB;'+
-    'float yC=mix(0.47,0.26,s);'+
-    'float v3=(1.-smoothstep(yC,yC+0.03,uv.y))*smoothstep(yC-0.18,yC-0.01,uv.y);'+
-    'float d3=hm*v3*cB*0.50;'+
-    'float d=clamp(d1+d2+d3,0.,1.)*smoothstep(0.05,0.13,uv.y);'+
-    'd=smoothstep(0.08,0.88,d)*0.82;'+
+    // Layer 3: deep cloud — widest (0.28 deep), covers whole water at max scroll
+    'float yC=mix(0.48,0.22,s);'+
+    'float v3=(1.-smoothstep(yC,yC+0.04,uv.y))*smoothstep(yC-0.28,yC,uv.y);'+
+    'float d3=hm*v3*cB*0.60;'+
+    // Thin base atmosphere fills gaps between cloud formations
+    'float base=hm*s*smoothstep(0.06,0.16,uv.y)*(1.-smoothstep(0.58,0.64,uv.y))*0.20;'+
+    'float d=clamp(d1+d2+d3+base,0.,1.)*smoothstep(0.04,0.12,uv.y);'+
+    'd=smoothstep(0.04,0.92,d)*0.88;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
   var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
