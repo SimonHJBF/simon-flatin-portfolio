@@ -689,10 +689,9 @@ ${cards}
 
 ${footerHtml()}
 <script>
-// Mist: thin fog band entering from left/right edges of water zone, scroll-driven.
-// Quilez-style domain-warped fBm gives organic, cloud-like wispy texture.
-// Vertical mask matches .hero__water zone (hero bottom 8-47%).
-// Horizontal spread grows inward from both edges as scroll increases.
+// Mist: fog streams entering from left/right edges along the shore, scroll-driven.
+// Starts 30% in at rest; as scroll increases, mist pours down from shore to cover water.
+// Quilez 2-level domain warp + anisotropic UV creates visible stream tendrils.
 (function(){
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var c=document.getElementById('mc');
@@ -711,17 +710,29 @@ ${footerHtml()}
     'for(int i=0;i<4;i++){v+=a*n(p);p=rot*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
     'void main(){'+
     'vec2 uv=gl_FragCoord.xy/u_r;'+
-    'float wT=0.47,wB=0.08;'+
-    'float vert=smoothstep(wB,wB+0.08,uv.y)*(1.-smoothstep(wT-0.16,wT,uv.y));'+
-    'float band=1.-smoothstep(0.,0.15,abs(uv.y-0.34));'+
-    'float sp=0.04+u_s*0.58;'+
+    // Vertical: starts as a tight band at shore (y=0.44), expands down with scroll
+    'float yShore=0.44;'+
+    'float bandH=mix(0.07,0.36,u_s);'+
+    'float yMid=yShore-bandH*0.42;'+
+    'float vert=1.-smoothstep(bandH*0.4,bandH,abs(uv.y-yMid));'+
+    'vert*=smoothstep(0.06,0.12,uv.y)*(1.-smoothstep(0.43,0.47,uv.y));'+
+    // Horizontal: starts 30% in from each edge, grows to ~65% with scroll
+    'float sp=0.30+u_s*0.35;'+
     'float edge=min(uv.x,1.-uv.x);'+
     'float hm=1.-smoothstep(sp*0.3,sp,edge);'+
-    'vec2 st=vec2(uv.x*4.0+u_t*0.018,uv.y*8.0);'+
+    // Anisotropic UV: wide horizontal, tall vertical → wispy stream-like features
+    // Slow inward drift on each side makes streams "dance" toward center
+    'float di=(uv.x>0.5?-1.:1.)*u_t*0.006;'+
+    'vec2 st=vec2(uv.x*2.5+di+u_t*0.006,(uv.y-0.30)*14.0);'+
+    // 2-level Quilez domain warp for organic, non-repeating stream shapes
     'vec2 q=vec2(fbm(st),fbm(st+vec2(5.2,1.3)));'+
-    'float cloud=fbm(st+1.8*q+vec2(u_t*0.01,0.));'+
-    'float d=hm*(vert*0.45+band*0.55)*(0.30+0.70*cloud);'+
-    'd=smoothstep(0.10,0.80,d)*0.50;'+
+    'vec2 r=vec2(fbm(st+2.5*q+vec2(1.7,9.2)+0.12*u_t),'+
+               'fbm(st+2.5*q+vec2(8.3,2.8)+0.09*u_t));'+
+    'float cloud=fbm(st+3.0*r);'+
+    // S-curve contrast: pulls apart bright streams from dark gaps
+    'cloud=smoothstep(0.28,0.72,cloud);'+
+    'float d=hm*vert*cloud;'+
+    'd=smoothstep(0.10,0.90,d)*0.72;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
   var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
