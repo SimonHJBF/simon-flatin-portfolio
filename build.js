@@ -621,6 +621,8 @@ function generateIndexPage(allProjects, featuredSlugs) {
       pointer-events:none;
       -webkit-mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%);
       mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%); }
+    /* Mist canvas — WebGL procedural fog, scroll-triggered from top corners */
+    #mc { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; display:block; }
     .hero__overlay { position:absolute; inset:0;
       background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
     .hero__scroll-cue { position:absolute; bottom:2.2rem; left:50%;
@@ -648,6 +650,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     ${heroBgHtml}
     ${heroWaterHtml}
     <div class="hero__overlay"></div>
+    <canvas id="mc" aria-hidden="true"></canvas>
     <nav class="nav--hero">
       <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
       <div class="nav__link-row">
@@ -685,6 +688,123 @@ ${cards}
   </section>
 
 ${footerHtml()}
+<script>
+/* Mist — WebGL fragment shader. Procedural fog enters from the top-left and
+   top-right corners of the hero and spreads inward as the user scrolls.
+   Ambient drift always runs so the mist has life even at rest (scroll = 0).
+   No external libraries. Gracefully skipped on WebGL-unavailable devices. */
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var c=document.getElementById('mc');
+  if(!c)return;
+  var gl=c.getContext('webgl',{alpha:true,premultipliedAlpha:false})||
+         c.getContext('experimental-webgl',{alpha:true,premultipliedAlpha:false});
+  if(!gl)return;
+
+  /* ---- shaders ---- */
+  var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}';
+  var fs=[
+    'precision highp float;',
+    'uniform float u_t,u_s;',          /* u_t=time(s)  u_s=scroll(0-1) */
+    'uniform vec2 u_r;',               /* canvas resolution */
+
+    /* value noise helpers */
+    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}',
+    'float n(vec2 p){',
+    ' vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);',
+    ' return mix(mix(h(i),h(i+vec2(1,0)),u.x),',
+    '            mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}',
+
+    /* 4-octave fBm */
+    'float fbm(vec2 p){float v=0.,a=.5;',
+    ' for(int i=0;i<4;i++){v+=a*n(p);p=p*2.+vec2(1.7,9.2);a*=.5;}',
+    ' return v;}',
+
+    'void main(){',
+    ' vec2 uv=gl_FragCoord.xy/u_r;',   /* (0,0)=bottom-left  (1,1)=top-right */
+
+    /* ambient drift — slow time warp so mist breathes even at scroll=0 */
+    ' float t=u_t*0.04;',
+    ' vec2 q=uv*2.8+vec2(t,t*0.5);',
+    ' float f=fbm(q+vec2(fbm(q)*0.7,0.));',  /* domain-warped fBm = organic cloud */
+
+    /* corner spread grows with scroll progress */
+    ' float sp=0.18+u_s*1.1;',
+
+    /* top-left corner (uv = 0,1): scaled so it fans out more sideways */
+    ' float dl=length(vec2(uv.x*0.55,(1.-uv.y)*0.85));',
+    ' float ml=1.-smoothstep(sp*.5,sp,dl);',
+
+    /* top-right corner (uv = 1,1) */
+    ' float dr=length(vec2((1.-uv.x)*0.55,(1.-uv.y)*0.85));',
+    ' float mr=1.-smoothstep(sp*.5,sp,dr);',
+
+    /* combine: noise modulates the mask edge for organic wisps */
+    ' float mask=max(ml,mr)*(0.5+0.5*f);',
+    ' float d=smoothstep(0.25,0.8,mask)*0.32;',  /* max ~32% opacity — subtle */
+
+    /* near-white mist colour (cream-adjacent, visible over dark overlay) */
+    ' gl_FragColor=vec4(0.96,0.95,0.94,d);}',
+  ].join('\n');
+
+  /* ---- compile ---- */
+  function mk(type,src){
+    var s=gl.createShader(type);
+    gl.shaderSource(s,src);gl.compileShader(s);
+    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))return null;
+    return s;
+  }
+  var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
+  if(!sv||!sf)return;
+  var prog=gl.createProgram();
+  gl.attachShader(prog,sv);gl.attachShader(prog,sf);gl.linkProgram(prog);
+  if(!gl.getProgramParameter(prog,gl.LINK_STATUS))return;
+  gl.useProgram(prog);
+
+  /* ---- full-screen quad ---- */
+  var buf=gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  var al=gl.getAttribLocation(prog,'a');
+  gl.enableVertexAttribArray(al);
+  gl.vertexAttribPointer(al,2,gl.FLOAT,false,0,0);
+
+  /* ---- uniforms ---- */
+  var uT=gl.getUniformLocation(prog,'u_t');
+  var uS=gl.getUniformLocation(prog,'u_s');
+  var uR=gl.getUniformLocation(prog,'u_r');
+
+  /* ---- scroll + resize ---- */
+  var sTarget=0,sCurrent=0;
+  function onScroll(){
+    var heroH=c.parentElement.offsetHeight||window.innerHeight;
+    sTarget=Math.min((window.scrollY||window.pageYOffset)/heroH,1);
+  }
+  function resize(){
+    var w=c.offsetWidth||window.innerWidth,h=c.offsetHeight||window.innerHeight;
+    if(c.width!==w||c.height!==h){c.width=w;c.height=h;gl.viewport(0,0,w,h);}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',resize);
+  resize();
+
+  /* ---- render loop ---- */
+  var t0=null;
+  function frame(ts){
+    if(!t0)t0=ts;
+    sCurrent+=(sTarget-sCurrent)*0.06;  /* lerp for buttery scroll response */
+    resize();
+    gl.clearColor(0,0,0,0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(uT,(ts-t0)/1000);
+    gl.uniform1f(uS,sCurrent);
+    gl.uniform2f(uR,c.width,c.height);
+    gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
 <script>
   /* Water ripple — sinusoidal feOffset oscillation, zero seam, works on iOS.
    * dy and dx oscillate at different periods so the combined motion never
