@@ -282,7 +282,15 @@ function footerHtml(prefix) {
 // ─────────────────────────────────────────────
 
 const GRID_CLASSES = { large:'card--large', medium:'card--medium', wide:'card--wide', third:'card--third' };
-const AUTO_PATTERN = ['card--large','card--medium','card--wide','card--wide','card--third','card--third','card--third'];
+// 14-step pattern: alternates large-on-left vs large-on-right every 7 cards
+const AUTO_PATTERN = [
+  'card--large','card--medium',              // row: 7+5=12  (large LEFT)
+  'card--wide','card--wide',                 // row: 6+6=12
+  'card--third','card--third','card--third', // row: 4+4+4=12
+  'card--medium','card--large',              // row: 5+7=12  (large RIGHT)
+  'card--wide','card--wide',                 // row: 6+6=12
+  'card--third','card--third','card--third', // row: 4+4+4=12
+];
 
 function cardHtml(data, index, prefix) {
   const p       = prefix || '';
@@ -569,31 +577,27 @@ function generateIndexPage(allProjects, featuredSlugs) {
     ? `<img class="hero__bg" src="${heroImgPath}" alt="">`
     : `<div class="hero__bg" style="background:linear-gradient(160deg,#2d3d2e 0%,#4a6741 35%,#7a9e6e 60%,#c9d9b8 100%);"></div>`;
 
-  // SVG water ripple — calm upward flow on bottom ~45% (the water area).
-  // feOffset animates the noise upward (dy goes negative) at constant speed.
-  // stitchTiles="stitch" makes the noise tile seamlessly; JS corrects the
-  // loop period to match the exact filter subregion height so there is no
-  // visible jump at the repeat point.
-  const heroWaterHtml = heroImgPath ? `  <svg class="hero__water" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  // Water ripple on the lower ~45% of the hero (where the water/fjord is).
+  // Technique: a <div> with the same background-image is clipped to the
+  // bottom 45% via a wrapper with overflow:hidden. A CSS filter (referencing
+  // an inline SVG <filter>) applies feTurbulence displacement to it.
+  // The noise uses stitchTiles="stitch" so it tiles seamlessly at exactly
+  // the filter-subregion height; JS scrolls the feOffset by that period for
+  // a perfect infinite loop with zero visible jump.
+  const heroWaterHtml = heroImgPath ? `
+  <div class="hero__water-wrap">
+    <div class="hero__water" style="background-image:url('${heroImgPath}')"></div>
+  </div>
+  <svg class="hero__water-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <filter id="water-ripple" x="-5%" y="-5%" width="110%" height="110%">
-        <feTurbulence type="fractalNoise"
-                      baseFrequency="0.012 0.018"
-                      numOctaves="2" seed="7"
-                      stitchTiles="stitch"
-                      result="rawNoise"/>
-        <feOffset id="water-offset" in="rawNoise" result="noise" dx="0" dy="0"/>
-        <feDisplacementMap in="SourceGraphic" in2="noise"
-                           scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      <filter id="wf" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.009 0.014"
+                      numOctaves="3" seed="5" stitchTiles="stitch" result="n"/>
+        <feOffset id="wo" in="n" dx="0" dy="0" result="s"/>
+        <feDisplacementMap in="SourceGraphic" in2="s"
+                           scale="22" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
-      <clipPath id="water-clip" clipPathUnits="objectBoundingBox">
-        <rect x="0" y="0.55" width="1" height="0.45"/>
-      </clipPath>
     </defs>
-    <image href="${heroImgPath}" width="100%" height="100%"
-           preserveAspectRatio="xMidYMid slice"
-           filter="url(#water-ripple)"
-           clip-path="url(#water-clip)"/>
   </svg>` : '';
 
   return `<!DOCTYPE html>
@@ -606,7 +610,14 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <style>
     .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
     .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .hero__water { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+    /* Water ripple — wrapper clips to bottom 45%, inner div is full-hero sized
+       so background-size:cover aligns perfectly with the static hero__bg */
+    .hero__water-defs { position:absolute; width:0; height:0; overflow:hidden; }
+    .hero__water-wrap { position:absolute; top:55%; left:0; right:0; bottom:0;
+      overflow:hidden; pointer-events:none; }
+    .hero__water { position:absolute; bottom:0; left:0; right:0; height:100vh;
+      background-size:cover; background-position:center center;
+      filter:url(#wf); }
     .hero__overlay { position:absolute; inset:0;
       background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
     .hero__scroll-cue { position:absolute; bottom:2.2rem; left:50%;
@@ -672,25 +683,31 @@ ${cards}
 
 ${footerHtml()}
 <script>
-  /* rAF water animation — truly seamless loop, no SMIL reset glitch, no pause. */
+  /* Water ripple — seamless upward scroll via feTurbulence + stitchTiles.
+   * The noise tiles at period = element_height × 1.1 (the filter subregion).
+   * With stitchTiles="stitch", noise(y) == noise(y + period), so scrolling
+   * feOffset.dy by exactly one period loops with zero visible discontinuity. */
   (function(){
-    var offset=0,lastTs=null,speed=8,period=0;
-    function updatePeriod(){
-      var s=document.querySelector('.hero__water');
-      if(s){var h=s.getBoundingClientRect().height*1.1;if(h>0){if(period>0)offset=offset%h;period=h;}}
-    }
+    var el=document.querySelector('.hero__water');
+    var fo=document.getElementById('wo');
+    if(!el||!fo)return;
+    var offset=0,lastTs=null,speed=5,period=0;
+    function calcPeriod(){ return el.getBoundingClientRect().height*1.1; }
     function step(ts){
-      if(lastTs===null)lastTs=ts;
-      var dt=(ts-lastTs)/1000;lastTs=ts;
-      if(dt>0.1)dt=0.1; /* clamp if tab was hidden */
-      var f=document.getElementById('water-offset');
-      if(f&&period>0){offset=(offset+speed*dt)%period;f.setAttribute('dy',String(-offset));}
+      if(lastTs===null){ lastTs=ts; period=calcPeriod(); }
+      var dt=Math.min((ts-lastTs)/1000,0.1); lastTs=ts;
+      if(period<=0){ period=calcPeriod(); requestAnimationFrame(step); return; }
+      offset=(offset+speed*dt)%period;
+      fo.setAttribute('dy',String(-offset));
       requestAnimationFrame(step);
     }
     if(document.readyState==='loading'){
-      document.addEventListener('DOMContentLoaded',function(){updatePeriod();requestAnimationFrame(step);});
-    } else {updatePeriod();requestAnimationFrame(step);}
-    window.addEventListener('resize',updatePeriod);
+      document.addEventListener('DOMContentLoaded',function(){ period=calcPeriod(); requestAnimationFrame(step); });
+    } else { period=calcPeriod(); requestAnimationFrame(step); }
+    window.addEventListener('resize',function(){
+      var h=calcPeriod();
+      if(h>0){ if(period>0) offset=offset*(h/period); period=h; }
+    });
   })();
 </script>
 ${LANG_TOGGLE_SCRIPT}
@@ -1184,8 +1201,13 @@ function build() {
     projects.push(data);
   }
 
-  // Sort newest first
-  projects.sort((a, b) => parseInt(b.year || 0) - parseInt(a.year || 0));
+  // Sort by weight (desc, default 0) then by year (desc)
+  // Use weight: -N in project.txt to push a project toward the end of the list.
+  projects.sort((a, b) => {
+    const wa = parseInt(a.weight || 0), wb = parseInt(b.weight || 0);
+    if (wb !== wa) return wb - wa;
+    return parseInt(b.year || 0) - parseInt(a.year || 0);
+  });
 
   // 2. Generate work.html
   writeFile(path.join(ROOT, 'work.html'), generateWorkPage(projects));

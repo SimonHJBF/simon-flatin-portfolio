@@ -6,6 +6,7 @@ typology: Regulatory Application / Change of Use
 organization: Bjørkå Flatin ENK
 status: In Progress
 grid: third
+weight: -10
 
 ---
 
