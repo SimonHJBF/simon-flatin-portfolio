@@ -689,115 +689,69 @@ ${cards}
 
 ${footerHtml()}
 <script>
-/* Mist — WebGL fragment shader. Procedural fog enters from the top-left and
-   top-right corners of the hero and spreads inward as the user scrolls.
-   Ambient drift always runs so the mist has life even at rest (scroll = 0).
-   No external libraries. Gracefully skipped on WebGL-unavailable devices. */
+// Mist: WebGL procedural fog from top-left + top-right corners, scroll-triggered.
+// Ambient fbm drift keeps the mist alive even at scroll=0 (like the water ripple).
+// String-concatenated GLSL avoids any comment/encoding issues in all browsers.
 (function(){
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var c=document.getElementById('mc');
   if(!c)return;
-  var gl=c.getContext('webgl',{alpha:true,premultipliedAlpha:false})||
-         c.getContext('experimental-webgl',{alpha:true,premultipliedAlpha:false});
+  var gl=c.getContext('webgl')||c.getContext('experimental-webgl');
   if(!gl)return;
-
-  /* ---- shaders ---- */
   var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}';
-  var fs=[
-    'precision highp float;',
-    'uniform float u_t,u_s;',          /* u_t=time(s)  u_s=scroll(0-1) */
-    'uniform vec2 u_r;',               /* canvas resolution */
-
-    /* value noise helpers */
-    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}',
-    'float n(vec2 p){',
-    ' vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);',
-    ' return mix(mix(h(i),h(i+vec2(1,0)),u.x),',
-    '            mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}',
-
-    /* 4-octave fBm */
-    'float fbm(vec2 p){float v=0.,a=.5;',
-    ' for(int i=0;i<4;i++){v+=a*n(p);p=p*2.+vec2(1.7,9.2);a*=.5;}',
-    ' return v;}',
-
-    'void main(){',
-    ' vec2 uv=gl_FragCoord.xy/u_r;',   /* (0,0)=bottom-left  (1,1)=top-right */
-
-    /* ambient drift — slow time warp so mist breathes even at scroll=0 */
-    ' float t=u_t*0.04;',
-    ' vec2 q=uv*2.8+vec2(t,t*0.5);',
-    ' float f=fbm(q+vec2(fbm(q)*0.7,0.));',  /* domain-warped fBm = organic cloud */
-
-    /* corner spread grows with scroll progress */
-    ' float sp=0.18+u_s*1.1;',
-
-    /* top-left corner (uv = 0,1): scaled so it fans out more sideways */
-    ' float dl=length(vec2(uv.x*0.55,(1.-uv.y)*0.85));',
-    ' float ml=1.-smoothstep(sp*.5,sp,dl);',
-
-    /* top-right corner (uv = 1,1) */
-    ' float dr=length(vec2((1.-uv.x)*0.55,(1.-uv.y)*0.85));',
-    ' float mr=1.-smoothstep(sp*.5,sp,dr);',
-
-    /* combine: noise modulates the mask edge for organic wisps */
-    ' float mask=max(ml,mr)*(0.5+0.5*f);',
-    ' float d=smoothstep(0.25,0.8,mask)*0.32;',  /* max ~32% opacity — subtle */
-
-    /* near-white mist colour (cream-adjacent, visible over dark overlay) */
-    ' gl_FragColor=vec4(0.96,0.95,0.94,d);}',
-  ].join('\n');
-
-  /* ---- compile ---- */
-  function mk(type,src){
-    var s=gl.createShader(type);
-    gl.shaderSource(s,src);gl.compileShader(s);
-    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))return null;
-    return s;
-  }
+  // GLSL: uv(0,0)=bottom-left (1,1)=top-right; mist enters from (0,1) and (1,1).
+  // sp (spread) grows from 0.28 at rest to 1.2 at full scroll, filling toward centre.
+  // f is 3-octave fBm noise drifting slowly with time for organic wisp texture.
+  var fs=
+    'precision mediump float;'+
+    'uniform float u_t,u_s;'+
+    'uniform vec2 u_r;'+
+    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}'+
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);'+
+    'return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
+    'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<3;i++){v+=a*n(p);p=p*2.+vec2(1.7,9.2);a*=.5;}return v;}'+
+    'void main(){'+
+    'vec2 uv=gl_FragCoord.xy/u_r;'+
+    'float f=fbm(uv*3.0+vec2(u_t*0.04,u_t*0.02));'+
+    'float sp=0.28+u_s*0.92;'+
+    'float dl=length(vec2(uv.x*0.5,(1.-uv.y)*0.75));'+
+    'float ml=1.-smoothstep(sp*0.5,sp,dl);'+
+    'float dr=length(vec2((1.-uv.x)*0.5,(1.-uv.y)*0.75));'+
+    'float mr=1.-smoothstep(sp*0.5,sp,dr);'+
+    'float mask=max(ml,mr)*(0.55+0.45*f);'+
+    'float d=smoothstep(0.15,0.72,mask)*0.45;'+
+    'gl_FragColor=vec4(0.97*d,0.96*d,0.95*d,d);}';
+  function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
   var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
   if(!sv||!sf)return;
-  var prog=gl.createProgram();
-  gl.attachShader(prog,sv);gl.attachShader(prog,sf);gl.linkProgram(prog);
-  if(!gl.getProgramParameter(prog,gl.LINK_STATUS))return;
-  gl.useProgram(prog);
-
-  /* ---- full-screen quad ---- */
+  var p=gl.createProgram();
+  gl.attachShader(p,sv);gl.attachShader(p,sf);gl.linkProgram(p);
+  if(!gl.getProgramParameter(p,gl.LINK_STATUS))return;
+  gl.useProgram(p);
   var buf=gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER,buf);
   gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
-  var al=gl.getAttribLocation(prog,'a');
+  var al=gl.getAttribLocation(p,'a');
   gl.enableVertexAttribArray(al);
   gl.vertexAttribPointer(al,2,gl.FLOAT,false,0,0);
-
-  /* ---- uniforms ---- */
-  var uT=gl.getUniformLocation(prog,'u_t');
-  var uS=gl.getUniformLocation(prog,'u_s');
-  var uR=gl.getUniformLocation(prog,'u_r');
-
-  /* ---- scroll + resize ---- */
-  var sTarget=0,sCurrent=0;
-  function onScroll(){
-    var heroH=c.parentElement.offsetHeight||window.innerHeight;
-    sTarget=Math.min((window.scrollY||window.pageYOffset)/heroH,1);
-  }
-  function resize(){
-    var w=c.offsetWidth||window.innerWidth,h=c.offsetHeight||window.innerHeight;
-    if(c.width!==w||c.height!==h){c.width=w;c.height=h;gl.viewport(0,0,w,h);}
-  }
+  var uT=gl.getUniformLocation(p,'u_t');
+  var uS=gl.getUniformLocation(p,'u_s');
+  var uR=gl.getUniformLocation(p,'u_r');
+  var sT=0,sC=0;
+  function resize(){var w=c.offsetWidth||window.innerWidth,h=c.offsetHeight||window.innerHeight;if(c.width!==w||c.height!==h){c.width=w;c.height=h;gl.viewport(0,0,w,h);}}
+  function onScroll(){sT=Math.min((window.scrollY||window.pageYOffset)/(c.parentElement.offsetHeight||window.innerHeight),1);}
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',resize);
   resize();
-
-  /* ---- render loop ---- */
   var t0=null;
   function frame(ts){
     if(!t0)t0=ts;
-    sCurrent+=(sTarget-sCurrent)*0.06;  /* lerp for buttery scroll response */
+    sC+=(sT-sC)*0.06;
     resize();
     gl.clearColor(0,0,0,0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(uT,(ts-t0)/1000);
-    gl.uniform1f(uS,sCurrent);
+    gl.uniform1f(uS,sC);
     gl.uniform2f(uR,c.width,c.height);
     gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
     requestAnimationFrame(frame);
