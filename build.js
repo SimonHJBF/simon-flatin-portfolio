@@ -689,10 +689,11 @@ ${cards}
 
 ${footerHtml()}
 <script>
-// Mist v4: 4 braided fog layers. Linear-ramp noise (not smoothstep) = true atmospheric fog.
-// sp=0.20+s*0.73: full centre overlap at u_s=0.75 (75% scroll). Wide lateral fade 0.32.
-// Braiding: layer y-peaks oscillate opposite phase (sin 1.5 cycles across width) so
-// streams interweave as they enter centre. Lower per-layer opacity = see-through atmosphere.
+// Mist v5: two INDEPENDENT fog fields — LEFT (flows →) and RIGHT (flows ←).
+// Each has its own mask that extends PAST the centre to the opposite edge.
+// No shared symmetric mask → no centre seam, no hard stop at x=0.5.
+// Single-level domain warp only → puffy clouds, no swirly tendrils.
+// Mobile: aspect-ratio density boost for portrait screens.
 (function(){
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   var c=document.getElementById('mc');
@@ -707,58 +708,51 @@ ${footerHtml()}
     'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}'+
     'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);'+
     'return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
-    'float fbm(vec2 p){float v=0.,a=.5;mat2 rot=mat2(.8,.6,-.6,.8);'+
-    'for(int i=0;i<6;i++){v+=a*n(p);p=rot*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
+    'float fbm(vec2 p){float v=0.,a=.5;mat2 m=mat2(.8,.6,-.6,.8);'+
+    'for(int i=0;i<5;i++){v+=a*n(p);p=m*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
     'void main(){'+
     'vec2 uv=gl_FragCoord.xy/u_r;'+
     'float s=u_s*u_s*(3.-2.*u_s);'+
-    // sp=0.925 at u_s=0.75; at full scroll fog crosses well past centre to opposite side
-    'float sp=0.25+s*0.80;'+
-    'float edge=min(uv.x,1.-uv.x);'+
-    // Wide lateral fade 0.32 = soft horizontal edges
-    'float hm=clamp((sp-edge)/0.32,0.,1.);'+
-    'hm=hm*hm*(3.-2.*hm);'+
-    // Left-side balance: smooth +18% boost at far left, tapers to 0 at centre/right
-    'hm=clamp(hm*(1.0+0.18*clamp((0.5-uv.x)*2.0,0.,1.)),0.,1.);'+
-    // Drift speed ×2 vs v4 (0.006 vs 0.003) — still slow but perceptibly moving
-    'float dt=u_t*0.006;'+
-    'float di=(uv.x>0.5?-1.:1.)*(u_t*0.006+0.024*sin(u_t*0.18));'+
-    // Braiding: 1.5 sine cycles across width (9.42≈3π), grows with scroll+proximity
-    // L1&L4 add braid, L2&L3 subtract → layers interweave as they enter centre
-    'float braid=s*hm*0.030*sin(uv.x*9.42+u_t*0.09);'+
-    // Field A: 2.0:5.0 UV — moderate anisotropy = cloud puffs
-    'vec2 stA=vec2(uv.x*2.0+di+dt,uv.y*5.0+0.5);'+
-    'vec2 qA=vec2(fbm(stA),fbm(stA+vec2(5.2,1.3)));'+
-    'vec2 rA=vec2(fbm(stA+3.5*qA+vec2(1.7,9.2)+dt*0.5),fbm(stA+3.5*qA+vec2(8.3,2.8)+dt*0.4));'+
-    'float cA=fbm(stA+4.0*rA);'+
-    // Lower threshold + higher scale → ~1.7× more visible density vs v4
-    'cA=clamp((cA-0.25)*1.8,0.,1.);'+
-    // Field B: 1.5:3.5 UV — coarser, broader masses
-    'vec2 stB=vec2(uv.x*1.5+di*0.5+dt*0.6,uv.y*3.5+1.5);'+
-    'vec2 qB=vec2(fbm(stB),fbm(stB+vec2(5.2,1.3)));'+
-    'vec2 rB=vec2(fbm(stB+3.5*qB+vec2(1.7,9.2)+dt*0.3),fbm(stB+3.5*qB+vec2(8.3,2.8)+dt*0.25));'+
-    'float cB=fbm(stB+4.0*rB);'+
-    'cB=clamp((cB-0.25)*1.8,0.,1.);'+
-    // Layer 1 — upper wisp: braids UP. Wide soft top (0.10) + bottom (0.22)
-    'float yA=mix(0.63,0.57,s)+braid;'+
+    // Aspect ratio: <1 on portrait phone, used for mobile density boost
+    'float aspect=u_r.x/u_r.y;'+
+    // sp=0.80 at rest → hmL at x=1.0 = 0.199 (fog present everywhere even without scroll)
+    // sp=1.0 at full scroll → hmL at x=1.0 = 1.0 (fully covered). No seam at any scroll depth.
+    'float sp=0.80+s*0.20;'+
+    'float fw=0.28;'+
+    // LEFT mask: full at x=0, soft right edge at x≈sp. Extends past centre at sp>0.5+fw
+    'float hmL=clamp((sp-uv.x+fw)/fw,0.,1.);'+
+    'hmL=hmL*hmL*(3.-2.*hmL);'+
+    // RIGHT mask: mirror — full at x=1, soft left edge. Both fully overlap at 75% scroll
+    'float hmR=clamp((sp-(1.-uv.x)+fw)/fw,0.,1.);'+
+    'hmR=hmR*hmR*(3.-2.*hmR);'+
+    // Always animating (cinematic idle), faster when scrolled
+    'float dt=u_t*(0.003+s*0.005);'+
+    // LEFT noise: x decreases over time → pattern drifts rightward (inward)
+    // UV 2:3 ratio → puffy round shapes, not streaks
+    'vec2 stL=vec2(uv.x*2.0-dt,uv.y*3.0+0.5);'+
+    'vec2 qL=vec2(fbm(stL),fbm(stL+vec2(4.1,1.8)));'+
+    'float cL=fbm(stL+1.2*qL);'+ // single-level warp only = cloud puffs not swirls
+    'cL=clamp((cL-0.25)*1.8,0.,1.);'+
+    // RIGHT noise: independent seed (+7.3/+3.5 phase offset), drifts leftward
+    'vec2 stR=vec2((1.-uv.x)*2.0-dt+7.3,uv.y*3.0+3.5);'+
+    'vec2 qR=vec2(fbm(stR),fbm(stR+vec2(4.1,1.8)));'+
+    'float cR=fbm(stR+1.2*qR);'+
+    'cR=clamp((cR-0.25)*1.8,0.,1.);'+
+    // Three layers — same vertical structure for both L and R fields
+    'float yA=mix(0.63,0.57,s);'+
     'float v1=(1.-smoothstep(yA-0.02,yA+0.10,uv.y))*smoothstep(yA-0.22,yA+0.02,uv.y);'+
-    'float d1=hm*v1*cA*0.63;'+
-    // Layer 2 — main bank: braids DOWN. Deep soft bottom (0.28)
-    'float yB=mix(0.53,0.44,s)-braid;'+
+    'float yB=mix(0.53,0.44,s);'+
     'float v2=(1.-smoothstep(yB-0.02,yB+0.10,uv.y))*smoothstep(yB-0.28,yB+0.02,uv.y);'+
-    'float d2=hm*v2*cB*0.75;'+
-    // Layer 3 — mid wisp: braids DOWN with L2
-    'float yC=mix(0.58,0.51,s)-braid*0.6;'+
-    'float v3=(1.-smoothstep(yC-0.01,yC+0.08,uv.y))*smoothstep(yC-0.18,yC+0.01,uv.y);'+
-    'float d3=hm*v3*cA*0.52;'+
-    // Layer 4 — deep cloud: braids UP with L1. Sweeps far down at full scroll
-    'float yD=mix(0.46,0.20,s)+braid*0.7;'+
-    'float v4=(1.-smoothstep(yD-0.01,yD+0.07,uv.y))*smoothstep(yD-0.32,yD+0.01,uv.y);'+
-    'float d4=hm*v4*cB*0.56;'+
-    // Base haze
-    'float base=hm*s*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.13;'+
-    'float d=clamp(d1+d2+d3+d4+base,0.,1.)*smoothstep(0.03,0.10,uv.y);'+
-    // Max 0.86 — more visible than v4 (0.78) but softer than old (0.88)
+    'float yC=mix(0.46,0.22,s);'+
+    'float v3=(1.-smoothstep(yC-0.01,yC+0.07,uv.y))*smoothstep(yC-0.30,yC+0.01,uv.y);'+
+    // L and R overlap everywhere — no seam. dens ramps from 0.40 at rest to 1.0 at full scroll.
+    'float dens=0.40+s*0.60;'+
+    'float dL=hmL*(v1*cL*0.63+v2*cL*0.76+v3*cL*0.52)*dens;'+
+    'float dR=hmR*(v1*cR*0.63+v2*cR*0.76+v3*cR*0.52)*dens;'+
+    'float base=(hmL+hmR)*0.5*(0.25+s*0.75)*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.10;'+
+    'float d=clamp(dL+dR+base,0.,1.)*smoothstep(0.03,0.10,uv.y);'+
+    // Portrait screens: boost density so fog feels solid on tall vertical canvases
+    'd=clamp(d*(1.0+max(0.,(1.-aspect)*0.5)),0.,1.);'+
     'd=smoothstep(0.02,0.96,d)*0.86;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
