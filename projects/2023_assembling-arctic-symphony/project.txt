@@ -1,11 +1,11 @@
 title: Assembling the Arctic Symphony
 category: Performance · Installation
-year: 2023
+year: 2020
 location: Delft, The Netherlands
 typology: Live Performance / Installation
 organization: TU Delft
 collaborators: Ewa Ziemiecka, Zofia Sosnierz
-exhibitions: TU Delft, Spring 2020
+exhibitions: TU Delft, Spring 2020 (preceded graduation project)
 grid: third
 
 ---

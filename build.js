@@ -424,6 +424,7 @@ ${heroHtml}
         mRow('Status',      data.status) +
         mRow('Client',      data.client) +
         mRow('Collaborators', data.collaborators) +
+        mRow('Mentors',      data.mentors) +
         mRow('Exhibitions', data.exhibitions)
       }
       </dl>

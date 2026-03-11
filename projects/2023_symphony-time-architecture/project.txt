@@ -4,6 +4,7 @@ year: 2023
 location: Delft, The Netherlands
 typology: Research / Theoretical Project
 organization: TU Delft
+mentors: Suzana Milinovic, Taneha Kuzniecow Bacchin, Rufus R. van den Ban, Denise Piccinini
 status: Realised
 grid: large
 

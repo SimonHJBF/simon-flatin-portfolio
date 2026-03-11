@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "node build.js && npx --yes serve -l 3000 ."],
+      "port": 3000
+    }
+  ]
+}

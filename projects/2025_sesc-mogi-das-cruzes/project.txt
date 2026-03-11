@@ -1,7 +1,7 @@
 title: SESC Mogi das Cruzes
 category: Architecture · Competition
 year: 2025
-location: São Paulo, Brazil
+location: Mogi das Cruzes, São Paulo, Brazil
 typology: Cultural Centre / Competition
 status: Concept
 grid: large

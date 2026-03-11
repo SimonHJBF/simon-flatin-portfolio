@@ -28,14 +28,14 @@ period: Autumn 2021
 role: Intern
 org: Lüchinger Architects / Mieke Vink
 location: Rotterdam, The Netherlands
-desc: Creative and innovative workplace designing restaurants, bars and cafés — working on everything from layout to custom stainless steel products for a variety of clients.
+desc: Contributed to the design of restaurants, bars and cafés, taking personal responsibility for layout development, spatial detailing and the design of custom stainless steel products and fixtures.
 
 [education]
 period: 2020 — 2023
 role: Master of Science in Architecture
 org: TU Delft
 location: Delft, The Netherlands
-desc: Developing innovative building projects that use design to address technical, social and spatial challenges in the built environment.
+desc: Graduated cum laude. Developing innovative building projects that use design to address technical, social and spatial challenges in the built environment. Graduation project: Arctic Symphony — a multidisciplinary work merging architecture, performance, photography and landscape.
 
 [education]
 period: 2017 — 2020
