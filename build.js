@@ -727,23 +727,22 @@ ${footerHtml()}
     'hmR=hmR*hmR*(3.-2.*hmR);'+
     // Always animating (cinematic idle), faster when scrolled
     'float dt=u_t*(0.003+s*0.005);'+
-    // LEFT noise: x decreases over time → pattern drifts rightward (inward)
-    // UV 2:3 ratio → puffy round shapes, not streaks
-    'vec2 stL=vec2(uv.x*2.0-dt,uv.y*3.0+0.5);'+
+    // LEFT fog: drifts rightward with time + scroll. s*1.0 = ~0.5 UV shift at full scroll.
+    'vec2 stL=vec2(uv.x*2.0-dt-s*1.0,uv.y*3.0+0.5);'+
     'vec2 qL=vec2(fbm(stL),fbm(stL+vec2(4.1,1.8)));'+
-    'float cL=fbm(stL+1.2*qL);'+ // single-level warp only = cloud puffs not swirls
+    'float cL=fbm(stL+1.2*qL);'+
     'cL=clamp((cL-0.25)*1.8,0.,1.);'+
-    // RIGHT noise: independent seed (+7.3/+3.5 phase offset), drifts leftward
-    'vec2 stR=vec2((1.-uv.x)*2.0-dt+7.3,uv.y*3.0+3.5);'+
+    // RIGHT fog: independent seed, drifts leftward with time + scroll (mirror of L)
+    'vec2 stR=vec2((1.-uv.x)*2.0-dt-s*1.0+7.3,uv.y*3.0+3.5);'+
     'vec2 qR=vec2(fbm(stR),fbm(stR+vec2(4.1,1.8)));'+
     'float cR=fbm(stR+1.2*qR);'+
     'cR=clamp((cR-0.25)*1.8,0.,1.);'+
-    // Three layers — same vertical structure for both L and R fields
-    'float yA=mix(0.63,0.57,s);'+
+    // Three fixed-height layers — no scroll-driven vertical descent
+    'float yA=0.60;'+
     'float v1=(1.-smoothstep(yA-0.02,yA+0.10,uv.y))*smoothstep(yA-0.22,yA+0.02,uv.y);'+
-    'float yB=mix(0.53,0.44,s);'+
+    'float yB=0.48;'+
     'float v2=(1.-smoothstep(yB-0.02,yB+0.10,uv.y))*smoothstep(yB-0.28,yB+0.02,uv.y);'+
-    'float yC=mix(0.46,0.22,s);'+
+    'float yC=0.34;'+
     'float v3=(1.-smoothstep(yC-0.01,yC+0.07,uv.y))*smoothstep(yC-0.30,yC+0.01,uv.y);'+
     // L and R overlap everywhere — no seam. dens ramps from 0.40 at rest to 1.0 at full scroll.
     'float dens=0.40+s*0.60;'+
