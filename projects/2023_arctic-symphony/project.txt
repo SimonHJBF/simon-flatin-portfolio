@@ -5,7 +5,7 @@ location: Alta / Eibyelva, Norway / Delft, The Netherlands
 typology: Multidisciplinary Graduation Project
 status: Realised
 organization: TU Delft
-collaborators: Ewa Ziemiecka, Zofia Sosnierz
+collaborators: Ewa Ziemiecka, Zofia Sosnierz, Bintang Manira Manik, Alex Kirschstein
 exhibitions: TU Delft Graduation Show 2023
 grid: large
 featured: yes

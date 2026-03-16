@@ -1,9 +1,10 @@
 title: Borders and Transitions
 category: Photography · Research
 year: 2023
-location: Norway
+location: Alta, Norway
 typology: Photography Series
 status: Realised
+collaborators: Håvard Bjørkå Flatin
 grid: medium
 
 ---

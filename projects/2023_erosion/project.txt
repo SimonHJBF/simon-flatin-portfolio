@@ -1,7 +1,7 @@
 title: Erosion
 category: Photography · Research
 year: 2023
-location: Norway
+location: Alta, Norway
 typology: Photography Series
 status: Realised
 grid: third

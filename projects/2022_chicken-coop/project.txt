@@ -1,9 +1,10 @@
 title: Chicken Coop
 category: Architecture · Making
 year: 2022
-location: Oslo, Norway
+location: Larkollen, Norway
 typology: Personal Build
 status: Realised
+collaborators: Håvard Flatin; photography by Alex Kirschstein
 grid: wide
 
 ---

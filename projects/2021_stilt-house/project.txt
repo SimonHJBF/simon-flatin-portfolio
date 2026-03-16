@@ -1,7 +1,7 @@
 title: Stilt House
 category: Architecture
 year: 2021
-location: The Netherlands
+location: Delft, The Netherlands
 typology: Residential / Flood-Adaptive
 organization: TU Delft
 status: Concept

@@ -2,7 +2,7 @@ title: Billow by the Maas
 category: Architecture · Urban Design
 year: 2020
 location: Rotterdam, The Netherlands
-typology: Mixed-Use / Waterfront
+typology: Sports School / Mixed-Use
 organization: TU Delft
 status: Concept
 grid: wide

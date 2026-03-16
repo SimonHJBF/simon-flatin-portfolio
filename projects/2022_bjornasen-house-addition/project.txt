@@ -1,7 +1,7 @@
 title: Bjørnåsen House Addition
 category: Architecture · Residential
 year: 2022
-location: Oslo, Norway
+location: Larkollen, Norway
 typology: House Extension
 status: In Progress
 grid: large

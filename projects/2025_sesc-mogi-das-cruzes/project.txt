@@ -2,8 +2,9 @@ title: SESC Mogi das Cruzes
 category: Architecture · Competition
 year: 2025
 location: Mogi das Cruzes, São Paulo, Brazil
-typology: Cultural Centre / Competition
-status: Concept
+typology: Sociocultural & Sports Park
+status: Design proposal
+collaborators: Denis Joelsons, Miguel Mincache, Sofia Comini
 grid: large
 weight: 10
 
