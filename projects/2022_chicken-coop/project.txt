@@ -1,6 +1,6 @@
 title: Chicken Coop
 category: Architecture · Making
-year: 2022
+year: 2024
 location: Larkollen, Norway
 typology: Personal Build
 status: Realised

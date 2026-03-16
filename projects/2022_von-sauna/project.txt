@@ -1,6 +1,6 @@
 title: Von Sauna — Floating Saunas
 category: Visualization · Pitch Package
-year: 2022
+year: 2025
 location: Seattle, Washington
 typology: Render / Pitch Package
 status: Design proposal

@@ -1,6 +1,6 @@
 title: The Staircase Home
 category: Architecture · Residential
-year: 2020
+year: 2018
 location: Rotterdam, The Netherlands
 typology: Single-Family Residence
 organization: TU Delft

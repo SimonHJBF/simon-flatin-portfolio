@@ -1,32 +1,33 @@
-title: High-Density Harbour District
-category: Architecture · Urban Design
+title: Oud Alblas
+category: Architecture · Internship
 year: 2021
-location: South Holland, The Netherlands
-typology: Mixed-Use Urban Quarter
-organization: TU Delft
-status: Concept
-grid: wide
+location: Oud-Alblas, The Netherlands
+typology: Residential Conversion
+organization: Lüchinger Architects / Mieke Vink
+status: Design proposal
+collaborators: Thomas Zhang
+grid: medium
 
 ---
 
-High-Density Harbour District is a design proposal for a post-industrial waterfront site in South Holland, exploring how dense urban living can be reintroduced to a former harbour area without erasing the traces of its industrial past.
+During my internship with Mieke Vink at Lüchinger Architects in Rotterdam, I worked alongside fellow intern Thomas Zhang on a project to transform a historic barn in Oud-Alblas into a liveable home. The barn, originally built for cows, had a characteristic black-stained wooden facade and a thatched roof — a vernacular typology common in the Dutch polder landscape.
 
-Developed as part of the ON3 design studio at TU Delft, the project proposes a new urban grain — a mixture of housing typologies, shared spaces and public waterfront — structured around the existing dock infrastructure. Warehouses are partially retained as civic anchors; new construction fills in the gaps with a finer-grained residential fabric.
+The brief called for converting the agricultural structure into a comfortable dwelling for an elderly woman, while preserving the building's rural character and material honesty. The design retained the existing structural frame and distinctive facade, reorganising the interior around a new central living space with clear connections to the garden.
 
-The central design question was how density and intimacy can coexist: how a high-density quarter can feel inhabited rather than overwhelming, human-scaled rather than monumental. The proposal achieves this through careful section work, varied courtyard sizes and the preservation of key sightlines to the water.
+The project deepened my understanding of adaptive reuse — the discipline of reading an existing building's logic and spatial potential before proposing any changes.
 
 ===no===
 
-High-Density Harbour District er et designforslag for et post-industrielt strandsoneområde i Sør-Holland, og utforsker hvordan tett bybeboelse kan gjeninnføres i et tidligere havneområde uten å slette sporene av dets industrielle fortid.
+Under praksisen min hos Mieke Vink ved Lüchinger Architects i Rotterdam arbeidet jeg side om side med medintern Thomas Zhang på et prosjekt for å transformere en historisk låve i Oud-Alblas til en beboelig bolig. Låven, opprinnelig bygget for kyr, hadde en karakteristisk svartbeiset trefasade og stråtak — en lokal byggetypologi som er vanlig i det nederlandske polderlandskapet.
 
-Utviklet som del av ON3-designstudioet ved TU Delft foreslår prosjektet et nytt urbant korn — en blanding av boligtypologier, fellesrom og offentlig strandpromenade — strukturert rundt den eksisterende dokkinfrastrukturen. Lagerhus bevares delvis som sivile ankerpunkter; ny konstruksjon fyller hullene med et finere boligfabrikk.
+Oppgaven krevde at den landbruksmessige konstruksjonen ble gjort om til en komfortabel bolig for en eldre dame, mens bygningens landlige karakter og materialærlighet ble bevart. Designet beholdt den eksisterende bærende konstruksjonen og den karakteristiske fasaden, og reorganiserte interiøret rundt et nytt sentralt oppholdsrom med klare forbindelser til hagen.
 
-Det sentrale designspørsmålet var hvordan tetthet og intimitet kan sameksistere: hvordan et høytetthetskvarter kan føles bebodd snarere enn overveldende, menneskeskalert snarere enn monumentalt. Forslaget oppnår dette gjennom nøye snittverk, varierte gårdsplassestørrelser og bevaring av viktige siktlinjer mot vannet.
+Prosjektet utdypet min forståelse av adaptiv gjenbruk — disiplinen med å lese en eksisterende bygnings logikk og romlige potensiale før noen endringer foreslås.
 
 ===pt===
 
-High-Density Harbour District é uma proposta de design para um local de orla pós-industrial no sul da Holanda, explorando como a habitação urbana densa pode ser reintroduzida em uma antiga área portuária sem apagar os vestígios de seu passado industrial.
+Durante meu estágio com Mieke Vink no escritório Lüchinger Architects em Rotterdam, trabalhei junto com o colega estagiário Thomas Zhang em um projeto para transformar um celeiro histórico em Oud-Alblas em uma habitação residencial. O celeiro, originalmente construído para abrigar vacas, tinha uma fachada de madeira pintada de preto e um telhado de palha — uma tipologia vernácula comum na paisagem dos pôlderes holandeses.
 
-Desenvolvido como parte do estúdio de design ON3 da TU Delft, o projeto propõe um novo tecido urbano — uma mistura de tipologias habitacionais, espaços compartilhados e orla pública — estruturado em torno da infraestrutura de docas existente. Os armazéns são parcialmente preservados como âncoras cívicas; a nova construção preenche as lacunas com um tecido residencial de grão mais fino.
+O briefing propunha a conversão da estrutura agrícola em uma moradia confortável para uma senhora idosa, preservando o caráter rural do edifício e sua honestidade material. O projeto manteve a estrutura portante existente e a fachada característica, reorganizando o interior em torno de um novo espaço de estar central com conexões claras com o jardim.
 
-A questão central de design foi como densidade e intimidade podem coexistir: como um quarteirão de alta densidade pode parecer habitado em vez de avassalador, em escala humana em vez de monumental. A proposta alcança isso por meio de cuidadoso trabalho de seção, tamanhos variados de pátio e preservação de visuais importantes para a água.
+O projeto aprofundou minha compreensão da reutilização adaptativa — a disciplina de ler a lógica e o potencial espacial de um edifício existente antes de propor qualquer alteração.
