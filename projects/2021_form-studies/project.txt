@@ -1,19 +1,15 @@
-title: Form Studies
-category: Research · Making
-year: 2017–2018
-location: Delft, The Netherlands
-typology: Material Research
+title: Form studies
+category: Form studies
+year: 2017 - 2018
+location: Architecture faculty, TU Delft, The Netherlands
+typology: Form studies
 organization: TU Delft
 status: Realised
 grid: third
 
 ---
 
-Form Studies is a series of hands-on material investigations conducted in the model workshops at TU Delft. Working primarily with clay, plaster and foam, the studies explored how form emerges from material logic rather than from pre-determined geometry.
-
-Each study began with a constraint — a specific material, a specific force, a specific scale — and proceeded through making rather than drawing. The results record a vocabulary of forms discovered through process: the way wet clay remembers a hand, the way plaster sets around air, the way foam compresses and springs back.
-
-This tactile approach to design research has become central to my practice. The form studies act as a material library: a set of spatial instincts accumulated through repetition, that inform decisions in larger architectural and modelmaking projects.
+A substantial part of architecture is about form, composition and materialization. Through these experiments, during our first year of bachelor's, we were allowed to challenge our perception and compositional skills. We learned to assemble different elements into new elements and we explored how shape and form can affect and play with light, shadow, and view lines.
 
 ===no===
 

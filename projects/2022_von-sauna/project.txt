@@ -1,7 +1,7 @@
-title: Von Sauna — Floating Saunas
-category: Visualization · Pitch Package
+title: Von Sauna - Floating Saunas
+category: Architectural renders
 year: 2025
-location: Seattle, Washington
+location: Seattle, USA
 typology: Render / Pitch Package
 status: Design proposal
 collaborators: Ewa Ziemiecka

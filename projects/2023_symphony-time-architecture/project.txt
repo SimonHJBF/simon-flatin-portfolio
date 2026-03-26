@@ -1,8 +1,8 @@
 title: Symphony of Time and Architecture
-category: Architecture · Research
+category: Research
 year: 2023
-location: Alta, Norway / Delft, The Netherlands
-typology: Research / Theoretical Project
+location: Alta, Norway
+typology: Research
 organization: TU Delft
 mentors: Suzana Milinovic, Taneha Kuzniecow Bacchin, Rufus R. van den Ban, Denise Piccinini
 status: Realised
@@ -10,11 +10,9 @@ grid: large
 
 ---
 
-Symphony of Time and Architecture is a research project that examines time as an architectural material. Drawing a structural parallel between musical composition and spatial design, it asks: how does a building unfold in time the way a symphony unfolds across movements?
+In my graduation research, 'Symphony of Time and Architecture,' I explored the relationships between time, change, and the built environment, using the dynamic landscapes of the Arctic as a case study. This exploration transcends traditional architectural boundaries where constructions are static and opposed to change. It is embracing the concept of buildings and spaces as living entities that evolve over time. Through a combination of theoretical investigation and practical case studies, the research examines how architectural designs can integrate and respond to the rhythms of natural and anthropogenic changes. It proposes approaches that allow structures to adapt, respond, and evolve in harmony with their environments, underscoring the profound impacts of temporal and environmental dynamics on architectural practices.
 
-The research traces four temporal dimensions — lived time, geological time, seasonal time and the time of decay — through historical and contemporary architecture. Case studies range from the Pantheon's oculus (which makes solar time visible) to Sverre Fehn's manipulation of light and shadow, to the radical ephemerality of Japanese Metabolism. Each project is understood as a kind of score: a set of instructions for the experience of time in space.
-
-The work culminated in a written argument for architecture as duration rather than object — a discipline that should embrace, rather than suppress, the inevitability of change. This research became the theoretical foundation for Arctic Symphony.
+It is possible to see the research below, as well as downloading the full collection at the repository of TU Delft
 
 ===no===
 

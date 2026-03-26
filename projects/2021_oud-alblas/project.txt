@@ -1,8 +1,8 @@
 title: Oud Alblas
-category: Architecture · Internship
+category: Internship, Architecture
 year: 2021
-location: Oud-Alblas, The Netherlands
-typology: Residential Conversion
+location: Peperstraat, Oud-Alblas, The Netherlands
+typology: Architecture
 organization: Lüchinger Architects / Mieke Vink
 status: Design proposal
 collaborators: Thomas Zhang
@@ -10,11 +10,13 @@ grid: medium
 
 ---
 
-During my internship with Mieke Vink at Lüchinger Architects in Rotterdam, I worked alongside fellow intern Thomas Zhang on a project to transform a historic barn in Oud-Alblas into a liveable home. The barn, originally built for cows, had a characteristic black-stained wooden facade and a thatched roof — a vernacular typology common in the Dutch polder landscape.
+During my internship with Mieke Vink at Lüchinger Architects, I and my fellow intern Thomas Zhang, collaborated on a project to transform a historic barn into a liveable house. This project involved designing a barn, originally used for cows, with a characteristic black wooden facade and thatched roof, into a home for an elderly woman.
 
-The brief called for converting the agricultural structure into a comfortable dwelling for an elderly woman, while preserving the building's rural character and material honesty. The design retained the existing structural frame and distinctive facade, reorganising the interior around a new central living space with clear connections to the garden.
+The barn had long been used as a garage and storage. Luckily, most of its wooden columns and beams were still intact, providing a framework for the transformation. Mieke's vision was to preserve as much of the existing structure as possible, allowing it to carry the light facade structure. In the centre of the home, a “hearth” would be established. This hearth would be the core of all the essential infrastructure of the home, the fireplace, the kitchen, the bathroom and the stairs to the second floor. This core became one of the main aspects of the concept, designed to rise through the sentre of the building allowing spaces to naturally emerge around it.
 
-The project deepened my understanding of adaptive reuse — the discipline of reading an existing building's logic and spatial potential before proposing any changes.
+Our role as interns focused on modeling and design the spaces through modelmaking. Iterating on the layout of the core to ensure it to fit within the existing wooden structure. We began the process by analyzing and understanding the existing wooden structure, creating a model of the wooden beams and colums to use as a base for designing the core.
+
+This project was an invaluable learning experience.
 
 ===no===
 

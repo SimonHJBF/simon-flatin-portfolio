@@ -1,18 +1,14 @@
-title: Bjørnåsen House Addition
-category: Architecture · Residential
+title: Bjørnåsen house addition
+category: Architecture
 year: 2021
-location: Larkollen, Norway
-typology: House Extension
+location: Bjørnåsen 21, 1560 Larkollen, Norway
+typology: Garage
 status: In Progress
 grid: large
 
 ---
 
-The Bjørnåsen House Addition is a residential extension project in the forested hillside district of Bjørnåsen, south of Oslo. The existing cabin-style house sits on a steep site with long views toward the fjord, and the addition was designed to expand the living area while preserving the intimate, embedded quality of the original structure.
-
-The design takes its cue from the delta shelter typology — a simple triangulated form that follows the slope of the land and minimises its footprint. Clad in dark-stained timber, the addition reads as an extension of the forest floor, its angular silhouette echoing the pitch of the surrounding treetops.
-
-Inside, the new volume houses a generous open-plan living and dining area that steps down with the terrain, bringing the forest floor visually into the heart of the house. A generous glazed gable opens directly to the trees, while a sheltered south-facing terrace captures the long afternoon light.
+The main objective of this project was to design an addition to my parents house with a flexible program. They wanted a dry place tp park their cars, but also a space that could extend as a showcase room for my dads' art, as well as a place to do bbq or social happenings if it rains. The two sides are connected with an opening between them.
 
 ===no===
 

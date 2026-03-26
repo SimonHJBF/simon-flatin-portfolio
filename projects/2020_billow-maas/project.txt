@@ -1,19 +1,17 @@
 title: Billow by the Maas
-category: Architecture · Urban Design
+category: Architecture
 year: 2020
-location: Rotterdam, The Netherlands
-typology: Sports School / Mixed-Use
+location: Schiehaven 13, 3024 CE Rotterdam, The Netherlands
+typology: Sports school
 organization: TU Delft
 status: Concept
 grid: wide
 
 ---
 
-Billow by the Maas is a waterfront design proposal for a site along the Maas river in Rotterdam. The project responds to the industrial heritage of the port city while proposing a new urban typology that flows with the river — undulating, layered and in constant dialogue with water.
+The core of this project consisted of an integral design of a sustainable building at the Schiehaven in Rotterdam in which both a sports college and an indoor sports facility are housed. The sports complex will be a meeting pace for 1500 users (students, teachers, (top) athletes, and spectators) who all have a connection with the building. Parts of the building had to be accessible to the public. The building, when completed, would serve as a school, but also give something back to its surroundings and neighbors.
 
-Developed as part of the ON6 design studio at TU Delft, the work challenged designing at the scale of the city block. Billow proposes a mixed-use programme woven into a structural form that mirrors the rhythmic motion of the river: rippled facades, cascading terraces and a public waterfront promenade that connects the project to the surrounding city.
-
-The proposal investigates how contemporary waterfront development can acknowledge Rotterdam's history as a port city — not by mimicking the past, but by channelling the energy and logic of water into architectural form.
+Billow by the Maas is designed with nature as inspiration. The building is not supposed to look like nature but rather use natural shapes and elements to emphasize the peace and calm that can be found in nature. The building consists of two “mountains” divided by a valley that you can walk over. This way, the roof does not stand as a barrier for the new users of the other building on the site, the Maaskant, but rather as a connection between the users of the school, the sports fields, and the users of the Maaskant. The space is further designed to consider both the permanent users (students and teachers) of the sports school and the visitors of the building and the surrounding. The space is, as nature is, a space for the public.
 
 ===no===
 

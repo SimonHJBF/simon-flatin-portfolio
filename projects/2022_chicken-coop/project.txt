@@ -1,19 +1,24 @@
-title: Chicken Coop
+title: Chicken coop
 category: Architecture · Making
 year: 2024
-location: Larkollen, Norway
-typology: Personal Build
+location: Bjørnåsen 21, 1560 Larkollen, Norway
+typology: Chicken coop
 status: Realised
-collaborators: Håvard Flatin; photography by Alex Kirschstein
+collaborators: Håvard Flatin · All photos are taken by Alex Kirschstein
 grid: wide
 
 ---
 
-Sometimes the most instructive building is a small one. The chicken coop — designed and built by hand in the garden of a house on the outskirts of Oslo — became an exercise in material honesty, structural economy and the pleasure of making something complete.
+In my latest project, I designed a wooden chicken coop for my parents, inspired by my father's fascination with chickens and our family's desire to be self-sustained with fresh eggs. This project stems from a deeper aspiration to reconnect with where our food comes from, fostering a closer relationship between daily life and the natural processes that support it.
 
-The structure uses rough-sawn Norwegian spruce, left to weather naturally, jointed with traditional mortise-and-tenon connections wherever the chickens' wellbeing and a few wood screws would allow. The roof pitches in two directions to shed snow, and a south-facing run gives the birds light in the few hours of Oslo winter sun.
+The coop's design is based on two lines perpendicular to each other, creating a simple yet functional layout:
 
-Beyond its obvious function, the project was a reminder that architecture's principles apply at every scale: proportion, orientation, material, light and the relationship between inside and outside are just as alive in a 4m² hen house as they are in a public building.
+- The Coop and Storage Units: One axis hosts the main structure—the coop itself—along with integrated storage spaces. This area provides a safe and comfortable shelter for the chickens, as well as convenient access to supplies and equipment.
+- The Outdoor Run: The perpendicular axis forms the outdoor space where the chickens can play and forage. Though modest in size, it offers enrichment and opportunities for natural behaviors. When conditions are favorable, we allow the chickens to roam freely throughout the rest of the garden.
+
+As an extension of the garage we built a few years ago, the coop integrates with the existing architecture. Thoughtful consideration was given to the garden's design, particularly the trees and plants that define the space. The outdoor area of the coop surrounds our family's pear tree, creating a blend between the new structure and the garden.
+
+To accentuate the architectural lines of the coop, I selected specific plants that enhance its geometry and connection to the garden. This careful selection not only highlights the design but also contributes to the overall aesthetic and ecological value of the space.
 
 ===no===
 

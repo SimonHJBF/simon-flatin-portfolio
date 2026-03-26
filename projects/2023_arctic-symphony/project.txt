@@ -1,11 +1,11 @@
-title: Arctic Symphony
-category: Performance · Architecture · Photography
+title: Assembling the Arctic Symphony
+category: Architecture
 year: 2023
-location: Alta / Eibyelva, Norway / Delft, The Netherlands
-typology: Multidisciplinary Graduation Project
+location: Alta, Norway
+typology: Art residence
 status: Realised
 organization: TU Delft
-collaborators: Ewa Ziemiecka, Zofia Sosnierz, Bintang Manira Manik, Alex Kirschstein
+collaborators: My mentors during graduation: · S. Milinović Teachers of Practice / U - Architecture and the Built Environment (supervisor 1) · R.R. van den Ban Teachers of Practice / AE+T - Architecture and the Built Environment (supervisor 1) · T. Kuzniecow Bacchin Urban Design - Architecture and the Built Environment (supervisor 2) · D. Piccinini Landscape Architecture - Architecture and the Built Environment (coach)
 exhibitions: TU Delft Graduation Show 2023
 grid: large
 featured: yes
@@ -13,11 +13,9 @@ video: https://youtu.be/4jFVfVUMrHc
 
 ---
 
-Arctic Symphony is a four-fold exploration integrating architecture, performance, natural processes and photography. Born from my graduation project at TU Delft, the work investigates how built space interacts with time, decay and the rhythms of the Arctic landscape.
+The architecture of "Arctic Symphony" presents itself as a living entity, an evolving tapestry seamlessly woven into the temporal fabric of the Arctic landscape. Unlike traditional buildings, static and resistant to change, this architectural system thrives on transformation, embodying the perpetual ﬂux of nature. In this architectural narrative, time is not a mere backdrop but an active participant. The structure's life cycle mirrors the rhythmic ﬂow of the Arctic – from the thawing bursts of spring to the introspective solitude of winter. Each season imprints its character on the architecture, dictating the pace of growth and decay. It's an embodiment of Bruno Latour's philosophy where human and non-human actors collaborate in an ongoing performance.
 
-Inspired by the subtle changes of a hidden pond near my childhood home overlooking the Oslo fjord, the project treats time as a fluid force — something architecture can embrace rather than resist. The design explores themes of decay and regeneration, culminating in a live performance that unified architecture, dance and music.
-
-The photographic component documents the landscape at different seasons and times of day, tracing the same spatial experience across months. These images informed the material palette and tectonic choices of the architectural proposal, closing the loop between observation, research and making.
+It is possible to download the full collection of my graduation work at the repository of TU Delft
 
 ===no===
 

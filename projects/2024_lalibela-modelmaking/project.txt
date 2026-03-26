@@ -1,23 +1,21 @@
-title: Lalibela Modelmaking
-category: Architectural Model
+title: Lalibela modelmaking
+category: Model making
 year: 2024
 location: Delft, The Netherlands
-typology: Architectural Model
-size: 1 × 1.2 × 0.5 m
+typology: Architectural model
+size: 1 x 1,2 x 0,5m
 status: Realised
 organization: TU Delft
-collaborators: Alex Kirschstein, Prof. Dirk van Gameren
-exhibitions: TU Delft, 1st September – 1st November 2024
+collaborators: Alex Kirschstein · Prof. Dirk van Gameren
+exhibitions: TU Delft 1st of September - 1st of November
 grid: medium
 featured: yes
 
 ---
 
-As part of my work on Ethiopian architecture and modelmaking, I collaborated with Alex Kirschstein to create a detailed model of Biet Gabriel-Rufael in Lalibela — a UNESCO World Heritage site. The landmark is known for its rock-hewn churches, carved entirely from a single mass of volcanic rock. Its intricate design, featuring internal chambers, passageways, and unique geometric forms, reflects the remarkable ingenuity and spiritual devotion of its creators.
+As part of my work on Ethiopian architecture and modelmaking, I collaborated with Alex Kirschtein to create a detailed model of Biet Gabriel-Rufael in Lalibela—a UNESCO World Heritage site. The landmark is known for its rock-hewn churches. Carved entirely from a single mass of volcanic rock, Biet Gabriel-Rufael is a stunning example of monolithic architecture. Its intricate design, featuring internal chambers, passageways, and unique geometric forms, reflects the remarkable ingenuity and spiritual devotion of its creators.
 
-To authentically capture the essence of this iconic structure, we studied Lino Bianchi Barriviera's 1938 drawings of Lalibela, which vividly depict the churches and their surrounding landscapes, along with contemporary photography and 3D scans of the site. We focused on meticulously replicating the textures of stone and lichen to emphasise the seamless integration of the architecture with its natural environment.
-
-This project reflects my fascination for historical research and making it into tangible, high-quality representations in architectural modeling, bringing to life the intricate details and cultural significance of this extraordinary site.
+To authentically capture the essence of this iconic structure, we studied Lino Bianchi Barriviera’s 1938 drawings of Lalibela, which vividly depict the churches and their surrounding landscapes, along with contemporary photography and 3D scans of the site. We focused on meticulously replicating the textures of stone and lichen to emphasize the seamless integration of the architecture with its natural environment. This project reflects my fascination for historical research and making it into tangible, high-quality representations in architectural modeling, bringing to life the intricate details and cultural significance of this extraordinary site.
 
 ===no===
 

@@ -1,21 +1,21 @@
-title: Meqdela Gebbi Modelmaking
-category: Architectural Model
+title: Meqdela Gebbi modelmaking
+category: Model making
 year: 2023
 location: Delft, The Netherlands
-typology: Architectural Model
+typology: Architectural model
 status: Realised
 organization: TU Delft / Venice Architecture Biennale
-collaborators: Alex Kirschstein, Prof. Dirk van Gameren
-exhibitions: Venice Architecture Biennale 2023
+collaborators: Alex Kirschstein · Contact: alex.kirschstein@web.de
+exhibitions: Biennale Architettura 2023 · When: May 2023 - November 2023 · Location: Venice, Italy · By: La Biennale di Venezia 2023
 grid: medium
 
 ---
 
-Meqdela Gebbi is a physical model of the royal compound of Emperor Tewodros II at Meqdela, the mountain fortress in northern Ethiopia that served as his last stronghold and the site of the 1868 Battle of Maqdala. The model was commissioned as part of a research initiative into Ethiopian highland architecture and contributed to the Venice Architecture Biennale 2023.
+In collaboration with Alex Kirschtein, we were commissioned by the dean of the Faculty of Architecture at TU Delft to create an architectural model of a housing compound in Meqdela Gebbi.
 
-Working in close collaboration with Alex Kirschstein and guided by Prof. Dirk van Gameren, the model was constructed from white plaster and basswood at a scale that allows the intricate spatial hierarchy of the compound to be legible — the progression from outer enclosure to inner court to the intimate royal quarters at the summit.
+This model was inspired by research into some of the complex forms of Addis Ababa, particularly focusing on the typologies of informal settlements. These housing compounds, locally referred to as gebbi, are characterized by their organic composition of spaces and forms. They typically feature a public central space bounded by residential housing and fencing, which facilitates circulatory, social interaction, and different income based functions. Each compound includes at least one distinct social space that is central to the local community life, fostering tight-knit social relationships and economic activities.
 
-Historical documentation for Meqdela is fragmentary, making the modelmaking process an act of architectural interpretation as much as representation. The model proposes a spatial reading of the site based on surviving photographs, oral histories and analysis of comparable highland Ethiopian building traditions.
+This model showcased the intricate social and spatial dynamics of this region and was used to emphasize the research conducted by Anteneh Tesfaye Tola. It was first exhibited at TU Delft before being featured at the Venice Architecture Biennale 2023.
 
 ===no===
 

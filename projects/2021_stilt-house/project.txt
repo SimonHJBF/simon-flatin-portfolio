@@ -1,19 +1,19 @@
 title: Stilt House
 category: Architecture
 year: 2021
-location: Delft, The Netherlands
-typology: Residential / Flood-Adaptive
+location: Julianalaan 134, 2628 BL Delft, The Netherlands
+typology: Dwellings
 organization: TU Delft
-status: Concept
+status: Design proposal
 grid: third
 
 ---
 
-Stilt House is a design proposal for a dwelling in an extreme flood environment, developed as part of the Extreme studio at TU Delft. The brief asked students to design for conditions at the edge of habitability — in this case, a site periodically submerged by rising water levels.
+As the world population continues to increase, and the built environment maintains its steady growth, our dependency on heavy materials has never been higher. Concrete, stone, and asphalt, materials often used in cities, lack the ability to absorb and release water. In addition to this, these materials absorb a lot of heat and release it slowly over many hours, and they offer little to no shade. The effects of this are, among many others, an increase in temperature in and above urban areas. Whereas forests and natural landscapes can absorb and slowly evaporate water and, in the process, reduce the temperature, urban landscapes are progressively lacking this ability. The lack of shaded areas, the lack of water to absorb heat, and the abundance of heavy materials contribute to this effect. The effect we are talking about is called the Urban Heat Island Effect and is the starting point of this experimental project.
 
-The proposal elevates the living programme high above the flood plain on a structural stilts system, freeing the ground level for water to pass through unimpeded. The dwelling is organised vertically rather than horizontally: a tight core of services at the centre, with living spaces arranged around it at different heights, each oriented to a specific view or quality of light.
+In this project, we were asked to design a building that contributes to reducing the urban heat island effect as much as possible. To accomplish this, several aspects were researched to find optimal solutions to fit the location and the environment. Form, technology, and nature are examples of factors that were looked into as tools to accomplish the task. The final result should be a building reducing the UHIE, produce synergy with the program, and use contemporary craftsmanship.
 
-The project investigates how constraints imposed by an extreme environment — structural, programmatic, material — can become generative forces rather than mere problems to solve. The result is a dwelling that is, paradoxically, most at home when surrounded by water.
+The project booklet is shared below
 
 ===no===
 

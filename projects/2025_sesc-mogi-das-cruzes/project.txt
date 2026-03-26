@@ -1,20 +1,22 @@
-title: SESC Mogi das Cruzes
-category: Architecture · Competition
+title: SESC Mogi Das Cruzes
+category: Architecture Design Competition
 year: 2025
-location: Mogi das Cruzes, São Paulo, Brazil
+location: Mogi Das Cruzes, Brazil
 typology: Sociocultural & Sports Park
 status: Design proposal
-collaborators: Denis Joelsons, Miguel Mincache, Sofia Comini
+collaborators: Simon Flatin · Denis Joelsons · Miguel Mincache · Sofia Comini
 grid: large
 weight: 10
 
 ---
 
-SESC Mogi das Cruzes is a competition entry for a new cultural and leisure centre in the municipality of Mogi das Cruzes, east of São Paulo. The SESC (Serviço Social do Comércio) network has a long tradition of commissioning architecturally ambitious public buildings — most famously Lina Bo Bardi's SESC Pompéia — and this proposal continues in that spirit.
+Together with Denis, Miguel and Sofia, I developed a masterplan and architectural proposal for the new Sesc park–unit of Mogi das Cruzes, sited between an avenue to the south and the Serra do Itapeti to the north. Our design exploits the valley’s topography, deploying a continuous esplanade that connects the access road at +762.96 m down to the park level at +750 m, carving out a sheltered outdoor foyer that buffers highway noise.
 
-The design proposes a building that is simultaneously civic infrastructure and landscape. A series of terraced platforms descends toward a public park, housing a theatre, workshops, a library, sports facilities and a public swimming pool. The platforms are planted with native Atlantic Forest species, so that the building is gradually claimed by the landscape over time.
+A 200 m–long curved pavilion along the eastern edge frames views toward the Serra, serving as a monumental backdrop to the park. Its gentle arc both envelops the green courtyard and frees a service yard to the east, where loading docks and technical towers are discreetly located. Within the pavilion, program is zoned into sociocultural functions - auditorium with independent foyer café, multipurpose rooms, library and children’s play - and sports amenities, including indoor courts, pools and fitness spaces.
 
-The project reflects my interest in architecture that serves as common ground — spaces that belong to everyone, structured by topography rather than walls, and that age into their setting with increasing grace.
+We specified a lightweight timber structure with off-the-shelf thermally insulated panels for the façade, and integrated openings for daylight and natural ventilation. The service towers are designed to accommodate future solar-thermal and photovoltaic systems.
+
+My role focused on concept development, site strategy and digital modeling - iterating the esplanade geometry and pavilion curvature to ensure a seamless dialogue between built form and landscape. Participating in this competition honed our collaborative design workflow and deepened our understanding of architecture’s role as a mediator between nature and urban infrastructure.
 
 ===no===
 

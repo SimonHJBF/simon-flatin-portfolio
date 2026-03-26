@@ -1,19 +1,19 @@
-title: The Staircase Home
-category: Architecture · Residential
+title: The staircase home
+category: Architecture
 year: 2018
-location: Rotterdam, The Netherlands
-typology: Single-Family Residence
+location: Leidschendam-Voorburg, The Netherlands
+typology: A home with Bead & Breakfast
 organization: TU Delft
 status: Concept
 grid: wide
 
 ---
 
-The Staircase Home is a residential design proposal in which the staircase is elevated from circulation element to the spatial and social heart of the dwelling. Developed as part of the ON1 studio at TU Delft, the project explores how a single architectural gesture — the continuous stair — can organise an entire home.
+This project, my first proper design project during my studies, involved creating a house for an elderly couple wishing to leave the city and establish a B&B in a typical Dutch landscape, next to a dike. The design had to include private living space for the couple, a few B&B rooms, camping spots for guests in tents, a communal kitchen, a swimming pool, and shared bathrooms.
 
-The stair winds through the section, creating split levels and unexpected adjacencies: a reading nook tucked beneath a landing, a kitchen that opens onto a half-level garden terrace, a bedroom suspended above the entrance. Each floor plate is slightly rotated, so that ascending through the house also means turning gradually to face different directions — a slow architectural promenade.
+I designed a long, narrow house that enclosed a private garden for the couple. The communal kitchen faced the rest of the property, overseeing a swimming pool, tent area, and garden. Positioned on the slope of a dike, the house offered views of the flat Dutch landscape.
 
-The project reflects an interest in section as the primary design tool, and in how everyday domestic movements can be choreographed by the geometry of a building.
+The roof featured a walkable, folding concrete slab, while the walls were made of wood. Although we hadn't yet covered structural systems in our curriculum, the design anticipated a steel framework to support the roof. The light concrete floor and natural wood color helped the house blend seamlessly with the dike and the surrounding vegetation.
 
 ===no===
 
