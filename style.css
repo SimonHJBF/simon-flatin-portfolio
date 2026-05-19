@@ -143,12 +143,14 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
   color: inherit;
   display: block;
 }
+.card--full   { grid-column: span 12; }
 .card--large  { grid-column: span 7; }
 .card--medium { grid-column: span 5; }
 .card--wide   { grid-column: span 6; }
 .card--third  { grid-column: span 4; }
 
 .card__img-wrap { width: 100%; overflow: hidden; }
+.card--full   .card__img-wrap { aspect-ratio: 1200/630; }
 .card--large  .card__img-wrap { aspect-ratio: 4/3; }
 .card--medium .card__img-wrap { aspect-ratio: 3/4; }
 .card--wide   .card__img-wrap { aspect-ratio: 16/9; }
@@ -234,7 +236,7 @@ footer a:hover { color: var(--dark); }
   .nav__links { gap: 1.5rem; }
   .page-section { padding: 3rem 1.5rem 0; }
   .projects { grid-template-columns: 1fr; gap: 2.5rem; }
-  .card--large, .card--medium, .card--wide, .card--third { grid-column: span 1; }
+  .card--full, .card--large, .card--medium, .card--wide, .card--third { grid-column: span 1; }
   .card--medium .card__img-wrap { aspect-ratio: 4/3; }
   footer { flex-direction: column; text-align: center; padding: 1.5rem; margin-top: 3rem; }
   .lang-toggle { margin-left: 1.5rem; padding-left: 1.2rem; }
