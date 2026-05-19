@@ -1,6 +1,6 @@
 title: Tinn
 category: Software · Specification tool
-year: 2024 — ongoing
+year: 2026 — ongoing
 typology: Desktop application (Windows · macOS)
 status: Early access
 client: Bjørkå Flatin ENK

@@ -544,11 +544,11 @@ function generateIndexPage(allProjects, featuredSlugs) {
     .filter(Boolean)
     .slice(0, 5);
 
-  // Use fixed grid sizes for the 5 featured slots
-  // Row 1: full-width (slot 1)
-  // Row 2: wide + wide (slots 2, 3)
-  // Row 3: wide + wide (slots 4, 5)
-  const featuredGrids = ['card--full','card--wide','card--wide','card--wide','card--wide'];
+  // Use fixed grid sizes for the 5 featured slots — organic rhythm:
+  // Row 1: full-width        (slot 1)        — Tinn brand cover, native ratio
+  // Row 2: large + medium    (slots 2, 3)    — asymmetric landscape + portrait
+  // Row 3: wide + wide       (slots 4, 5)    — symmetric landscape pair
+  const featuredGrids = ['card--full','card--large','card--medium','card--wide','card--wide'];
 
   const cards = featuredProjects.map((data, i) => {
     const cls     = featuredGrids[i] || 'card--wide';
