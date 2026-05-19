@@ -14,7 +14,7 @@ Tinn is a desktop app for specifying a project in the built environment. It hold
 
 I started Tinn because the existing tools were always built for someone else. The software you find when you go looking for a way to specify a project, even when it's marketed at architects, was really made for project managers, retailers, e-commerce teams. None of it respected the way a building is actually drawn up. So I started writing the tool I wished I had.
 
-I do the concept, the visual design, the brand and the code. The app is built in Tauri 2 with a Rust core and a local SQLite database, shipped as a signed installer for Windows, with macOS coming soon. The visual language is restrained: quiet typography, thin black lines, sharp corners. It draws from the catalogues and books I keep open on the studio shelf. Sirotov. Ecohaus. Branco Arquitetura.
+I do the concept, the visual design, the brand and the code. The visual language is restrained: quiet typography, thin black lines, sharp corners.
 
 Tinn is in early access. New capabilities arrive each month.
 
@@ -24,7 +24,7 @@ Tinn er en skrivebordsapp for å spesifisere et prosjekt i det bygde miljø. Den
 
 Jeg startet Tinn fordi de eksisterende verktøyene alltid var laget for noen andre. Programvaren du finner når du leter etter en måte å spesifisere et prosjekt på, selv når den markedsføres mot arkitekter, var egentlig laget for prosjektledere, forhandlere, e-handelsteam. Ingen av dem respekterte måten et bygg faktisk tegnes opp på. Så jeg begynte å skrive verktøyet jeg skulle ønske jeg hadde.
 
-Jeg gjør konseptet, den visuelle utformingen, merkevaren og koden. Appen er bygget i Tauri 2 med en Rust-kjerne og en lokal SQLite-database, og distribueres som en signert installer for Windows, med macOS som kommer snart. Det visuelle språket er tilbakeholdent: stille typografi, tynne svarte linjer, skarpe hjørner. Det er inspirert av katalogene og bøkene jeg har liggende på hyllen i atelieret. Sirotov. Ecohaus. Branco Arquitetura.
+Jeg gjør konseptet, den visuelle utformingen, merkevaren og koden. Det visuelle språket er tilbakeholdent: stille typografi, tynne svarte linjer, skarpe hjørner.
 
 Tinn er i tidlig tilgang. Nye funksjoner kommer hver måned.
 
@@ -34,6 +34,6 @@ Tinn é um aplicativo de desktop para especificar um projeto no ambiente constru
 
 Comecei o Tinn porque as ferramentas existentes sempre foram feitas para outra pessoa. O software que se encontra quando se procura uma forma de especificar um projeto, mesmo quando vendido a arquitetos, era na verdade feito para gerentes de projeto, varejistas, times de e-commerce. Nenhum deles respeitava o jeito como um edifício é realmente desenhado. Então comecei a escrever a ferramenta que eu queria ter.
 
-Eu faço o conceito, o design visual, a marca e o código. O app é feito em Tauri 2 com um núcleo em Rust e uma base SQLite local, distribuído como instalador assinado para Windows, com macOS chegando em breve. A linguagem visual é contida: tipografia silenciosa, linhas pretas finas, cantos nítidos. É inspirada nos catálogos e livros que mantenho na estante do estúdio. Sirotov. Ecohaus. Branco Arquitetura.
+Eu faço o conceito, o design visual, a marca e o código. A linguagem visual é contida: tipografia silenciosa, linhas pretas finas, cantos nítidos.
 
 Tinn está em acesso antecipado. Novas funcionalidades chegam a cada mês.
