@@ -425,7 +425,8 @@ ${heroHtml}
         mRow('Client',      data.client) +
         mRow('Collaborators', data.collaborators) +
         mRow('Mentors',      data.mentors) +
-        mRow('Exhibitions', data.exhibitions)
+        mRow('Exhibitions', data.exhibitions) +
+        (data.live ? `\n          <dt><span class="l-en">Live</span><span class="l-no">Nettside</span><span class="l-pt">Site</span></dt><dd><a href="${esc(/^https?:\/\//i.test(data.live) ? data.live : 'https://' + data.live)}" target="_blank" rel="noopener">${esc(data.live)}</a></dd>` : '')
       }
       </dl>
     </div>
