@@ -16,7 +16,7 @@ I started Tinn because the existing tools were always built for someone else. Th
 
 I do the concept, the visual design, the brand and the code. The visual language is restrained: quiet typography, thin black lines, sharp corners.
 
-Tinn is in early access. New capabilities arrive each month.
+Tinn is currently in early access. The first 50 people to take the Solo plan get it at 70% off, locked for two years, in exchange for a few bug reports along the way. The project is in fast expansion, with new tabs and depth added each month.
 
 ===no===
 
@@ -26,7 +26,7 @@ Jeg startet Tinn fordi de eksisterende verktøyene alltid var laget for noen and
 
 Jeg gjør konseptet, den visuelle utformingen, merkevaren og koden. Det visuelle språket er tilbakeholdent: stille typografi, tynne svarte linjer, skarpe hjørner.
 
-Tinn er i tidlig tilgang. Nye funksjoner kommer hver måned.
+Tinn er for tiden i tidlig tilgang. De første 50 som tar Solo-planen får den til 70% rabatt, låst i to år, i bytte mot noen feilrapporter underveis. Prosjektet er i rask utvikling, med nye faner og mer dybde hver måned.
 
 ===pt===
 
@@ -36,4 +36,4 @@ Comecei o Tinn porque as ferramentas existentes sempre foram feitas para outra p
 
 Eu faço o conceito, o design visual, a marca e o código. A linguagem visual é contida: tipografia silenciosa, linhas pretas finas, cantos nítidos.
 
-Tinn está em acesso antecipado. Novas funcionalidades chegam a cada mês.
+Tinn está atualmente em acesso antecipado. As primeiras 50 pessoas a assinar o plano Solo recebem 70% de desconto, fixado por dois anos, em troca de alguns relatórios de bug ao longo do caminho. O projeto está em rápida expansão, com novas abas e profundidade adicionadas a cada mês.
