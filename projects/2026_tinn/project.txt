@@ -2,7 +2,7 @@ title: Tinn
 category: Software · Specification tool
 year: 2026 (ongoing)
 typology: Desktop application (Windows · macOS)
-status: Early access
+status: In testing
 client: Bjørkå Flatin ENK
 live: tinn.app
 grid: wide
@@ -10,30 +10,30 @@ weight: 20
 
 ---
 
-Tinn is a desktop app for specifying a project in the built environment. It holds the messy middle of the work in one place: materials, products, surfaces, dimensions. The user owns the file. It runs offline, prints clean, and is built around how architects, engineers, interior designers and builders actually plan a space. One room at a time. Paper and pen still on the desk. A file that outlasts any subscription.
+Tinn is a desktop application for the least glamorous part of a building project: writing the specification. Every material, product, surface and dimension that goes into a space has to be pinned down somewhere, and that somewhere was always a mess for me. A spreadsheet, an InDesign file, an email thread. So I built a proper tool for it. A project in Tinn is one file you own and keep on your own machine. It works offline and prints cleanly, because specification work still happens with paper on the desk, and half the time on a site with no signal.
 
-I started Tinn because the existing tools were always built for someone else. The software you find when you go looking for a way to specify a project, even when it's marketed at architects, was really made for project managers, retailers, e-commerce teams. None of it respected the way a building is actually drawn up. So I started writing the tool I wished I had.
+It started from plain frustration. The software sold for this, even the parts aimed at architects and engineers, was really shaped around someone else: project managers, retailers, e-commerce teams. None of it respected the way a building actually gets drawn up. So I wrote the one I wanted instead, from scratch, while still doing the work it was meant to fix.
 
-I do the concept, the visual design, the brand and the code. The visual language is restrained: quiet typography, thin black lines, sharp corners.
+I have done all of it myself: the concept, the visual design, the brand, the code. Tinn is a Tauri 2 and React desktop app with a Rust core and a local SQLite store, shipped as a signed installer for Windows, with macOS to follow. The look is deliberately quiet. Restrained typography, thin black lines, sharp corners. It owes a lot to the catalogues and books on my studio shelf: Sirotov, Ecohaus, Branco Arquitetura.
 
-Tinn is currently in early access. The first 50 people to take the Solo plan get it at 70% off, locked for two years, in exchange for a few bug reports along the way. The project is in fast expansion, with new tabs and depth added each month.
+Tinn is in its testing phase. I still add to it most weeks: new tabs, more depth, rough edges sanded down one at a time. It has been the most satisfying thing I have built. If you plan spaces for a living and want to try it, or you are just curious how far it has come, it is at tinn.app.
 
 ===no===
 
-Tinn er en skrivebordsapp for å spesifisere et prosjekt i det bygde miljø. Den holder den rotete midten av arbeidet samlet på ett sted: materialer, produkter, overflater, dimensjoner. Brukeren eier filen. Den fungerer uten nett, skriver ut rent, og er bygget rundt måten arkitekter, ingeniører, interiørarkitekter og byggere faktisk planlegger et rom på. Ett rom om gangen. Papir og penn fortsatt på bordet. En fil som varer lenger enn noe abonnement.
+Tinn er en skrivebordsapplikasjon for den minst glamorøse delen av et byggeprosjekt: å skrive spesifikasjonen. Hvert materiale, hvert produkt, hver overflate og hver dimensjon som inngår i et rom må noteres et sted, og det stedet var alltid et rot for meg. Et regneark, en InDesign-fil, en e-posttråd. Så jeg bygde et skikkelig verktøy for det. Et prosjekt i Tinn er én fil du eier og oppbevarer på din egen maskin. Den fungerer uten nett og skriver ut rent, fordi spesifikasjonsarbeid fortsatt skjer med papir på bordet, og halvparten av tiden på en byggeplass uten dekning.
 
-Jeg startet Tinn fordi de eksisterende verktøyene alltid var laget for noen andre. Programvaren du finner når du leter etter en måte å spesifisere et prosjekt på, selv når den markedsføres mot arkitekter, var egentlig laget for prosjektledere, forhandlere, e-handelsteam. Ingen av dem respekterte måten et bygg faktisk tegnes opp på. Så jeg begynte å skrive verktøyet jeg skulle ønske jeg hadde.
+Det begynte med ren frustrasjon. Verktøyene som selges til dette, selv de som er rettet mot arkitekter og ingeniører, var egentlig formet rundt noen andre: prosjektledere, forhandlere, e-handelsteam. Ingen av dem respekterte måten en bygning faktisk tegnes opp på. Så jeg skrev verktøyet jeg ønsket meg i stedet, fra bunnen av, mens jeg fortsatt gjorde arbeidet det var ment å fikse.
 
-Jeg gjør konseptet, den visuelle utformingen, merkevaren og koden. Det visuelle språket er tilbakeholdent: stille typografi, tynne svarte linjer, skarpe hjørner.
+Jeg har gjort alt selv: konseptet, den visuelle utformingen, merkevaren, koden. Tinn er en Tauri 2- og React-skrivebordsapp med en Rust-kjerne og en lokal SQLite-database, levert som en signert installer for Windows, med macOS på vei. Det visuelle uttrykket er bevisst stille. Tilbakeholden typografi, tynne svarte linjer, skarpe hjørner. Det henter mye fra katalogene og bøkene på studio-hyllen min: Sirotov, Ecohaus, Branco Arquitetura.
 
-Tinn er for tiden i tidlig tilgang. De første 50 som tar Solo-planen får den til 70% rabatt, låst i to år, i bytte mot noen feilrapporter underveis. Prosjektet er i rask utvikling, med nye faner og mer dybde hver måned.
+Tinn er i en testfase. Jeg legger fortsatt til noe de fleste uker: nye faner, mer dybde, ujevne kanter slipt ned én etter én. Det har vært det mest givende jeg har bygd. Hvis du planlegger rom til daglig og vil prøve det, eller bare er nysgjerrig på hvor langt det har kommet, finner du det på tinn.app.
 
 ===pt===
 
-Tinn é um aplicativo de desktop para especificar um projeto no ambiente construído. Ele guarda o meio bagunçado do trabalho num só lugar: materiais, produtos, superfícies, dimensões. O usuário é dono do arquivo. Funciona offline, imprime limpo, e foi feito em torno de como arquitetos, engenheiros, designers de interiores e construtores realmente planejam um espaço. Um cômodo de cada vez. Papel e caneta ainda sobre a mesa. Um arquivo que dura mais que qualquer assinatura.
+O Tinn é um aplicativo de desktop para a parte menos glamorosa de um projeto de construção: escrever a especificação. Cada material, produto, superfície e dimensão que entra em um espaço precisa ser registrado em algum lugar, e esse lugar sempre foi uma bagunça para mim. Uma planilha, um arquivo do InDesign, uma sequência de e-mails. Então construí uma ferramenta de verdade para isso. Um projeto no Tinn é um único arquivo que você possui e guarda na sua própria máquina. Funciona offline e imprime de forma limpa, porque o trabalho de especificação ainda acontece com papel sobre a mesa, e metade do tempo em uma obra sem sinal.
 
-Comecei o Tinn porque as ferramentas existentes sempre foram feitas para outra pessoa. O software que se encontra quando se procura uma forma de especificar um projeto, mesmo quando vendido a arquitetos, era na verdade feito para gerentes de projeto, varejistas, times de e-commerce. Nenhum deles respeitava o jeito como um edifício é realmente desenhado. Então comecei a escrever a ferramenta que eu queria ter.
+Começou de pura frustração. Os programas vendidos para isso, mesmo as partes voltadas para arquitetos e engenheiros, foram na verdade moldados em torno de outra pessoa: gerentes de projeto, varejistas, equipes de e-commerce. Nenhum deles respeitava a forma como um edifício é realmente desenhado. Então escrevi o que eu queria, do zero, enquanto ainda fazia o trabalho que ele deveria resolver.
 
-Eu faço o conceito, o design visual, a marca e o código. A linguagem visual é contida: tipografia silenciosa, linhas pretas finas, cantos nítidos.
+Fiz tudo sozinho: o conceito, o design visual, a marca, o código. O Tinn é um app de desktop em Tauri 2 e React, com um núcleo em Rust e um banco SQLite local, distribuído como um instalador assinado para Windows, com macOS a caminho. A aparência é deliberadamente discreta. Tipografia contida, linhas pretas finas, cantos nítidos. Deve muito aos catálogos e livros na estante do meu estúdio: Sirotov, Ecohaus, Branco Arquitetura.
 
-Tinn está atualmente em acesso antecipado. As primeiras 50 pessoas a assinar o plano Solo recebem 70% de desconto, fixado por dois anos, em troca de alguns relatórios de bug ao longo do caminho. O projeto está em rápida expansão, com novas abas e profundidade adicionadas a cada mês.
+O Tinn está em fase de testes. Ainda acrescento algo quase toda semana: novas abas, mais profundidade, arestas ásperas lixadas uma a uma. Foi a coisa mais gratificante que já construí. Se você trabalha planejando espaços e quer experimentá-lo, ou só está curioso para ver até onde ele chegou, ele está em tinn.app.
