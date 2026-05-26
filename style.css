@@ -150,7 +150,7 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 .card--third  { grid-column: span 4; }
 
 .card__img-wrap { width: 100%; overflow: hidden; }
-.card--full   .card__img-wrap { aspect-ratio: 1200/630; }
+.card--full   .card__img-wrap { aspect-ratio: 40/19; }
 .card--large  .card__img-wrap { aspect-ratio: 4/3; }
 .card--medium .card__img-wrap { aspect-ratio: 3/4; }
 .card--wide   .card__img-wrap { aspect-ratio: 16/9; }
