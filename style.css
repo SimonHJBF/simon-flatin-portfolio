@@ -155,6 +155,9 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 .card--medium .card__img-wrap { aspect-ratio: 3/4; }
 .card--wide   .card__img-wrap { aspect-ratio: 16/9; }
 .card--third  .card__img-wrap { aspect-ratio: 4/3; }
+/* Tinn cover is a 40/19 banner. Override per-card aspect everywhere
+   the Tinn card appears so the wordmark and tagline are never cropped. */
+.card[href*="/tinn/"] .card__img-wrap { aspect-ratio: 40/19; }
 
 .card__img-wrap img,
 .card__placeholder {
