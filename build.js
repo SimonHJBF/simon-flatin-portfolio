@@ -327,7 +327,11 @@ function generateProjectPage(data, folderName, images) {
   const slug   = data.slug;
   const title  = data.title || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
   const cover  = images.find(f => /^cover\./i.test(f)) || images[0] || null;
-  const gallery = images.filter(f => f !== cover);
+  // Project-page hero image: prefer banner.*/hero.* if present, else fall back to cover.
+  // Lets a wider banner sit at the top of the project page while a tighter cover.*
+  // is used for the homepage card thumbnail.
+  const hero   = images.find(f => /^(banner|hero)\./i.test(f)) || cover;
+  const gallery = images.filter(f => f !== cover && f !== hero);
   // Images live in the source folder (YYYY_slug), referenced from the output folder (slug/)
   const imgBase  = `../${folderName}/`;
 
@@ -348,8 +352,8 @@ function generateProjectPage(data, folderName, images) {
     return `\n          <dt><span class="l-en">${esc(label)}</span><span class="l-no">${esc(t.no)}</span><span class="l-pt">${esc(t.pt)}</span></dt><dd>${esc(val)}</dd>`;
   }
 
-  const heroHtml = cover
-    ? `  <div class="project-hero"><img src="${imgBase}${esc(cover)}" alt="${esc(title)}" loading="eager" /></div>`
+  const heroHtml = hero
+    ? `  <div class="project-hero"><img src="${imgBase}${esc(hero)}" alt="${esc(title)}" loading="eager" /></div>`
     : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
 
   const galleryHtml = gallery.length
