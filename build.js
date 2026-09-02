@@ -28,6 +28,9 @@ const PROJECTS_DIR = path.join(ROOT, 'projects');
 const CONTENT_DIR  = path.join(ROOT, 'content');
 const IMAGE_EXTS   = new Set(['.jpg','.jpeg','.png','.webp','.gif','.avif']);
 
+// Percent-encoded: the profile slug contains the non-ASCII characters oe and aa.
+const LINKEDIN_URL = 'https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa';
+
 // Gradient fallbacks for projects without a cover image
 const GRADIENTS = [
   'linear-gradient(135deg,#1a2a3a 0%,#2d4a6b 50%,#8fb3c8 100%)',
@@ -282,6 +285,7 @@ function footerHtml(prefix) {
       <a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
       <a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
       <a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
+      <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>`;
 }
@@ -1221,6 +1225,7 @@ ${navHtml()}
       </p>
       <div class="contact-info__detail">
         <a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a>
+        <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
 
