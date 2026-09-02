@@ -2,7 +2,7 @@ title: The staircase home
 category: Architecture
 year: 2018
 location: Leidschendam-Voorburg, The Netherlands
-typology: A home with Bead & Breakfast
+typology: Home with Bed & Breakfast
 organization: TU Delft
 status: Concept
 grid: wide
@@ -13,20 +13,20 @@ This project, my first proper design project during my studies, involved creatin
 
 I designed a long, narrow house that enclosed a private garden for the couple. The communal kitchen faced the rest of the property, overseeing a swimming pool, tent area, and garden. Positioned on the slope of a dike, the house offered views of the flat Dutch landscape.
 
-The roof featured a walkable, folding concrete slab, while the walls were made of wood. Although we hadn't yet covered structural systems in our curriculum, the design anticipated a steel framework to support the roof. The light concrete floor and natural wood color helped the house blend seamlessly with the dike and the surrounding vegetation.
+The roof featured a walkable, folding concrete slab, while the walls were made of wood. Although we hadn't yet covered structural systems in our curriculum, the design anticipated a steel framework to support the roof. The light concrete floor and natural wood colour helped the house sit easily against the dike and the surrounding vegetation.
 
 ===no===
 
-The Staircase Home er et boligdesignforslag der trappen løftes fra sirkulasjonselement til det romlige og sosiale hjertet i boligen. Utviklet som del av ON1-studioet ved TU Delft utforsker prosjektet hvordan én enkelt arkitektonisk gest — den kontinuerlige trappen — kan organisere et helt hjem.
+Dette prosjektet, det første ordentlige designprosjektet mitt i studiet, gikk ut på å lage et hus for et eldre par som ønsket å flytte fra byen og starte en B&B i et typisk nederlandsk landskap, ved siden av et dike. Programmet måtte inneholde privat boareal for paret, noen B&B-rom, teltplasser for gjester, et felleskjøkken, et svømmebasseng og delte bad.
 
-Trappen svinger gjennom seksjonen og skaper splittede nivåer og uventede adjacenser: en lesekrok tucked under et repos, et kjøkken som åpner seg til en halvnivås hagestirrasse, et soverom hengende over inngangen. Hver etasjeskive er litt rotert, slik at det å stige gjennom huset også betyr å snu seg gradvis mot ulike retninger — en langsom arkitektonisk promenade.
+Jeg tegnet et langt, smalt hus som lukket seg rundt en privat hage for paret. Felleskjøkkenet vendte ut mot resten av eiendommen, med utsyn over svømmebassenget, teltområdet og hagen. Huset ligger i skråningen av et dike og gir utsikt over det flate nederlandske landskapet.
 
-Prosjektet gjenspeiler en interesse for snitt som det primære designverktøyet, og for hvordan hverdagslige domestiske bevegelser kan koreograferes av bygningens geometri.
+Taket besto av en gangbar, foldet betongplate, mens veggene var i tre. Selv om vi ennå ikke hadde hatt om bæresystemer i undervisningen, forutsatte designet et stålrammeverk som skulle bære taket. Det lyse betonggulvet og den naturlige trefargen gjorde at huset falt godt inn mot diket og vegetasjonen rundt.
 
 ===pt===
 
-The Staircase Home é uma proposta de design residencial na qual a escada é elevada de elemento de circulação ao coração espacial e social da moradia. Desenvolvido como parte do estúdio ON1 da TU Delft, o projeto explora como um único gesto arquitetônico — a escada contínua — pode organizar toda uma casa.
+Este projeto, o primeiro projeto de design de verdade durante meus estudos, consistia em criar uma casa para um casal de idosos que queria deixar a cidade e abrir uma B&B em uma paisagem tipicamente holandesa, ao lado de um dique. O programa tinha de incluir espaço privado para o casal, alguns quartos de B&B, áreas de camping para hóspedes com barracas, uma cozinha comunitária, uma piscina e banheiros compartilhados.
 
-A escada serpenteia pela seção, criando meios níveis e adjacências inesperadas: um cantinho de leitura escondido sob um patamar, uma cozinha que se abre para um terraço ajardinado em meio nível, um quarto suspenso sobre a entrada. Cada laje de piso é levemente rotacionada, de modo que subir pela casa também significa girar gradualmente para encarar direções diferentes — um lento passeio arquitetônico.
+Projetei uma casa longa e estreita que fechava um jardim privado para o casal. A cozinha comunitária voltava-se para o resto da propriedade, com vista para a piscina, a área de barracas e o jardim. Situada na encosta de um dique, a casa oferecia vistas da paisagem plana holandesa.
 
-O projeto reflete um interesse na seção como a ferramenta de design primária, e em como os movimentos domésticos cotidianos podem ser coreografados pela geometria de um edifício.
+A cobertura era uma laje de concreto dobrada e transitável, enquanto as paredes eram de madeira. Embora ainda não tivéssemos estudado sistemas estruturais no currículo, o projeto previa uma estrutura de aço para sustentar a cobertura. O piso de concreto claro e a cor natural da madeira ajudavam a casa a se assentar bem contra o dique e a vegetação ao redor.

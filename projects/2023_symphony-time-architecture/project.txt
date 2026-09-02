@@ -2,30 +2,40 @@ title: Symphony of Time and Architecture
 category: Research
 year: 2023
 location: Alta, Norway
-typology: Research
+typology: Graduation research booklet
 organization: TU Delft
-mentors: Suzana Milinovic, Taneha Kuzniecow Bacchin, Rufus R. van den Ban, Denise Piccinini
+collaborators: Veronica Torri (erosion studies)
+mentors: Suzana Milinovic (design mentor) · Taneha Kuzniecow Bacchin (research mentor) · Rufus R. van den Ban (building technology mentor) · Denise Piccinini (delegate)
 status: Realised
+exhibitions: TU Delft Graduation 2023
 grid: large
 
 ---
 
-In my graduation research, 'Symphony of Time and Architecture,' I explored the relationships between time, change, and the built environment, using the dynamic landscapes of the Arctic as a case study. This exploration transcends traditional architectural boundaries where constructions are static and opposed to change. It is embracing the concept of buildings and spaces as living entities that evolve over time. Through a combination of theoretical investigation and practical case studies, the research examines how architectural designs can integrate and respond to the rhythms of natural and anthropogenic changes. It proposes approaches that allow structures to adapt, respond, and evolve in harmony with their environments, underscoring the profound impacts of temporal and environmental dynamics on architectural practices.
+Symphony of Time and Architecture is the research booklet for my graduation at TU Delft, in the Explore Lab studio. It asks what time actually is before it asks what architecture should do about it. The first half works through time from several directions: physics, neuroscience and literature, drawing on Rovelli, Hawking, Buonomano and others. The second half turns to the Arctic, to the Alta valley and the stretch of the Eibyelva river where the design would eventually sit.
 
-It is possible to see the research below, as well as downloading the full collection at the repository of TU Delft
+The argument is that buildings are not static objects set against change, but things that live in time and can be designed to move with it. Rather than resisting weather, erosion and season, a structure can be set up to respond to them.
+
+Part of the work was practical. I ran a series of erosion studies in sand, testing how different interventions behave in a river system. A single column turns out to do almost nothing to sedimentation, and some elements even repel sediment and leave a void behind them. Grouped into clusters, the same elements increase sediment accumulation sharply. That finding fed straight into the design: you can place structures to encourage or discourage the river's own deposits.
+
+The full graduation work can be downloaded from the [TU Delft repository](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
 
 ===no===
 
-Symphony of Time and Architecture er et forskningsprosjekt som undersøker tid som et arkitektonisk materiale. Med et strukturelt parallell mellom musikalsk komposisjon og romlig design spør det: hvordan utfolder en bygning seg i tid slik en symfoni utfolder seg over satser?
+Symphony of Time and Architecture er forskningsheftet for avgangsprosjektet mitt ved TU Delft, i studioet Explore Lab. Det spør hva tid faktisk er, før det spør hva arkitekturen skal gjøre med den. Første del arbeider seg gjennom tid fra flere kanter: fysikk, nevrovitenskap og litteratur, med utgangspunkt i blant andre Rovelli, Hawking og Buonomano. Andre del vender seg mot Arktis, mot Altadalen og den strekningen av Eibyelva der prosjektet til slutt skulle ligge.
 
-Forskningen sporer fire tidsmessige dimensjoner — levd tid, geologisk tid, sesongtid og forfallstid — gjennom historisk og moderne arkitektur. Casestudier spenner fra Pantheons oculus (som gjør soltiden synlig) til Sverre Fehns manipulasjon av lys og skygge, til den radikale flyktigheten til japansk Metabolisme. Hvert prosjekt forstås som et slags partitur: et sett instruksjoner for opplevelsen av tid i rom.
+Argumentet er at bygninger ikke er statiske objekter satt opp mot endring, men ting som lever i tid og kan tegnes for å bevege seg med den. I stedet for å motstå vær, erosjon og årstider kan en struktur settes opp for å svare på dem.
 
-Arbeidet kulminerte i et skriftlig argument for arkitektur som varighet snarere enn objekt — en disiplin som bør omfavne, snarere enn undertrykke, uunngåeligheten av forandring. Denne forskningen ble det teoretiske grunnlaget for Arctic Symphony.
+En del av arbeidet var praktisk. Jeg gjennomførte en serie erosjonsstudier i sand, der jeg testet hvordan ulike inngrep oppfører seg i et elvesystem. Én enkelt søyle viser seg å gjøre nesten ingenting med avsetningen, og noen elementer skyver til og med sedimentene unna og etterlater et tomrom bak seg. Samlet i klynger øker de samme elementene avsetningen kraftig. Det funnet gikk rett inn i designet: man kan plassere strukturer slik at de oppmuntrer eller demper elvas egne avsetninger.
+
+Hele avgangsarbeidet kan lastes ned fra [TU Delfts arkiv](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
 
 ===pt===
 
-Symphony of Time and Architecture é um projeto de pesquisa que examina o tempo como material arquitetônico. Traçando um paralelo estrutural entre composição musical e design espacial, pergunta: como um edifício se desdobra no tempo da mesma forma que uma sinfonia se desdobra ao longo de movimentos?
+Symphony of Time and Architecture é o caderno de pesquisa da minha graduação na TU Delft, no ateliê Explore Lab. Ele pergunta o que o tempo de fato é, antes de perguntar o que a arquitetura deve fazer a respeito. A primeira metade percorre o tempo por vários caminhos: física, neurociência e literatura, apoiando-se em Rovelli, Hawking, Buonomano e outros. A segunda metade se volta para o Ártico, para o vale de Alta e para o trecho do rio Eibyelva onde o projeto viria a se situar.
 
-A pesquisa traça quatro dimensões temporais — tempo vivido, tempo geológico, tempo sazonal e o tempo do decaimento — através da arquitetura histórica e contemporânea. Os estudos de caso vão desde o óculo do Pantheon (que torna o tempo solar visível) até a manipulação de luz e sombra de Sverre Fehn, passando pela efemeridade radical do Metabolismo japonês. Cada projeto é entendido como uma espécie de partitura: um conjunto de instruções para a experiência do tempo no espaço.
+O argumento é que edifícios não são objetos estáticos opostos à mudança, mas coisas que vivem no tempo e podem ser projetadas para se mover com ele. Em vez de resistir ao clima, à erosão e às estações, uma estrutura pode ser preparada para responder a eles.
 
-O trabalho culminou em um argumento escrito pela arquitetura como duração em vez de objeto — uma disciplina que deve abraçar, em vez de suprimir, a inevitabilidade da mudança. Esta pesquisa tornou-se o fundamento teórico para Arctic Symphony.
+Parte do trabalho foi prática. Conduzi uma série de estudos de erosão em areia, testando como diferentes intervenções se comportam em um sistema fluvial. Uma única coluna praticamente não afeta a sedimentação, e alguns elementos chegam a repelir o sedimento, deixando um vazio atrás de si. Agrupados em conjuntos, os mesmos elementos aumentam bastante o acúmulo de sedimentos. Essa constatação passou direto para o projeto: é possível posicionar estruturas para estimular ou conter os próprios depósitos do rio.
+
+O trabalho completo de graduação pode ser baixado no [repositório da TU Delft](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).

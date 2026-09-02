@@ -3,171 +3,311 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simon H.J. Bjørkå Flatin</title>
+  <title>Simon H.J. Bj&oslash;rk&aring; Flatin &middot; Architect &amp; Designer</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ---- HERO ---- */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .hero__bg {
-      width: 100%; height: 100%;
-      /* Replace gradient with your hero photo:
-         background: url('images/hero.jpg') center/cover no-repeat;  */
-      background: linear-gradient(160deg, #2d3d2e 0%, #4a6741 35%, #7a9e6e 60%, #c9d9b8 100%);
-    }
-    .hero__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.32) 100%);
-    }
-    .hero__scroll-cue {
-      position: absolute;
-      bottom: 2.2rem; left: 50%;
-      transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-      color: rgba(255,255,255,0.65);
-      font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
-    }
-    .hero__scroll-cue span {
-      display: block; width: 1px; height: 48px;
-      background: rgba(255,255,255,0.5);
-      animation: lineGrow 1.8s ease-in-out infinite;
-    }
-    @keyframes lineGrow {
-      0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
-      50%  { opacity: 1; }
-      100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
-    }
-
-    /* ---- FEATURED SECTION ---- */
-    .featured {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 6rem 4rem 0;
-    }
-    .featured__header {
-      display: flex; align-items: baseline; gap: 1.4rem;
-      margin-bottom: 4rem;
-    }
-
-    /* ---- SEE ALL WORK ---- */
-    .all-work { margin-top: 4rem; text-align: right; padding-bottom: 0; }
-    .all-work a {
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--dark); text-decoration: none;
-      border-bottom: 1.5px solid var(--dark); padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .all-work a:hover { color: var(--muted); border-color: var(--muted); }
-
-    /* ---- PLACEHOLDER CARD COLOURS ---- */
-    .card--arctic  .card__placeholder { background: linear-gradient(135deg, #1a2a3a 0%, #2d4a6b 50%, #8fb3c8 100%); }
-    .card--venice  .card__placeholder { background: linear-gradient(135deg, #3d2a1a 0%, #8b6340 50%, #c4a882 100%); }
-    .card--chicken .card__placeholder { background: linear-gradient(135deg, #1e2d1a 0%, #3a5c30 50%, #7ea86e 100%); }
-    .card--oud     .card__placeholder { background: linear-gradient(135deg, #2a1f1a 0%, #6b4a35 50%, #b08060 100%); }
-
-    @media (max-width: 900px) {
-      .featured { padding: 3rem 1.5rem 0; }
-    }
+    .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
+    .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    /* Water ripple - full-screen SVG, image clipped to bottom 45% via clipPath.
+       Mask fades the water softly at the waterline (top) and bottom edge. */
+    .hero__water { position:absolute; inset:0; width:100%; height:100%;
+      pointer-events:none;
+      -webkit-mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%);
+      mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%); }
+    /* Mist canvas - WebGL procedural fog, scroll-triggered from top corners */
+    #mc { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; display:block; }
+    .hero__overlay { position:absolute; inset:0;
+      background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
+    .hero__scroll-cue { position:absolute; bottom:2.2rem; left:50%;
+      transform:translateX(-50%); display:flex; flex-direction:column;
+      align-items:center; gap:.6rem; color:rgba(255,255,255,.65);
+      font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; }
+    .featured { max-width:1400px; margin:0 auto; padding:6rem 4rem 0; }
+    .featured__header { display:flex; align-items:baseline; gap:1.4rem; margin-bottom:4rem; }
+    .all-work { margin-top:4rem; text-align:right; }
+    .all-work a { font-size:.78rem; font-weight:700; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--dark); text-decoration:none;
+      border-bottom:1.5px solid var(--dark); padding-bottom:2px;
+      transition:color .2s,border-color .2s; }
+    .all-work a:hover { color:var(--muted); border-color:var(--muted); }
+    @media(max-width:900px) { .featured { padding:3rem 1.5rem 0; } }
+    
+  [data-lang="en"] .l-no,[data-lang="en"] .l-pt { display:none }
+  [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
+  [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }
+    /* lang-toggle hero styles handled in style.css */
   </style>
+  <script>
+  (function(){
+    var l=localStorage.getItem('lang')||'en';
+    document.documentElement.setAttribute('data-lang',l);
+  })();
+</script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VBPFZJZXY9');
+</script>
 </head>
 <body>
 
-  <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <img class="hero__bg" src="content/main/hero.jpg" alt="">
+    
+  <svg class="hero__water" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="wf" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.009 0.014"
+                      numOctaves="3" seed="5" stitchTiles="stitch" result="n"/>
+        <feOffset id="wo" in="n" dx="0" dy="0" result="s"/>
+        <feDisplacementMap in="SourceGraphic" in2="s"
+                           scale="22" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <clipPath id="wc" clipPathUnits="objectBoundingBox">
+        <rect x="0" y="0.55" width="1" height="0.45"/>
+      </clipPath>
+    </defs>
+    <image href="content/main/hero.jpg" width="100%" height="100%"
+           preserveAspectRatio="xMidYMid slice"
+           filter="url(#wf)"
+           clip-path="url(#wc)"/>
+  </svg>
     <div class="hero__overlay"></div>
+    <canvas id="mc" aria-hidden="true"></canvas>
     <nav class="nav--hero">
-      <a href="index.html" class="nav__name">Simon H.J. Bjørkå Flatin</a>
-      <ul class="nav__links">
-        <li><a href="index.html">Main</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
+      <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+      <div class="nav__link-row">
+        <ul class="nav__links">
+          <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
+          <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+          <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+          <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+          <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+        </ul>
+        <div class="lang-toggle" role="group" aria-label="Select language">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-lang="no">NO</button>
+          <span class="lang-sep">&middot;</span>
+          <button class="lang-btn" data-lang="pt">PT</button>
+        </div>
+      </div>
     </nav>
     <div class="hero__scroll-cue">
-      <span></span>
-      Scroll
+      <span class="l-en">Scroll</span><span class="l-no">Rull</span><span class="l-pt">Rolar</span>
+      <span class="hero__scroll-arrow-wrap" aria-hidden="true"><span class="hero__scroll-arrow"></span></span>
     </div>
   </section>
 
-  <!-- FEATURED PROJECTS -->
   <section class="featured">
     <div class="featured__header">
-      <span class="section-label">Selected Work</span>
-      <h2 class="section-title">Signature Projects</h2>
+      <span class="section-label"><span class="l-en">Selected Work</span><span class="l-no">Utvalgte prosjekter</span><span class="l-pt">Trabalho Selecionado</span></span>
+      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">Signatur&shy;prosjekter</span><span class="l-pt">Projetos de Destaque</span></h2>
     </div>
-
     <div class="projects">
 
-      <a class="card card--large card--arctic" href="projects/arctic-symphony/">
-        <div class="card__img-wrap">
-          <div class="card__placeholder"></div>
-        </div>
+      <a class="card card--wide" href="projects/sesc-mogi-das-cruzes/">
+        <div class="card__img-wrap"><img src="projects/2025_sesc-mogi-das-cruzes/cover.png" alt="SESC Mogi Das Cruzes" loading="eager" /></div>
         <div class="card__info">
-          <div class="card__category">Performance · Architecture · Photography</div>
+          <div class="card__category">Architecture Design Competition</div>
+          <div class="card__name">SESC Mogi Das Cruzes</div>
+          <div class="card__year">2025</div>
+          <div class="card__arrow">View project &rarr;</div>
+        </div>
+      </a>
+      <a class="card card--wide" href="projects/lalibela-modelmaking/">
+        <div class="card__img-wrap"><img src="projects/2024_lalibela-modelmaking/cover.jpg" alt="Lalibela modelmaking" loading="eager" /></div>
+        <div class="card__info">
+          <div class="card__category">Model making</div>
+          <div class="card__name">Lalibela modelmaking</div>
+          <div class="card__year">2024 · TU Delft</div>
+          <div class="card__arrow">View project &rarr;</div>
+        </div>
+      </a>
+      <a class="card card--full" href="projects/tinn/">
+        <div class="card__img-wrap"><img src="projects/2026_tinn/cover.png" alt="Tinn" loading="eager" /></div>
+        <div class="card__info">
+          <div class="card__category">Software · Specification tool</div>
+          <div class="card__name">Tinn</div>
+          <div class="card__year">2026 (ongoing)</div>
+          <div class="card__arrow">View project &rarr;</div>
+        </div>
+      </a>
+      <a class="card card--wide" href="projects/chicken-coop/">
+        <div class="card__img-wrap"><img src="projects/2022_chicken-coop/cover.jpg" alt="Chicken coop" loading="eager" /></div>
+        <div class="card__info">
+          <div class="card__category">Architecture · Making</div>
+          <div class="card__name">Chicken coop</div>
+          <div class="card__year">2024</div>
+          <div class="card__arrow">View project &rarr;</div>
+        </div>
+      </a>
+      <a class="card card--wide" href="projects/arctic-symphony/">
+        <div class="card__img-wrap"><img src="projects/2023_arctic-symphony/cover.jpg" alt="Arctic Symphony" loading="eager" /></div>
+        <div class="card__info">
+          <div class="card__category">Architecture</div>
           <div class="card__name">Arctic Symphony</div>
-          <div class="card__year">2023 — Graduation Project, TU Delft</div>
-          <div class="card__arrow">View project →</div>
+          <div class="card__year">2023 · TU Delft</div>
+          <div class="card__arrow">View project &rarr;</div>
         </div>
       </a>
-
-      <a class="card card--medium card--venice" href="projects/lalibela-modelmaking/">
-        <div class="card__img-wrap">
-          <div class="card__placeholder"></div>
-        </div>
-        <div class="card__info">
-          <div class="card__category">Architectural Model</div>
-          <div class="card__name">Lalibela Modelmaking</div>
-          <div class="card__year">2024 — TU Delft Exhibition</div>
-          <div class="card__arrow">View project →</div>
-        </div>
-      </a>
-
-      <a class="card card--wide card--chicken" href="projects/chicken-coop/">
-        <div class="card__img-wrap">
-          <div class="card__placeholder"></div>
-        </div>
-        <div class="card__info">
-          <div class="card__category">Craft · Making</div>
-          <div class="card__name">Chicken Coop</div>
-          <div class="card__year">2022 — Personal Build</div>
-          <div class="card__arrow">View project →</div>
-        </div>
-      </a>
-
-      <a class="card card--wide card--oud" href="projects/oud-alblas/">
-        <div class="card__img-wrap">
-          <div class="card__placeholder"></div>
-        </div>
-        <div class="card__info">
-          <div class="card__category">Form Studies · Modelmaking</div>
-          <div class="card__name">Oud Alblas</div>
-          <div class="card__year">2021 — Ebano AS / AKSIE AS</div>
-          <div class="card__arrow">View project →</div>
-        </div>
-      </a>
-
     </div>
-
-    <div class="all-work">
-      <a href="work.html">See all work</a>
-    </div>
+    <div class="all-work"><a href="work.html"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span><span class="l-pt">Ver todos os projetos</span></a></div>
   </section>
 
   <footer>
-    <div>© 2026 Simon H.J. Bjørkå Flatin</div>
+    <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="about.html">About</a>
-      <a href="work.html">Work</a>
-      <a href="services.html">Services</a>
+      <a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
+      <a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
+      <a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
     </div>
   </footer>
-
+<script>
+// Mist v5: two INDEPENDENT fog fields - LEFT (flows →) and RIGHT (flows ←).
+// Each has its own mask that extends PAST the centre to the opposite edge.
+// No shared symmetric mask → no centre seam, no hard stop at x=0.5.
+// Single-level domain warp only → puffy clouds, no swirly tendrils.
+// Mobile: aspect-ratio density boost for portrait screens.
+(function(){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var c=document.getElementById('mc');
+  if(!c)return;
+  var gl=c.getContext('webgl')||c.getContext('experimental-webgl');
+  if(!gl)return;
+  var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}';
+  var fs=
+    'precision mediump float;'+
+    'uniform float u_t,u_s;'+
+    'uniform vec2 u_r;'+
+    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}'+
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);'+
+    'return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}'+
+    'float fbm(vec2 p){float v=0.,a=.5;mat2 m=mat2(.8,.6,-.6,.8);'+
+    'for(int i=0;i<5;i++){v+=a*n(p);p=m*p*2.+vec2(5.2,1.3);a*=.5;}return v;}'+
+    'void main(){'+
+    'vec2 uv=gl_FragCoord.xy/u_r;'+
+    'float s=u_s*u_s*(3.-2.*u_s);'+
+    // Aspect ratio: <1 on portrait phone, used for mobile density boost
+    'float aspect=u_r.x/u_r.y;'+
+    // sp=0.80 at rest → hmL at x=1.0 = 0.199 (fog present everywhere even without scroll)
+    // sp=1.0 at full scroll → hmL at x=1.0 = 1.0 (fully covered). No seam at any scroll depth.
+    'float sp=0.80+s*0.20;'+
+    'float fw=0.28;'+
+    // LEFT mask: full at x=0, soft right edge at x≈sp. Extends past centre at sp>0.5+fw
+    'float hmL=clamp((sp-uv.x+fw)/fw,0.,1.);'+
+    'hmL=hmL*hmL*(3.-2.*hmL);'+
+    // RIGHT mask: mirror - full at x=1, soft left edge. Both fully overlap at 75% scroll
+    'float hmR=clamp((sp-(1.-uv.x)+fw)/fw,0.,1.);'+
+    'hmR=hmR*hmR*(3.-2.*hmR);'+
+    // Always animating (cinematic idle), faster when scrolled
+    'float dt=u_t*(0.003+s*0.005);'+
+    // LEFT fog: drifts rightward with time + scroll. s*1.0 = ~0.5 UV shift at full scroll.
+    'vec2 stL=vec2(uv.x*2.0-dt-s*1.0,uv.y*3.0+0.5);'+
+    'vec2 qL=vec2(fbm(stL),fbm(stL+vec2(4.1,1.8)));'+
+    'float cL=fbm(stL+1.2*qL);'+
+    'cL=clamp((cL-0.25)*1.8,0.,1.);'+
+    // RIGHT fog: independent seed, drifts leftward with time + scroll (mirror of L)
+    'vec2 stR=vec2((1.-uv.x)*2.0-dt-s*1.0+7.3,uv.y*3.0+3.5);'+
+    'vec2 qR=vec2(fbm(stR),fbm(stR+vec2(4.1,1.8)));'+
+    'float cR=fbm(stR+1.2*qR);'+
+    'cR=clamp((cR-0.25)*1.8,0.,1.);'+
+    // Three fixed-height layers - no scroll-driven vertical descent
+    'float yA=0.60;'+
+    'float v1=(1.-smoothstep(yA-0.02,yA+0.10,uv.y))*smoothstep(yA-0.22,yA+0.02,uv.y);'+
+    'float yB=0.48;'+
+    'float v2=(1.-smoothstep(yB-0.02,yB+0.10,uv.y))*smoothstep(yB-0.28,yB+0.02,uv.y);'+
+    'float yC=0.34;'+
+    'float v3=(1.-smoothstep(yC-0.01,yC+0.07,uv.y))*smoothstep(yC-0.30,yC+0.01,uv.y);'+
+    // L and R overlap everywhere - no seam. dens ramps from 0.40 at rest to 1.0 at full scroll.
+    'float dens=0.40+s*0.60;'+
+    'float dL=hmL*(v1*cL*0.63+v2*cL*0.76+v3*cL*0.52)*dens;'+
+    'float dR=hmR*(v1*cR*0.63+v2*cR*0.76+v3*cR*0.52)*dens;'+
+    'float base=(hmL+hmR)*0.5*(0.25+s*0.75)*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.10;'+
+    'float d=clamp(dL+dR+base,0.,1.)*smoothstep(0.03,0.10,uv.y);'+
+    // Portrait screens: boost density so fog feels solid on tall vertical canvases
+    'd=clamp(d*(1.0+max(0.,(1.-aspect)*0.5)),0.,1.);'+
+    'd=smoothstep(0.02,0.96,d)*0.86;'+
+    'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
+  function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
+  var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
+  if(!sv||!sf)return;
+  var p=gl.createProgram();
+  gl.attachShader(p,sv);gl.attachShader(p,sf);gl.linkProgram(p);
+  if(!gl.getProgramParameter(p,gl.LINK_STATUS))return;
+  gl.useProgram(p);
+  var buf=gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  var al=gl.getAttribLocation(p,'a');
+  gl.enableVertexAttribArray(al);
+  gl.vertexAttribPointer(al,2,gl.FLOAT,false,0,0);
+  var uT=gl.getUniformLocation(p,'u_t');
+  var uS=gl.getUniformLocation(p,'u_s');
+  var uR=gl.getUniformLocation(p,'u_r');
+  var sT=0,sC=0;
+  function resize(){var w=c.offsetWidth||window.innerWidth,h=c.offsetHeight||window.innerHeight;if(c.width!==w||c.height!==h){c.width=w;c.height=h;gl.viewport(0,0,w,h);}}
+  function onScroll(){sT=Math.min((window.scrollY||window.pageYOffset)/(c.parentElement.offsetHeight||window.innerHeight),1);}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',resize);
+  resize();
+  var t0=null;
+  function frame(ts){
+    if(!t0)t0=ts;
+    sC+=(sT-sC)*0.06;
+    resize();
+    gl.clearColor(0,0,0,0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(uT,(ts-t0)/1000);
+    gl.uniform1f(uS,sC);
+    gl.uniform2f(uR,c.width,c.height);
+    gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+<script>
+  /* Water ripple - sinusoidal feOffset oscillation, zero seam, works on iOS.
+   * dy and dx oscillate at different periods so the combined motion never
+   * exactly repeats, giving endlessly varied, natural-looking ripple. */
+  (function(){
+    var fo=document.getElementById('wo');
+    if(!fo)return;
+    var t=0,lastTs=null;
+    function step(ts){
+      if(lastTs===null)lastTs=ts;
+      var dt=Math.min((ts-lastTs)/1000,0.1); lastTs=ts; t+=dt;
+      fo.setAttribute('dy',String(-35*Math.sin(t*0.25)));
+      fo.setAttribute('dx',String(12*Math.sin(t*0.4+1.0)));
+      requestAnimationFrame(step);
+    }
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',function(){requestAnimationFrame(step);});
+    }else{requestAnimationFrame(step);}
+  })();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var cur=document.documentElement.getAttribute('data-lang')||'en';
+    function setActive(lang){
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.lang===lang);
+      });
+    }
+    setActive(cur);
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var lang=btn.dataset.lang;
+        document.documentElement.setAttribute('data-lang',lang);
+        localStorage.setItem('lang',lang);
+        setActive(lang);
+      });
+    });
+  });
+</script>
 </body>
 </html>

@@ -1,37 +1,33 @@
 title: Chicken coop
 category: Architecture · Making
 year: 2024
-location: Bjørnåsen 21, 1560 Larkollen, Norway
+location: Larkollen, Norway
 typology: Chicken coop
+size: 4 m²
 status: Realised
-collaborators: Håvard Flatin · All photos are taken by Alex Kirschstein
+collaborators: Håvard Flatin (build) · Alex Kirschstein (photography)
 grid: wide
 
 ---
 
-In my latest project, I designed a wooden chicken coop for my parents, inspired by my father's fascination with chickens and our family's desire to be self-sustained with fresh eggs. This project stems from a deeper aspiration to reconnect with where our food comes from, fostering a closer relationship between daily life and the natural processes that support it.
+I designed and built a wooden chicken coop for my parents, out of my father's fascination with chickens and the family's wish to be self-sufficient in eggs. It comes from wanting to be closer to where the food actually comes from.
 
-The coop's design is based on two lines perpendicular to each other, creating a simple yet functional layout:
+The plan is two lines set perpendicular to each other. One holds the coop itself along with the storage, giving the chickens shelter and keeping feed and equipment to hand. The other forms the outdoor run where they can scratch and forage. The run is modest, so when the weather is good we let them out into the rest of the garden.
 
-- The Coop and Storage Units: One axis hosts the main structure—the coop itself—along with integrated storage spaces. This area provides a safe and comfortable shelter for the chickens, as well as convenient access to supplies and equipment.
-- The Outdoor Run: The perpendicular axis forms the outdoor space where the chickens can play and forage. Though modest in size, it offers enrichment and opportunities for natural behaviors. When conditions are favorable, we allow the chickens to roam freely throughout the rest of the garden.
-
-As an extension of the garage we built a few years ago, the coop integrates with the existing architecture. Thoughtful consideration was given to the garden's design, particularly the trees and plants that define the space. The outdoor area of the coop surrounds our family's pear tree, creating a blend between the new structure and the garden.
-
-To accentuate the architectural lines of the coop, I selected specific plants that enhance its geometry and connection to the garden. This careful selection not only highlights the design but also contributes to the overall aesthetic and ecological value of the space.
+The coop extends the garage we built a few years earlier and picks up its lines. It is built in rough-sawn Norwegian spruce, left to grey down on its own. The run wraps around the family pear tree, and I chose the planting around it to pick up the geometry of the building and tie it back into the garden.
 
 ===no===
 
-Noen ganger er den mest instruktive bygningen en liten en. Hønsehuset — designet og bygget for hånd i hagen til et hus i utkanten av Oslo — ble en øvelse i materiell ærlighet, strukturell økonomi og gleden av å lage noe komplett.
+Jeg tegnet og bygde et hønsehus i tre til foreldrene mine, ut fra farens fascinasjon for høns og familiens ønske om å være selvforsynt med egg. Det kommer av å ville være nærmere der maten faktisk kommer fra.
 
-Strukturen bruker grovt saget norsk gran, overlatt til å brune naturlig, med tradisjonelle tap-og-splitt-forbindelser der hønenes velvære og noen treskruer tillot det. Taket skråner i to retninger for å avlede snø, og en sørorientert utegård gir fuglene lys i de få timene med Oslo-vinterlys.
+Planen er to linjer satt vinkelrett på hverandre. Den ene rommer selve hønsehuset og lageret, og gir hønene ly samtidig som fôr og utstyr er lett tilgjengelig. Den andre danner utegården der de kan sparke og lete etter mat. Utegården er liten, så når været er godt slipper vi dem ut i resten av hagen.
 
-Utover sin åpenbare funksjon var prosjektet en påminnelse om at arkitekturens prinsipper gjelder i alle skalaer: proporsjon, orientering, materiale, lys og forholdet mellom inne og ute er like levende i et 4m² hønsehus som i en offentlig bygning.
+Hønsehuset er en forlengelse av garasjen vi bygde noen år tidligere, og tar opp linjene derfra. Det er bygd i grovsaget norsk gran, som får gråne av seg selv. Utegården går rundt familiens pæretre, og jeg valgte beplantningen rundt for å ta opp geometrien i bygget og knytte det tilbake til hagen.
 
 ===pt===
 
-Às vezes, a construção mais instrutiva é uma pequena. O galinheiro — projetado e construído à mão no jardim de uma casa nos arredores de Oslo — tornou-se um exercício em honestidade material, economia estrutural e o prazer de fazer algo completo.
+Projetei e construí um galinheiro de madeira para meus pais, a partir do fascínio do meu pai por galinhas e do desejo da família de ser autossuficiente em ovos. Vem de querer estar mais perto de onde a comida realmente vem.
 
-A estrutura usa pinho norueguês serrado à mão, deixado para envelhecer naturalmente, com encaixes tradicionais de mortise e tenon onde o bem-estar das galinhas e alguns parafusos de madeira permitiam. O telhado inclina-se em duas direções para escoar a neve, e um galinheiro voltado para o sul dá às aves luz nas poucas horas de sol de inverno em Oslo.
+A planta são duas linhas perpendiculares entre si. Uma abriga o galinheiro em si e o depósito, dando abrigo às galinhas e mantendo ração e equipamento à mão. A outra forma o pátio externo onde elas podem ciscar e procurar comida. O pátio é pequeno, então quando o tempo está bom nós as soltamos no resto do jardim.
 
-Além de sua função óbvia, o projeto foi um lembrete de que os princípios da arquitetura se aplicam em todas as escalas: proporção, orientação, material, luz e a relação entre dentro e fora são tão vivos em um galinheiro de 4m² quanto em um edifício público.
+O galinheiro é uma extensão da garagem que construímos alguns anos antes e retoma suas linhas. É feito de abeto norueguês serrado bruto, deixado para acinzentar sozinho. O pátio contorna a pereira da família, e escolhi a vegetação ao redor para retomar a geometria do edifício e amarrá-lo de volta ao jardim.

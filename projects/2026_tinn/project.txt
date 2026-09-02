@@ -3,7 +3,7 @@ category: Software · Specification tool
 year: 2026 (ongoing)
 typology: Desktop application (Windows · macOS)
 status: In testing
-client: Bjørkå Flatin ENK
+client: Self-initiated
 live: tinn.app
 grid: wide
 weight: 20

@@ -12,25 +12,25 @@ grid: large
 
 ---
 
-Write your first paragraph here — introduce the project, what it is, where it is, and the core idea.
+Write your first paragraph here - introduce the project, what it is, where it is, and the core idea.
 
-Second paragraph — go deeper into process, materials, or research. Each blank line creates a new paragraph on the page.
+Second paragraph - go deeper into process, materials, or research. Each blank line creates a new paragraph on the page.
 
-Third paragraph — optional. Two to four paragraphs works well for most projects.
+Third paragraph - optional. Two to four paragraphs works well for most projects.
 
 ---
 HOW TO USE THIS TEMPLATE
 ─────────────────────────
 1. Duplicate this entire folder
 2. Rename it:  YYYY_project-slug  (e.g. 2025_oslo-library)
-   — The year prefix keeps folders sorted newest-first in Explorer/Finder
-   — The slug becomes the URL: /projects/oslo-library/
+   - The year prefix keeps folders sorted newest-first in Explorer/Finder
+   - The slug becomes the URL: /projects/oslo-library/
 3. Edit project.txt with your content
 4. Add images to this folder:
-   — cover.jpg          → hero image at the top of the project page
-   — image-01.jpg, image-02.jpg, etc.  → gallery below
+   - cover.jpg          → hero image at the top of the project page
+   - image-01.jpg, image-02.jpg, etc.  → gallery below
    (Supported: jpg, jpeg, png, webp, gif, avif)
-5. Commit and push — Netlify rebuilds the site automatically
+5. Commit and push - Netlify rebuilds the site automatically
 
 GRID SIZE (the "grid:" field above)
 ─────────────────────────────────────

@@ -1,34 +1,55 @@
-title: Assembling the Arctic Symphony
+title: Arctic Symphony
 category: Architecture
 year: 2023
 location: Alta, Norway
-typology: Art residence
+typology: Residence with workshop and bridge
 status: Realised
 organization: TU Delft
-collaborators: My mentors during graduation: · S. Milinović Teachers of Practice / U - Architecture and the Built Environment (supervisor 1) · R.R. van den Ban Teachers of Practice / AE+T - Architecture and the Built Environment (supervisor 1) · T. Kuzniecow Bacchin Urban Design - Architecture and the Built Environment (supervisor 2) · D. Piccinini Landscape Architecture - Architecture and the Built Environment (coach)
-exhibitions: TU Delft Graduation Show 2023
+collaborators: Ewa Ziemiecka (dance) · Bintang Manira Manik (music) · Alex Kirschstein (film) · Håvard Flatin (fieldwork) · Zofia Sosnierz (visualisation)
+mentors: Suzana Milinovic (design mentor) · Taneha Kuzniecow Bacchin (research mentor) · Rufus R. van den Ban (building technology mentor) · Denise Piccinini (delegate)
+exhibitions: TU Delft Graduation 2023
 grid: large
 featured: yes
 video: https://youtu.be/4jFVfVUMrHc
 
 ---
 
-The architecture of "Arctic Symphony" presents itself as a living entity, an evolving tapestry seamlessly woven into the temporal fabric of the Arctic landscape. Unlike traditional buildings, static and resistant to change, this architectural system thrives on transformation, embodying the perpetual ﬂux of nature. In this architectural narrative, time is not a mere backdrop but an active participant. The structure's life cycle mirrors the rhythmic ﬂow of the Arctic – from the thawing bursts of spring to the introspective solitude of winter. Each season imprints its character on the architecture, dictating the pace of growth and decay. It's an embodiment of Bruno Latour's philosophy where human and non-human actors collaborate in an ongoing performance.
+Arctic Symphony was my graduation project at TU Delft, done in the Explore Lab studio in 2022 and 2023. It comes in four parts: research, architecture, performance and photography. The site is Eibyelva, a wild river in the Alta valley in the Norwegian Arctic. Of the three stretches of the river basin I studied, it was the one that moved and changed the most over the years, which is why I chose it.
 
-It is possible to download the full collection of my graduation work at the repository of TU Delft
+I grew up in Larkollen, with a view over the Oslofjord. In the woods there was a small hidden pond that changed slowly through the year. That pond is where the project started. It made me treat time as something architecture can meet rather than resist, so the project is as much about decay and regrowth as it is about building. The research booklet, Symphony of Time and Architecture, works through what time actually is, borrowing from physics, neuroscience and literature, before turning to the Arctic landscape and the site itself.
+
+The building is a living structure in three parts: dwelling units built around a rammed earth core, a workshop that turns wood and earth from the site into beams and compressed earth blocks, and a bridge that connects them. Following Bruno Latour, I treated the whole thing as an assemblage of human and non-human actors, where erosion and sedimentation do as much of the work as I do.
+
+The performance grew out of the graduation project. Ewa Ziemiecka developed and performed the dance, Bintang Manira Manik composed and played the music, and Alex Kirschstein filmed it. It has since taken on a life of its own, more or less independent of the project it came from.
+
+The photographs are the fourth part. My father Håvard and I made two expeditions to Alta, one in summer and one in winter, and documented the same landscape on both. The images set the material choices and the tectonic moves in the proposal, so that the fieldwork and the work at the drawing board kept pulling in the same direction.
+
+The full graduation work can be downloaded from the [TU Delft repository](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
 
 ===no===
 
-Arctic Symphony er en firesidig utforskning som integrerer arkitektur, fremføring, naturlige prosesser og fotografi. Født fra mitt avgangsprosjekt ved TU Delft undersøker verket hvordan bygd rom samhandler med tid, forfall og rytmene i det arktiske landskapet.
+Arctic Symphony var avgangsprosjektet mitt ved TU Delft, gjort i studioet Explore Lab i 2022 og 2023. Det består av fire deler: forskning, arkitektur, fremføring og fotografi. Stedet er Eibyelva, ei vill elv i Altadalen i det norske Arktis. Av de tre strekningene av vassdraget jeg undersøkte, var det den som flyttet og endret seg mest gjennom årene, og derfor valgte jeg den.
 
-Inspirert av de subtile endringene til et skjult tjern nær mitt barndomshjem med utsikt over Oslofjorden behandler prosjektet tid som en flytende kraft — noe arkitektur kan omfavne snarere enn motstå. Designet utforsker temaer om forfall og regenerasjon, og kulminerte i en levende fremføring som forente arkitektur, dans og musikk.
+Jeg vokste opp i Larkollen, med utsikt over Oslofjorden. Inne i skogen der lå et lite, skjult tjern som endret seg langsomt gjennom året. Det tjernet er utgangspunktet for prosjektet. Det fikk meg til å se tid som en kraft arkitekturen kan møte i stedet for å motstå, og prosjektet handler derfor like mye om forfall og gjenvekst som om å bygge. Forskningsheftet, Symphony of Time and Architecture, arbeider seg gjennom hva tid faktisk er, med lån fra fysikk, nevrovitenskap og litteratur, før det vender seg mot det arktiske landskapet og selve stedet.
 
-Den fotografiske komponenten dokumenterer landskapet ved ulike årstider og tider på dagen, og sporer den samme romlige opplevelsen over måneder. Disse bildene informerte materialpaletten og de tektoniske valgene til det arkitektoniske forslaget og lukket løkken mellom observasjon, forskning og produksjon.
+Bygget er en levende struktur i tre deler: boenheter bygd rundt en kjerne av stampet jord, et verksted som gjør tre og jord fra stedet om til bjelker og komprimerte jordblokker, og ei bru som binder dem sammen. Etter Bruno Latour behandlet jeg det hele som en sammenstilling av menneskelige og ikke-menneskelige aktører, der erosjon og avsetning gjør like mye av arbeidet som jeg gjør.
+
+Fremføringen vokste ut av avgangsprosjektet. Ewa Ziemiecka utviklet og fremførte dansen, Bintang Manira Manik komponerte og spilte musikken, og Alex Kirschstein filmet den. Den har siden fått sitt eget liv, mer eller mindre uavhengig av prosjektet den kom fra.
+
+Fotografiene er den fjerde delen. Faren min Håvard og jeg gjorde to turer til Alta, én om sommeren og én om vinteren, og dokumenterte det samme landskapet begge ganger. Bildene la grunnlaget for materialvalgene og de tektoniske grepene i forslaget, slik at feltarbeidet og arbeidet på tegnebrettet hele tiden trakk i samme retning.
+
+Hele avgangsarbeidet kan lastes ned fra [TU Delfts arkiv](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
 
 ===pt===
 
-Arctic Symphony é uma exploração em quatro partes integrando arquitetura, performance, processos naturais e fotografia. Nascida do meu projeto de graduação na TU Delft, a obra investiga como o espaço construído interage com o tempo, o decaimento e os ritmos da paisagem ártica.
+Arctic Symphony foi meu projeto de graduação na TU Delft, feito no ateliê Explore Lab em 2022 e 2023. Tem quatro partes: pesquisa, arquitetura, performance e fotografia. O local é o Eibyelva, um rio selvagem no vale de Alta, no Ártico norueguês. Dos três trechos da bacia que estudei, foi o que mais se moveu e mudou ao longo dos anos, e por isso o escolhi.
 
-Inspirado pelas mudanças sutis de um lago escondido perto da minha casa de infância com vista para o fiorde de Oslo, o projeto trata o tempo como uma força fluida — algo que a arquitetura pode abraçar em vez de resistir. O design explora os temas do decaimento e da regeneração, culminando em uma performance ao vivo que unificou arquitetura, dança e música.
+Cresci em Larkollen, com vista para o fiorde de Oslo. Na mata havia um pequeno lago escondido que mudava lentamente ao longo do ano. Foi nesse lago que o projeto começou. Ele me levou a tratar o tempo como algo que a arquitetura pode acolher em vez de resistir, e por isso o projeto trata tanto de decaimento e rebrota quanto de construir. O caderno de pesquisa, Symphony of Time and Architecture, examina o que o tempo de fato é, recorrendo à física, à neurociência e à literatura, antes de se voltar para a paisagem ártica e para o próprio local.
 
-O componente fotográfico documenta a paisagem em diferentes estações e horas do dia, rastreando a mesma experiência espacial ao longo de meses. Essas imagens informaram a paleta material e as escolhas tectônicas da proposta arquitetônica, fechando o ciclo entre observação, pesquisa e criação.
+O edifício é uma estrutura viva em três partes: unidades de habitação construídas em torno de um núcleo de terra socada, uma oficina que transforma madeira e terra do local em vigas e blocos de terra comprimida, e uma ponte que as liga. Seguindo Bruno Latour, tratei o conjunto como uma assemblagem de atores humanos e não humanos, em que a erosão e a sedimentação fazem tanto do trabalho quanto eu.
+
+A performance nasceu do projeto de graduação. Ewa Ziemiecka desenvolveu e executou a dança, Bintang Manira Manik compôs e tocou a música, e Alex Kirschstein a filmou. Desde então ganhou vida própria, mais ou menos independente do projeto de onde veio.
+
+As fotografias são a quarta parte. Meu pai Håvard e eu fizemos duas expedições a Alta, uma no verão e outra no inverno, e documentamos a mesma paisagem nas duas. As imagens definiram as escolhas de materiais e as decisões tectônicas da proposta, de modo que o trabalho de campo e o trabalho na prancheta seguissem sempre na mesma direção.
+
+O trabalho completo de graduação pode ser baixado no [repositório da TU Delft](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).

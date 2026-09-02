@@ -7,28 +7,30 @@ size: 1 x 1,2 x 0,5m
 status: Realised
 organization: TU Delft
 collaborators: Alex Kirschstein · Prof. Dirk van Gameren
-exhibitions: TU Delft 1st of September - 1st of November
+exhibitions: TU Delft, 1 September - 1 November 2024
 grid: medium
 featured: yes
 
 ---
 
-As part of my work on Ethiopian architecture and modelmaking, I collaborated with Alex Kirschtein to create a detailed model of Biet Gabriel-Rufael in Lalibela—a UNESCO World Heritage site. The landmark is known for its rock-hewn churches. Carved entirely from a single mass of volcanic rock, Biet Gabriel-Rufael is a stunning example of monolithic architecture. Its intricate design, featuring internal chambers, passageways, and unique geometric forms, reflects the remarkable ingenuity and spiritual devotion of its creators.
+As part of my work on Ethiopian architecture and model making, I worked with Alex Kirschstein on a detailed model of Biet Gabriel-Rufael in Lalibela, a UNESCO World Heritage site known for its rock-hewn churches. Biet Gabriel-Rufael is carved entirely out of a single mass of volcanic rock, with internal chambers, passageways and distinctive geometric forms.
 
-To authentically capture the essence of this iconic structure, we studied Lino Bianchi Barriviera’s 1938 drawings of Lalibela, which vividly depict the churches and their surrounding landscapes, along with contemporary photography and 3D scans of the site. We focused on meticulously replicating the textures of stone and lichen to emphasize the seamless integration of the architecture with its natural environment. This project reflects my fascination for historical research and making it into tangible, high-quality representations in architectural modeling, bringing to life the intricate details and cultural significance of this extraordinary site.
+We worked from Lino Bianchi Barriviera's 1938 drawings of Lalibela, which record the churches and the landscape around them, alongside contemporary photography and 3D scans of the site. Most of the effort went into the textures of stone and lichen, since that is what ties the architecture to the rock it was cut from.
+
+The project comes out of an interest in taking historical research and turning it into something you can stand in front of.
 
 ===no===
 
-Som del av mitt arbeid med etiopisk arkitektur og modellbygging samarbeidet jeg med Alex Kirschstein om å lage en detaljert modell av Biet Gabriel-Rufael i Lalibela — et UNESCO-verdensarvsted. Monumentet er kjent for sine bergkirkene, hugget ut av en enkelt masse vulkansk stein. Den intrikate utformingen, med indre kamre, passasjer og unike geometriske former, gjenspeiler skapernes bemerkelsesverdige oppfinnsomhet og åndelige hengivenhet.
+Som del av arbeidet mitt med etiopisk arkitektur og modellbygging laget jeg sammen med Alex Kirschstein en detaljert modell av Biet Gabriel-Rufael i Lalibela, et UNESCO-verdensarvsted kjent for sine bergkirker. Biet Gabriel-Rufael er hugget ut av én enkelt masse vulkansk stein, med indre kamre, passasjer og særegne geometriske former.
 
-For å autentisk fange essensen av denne ikoniske strukturen studerte vi Lino Bianchi Barrivieras Lalibela-tegninger fra 1938, som levende fremstiller kirkene og det omkringliggende landskapet, sammen med samtids fotografi og 3D-skanninger av stedet. Vi fokuserte på å nøye replikere teksturene av stein og lav for å understreke den sømløse integrasjonen mellom arkitekturen og det naturlige miljøet.
+Vi arbeidet ut fra Lino Bianchi Barrivieras Lalibela-tegninger fra 1938, som dokumenterer kirkene og landskapet rundt dem, sammen med samtidsfotografi og 3D-skanninger av stedet. Mesteparten av arbeidet gikk med til teksturene i stein og lav, for det er det som binder arkitekturen til fjellet den er skåret ut av.
 
-Dette prosjektet gjenspeiler min fascinasjon for historisk forskning og det å gjøre den håndgripelig gjennom høykvalitetsrepresentasjoner i arkitektonisk modellbygging — og bringer til live de intrikate detaljene og den kulturelle betydningen til dette ekstraordinære stedet.
+Prosjektet kommer ut av en interesse for å ta historisk forskning og gjøre den om til noe man kan stå foran.
 
 ===pt===
 
-Como parte do meu trabalho sobre arquitetura etíope e construção de maquetes, colaborei com Alex Kirschstein para criar um modelo detalhado de Biet Gabriel-Rufael em Lalibela — um Patrimônio Mundial da UNESCO. O monumento é conhecido por suas igrejas escavadas na rocha, talhadas inteiramente em uma única massa de rocha vulcânica. Seu design intrincado, com câmaras internas, passagens e formas geométricas únicas, reflete a notável engenhosidade e devoção espiritual de seus criadores.
+Como parte do meu trabalho sobre arquitetura etíope e construção de maquetes, fiz junto com Alex Kirschstein uma maquete detalhada de Biet Gabriel-Rufael em Lalibela, um Patrimônio Mundial da UNESCO conhecido por suas igrejas escavadas na rocha. Biet Gabriel-Rufael foi talhada inteiramente em uma única massa de rocha vulcânica, com câmaras internas, passagens e formas geométricas distintas.
 
-Para capturar autenticamente a essência dessa estrutura icônica, estudamos os desenhos de Lalibela de Lino Bianchi Barriviera de 1938, que representam vividamente as igrejas e as paisagens ao redor, juntamente com fotografias contemporâneas e varreduras 3D do local. Concentramo-nos em replicar meticulosamente as texturas da pedra e do líquen para enfatizar a integração perfeita da arquitetura com seu ambiente natural.
+Trabalhamos a partir dos desenhos de Lalibela de Lino Bianchi Barriviera, de 1938, que registram as igrejas e a paisagem ao redor, junto com fotografia contemporânea e varreduras 3D do local. A maior parte do esforço foi para as texturas de pedra e líquen, porque é isso que liga a arquitetura à rocha de onde foi cortada.
 
-Este projeto reflete minha fascinação pela pesquisa histórica e por transformá-la em representações tangíveis e de alta qualidade na construção de maquetes arquitetônicas, dando vida aos detalhes intrincados e à importância cultural deste extraordinário local.
+O projeto nasce do interesse em pegar pesquisa histórica e transformá-la em algo diante do qual você pode se colocar.

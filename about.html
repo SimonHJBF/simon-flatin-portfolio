@@ -3,224 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Simon H.J. Bjørkå Flatin</title>
+  <title>About &middot; Simon H.J. Bjørkå Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .about-body {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 5rem 4rem 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+    .about-body { max-width:1400px; margin:0 auto; padding:5rem 4rem 0;
+      display:grid; grid-template-columns:1fr 1fr; gap:5rem; }
+    .about-bio__label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+    .about-bio__name { font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.8rem);
+      font-weight:400; line-height:1.15; margin-bottom:2.5rem; }
+    .about-bio__text p { font-size:.92rem; line-height:1.85; color:var(--accent);
+      margin-bottom:1.4rem; }
+    .about-photo { margin-top:3rem; }
+    .about-photo img { width:100%; max-width:380px; display:block; object-fit:cover; aspect-ratio:3/4; object-position:center top; }
+    .about-photo__caption { font-size:.72rem; color:var(--muted); margin-top:.75rem; }
+    .cv-label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
+    .cv-section { margin-bottom:3.5rem; }
+    .cv-section__title { font-size:.78rem; font-weight:700; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--dark);
+      border-bottom:1px solid rgba(28,28,26,.12); padding-bottom:.75rem; margin-bottom:1.5rem; }
+    .cv-entry { margin-bottom:2rem; }
+    .cv-entry__period { font-size:.72rem; font-weight:700; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:.3rem; }
+    .cv-entry__role { font-family:var(--serif); font-size:1rem;
+      font-weight:400; color:var(--dark); margin-bottom:.2rem; }
+    .cv-entry__org { font-size:.82rem; color:var(--accent); margin-bottom:.15rem; }
+    .cv-entry__location { font-size:.78rem; color:var(--muted); margin-bottom:.6rem; }
+    .cv-entry__desc { font-size:.82rem; line-height:1.7; color:var(--muted); }
+    @media(max-width:1000px) {
+      .about-body { grid-template-columns:1fr; gap:4rem; padding:3rem 1.5rem 0; }
     }
-
-    /* ---- LEFT: Bio ---- */
-    .about-bio { }
-    .about-bio__label {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 1.5rem;
-    }
-    .about-bio__name {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 2.5rem;
-    }
-    .about-bio__text p {
-      font-size: 0.92rem;
-      line-height: 1.85;
-      color: var(--accent);
-      margin-bottom: 1.4rem;
-    }
-    .about-bio__text p:last-child { margin-bottom: 0; }
-    .about-photo {
-      margin-top: 3rem;
-    }
-    .about-photo img {
-      width: 100%;
-      max-width: 380px;
-      display: block;
-      /* placeholder while no image is added */
-      aspect-ratio: 3/4;
-      background: linear-gradient(160deg, #d4c9b8 0%, #b8aa98 100%);
-      object-fit: cover;
-    }
-    .about-photo__caption {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 0.75rem;
-      letter-spacing: 0.04em;
-    }
-
-    /* ---- RIGHT: CV ---- */
-    .about-cv { }
-    .cv-label {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 1.5rem;
-    }
-    .cv-section { margin-bottom: 3.5rem; }
-    .cv-section__title {
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--dark);
-      border-bottom: 1px solid rgba(28,28,26,0.12);
-      padding-bottom: 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .cv-entry { margin-bottom: 2rem; }
-    .cv-entry__period {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 0.3rem;
-    }
-    .cv-entry__role {
-      font-family: var(--serif);
-      font-size: 1rem; font-weight: 400;
-      color: var(--dark); margin-bottom: 0.2rem;
-    }
-    .cv-entry__org {
-      font-size: 0.82rem; color: var(--accent);
-      margin-bottom: 0.15rem;
-    }
-    .cv-entry__location {
-      font-size: 0.78rem; color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-    .cv-entry__desc {
-      font-size: 0.82rem; line-height: 1.7;
-      color: var(--muted);
-    }
-
-    @media (max-width: 1000px) {
-      .about-body {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-        padding: 3rem 1.5rem 0;
-      }
-    }
+    
+  [data-lang="en"] .l-no,[data-lang="en"] .l-pt { display:none }
+  [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
+  [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }
   </style>
+  <script>
+  (function(){
+    var l=localStorage.getItem('lang')||'en';
+    document.documentElement.setAttribute('data-lang',l);
+  })();
+</script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VBPFZJZXY9');
+</script>
 </head>
 <body>
 
   <nav class="nav--page">
-    <a href="index.html" class="nav__name">Simon H.J. Bjørkå Flatin</a>
-    <ul class="nav__links">
-      <li><a href="index.html">Main</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
+    <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+    <div class="nav__link-row">
+      <ul class="nav__links">
+        <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
+        <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+        <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+        <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+        <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Select language">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep">&middot;</span>
+        <button class="lang-btn" data-lang="no">NO</button>
+        <span class="lang-sep">&middot;</span>
+        <button class="lang-btn" data-lang="pt">PT</button>
+      </div>
+    </div>
   </nav>
 
   <div class="about-body">
-
-    <!-- LEFT: Bio -->
     <div class="about-bio">
-      <div class="about-bio__label">About</div>
-      <h1 class="about-bio__name">Simon H.J.<br>Bjørkå Flatin</h1>
-
+      <div class="about-bio__label"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></div>
+      <h1 class="about-bio__name">Simon H.J.<br>Bj&oslash;rk&aring; Flatin</h1>
       <div class="about-bio__text">
-        <p>Growing up in a forested home overlooking the Oslo fjord in Norway, I grew a deep appreciation for integrating natural processes into architecture. As an architect, I am devoted to merging nature and human through design.</p>
-
-        <p>My academic journey led me to TU Delft, where I earned my bachelor's and master's degrees in architecture. Prior to that, I studied at La Trobe University in Melbourne and Noroff Vocational School in Oslo. My graduation project, "Arctic Symphony," was a multidisciplinary exploration that merged architecture with performance, photography, and landscape. Inspired by the Arctic's rhythms, it delved into themes of time, decay, and regeneration, culminating in a performance uniting architecture, dance, and music.</p>
-
-        <p>A formative experience was discovering a hidden pond near my childhood home in the Oslo fjord. Observing its subtle changes taught me to perceive time as a fluid force — a concept that permeates my work and drives me to create designs that embrace natural transformation.</p>
-
-        <p>Professionally, I bring over nine years of experience from Ebano AS/AKSIE AS, engaging in projects ranging from service industry design to custom stainless steel kitchen products. I co-founded Alternative Realities, a small research and design studio developing focused research projects within the realm of architecture and the urban context.</p>
+        <div class="l-en">
+          <p>I am an architect. MSc and ir. from TU Delft, Architecture, Urbanism and Building Sciences, graduated cum laude in 2023.</p>
+          <p>I grew up in Larkollen, outside Oslo, with a view over the fjord. In the woods behind the house there was a small hidden pond that changed slowly through the year, and watching it is where my interest in time began, time as something buildings live inside rather than resist. That interest ran through my graduation project, Arctic Symphony, an Explore Lab thesis sited on a wild stretch of river in Alta.</p>
+          <p>Before Delft I spent an exchange year at La Trobe University in Melbourne and studied technical design at Noroff in Oslo. Alongside my studies I worked nine years at Ebano AS, designing restaurants, bars and cafés with a focus on commercial kitchens, from layout through to custom stainless steel products, and later running planning and logistics for a house build. I interned at Lüchinger Architects in Rotterdam on the transformation of a historic barn at Oud Alblas, and I was commissioned by the dean at TU Delft to build two architectural models of Ethiopian buildings, one of which was shown at the Venice Architecture Biennale in 2023. That same year our collective Bounding Box shared first place in the Upcycle Mall Rotterdam competition with Harbour Box, a proposal built from waste materials off the Rotterdam docks. I also co-founded Alternative Realities, a small research collective looking at how architecture and urban space can develop alongside natural processes. It is no longer active.</p>
+          <p>I have run my own practice since 2023, registered as Bjørkå Flatin ENK in 2025. I split my time between Norway and São Paulo and work mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from a planning application for a care building, through competition proposals, to architectural visualisation.</p>
+          <p>I also build software for the industry I work in. Tinn is a specification tool for the built environment and hytteboka.app is an app for cabin owners. Both are running. Most projects, though, still start with a physical model on the desk.</p>
+        </div>
+        <div class="l-no">
+          <p>Jeg er arkitekt. MSc og ir. fra TU Delft, Architecture, Urbanism and Building Sciences, uteksaminert cum laude i 2023.</p>
+          <p>Jeg vokste opp i Larkollen utenfor Oslo, med utsikt over fjorden. Inne i skogen bak huset lå et lite, skjult tjern som endret seg langsomt gjennom året, og det å se på det er der interessen min for tid begynte, tid som noe bygninger lever inni snarere enn står imot. Den interessen gikk gjennom hele avgangsprosjektet mitt, Arctic Symphony, en Explore Lab-oppgave lagt til en vill strekning av elva i Alta.</p>
+          <p>Før Delft hadde jeg et utvekslingsår ved La Trobe University i Melbourne og studerte teknisk design ved Noroff i Oslo. Ved siden av studiene jobbet jeg ni år hos Ebano AS med utforming av restauranter, barer og kafeer med vekt på storkjøkken, fra planløsning til spesialdesignede produkter i rustfritt stål, og senere med planlegging og logistikk for oppføringen av en enebolig. Jeg var praktikant hos Lüchinger Architects i Rotterdam på transformasjonen av en historisk låve i Oud Alblas, og jeg fikk i oppdrag av dekanen ved TU Delft å bygge to arkitekturmodeller av etiopiske bygg, hvorav den ene ble vist på Arkitekturbiennalen i Venezia i 2023. Samme år delte kollektivet vårt Bounding Box førsteplassen i konkurransen Upcycle Mall Rotterdam med Harbour Box, et forslag bygget av avfallsmaterialer fra havna i Rotterdam. Jeg var også medgründer av Alternative Realities, et lite forskningskollektiv som så på hvordan arkitektur og byrom kan utvikles i samspill med naturlige prosesser. Det er ikke lenger aktivt.</p>
+          <p>Jeg har drevet egen praksis siden 2023, registrert som Bjørkå Flatin ENK i 2025. Jeg deler tiden mellom Norge og São Paulo og jobber mest online, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra byggesøknad for et helsebygg, via konkurranseforslag, til arkitekturvisualisering.</p>
+          <p>Jeg lager også programvare for bransjen jeg jobber i. Tinn er et beskrivelsesverktøy for byggebransjen, og hytteboka.app er en app for hytteeiere. Begge er i drift. Men de fleste prosjektene begynner fortsatt med en fysisk modell på bordet.</p>
+        </div>
+        <div class="l-pt">
+          <p>Sou arquiteto. MSc e ir. pela TU Delft, Architecture, Urbanism and Building Sciences, formado cum laude em 2023.</p>
+          <p>Cresci em Larkollen, nos arredores de Oslo, com vista para o fiorde. Na mata atrás da casa havia um pequeno lago escondido que mudava lentamente ao longo do ano, e foi observando-o que começou meu interesse pelo tempo, o tempo como algo dentro do qual os edifícios vivem, em vez de algo a que resistem. Esse interesse atravessou todo o meu projeto de graduação, Arctic Symphony, um trabalho do ateliê Explore Lab situado em um trecho selvagem de rio em Alta.</p>
+          <p>Antes de Delft, passei um ano de intercâmbio na La Trobe University, em Melbourne, e estudei desenho técnico na Noroff, em Oslo. Paralelamente aos estudos, trabalhei nove anos na Ebano AS, projetando restaurantes, bares e cafés com foco em cozinhas industriais, da planta até produtos sob medida em aço inoxidável, e depois cuidando do planejamento e da logística da construção de uma casa. Fui estagiário na Lüchinger Architects, em Roterdã, na transformação de um celeiro histórico em Oud Alblas, e fui encarregado pelo diretor da faculdade da TU Delft de construir duas maquetes de edifícios etíopes, uma das quais foi exibida na Bienal de Arquitetura de Veneza em 2023. No mesmo ano, nosso coletivo Bounding Box dividiu o primeiro lugar no concurso Upcycle Mall Rotterdam com o Harbour Box, uma proposta feita a partir de materiais descartados do porto de Roterdã. Também cofundei a Alternative Realities, um pequeno coletivo de pesquisa que investigava como a arquitetura e o espaço urbano podem se desenvolver junto com processos naturais. Não está mais ativo.</p>
+          <p>Tenho meu próprio escritório desde 2023, registrado como Bjørkå Flatin ENK em 2025. Divido meu tempo entre a Noruega e São Paulo e trabalho principalmente online, com clientes na Noruega, Suécia, Portugal, Estados Unidos e Brasil. O trabalho vai de um pedido de licenciamento para um edifício de saúde, passando por propostas de concurso, até visualização arquitetônica.</p>
+          <p>Também desenvolvo software para o setor em que trabalho. O Tinn é uma ferramenta de especificação para a construção civil, e o hytteboka.app é um aplicativo para donos de cabanas. Ambos estão em operação. Mas a maioria dos projetos ainda começa com uma maquete física sobre a mesa.</p>
+        </div>
       </div>
-
       <div class="about-photo">
-        <!-- Replace src with your portrait photo: <img src="images/portrait.jpg" alt="Simon H.J. Bjørkå Flatin"> -->
-        <div style="width:100%;max-width:320px;aspect-ratio:3/4;background:linear-gradient(160deg,#d4c9b8,#b8aa98);"></div>
+        <img src="content/about/portrait.jpg" alt="Simon H.J. Bjørkå Flatin" />
         <div class="about-photo__caption">Oslo fjord, Norway</div>
       </div>
     </div>
 
-    <!-- RIGHT: CV -->
     <div class="about-cv">
       <div class="cv-label">CV</div>
-
       <div class="cv-section">
-        <div class="cv-section__title">Working Experience</div>
-
-        <div class="cv-entry">
-          <div class="cv-entry__period">2023 — Ongoing</div>
-          <div class="cv-entry__role">Co-Founder &amp; Research Architect</div>
-          <div class="cv-entry__org">Alternative Realities</div>
-          <div class="cv-entry__location">Norway · Poland · Netherlands · Belgium</div>
-          <div class="cv-entry__desc">A small research and design studio co-founded with Ewa Ziemiecka and Zofia Sosnierz, developing focused research projects within architecture and the urban context.</div>
-        </div>
-
-        <div class="cv-entry">
-          <div class="cv-entry__period">2015 — Present</div>
-          <div class="cv-entry__role">Technical Designer → Architect</div>
-          <div class="cv-entry__org">Ebano AS / AKSIE AS</div>
-          <div class="cv-entry__location">Drøbak, Norway</div>
-          <div class="cv-entry__desc">Design and production of service industry environments and custom stainless steel kitchen products. Projects range from restaurant layout to bespoke industrial fabrication.</div>
-        </div>
-
-        <div class="cv-entry">
-          <div class="cv-entry__period">Autumn 2021</div>
-          <div class="cv-entry__role">Intern</div>
-          <div class="cv-entry__org">Lüchinger Architects / Mieke Vink</div>
-          <div class="cv-entry__location">Rotterdam, The Netherlands</div>
-          <div class="cv-entry__desc">Creative and innovative workplace designing restaurants, bars and cafés — working on everything from layout to custom stainless steel products for a variety of clients.</div>
-        </div>
-
+        <div class="cv-section__title"><span class="l-en">Working Experience</span><span class="l-no">Arbeidserfaring</span><span class="l-pt">Experi&ecirc;ncia Profissional</span></div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2023 - Present</div>
+            <div class="cv-entry__role">Architect &amp; Designer</div>
+            <div class="cv-entry__org">Bjørkå Flatin</div>
+            <div class="cv-entry__location">Norway · Brazil</div>
+            <div class="cv-entry__desc">Independent practice, registered as a sole proprietorship (ENK) in 2025 and VAT registered. Work includes a planning application for a care building (Omsorgsgruppen Våler), the SESC Mogi das Cruzes competition proposal in São Paulo with architect Denis Joelsons, architectural visualisation including the Von Sauna floating saunas, and the design and development of Tinn and hytteboka.app. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Maxxit Systems (US), Adspace Agency (US), Floresta Produções (BR).</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2023 - 2024</div>
+            <div class="cv-entry__role">Model commissions</div>
+            <div class="cv-entry__org">TU Delft</div>
+            <div class="cv-entry__location">Delft, The Netherlands</div>
+            <div class="cv-entry__desc">Commissioned by the dean of the Faculty of Architecture and the Built Environment to build two architectural models of Meqdela Gebbi and Lalibela, Ethiopia. One was exhibited at the Venice Architecture Biennale 2023 (Palazzo Mora) and at the faculty in Delft.</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">Nov 2022 - Jun 2023</div>
+            <div class="cv-entry__role">Co-author, shared first place</div>
+            <div class="cv-entry__org">Upcycle Mall Rotterdam competition, collective Bounding Box</div>
+            <div class="cv-entry__location">Rotterdam, The Netherlands</div>
+            <div class="cv-entry__desc">Co-author of the winning proposal Harbour Box, built on the reuse of waste materials from the Rotterdam docks, turning industrial by-products into functional architectural elements.</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2015 - 2024</div>
+            <div class="cv-entry__role">Technical Designer → Architect</div>
+            <div class="cv-entry__org">Ebano AS / AKSIE AS</div>
+            <div class="cv-entry__location">Drøbak, Norway</div>
+            <div class="cv-entry__desc">Design of restaurants, bars and cafés with an emphasis on commercial kitchens, from layout through to custom stainless steel products. When the company expanded into housing, I ran the planning and logistics for the construction of a detached house, coordinating the build team.</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">Sep - Dec 2021</div>
+            <div class="cv-entry__role">Architectural intern</div>
+            <div class="cv-entry__org">Lüchinger Architects / Mieke Vink</div>
+            <div class="cv-entry__location">Rotterdam, The Netherlands</div>
+            <div class="cv-entry__desc">Transformation of a historic barn into a home (Oud Alblas), developed through iterative physical model-making while preserving the original structure.</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2023</div>
+            <div class="cv-entry__role">Co-founder</div>
+            <div class="cv-entry__org">Alternative Realities</div>
+            <div class="cv-entry__location">The Netherlands</div>
+            <div class="cv-entry__desc">A small research collective, co-founded with Ewa Ziemiecka and Zofia Sosnierz, examining how architecture and urban space can develop alongside natural processes, with an emphasis on adaptability, sustainability and local participation. No longer active.</div>
+          </div>
       </div>
-
       <div class="cv-section">
-        <div class="cv-section__title">Education</div>
-
-        <div class="cv-entry">
-          <div class="cv-entry__period">2020 — 2023</div>
-          <div class="cv-entry__role">Master of Science in Architecture</div>
-          <div class="cv-entry__org">TU Delft</div>
-          <div class="cv-entry__location">Delft, The Netherlands</div>
-          <div class="cv-entry__desc">Developing innovative building projects that use design to address technical, social and spatial challenges in the built environment.</div>
-        </div>
-
-        <div class="cv-entry">
-          <div class="cv-entry__period">2017 — 2020</div>
-          <div class="cv-entry__role">Bachelor of Architecture, Urbanism &amp; Building Sciences</div>
-          <div class="cv-entry__org">TU Delft</div>
-          <div class="cv-entry__location">Delft, The Netherlands</div>
-          <div class="cv-entry__desc">Foundations in architecture, urbanism and building sciences.</div>
-        </div>
-
-        <div class="cv-entry">
-          <div class="cv-entry__period">2014 — 2015</div>
-          <div class="cv-entry__role">One Year Technical Design</div>
-          <div class="cv-entry__org">Noroff Vocational School</div>
-          <div class="cv-entry__location">Oslo, Norway</div>
-          <div class="cv-entry__desc">Technical design skills including AutoCAD, 3ds Max, Revit and Inventor.</div>
-        </div>
-
-        <div class="cv-entry">
-          <div class="cv-entry__period">2013 — 2014</div>
-          <div class="cv-entry__role">One Year Study Abroad</div>
-          <div class="cv-entry__org">La Trobe University</div>
-          <div class="cv-entry__location">Melbourne, Australia</div>
-          <div class="cv-entry__desc">International architectural impulses and an expanded network of global contacts.</div>
-        </div>
-
+        <div class="cv-section__title"><span class="l-en">Education</span><span class="l-no">Utdanning</span><span class="l-pt">Educa&ccedil;&atilde;o</span></div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2020 - 2023</div>
+            <div class="cv-entry__role">MSc Architecture, Urbanism and Building Sciences, track Architecture</div>
+            <div class="cv-entry__org">TU Delft</div>
+            <div class="cv-entry__location">Delft, The Netherlands</div>
+            <div class="cv-entry__desc">Graduated cum laude, carrying the right to the Dutch engineering title ingenieur (ir.). Graduation project: Arctic Symphony, an Explore Lab thesis sited in Alta, bringing together time, sustainability and landscape dynamics in an Arctic context.</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2017 - 2020</div>
+            <div class="cv-entry__role">BSc Architecture, Urbanism and the Built Environment</div>
+            <div class="cv-entry__org">TU Delft</div>
+            <div class="cv-entry__location">Delft, The Netherlands</div>
+            <div class="cv-entry__desc">Foundations in architecture, urbanism and building sciences.</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2014 - 2015</div>
+            <div class="cv-entry__role">Technical design with CAD 2D/3D</div>
+            <div class="cv-entry__org">Noroff Vocational School</div>
+            <div class="cv-entry__location">Oslo, Norway</div>
+            <div class="cv-entry__desc">Grounding in technical drawing with AutoCAD, Revit, Inventor and 3ds Max, alongside the start of my work for Ebano.</div>
+          </div>
+          <div class="cv-entry">
+            <div class="cv-entry__period">2013 - 2014</div>
+            <div class="cv-entry__role">Exchange year</div>
+            <div class="cv-entry__org">La Trobe University</div>
+            <div class="cv-entry__location">Melbourne, Australia</div>
+            <div class="cv-entry__desc">A year abroad that widened both my architectural perspective and my network, with international contacts and exposure to other ways of thinking about architecture.</div>
+          </div>
       </div>
-
     </div>
   </div>
 
   <footer>
-    <div>© 2026 Simon H.J. Bjørkå Flatin</div>
+    <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="about.html">About</a>
-      <a href="work.html">Work</a>
-      <a href="services.html">Services</a>
+      <a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
+      <a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
+      <a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
     </div>
   </footer>
-
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var cur=document.documentElement.getAttribute('data-lang')||'en';
+    function setActive(lang){
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.lang===lang);
+      });
+    }
+    setActive(cur);
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var lang=btn.dataset.lang;
+        document.documentElement.setAttribute('data-lang',lang);
+        localStorage.setItem('lang',lang);
+        setActive(lang);
+      });
+    });
+  });
+</script>
 </body>
 </html>

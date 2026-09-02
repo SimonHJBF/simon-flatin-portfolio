@@ -1,33 +1,47 @@
 title: Assembling the Arctic Symphony
-category: Performance · Installation
-year: 2020
+category: Architecture · Model making
+year: 2023
 location: Alta, Norway / Delft, The Netherlands
-typology: Live Performance / Installation
+typology: Graduation design booklet
 organization: TU Delft
-collaborators: Ewa Ziemiecka, Zofia Sosnierz
-exhibitions: TU Delft, Spring 2020 (preceded graduation project)
+status: Concept
+collaborators: Zofia Sosnierz (drawing)
+mentors: Suzana Milinovic (design mentor) · Taneha Kuzniecow Bacchin (research mentor) · Rufus R. van den Ban (building technology mentor) · Denise Piccinini (delegate)
+exhibitions: TU Delft Graduation 2023
 grid: third
 
 ---
 
-Assembling the Arctic Symphony was the inaugural performance that first brought together the central themes of what would later become my graduation project. Staged at TU Delft, it explored how architecture might be assembled, performed and experienced rather than simply built and inhabited.
+Assembling the Arctic Symphony is the design booklet for my graduation project at TU Delft, in the Explore Lab studio. It documents the architecture itself: the models, the drawings and the materials that came out of a year working on the Eibyelva river in Alta.
 
-The work drew on fieldwork in Svalbard and the polar coastline, translating landscape observations into a live sequence of spatial events — sound, movement and physical material combined into a single durational act. The temporal dimension of the Arctic, where seasons compress and expand time dramatically, was made tangible through the choreography of the performance itself.
+The proposal is a living structure in three parts. The dwelling units give shelter, each built around a rammed earth core that holds the fireplace, the cooking and the sleeping spaces, with a shower fed by water harvested from the roof and warmed by the same fire. The workshop sits at the corners of the bridge and works as the metabolic centre of the whole thing: it takes wood and earth from the site and turns them into beams, planks and compressed earth blocks, and it draws its energy from the river. The bridge connects the two and carries people, materials and ideas between them.
 
-This early assembly was a laboratory: testing how architecture, dance and sound could coexist without hierarchy, and what a building might communicate when experienced as a performance score rather than a static object.
+The wooden elements are joined with old farm joinery and wooden pins, traditional techniques that tie the structure to how building was done here before. The buildings are meant to age. As a dwelling unit reaches the end of its life the facade opens up, water works into the rammed earth core, and the core erodes back into the river it came from.
+
+Two models carry the argument. A 1:10 000 landscape model shows the terrain, the meandering river and the lower mountains, deliberately with no architecture in it. A 1:200 model then places the structure in that landscape and shows it at several ages at once: weathered units from the past next to new units still in production. Its river bed was made by running sand and water until the terrain sculpted itself.
+
+The booklet ends with jars and vials of material carried back from the site: earth and moss still alive a year after it was collected, river water with sand and stones, silt from the water's edge, the forest floor.
 
 ===no===
 
-Assembling the Arctic Symphony var den innledende fremføringen som for første gang samlet de sentrale temaene for det som senere ble mitt avgangsprosjekt. Fremstilt ved TU Delft utforsket den hvordan arkitektur kan settes sammen, fremføres og oppleves — snarere enn bare bygges og bebos.
+Assembling the Arctic Symphony er designheftet for avgangsprosjektet mitt ved TU Delft, i studioet Explore Lab. Det dokumenterer selve arkitekturen: modellene, tegningene og materialene som kom ut av et år med arbeid ved elva Eibyelva i Alta.
 
-Arbeidet bygde på feltarbeid på Svalbard og den polare kystlinjen, og oversatte landskapsobservasjoner til en levende sekvens av romlige hendelser — lyd, bevegelse og fysisk materiale kombinert i én sammenhengende handling. Den tidsmessige dimensjonen av Arktis, der årstider dramatisk komprimerer og utvider tid, ble gjort håndgripelig gjennom selve fremføringens koreografi.
+Forslaget er en levende struktur i tre deler. Boenhetene gir ly, og hver av dem er bygd rundt en kjerne i stampet jord som rommer peisen, matlagingen og soveplassene, med en dusj som forsynes av vann samlet fra taket og varmes opp av den samme ilden. Verkstedet ligger i hjørnene av brua og fungerer som stoffskiftet i det hele: det tar tre og jord fra stedet og gjør det om til bjelker, plank og komprimerte jordblokker, og henter energien sin fra elva. Brua binder de to sammen og frakter mennesker, materialer og ideer mellom dem.
 
-Denne tidlige monteringen var et laboratorium: testing av hvordan arkitektur, dans og lyd kan sameksistere uten hierarki, og hva en bygning kan kommunisere når den oppleves som et fremføringspartitur snarere enn et statisk objekt.
+Treverket er satt sammen med gammelt gårdslaft og trenagler, tradisjonelle teknikker som knytter bygget til måten man bygde her før. Bygningene skal få lov til å eldes. Når en boenhet nærmer seg slutten av livet sitt, åpner fasaden seg, vann trenger inn i jordkjernen, og kjernen eroderer tilbake til elva den kom fra.
+
+To modeller bærer argumentet. En landskapsmodell i 1:10 000 viser terrenget, den meandrerende elva og de nedre fjellene, bevisst uten arkitektur i seg. En modell i 1:200 setter så strukturen inn i det landskapet og viser den i flere aldre samtidig: forvitrede enheter fra fortiden ved siden av nye enheter under oppføring. Elveleiet i modellen ble laget ved å la sand og vann forme terrenget selv.
+
+Heftet avsluttes med glass og små flasker med materiale hentet hjem fra stedet: jord og mose som fortsatt levde et år etter at det ble samlet inn, elvevann med sand og stein, silt fra vannkanten, skogbunn.
 
 ===pt===
 
-Assembling the Arctic Symphony foi a performance inaugural que reuniu pela primeira vez os temas centrais do que viria a ser meu projeto de graduação. Encenada na TU Delft, explorou como a arquitetura pode ser montada, performada e vivenciada — em vez de simplesmente construída e habitada.
+Assembling the Arctic Symphony é o caderno de projeto da minha graduação na TU Delft, no ateliê Explore Lab. Documenta a arquitetura em si: os modelos, os desenhos e os materiais que saíram de um ano de trabalho no rio Eibyelva, em Alta.
 
-O trabalho se baseou em pesquisa de campo em Svalbard e na costa polar, traduzindo observações da paisagem em uma sequência ao vivo de eventos espaciais — som, movimento e material físico combinados em um único ato duracional. A dimensão temporal do Ártico, onde as estações comprimem e expandem o tempo de forma dramática, foi tornada tangível pela coreografia da própria performance.
+A proposta é uma estrutura viva em três partes. As unidades de habitação dão abrigo, cada uma construída em torno de um núcleo de terra socada que abriga a lareira, a cozinha e os espaços de dormir, com um chuveiro alimentado por água captada do telhado e aquecida pelo mesmo fogo. A oficina fica nos cantos da ponte e funciona como o centro metabólico do conjunto: pega madeira e terra do local e os transforma em vigas, tábuas e blocos de terra comprimida, e tira sua energia do rio. A ponte liga as duas e carrega pessoas, materiais e ideias entre elas.
 
-Esta montagem inicial foi um laboratório: testando como arquitetura, dança e som podem coexistir sem hierarquia, e o que um edifício pode comunicar quando vivenciado como uma partitura de performance em vez de um objeto estático.
+Os elementos de madeira são unidos com encaixes de carpintaria rural antiga e cavilhas de madeira, técnicas tradicionais que ligam a estrutura ao modo como se construía ali antes. Os edifícios devem envelhecer. Quando uma unidade chega ao fim da vida, a fachada se abre, a água penetra no núcleo de terra socada, e o núcleo se erode de volta para o rio de onde veio.
+
+Dois modelos sustentam o argumento. Um modelo de paisagem em 1:10 000 mostra o terreno, o rio meandrante e as montanhas mais baixas, deliberadamente sem arquitetura. Um modelo em 1:200 então insere a estrutura nessa paisagem e a mostra em várias idades ao mesmo tempo: unidades desgastadas do passado ao lado de unidades novas ainda em produção. O leito do rio foi feito deixando areia e água esculpirem o terreno.
+
+O caderno termina com potes e frascos de material trazidos do local: terra e musgo ainda vivos um ano depois da coleta, água do rio com areia e pedras, silte da margem, chão da floresta.

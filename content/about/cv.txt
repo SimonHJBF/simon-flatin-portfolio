@@ -1,59 +1,73 @@
-# CV — Simon H.J. Bjørkå Flatin
+# CV - Simon H.J. Bjørkå Flatin
 # Format: each entry starts with [experience] or [education]
 # Fields: period, role, org, location, desc
 
 [experience]
-period: May 2025 — Present
-role: Founder & Principal Architect
-org: Bjørkå Flatin ENK
+period: 2023 - Present
+role: Architect & Designer
+org: Bjørkå Flatin
 location: Norway · Brazil
-desc: An independent architecture and design practice, founded in Norway and operating between Norway and São Paulo. Taking on projects worldwide — working digitally across borders while also engaging locally wherever situated.
+desc: Independent practice, registered as a sole proprietorship (ENK) in 2025 and VAT registered. Work includes a planning application for a care building (Omsorgsgruppen Våler), the SESC Mogi das Cruzes competition proposal in São Paulo with architect Denis Joelsons, architectural visualisation including the Von Sauna floating saunas, and the design and development of Tinn and hytteboka.app. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Maxxit Systems (US), Adspace Agency (US), Floresta Produções (BR).
 
 [experience]
-period: 2023 — Ongoing
-role: Co-Founder & Research Architect
-org: Alternative Realities
-location: Norway · Poland · Netherlands · Belgium
-desc: A small research and design studio co-founded with Ewa Ziemiecka and Zofia Sosnierz, developing focused research projects within architecture and the urban context.
+period: 2023 - 2024
+role: Model commissions
+org: TU Delft
+location: Delft, The Netherlands
+desc: Commissioned by the dean of the Faculty of Architecture and the Built Environment to build two architectural models of Meqdela Gebbi and Lalibela, Ethiopia. One was exhibited at the Venice Architecture Biennale 2023 (Palazzo Mora) and at the faculty in Delft.
 
 [experience]
-period: 2015 — Present
+period: Nov 2022 - Jun 2023
+role: Co-author, shared first place
+org: Upcycle Mall Rotterdam competition, collective Bounding Box
+location: Rotterdam, The Netherlands
+desc: Co-author of the winning proposal Harbour Box, built on the reuse of waste materials from the Rotterdam docks, turning industrial by-products into functional architectural elements.
+
+[experience]
+period: 2015 - 2024
 role: Technical Designer → Architect
 org: Ebano AS / AKSIE AS
 location: Drøbak, Norway
-desc: Design and production of service industry environments and custom stainless steel kitchen products. Projects range from restaurant layout to bespoke industrial fabrication for a variety of clients.
+desc: Design of restaurants, bars and cafés with an emphasis on commercial kitchens, from layout through to custom stainless steel products. When the company expanded into housing, I ran the planning and logistics for the construction of a detached house, coordinating the build team.
 
 [experience]
-period: Autumn 2021
-role: Intern
+period: Sep - Dec 2021
+role: Architectural intern
 org: Lüchinger Architects / Mieke Vink
 location: Rotterdam, The Netherlands
-desc: Contributed to the design of restaurants, bars and cafés, taking personal responsibility for layout development, spatial detailing and the design of custom stainless steel products and fixtures.
+desc: Transformation of a historic barn into a home (Oud Alblas), developed through iterative physical model-making while preserving the original structure.
+
+[experience]
+period: 2023
+role: Co-founder
+org: Alternative Realities
+location: The Netherlands
+desc: A small research collective, co-founded with Ewa Ziemiecka and Zofia Sosnierz, examining how architecture and urban space can develop alongside natural processes, with an emphasis on adaptability, sustainability and local participation. No longer active.
 
 [education]
-period: 2020 — 2023
-role: Master of Science in Architecture
+period: 2020 - 2023
+role: MSc Architecture, Urbanism and Building Sciences, track Architecture
 org: TU Delft
 location: Delft, The Netherlands
-desc: Graduated cum laude. Developing innovative building projects that use design to address technical, social and spatial challenges in the built environment. Graduation project: Arctic Symphony — a multidisciplinary work merging architecture, performance, photography and landscape.
+desc: Graduated cum laude, carrying the right to the Dutch engineering title ingenieur (ir.). Graduation project: Arctic Symphony, an Explore Lab thesis sited in Alta, bringing together time, sustainability and landscape dynamics in an Arctic context.
 
 [education]
-period: 2017 — 2020
-role: Bachelor of Architecture, Urbanism & Building Sciences
+period: 2017 - 2020
+role: BSc Architecture, Urbanism and the Built Environment
 org: TU Delft
 location: Delft, The Netherlands
 desc: Foundations in architecture, urbanism and building sciences.
 
 [education]
-period: 2014 — 2015
-role: One Year Technical Design
+period: 2014 - 2015
+role: Technical design with CAD 2D/3D
 org: Noroff Vocational School
 location: Oslo, Norway
-desc: Technical design skills including AutoCAD, 3ds Max, Revit and Inventor.
+desc: Grounding in technical drawing with AutoCAD, Revit, Inventor and 3ds Max, alongside the start of my work for Ebano.
 
 [education]
-period: 2013 — 2014
-role: One Year Study Abroad
+period: 2013 - 2014
+role: Exchange year
 org: La Trobe University
 location: Melbourne, Australia
-desc: International architectural impulses and an expanded network of global contacts.
+desc: A year abroad that widened both my architectural perspective and my network, with international contacts and exposure to other ways of thinking about architecture.

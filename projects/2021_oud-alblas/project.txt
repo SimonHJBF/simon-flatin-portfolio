@@ -1,5 +1,5 @@
 title: Oud Alblas
-category: Internship, Architecture
+category: Internship · Architecture
 year: 2021
 location: Peperstraat, Oud-Alblas, The Netherlands
 typology: Architecture
@@ -10,26 +10,24 @@ grid: medium
 
 ---
 
-During my internship with Mieke Vink at Lüchinger Architects, I and my fellow intern Thomas Zhang, collaborated on a project to transform a historic barn into a liveable house. This project involved designing a barn, originally used for cows, with a characteristic black wooden facade and thatched roof, into a home for an elderly woman.
+During my internship with Mieke Vink at Lüchinger Architects, my fellow intern Thomas Zhang and I collaborated on a project to transform a historic barn into a liveable house. The barn, originally used for cows, has a characteristic black wooden facade and a thatched roof, and was to become a home for an elderly woman.
 
-The barn had long been used as a garage and storage. Luckily, most of its wooden columns and beams were still intact, providing a framework for the transformation. Mieke's vision was to preserve as much of the existing structure as possible, allowing it to carry the light facade structure. In the centre of the home, a “hearth” would be established. This hearth would be the core of all the essential infrastructure of the home, the fireplace, the kitchen, the bathroom and the stairs to the second floor. This core became one of the main aspects of the concept, designed to rise through the sentre of the building allowing spaces to naturally emerge around it.
+The barn had long been used as a garage and storage. Most of its wooden columns and beams were still intact, which gave us a framework for the transformation. Mieke's vision was to preserve as much of the existing structure as possible and let it carry the light facade structure. In the centre of the home a “hearth” would be established: the core holding all the essential infrastructure, the fireplace, the kitchen, the bathroom and the stairs to the second floor. This core became one of the main aspects of the concept, designed to rise through the centre of the building so that spaces emerge naturally around it.
 
-Our role as interns focused on modeling and design the spaces through modelmaking. Iterating on the layout of the core to ensure it to fit within the existing wooden structure. We began the process by analyzing and understanding the existing wooden structure, creating a model of the wooden beams and colums to use as a base for designing the core.
-
-This project was an invaluable learning experience.
+Our role as interns focused on modelling and designing the spaces through model-making, iterating on the layout of the core to ensure it fit within the existing wooden structure. We began by analysing the existing wooden structure and building a model of the beams and columns to use as a base for designing the core.
 
 ===no===
 
-Under praksisen min hos Mieke Vink ved Lüchinger Architects i Rotterdam arbeidet jeg side om side med medintern Thomas Zhang på et prosjekt for å transformere en historisk låve i Oud-Alblas til en beboelig bolig. Låven, opprinnelig bygget for kyr, hadde en karakteristisk svartbeiset trefasade og stråtak — en lokal byggetypologi som er vanlig i det nederlandske polderlandskapet.
+Under praksisen min hos Mieke Vink ved Lüchinger Architects arbeidet jeg sammen med medpraktikant Thomas Zhang på et prosjekt for å gjøre en historisk låve om til bolig. Låven, opprinnelig bygget for kyr, har en karakteristisk svart trefasade og stråtak, og skulle bli hjem for en eldre kvinne.
 
-Oppgaven krevde at den landbruksmessige konstruksjonen ble gjort om til en komfortabel bolig for en eldre dame, mens bygningens landlige karakter og materialærlighet ble bevart. Designet beholdt den eksisterende bærende konstruksjonen og den karakteristiske fasaden, og reorganiserte interiøret rundt et nytt sentralt oppholdsrom med klare forbindelser til hagen.
+Låven hadde lenge vært brukt som garasje og lager. De fleste av trestolpene og bjelkene sto fortsatt, og ga oss et rammeverk for transformasjonen. Miekes idé var å bevare så mye som mulig av den eksisterende konstruksjonen og la den bære den lette fasadekonstruksjonen. Midt i boligen skulle det etableres en «arne»: kjernen som rommer all nødvendig infrastruktur, peisen, kjøkkenet, badet og trappen til andre etasje. Denne kjernen ble et av hovedgrepene i konseptet, tegnet for å reise seg gjennom midten av bygget slik at rommene oppstår naturlig rundt den.
 
-Prosjektet utdypet min forståelse av adaptiv gjenbruk — disiplinen med å lese en eksisterende bygnings logikk og romlige potensiale før noen endringer foreslås.
+Rollen vår som praktikanter var å modellere og utforme rommene gjennom modellbygging, og å bearbeide planen for kjernen slik at den passet inn i den eksisterende trekonstruksjonen. Vi begynte med å analysere den eksisterende trekonstruksjonen og bygge en modell av bjelkene og stolpene som grunnlag for arbeidet med kjernen.
 
 ===pt===
 
-Durante meu estágio com Mieke Vink no escritório Lüchinger Architects em Rotterdam, trabalhei junto com o colega estagiário Thomas Zhang em um projeto para transformar um celeiro histórico em Oud-Alblas em uma habitação residencial. O celeiro, originalmente construído para abrigar vacas, tinha uma fachada de madeira pintada de preto e um telhado de palha — uma tipologia vernácula comum na paisagem dos pôlderes holandeses.
+Durante meu estágio com Mieke Vink no escritório Lüchinger Architects, trabalhei junto com o colega estagiário Thomas Zhang em um projeto para transformar um celeiro histórico em uma casa habitável. O celeiro, originalmente usado para vacas, tem uma fachada de madeira preta característica e telhado de palha, e viria a ser a casa de uma senhora idosa.
 
-O briefing propunha a conversão da estrutura agrícola em uma moradia confortável para uma senhora idosa, preservando o caráter rural do edifício e sua honestidade material. O projeto manteve a estrutura portante existente e a fachada característica, reorganizando o interior em torno de um novo espaço de estar central com conexões claras com o jardim.
+O celeiro havia sido usado por muito tempo como garagem e depósito. A maioria de seus pilares e vigas de madeira ainda estava intacta, o que nos deu uma estrutura de partida para a transformação. A ideia de Mieke era preservar o máximo possível da estrutura existente e deixá-la sustentar a estrutura leve da fachada. No centro da casa seria estabelecida uma “lareira”: o núcleo que reúne toda a infraestrutura essencial, a lareira, a cozinha, o banheiro e a escada para o segundo pavimento. Esse núcleo tornou-se um dos principais aspectos do conceito, projetado para subir pelo centro do edifício de modo que os espaços surgissem naturalmente ao seu redor.
 
-O projeto aprofundou minha compreensão da reutilização adaptativa — a disciplina de ler a lógica e o potencial espacial de um edifício existente antes de propor qualquer alteração.
+Nosso papel como estagiários foi modelar e projetar os espaços por meio da construção de maquetes, iterando sobre a disposição do núcleo para garantir que coubesse dentro da estrutura de madeira existente. Começamos analisando a estrutura de madeira existente e construindo uma maquete das vigas e pilares para servir de base ao projeto do núcleo.

@@ -5,13 +5,13 @@ location: Delft, The Netherlands
 typology: Architectural model
 status: Realised
 organization: TU Delft / Venice Architecture Biennale
-collaborators: Alex Kirschstein · Contact: alex.kirschstein@web.de
+collaborators: Alex Kirschstein
 exhibitions: Biennale Architettura 2023 · When: May 2023 - November 2023 · Location: Venice, Italy · By: La Biennale di Venezia 2023
 grid: medium
 
 ---
 
-In collaboration with Alex Kirschtein, we were commissioned by the dean of the Faculty of Architecture at TU Delft to create an architectural model of a housing compound in Meqdela Gebbi.
+In collaboration with Alex Kirschstein, we were commissioned by the dean of the Faculty of Architecture at TU Delft to create an architectural model of a housing compound in Meqdela Gebbi.
 
 This model was inspired by research into some of the complex forms of Addis Ababa, particularly focusing on the typologies of informal settlements. These housing compounds, locally referred to as gebbi, are characterized by their organic composition of spaces and forms. They typically feature a public central space bounded by residential housing and fencing, which facilitates circulatory, social interaction, and different income based functions. Each compound includes at least one distinct social space that is central to the local community life, fostering tight-knit social relationships and economic activities.
 
@@ -19,16 +19,16 @@ This model showcased the intricate social and spatial dynamics of this region an
 
 ===no===
 
-Meqdela Gebbi er en fysisk modell av det kongelige kompaniet til keiser Tewodros II ved Meqdela, fjellborgen i nordre Etiopia som tjente som hans siste sterkhet og stedet for Maqdala-slaget i 1868. Modellen ble bestilt som del av et forskningsinitiativ om etiopisk høylandsarkitektur og bidro til Venezia-arkitekturbiennalen 2023.
+Sammen med Alex Kirschstein fikk vi i oppdrag av dekanen ved fakultetet for arkitektur ved TU Delft å lage en arkitektonisk modell av et boligtun i Meqdela Gebbi.
 
-I tett samarbeid med Alex Kirschstein og veiledet av Prof. Dirk van Gameren ble modellen konstruert av hvit gips og balsatre i en skala som gjør den intrikate romlige hierarkiet til komplekset lesbar — progresjonen fra ytre innhegning til indre gård til de intime kongelige kvartene på toppen.
+Modellen bygger på forskning på noen av de sammensatte formene i Addis Abeba, med særlig vekt på typologiene i uformelle bosettinger. Disse boligtunene, lokalt kalt gebbi, kjennetegnes av en organisk sammensetning av rom og former. De har gjerne et offentlig sentralrom omkranset av boliger og gjerder, som legger til rette for ferdsel, sosialt samvær og ulike funksjoner knyttet til inntekt. Hvert tun har minst ett tydelig sosialt rom som står sentralt i lokalsamfunnet, og som bygger tette sosiale bånd og økonomisk aktivitet.
 
-Historisk dokumentasjon for Meqdela er fragmentarisk, noe som gjør modelleringsprosessen til en handling av arkitektonisk tolkning like mye som representasjon. Modellen foreslår en romlig lesning av stedet basert på overlevende fotografier, muntlige historier og analyse av sammenlignbare etiopiske høylandsbyggetradisjoner.
+Modellen viste den sammensatte sosiale og romlige dynamikken i området, og ble brukt til å løfte fram forskningen til Anteneh Tesfaye Tola. Den ble først vist ved TU Delft, før den ble stilt ut på arkitekturbiennalen i Venezia i 2023.
 
 ===pt===
 
-Meqdela Gebbi é um modelo físico do complexo real do Imperador Tewodros II em Meqdela, a fortaleza montanhosa no norte da Etiópia que serviu como seu último reduto e o local da Batalha de Maqdala em 1868. O modelo foi encomendado como parte de uma iniciativa de pesquisa sobre arquitetura das terras altas etíopes e contribuiu para a Bienal de Arquitetura de Veneza 2023.
+Em colaboração com Alex Kirschstein, fomos encarregados pelo diretor da Faculdade de Arquitetura da TU Delft de criar um modelo arquitetônico de um conjunto habitacional em Meqdela Gebbi.
 
-Trabalhando em estreita colaboração com Alex Kirschstein e guiado pelo Prof. Dirk van Gameren, o modelo foi construído em gesso branco e balsawood em uma escala que permite que a intrincada hierarquia espacial do complexo seja legível — a progressão do recinto externo para o pátio interno até os aposentos reais íntimos no cume.
+O modelo partiu de uma pesquisa sobre algumas das formas complexas de Adis Abeba, com foco nas tipologias de assentamentos informais. Esses conjuntos habitacionais, chamados localmente de gebbi, caracterizam-se pela composição orgânica de espaços e formas. Costumam ter um espaço central público delimitado por moradias e cercas, que facilita a circulação, o convívio social e diferentes funções ligadas à renda. Cada conjunto inclui ao menos um espaço social distinto, central para a vida da comunidade local, que estimula laços sociais estreitos e atividades econômicas.
 
-A documentação histórica de Meqdela é fragmentária, tornando o processo de construção do modelo um ato de interpretação arquitetônica tanto quanto de representação. O modelo propõe uma leitura espacial do local com base em fotografias sobreviventes, histórias orais e análise de tradições comparáveis de construção nas terras altas etíopes.
+O modelo evidenciou a intrincada dinâmica social e espacial da região e foi usado para destacar a pesquisa conduzida por Anteneh Tesfaye Tola. Foi exibido primeiro na TU Delft, antes de ser apresentado na Bienal de Arquitetura de Veneza de 2023.

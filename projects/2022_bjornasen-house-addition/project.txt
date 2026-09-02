@@ -1,27 +1,20 @@
 title: Bjørnåsen house addition
 category: Architecture
 year: 2021
-location: Bjørnåsen 21, 1560 Larkollen, Norway
+location: Larkollen, Norway
 typology: Garage
-status: In Progress
+size: 50 m²
+status: Realised
 grid: large
 
 ---
 
-The main objective of this project was to design an addition to my parents house with a flexible program. They wanted a dry place tp park their cars, but also a space that could extend as a showcase room for my dads' art, as well as a place to do bbq or social happenings if it rains. The two sides are connected with an opening between them.
+The main objective of this project was to design an addition to my parents' house with a flexible program. They wanted a dry place to park their cars, but also a space that could extend as a showcase room for my dad's art, as well as a place for barbecues or gatherings if it rains. The two sides are connected with an opening between them.
 
 ===no===
 
-Bjørnåsen House Addition er et tilbyggsprosjekt i det skogkledde åslandskapet i Bjørnåsen, sør for Oslo. Det eksisterende hyttelignende huset sitter på et bratt tomtested med lange utsikter mot fjorden, og tilbygget ble designet for å utvide boligarealet mens den intime, innebygde kvaliteten til den originale strukturen ble bevart.
-
-Designet henter inspirasjon fra delta shelter-typologien — en enkel triangulert form som følger helningen på landet og minimerer fotavtrykket. Kledd i mørkt beiset treverk fremstår tilbygget som en forlengelse av skogsbunnen, og den kantete silhuetten gjenspeiler pitchet til de omgivende trærne.
-
-Innvendig huser det nye volumet et romslig åpent kjøkken- og spiseareale som stiger ned med terrenget og bringer skogsbunnen visuelt inn i hjertet av huset. Et romslig glassgavl åpner seg direkte mot trærne, mens en lun sørvendt terrasse fanger det lange ettermiddagslyset.
+Hovedmålet med dette prosjektet var å tegne et tilbygg til foreldrenes hus med et fleksibelt program. De ønsket seg et tørt sted å parkere bilene, men også et rom som kunne fungere som utstillingsrom for farens kunst, og som et sted for grilling eller samvær når det regner. De to sidene er forbundet med en åpning mellom seg.
 
 ===pt===
 
-A adição Bjørnåsen House é um projeto de extensão residencial no distrito arborizado de Bjørnåsen, ao sul de Oslo. A casa existente, de estilo chalé, fica em um terreno inclinado com longas vistas para o fiorde, e a adição foi projetada para expandir a área habitável preservando a qualidade íntima e integrada da estrutura original.
-
-O design se inspira na tipologia do abrigo delta — uma forma triangulada simples que segue a inclinação do terreno e minimiza sua pegada. Revestida em madeira escura tingida, a adição se lê como uma extensão do chão da floresta, com sua silhueta angular ecoando o ângulo das copas das árvores ao redor.
-
-No interior, o novo volume abriga uma generosa área aberta de sala e jantar que desce com o terreno, trazendo visualmente o chão da floresta para o coração da casa. Um generoso gable envidraçado se abre diretamente para as árvores, enquanto uma terraço protegida voltada para o sul capta a longa luz da tarde.
+O principal objetivo deste projeto era projetar uma extensão da casa dos meus pais com um programa flexível. Eles queriam um lugar seco para estacionar os carros, mas também um espaço que pudesse servir de sala de exposição para a arte do meu pai, e ainda um lugar para churrascos ou encontros quando chove. Os dois lados são ligados por uma abertura entre eles.

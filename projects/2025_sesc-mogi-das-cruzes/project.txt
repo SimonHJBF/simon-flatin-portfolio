@@ -4,32 +4,36 @@ year: 2025
 location: Mogi Das Cruzes, Brazil
 typology: Sociocultural & Sports Park
 status: Design proposal
-collaborators: Simon Flatin · Denis Joelsons · Miguel Mincache · Sofia Comini
+collaborators: Denis Joelsons · Miguel Mincache · Sofia Comini
 grid: large
 weight: 10
 
 ---
 
-Together with Denis, Miguel and Sofia, I developed a masterplan and architectural proposal for the new Sesc park–unit of Mogi das Cruzes, sited between an avenue to the south and the Serra do Itapeti to the north. Our design exploits the valley’s topography, deploying a continuous esplanade that connects the access road at +762.96 m down to the park level at +750 m, carving out a sheltered outdoor foyer that buffers highway noise.
+Together with Denis, Miguel and Sofia, I developed a masterplan and architectural proposal for the new Sesc park unit at Mogi das Cruzes, sited between an avenue to the south and the Serra do Itapeti to the north. The design uses the valley's topography, running a continuous esplanade from the access road at +762.96 m down to the park level at +750 m, and carving out a sheltered outdoor foyer that buffers highway noise.
 
-A 200 m–long curved pavilion along the eastern edge frames views toward the Serra, serving as a monumental backdrop to the park. Its gentle arc both envelops the green courtyard and frees a service yard to the east, where loading docks and technical towers are discreetly located. Within the pavilion, program is zoned into sociocultural functions - auditorium with independent foyer café, multipurpose rooms, library and children’s play - and sports amenities, including indoor courts, pools and fitness spaces.
+A 200 m curved pavilion along the eastern edge frames views towards the Serra and works as a backdrop to the park. Its arc wraps the green courtyard and frees a service yard to the east, where loading docks and technical towers sit out of sight. Inside the pavilion the programme splits between sociocultural functions, an auditorium with its own foyer café, multipurpose rooms, a library and children's play, and sports amenities including indoor courts, pools and fitness spaces.
 
-We specified a lightweight timber structure with off-the-shelf thermally insulated panels for the façade, and integrated openings for daylight and natural ventilation. The service towers are designed to accommodate future solar-thermal and photovoltaic systems.
+We specified a lightweight timber structure with off-the-shelf thermally insulated facade panels, and openings for daylight and natural ventilation. The service towers are sized to take solar-thermal and photovoltaic systems later.
 
-My role focused on concept development, site strategy and digital modeling - iterating the esplanade geometry and pavilion curvature to ensure a seamless dialogue between built form and landscape. Participating in this competition honed our collaborative design workflow and deepened our understanding of architecture’s role as a mediator between nature and urban infrastructure.
+My part was concept development, site strategy and digital modelling, iterating the esplanade geometry and the pavilion curvature against each other until the built form and the landscape lined up.
 
 ===no===
 
-SESC Mogi das Cruzes er et konkurranseforslag for et nytt kultur- og fritidssenter i kommunen Mogi das Cruzes, øst for São Paulo. SESC-nettverket (Serviço Social do Comércio) har en lang tradisjon for å bestille arkitektonisk ambisiøse offentlige bygninger — mest berømt Lina Bo Bardis SESC Pompéia — og dette forslaget fortsetter i den ånd.
+Sammen med Denis, Miguel og Sofia utviklet jeg en masterplan og et arkitektonisk forslag for den nye Sesc-parkenheten i Mogi das Cruzes, med en avenue i sør og fjellkjeden Serra do Itapeti i nord. Designet bruker topografien i dalen, og legger en sammenhengende esplanade fra atkomstveien på kote +762,96 ned til parknivået på +750, samtidig som det skjærer ut et skjermet uterom som demper støyen fra veien.
 
-Designet foreslår en bygning som simultant er sivil infrastruktur og landskap. En serie med terrasse-plattformer stiger ned mot en offentlig park og huser et teater, verksteder, et bibliotek, idrettsanlegg og et offentlig svømmebasseng. Plattformene er beplantet med hjemlige atlantiske skogsarter, slik at bygningen gradvis innlemmes av landskapet over tid.
+En 200 meter lang buet paviljong langs østkanten rammer inn utsikten mot Serra og fungerer som bakteppe for parken. Buen omslutter det grønne gårdsrommet og frigjør en driftsgård mot øst, der varelevering og tekniske tårn ligger utenfor synsfeltet. Inne i paviljongen deler programmet seg mellom sosiokulturelle funksjoner, en sal med egen foajékafé, flerbruksrom, bibliotek og barneavdeling, og idrettsfunksjoner med innendørs baner, bassenger og treningsrom.
 
-Prosjektet gjenspeiler min interesse for arkitektur som tjener som fellesgrunn — rom som tilhører alle, strukturert av topografi snarere enn vegger, og som eldes inn i omgivelsene med tiltagende verdighet.
+Vi prosjekterte en lett trekonstruksjon med isolerte standardpaneler i fasaden, og åpninger for dagslys og naturlig ventilasjon. De tekniske tårnene er dimensjonert for å kunne ta solfangere og solceller senere.
+
+Min del var konseptutvikling, tomtestrategi og digital modellering, der jeg bearbeidet geometrien i esplanaden og krumningen på paviljongen mot hverandre til bygningsform og landskap gikk opp.
 
 ===pt===
 
-SESC Mogi das Cruzes é uma proposta para concurso de um novo centro cultural e de lazer no município de Mogi das Cruzes, a leste de São Paulo. A rede SESC (Serviço Social do Comércio) tem uma longa tradição de encomendar edifícios públicos arquitetonicamente ambiciosos — mais famosamente o SESC Pompéia de Lina Bo Bardi — e esta proposta continua nesse espírito.
+Junto com Denis, Miguel e Sofia, desenvolvi um plano diretor e uma proposta arquitetônica para a nova unidade do Sesc em Mogi das Cruzes, situada entre uma avenida ao sul e a Serra do Itapeti ao norte. O projeto aproveita a topografia do vale, conduzindo uma esplanada contínua da via de acesso na cota +762,96 m até o nível do parque em +750 m, e abrindo um saguão externo protegido que amortece o ruído da via.
 
-O design propõe um edifício que é simultaneamente infraestrutura cívica e paisagem. Uma série de plataformas em socalcos desce em direção a um parque público, abrigando um teatro, ateliês, uma biblioteca, instalações esportivas e uma piscina pública. As plataformas são plantadas com espécies nativas da Mata Atlântica, para que o edifício seja gradualmente assimilado pela paisagem ao longo do tempo.
+Um pavilhão curvo de 200 m ao longo da borda leste emoldura as vistas para a Serra e funciona como pano de fundo do parque. Seu arco envolve o pátio verde e libera um pátio de serviço a leste, onde as docas de carga e as torres técnicas ficam fora de vista. Dentro do pavilhão, o programa se divide entre funções socioculturais, um auditório com café e foyer próprios, salas multiuso, biblioteca e espaço infantil, e instalações esportivas, incluindo quadras cobertas, piscinas e espaços de ginástica.
 
-O projeto reflete meu interesse em arquitetura que serve como espaço comum — lugares que pertencem a todos, estruturados pela topografia em vez de paredes, e que envelhecem em seu entorno com crescente graça.
+Especificamos uma estrutura leve de madeira com painéis de fachada termicamente isolados de linha, e aberturas para luz natural e ventilação. As torres de serviço foram dimensionadas para receber sistemas solares térmicos e fotovoltaicos no futuro.
+
+Minha parte foi o desenvolvimento do conceito, a estratégia de implantação e a modelagem digital, ajustando a geometria da esplanada e a curvatura do pavilhão uma contra a outra até que forma construída e paisagem se alinhassem.

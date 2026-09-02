@@ -3,193 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services — Simon H.J. Bjørkå Flatin</title>
+  <title>Services &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .services-hero {
-      position: relative;
-      height: 50vh;
-      min-height: 320px;
-      overflow: hidden;
+    .services-hero { position:relative; height:100vh; overflow:hidden; }
+    .services-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .services-hero__overlay { position:absolute; inset:0;
+      background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 100%); }
+    .services-hero__text { position:absolute; bottom:8rem; left:50%;
+      transform:translateX(-50%); text-align:center; width:90%; max-width:700px; }
+    .services-hero__text h1 { font-family:var(--serif);
+      font-size:clamp(1.6rem,3.5vw,2.6rem); font-weight:400; line-height:1.4;
+      color:var(--cream); text-shadow:0 2px 24px rgba(0,0,0,.55); }
+    .services-body { max-width:900px; margin:0 auto; padding:5rem 4rem 0; }
+    .services-intro { margin-bottom:4rem; }
+    .services-intro p { font-size:1.05rem; line-height:1.8; color:var(--accent); max-width:640px; }
+    .services-label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:2.5rem; }
+    .service-item { border-top:1px solid rgba(28,28,26,.12); }
+    .service-item:last-child { border-bottom:1px solid rgba(28,28,26,.12); }
+    .service-toggle { width:100%; background:none; border:none; cursor:pointer;
+      padding:1.6rem 0; display:flex; justify-content:space-between;
+      align-items:center; gap:1rem; text-align:left; }
+    .service-num { font-size:.72rem; font-weight:700; letter-spacing:.12em;
+      color:var(--muted); min-width:2rem; }
+    .service-name { font-family:var(--serif); font-size:clamp(1rem,1.6vw,1.25rem);
+      font-weight:400; color:var(--accent); flex:1; transition:color .2s; }
+    .service-icon { font-size:1.2rem; color:var(--muted);
+      transition:transform .3s,color .2s; flex-shrink:0; }
+    .service-item.open .service-icon { transform:rotate(45deg); color:var(--dark); }
+    .service-item.open .service-name { color:var(--dark); }
+    .service-body { max-height:0; overflow:hidden;
+      transition:max-height .4s ease,padding .3s ease; padding:0 0 0 2rem; }
+    .service-item.open .service-body { max-height:400px; padding:0 0 1.8rem 2rem; }
+    .service-body p { font-size:.9rem; line-height:1.75; color:var(--muted); max-width:580px; }
+    .contact-cta { max-width:900px; margin:5rem auto 0; padding:4rem 4rem 0;
+      border-top:1px solid rgba(28,28,26,.12);
+      display:flex; justify-content:space-between; align-items:center;
+      flex-wrap:wrap; gap:2rem; }
+    .contact-cta__text h2 { font-family:var(--serif);
+      font-size:clamp(1.4rem,2.5vw,2rem); font-weight:400; margin-bottom:.5rem; }
+    .contact-cta__text p { font-size:.88rem; color:var(--muted); }
+    .contact-cta__link { display:inline-block; font-size:.78rem; font-weight:700;
+      letter-spacing:.16em; text-transform:uppercase; color:var(--dark);
+      text-decoration:none; border-bottom:1.5px solid var(--dark); padding-bottom:2px;
+      transition:color .2s,border-color .2s; }
+    .contact-cta__link:hover { color:var(--muted); border-color:var(--muted); }
+    @media(max-width:900px) {
+      .services-body, .contact-cta { padding-left:1.5rem; padding-right:1.5rem; }
+      .service-body, .service-item.open .service-body { padding-left:1rem; }
     }
-    .services-hero__bg {
-      width: 100%; height: 100%;
-      /* Replace with your services page image:
-         background: url('images/services-hero.jpg') center/cover no-repeat; */
-      background: linear-gradient(160deg, #1a2535 0%, #2d4058 40%, #8aaabb 100%);
-    }
-    .services-hero__overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.35);
-    }
-    .services-hero__text {
-      position: absolute;
-      bottom: 3rem; left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: #fff;
-      width: 90%;
-      max-width: 700px;
-    }
-    .services-hero__text h1 {
-      font-family: var(--serif);
-      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-      font-weight: 400;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-    .services-hero__text p {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.8);
-    }
-
-    .services-body {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 5rem 4rem 0;
-    }
-    .services-intro {
-      margin-bottom: 4rem;
-    }
-    .services-intro p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--accent);
-      max-width: 640px;
-    }
-
-    .services-label {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-    }
-
-    /* Accordion */
-    .service-item {
-      border-top: 1px solid rgba(28,28,26,0.12);
-    }
-    .service-item:last-child {
-      border-bottom: 1px solid rgba(28,28,26,0.12);
-    }
-    .service-toggle {
-      width: 100%;
-      background: none; border: none; cursor: pointer;
-      padding: 1.6rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      text-align: left;
-    }
-    .service-toggle:hover .service-num,
-    .service-toggle:hover .service-name { color: var(--dark); }
-    .service-num {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      min-width: 2rem;
-    }
-    .service-name {
-      font-family: var(--serif);
-      font-size: clamp(1rem, 1.6vw, 1.25rem);
-      font-weight: 400;
-      color: var(--accent);
-      flex: 1;
-      transition: color 0.2s;
-    }
-    .service-icon {
-      font-size: 1.2rem;
-      color: var(--muted);
-      transition: transform 0.3s, color 0.2s;
-      flex-shrink: 0;
-    }
-    .service-item.open .service-icon { transform: rotate(45deg); color: var(--dark); }
-    .service-item.open .service-name { color: var(--dark); }
-
-    .service-body {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
-      padding: 0 0 0 2rem;
-    }
-    .service-item.open .service-body {
-      max-height: 400px;
-      padding: 0 0 1.8rem 2rem;
-    }
-    .service-body p {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: var(--muted);
-      max-width: 580px;
-    }
-
-    /* Contact CTA */
-    .contact-cta {
-      max-width: 900px;
-      margin: 5rem auto 0;
-      padding: 0 4rem;
-      border-top: 1px solid rgba(28,28,26,0.12);
-      padding-top: 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-    .contact-cta__text h2 {
-      font-family: var(--serif);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-    .contact-cta__text p { font-size: 0.88rem; color: var(--muted); }
-    .contact-cta__link {
-      display: inline-block;
-      font-size: 0.78rem; font-weight: 700;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--dark); text-decoration: none;
-      border-bottom: 1.5px solid var(--dark); padding-bottom: 2px;
-      white-space: nowrap;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .contact-cta__link:hover { color: var(--muted); border-color: var(--muted); }
-
-    @media (max-width: 900px) {
-      .services-body, .contact-cta { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .service-body { padding-left: 1rem; }
-      .service-item.open .service-body { padding-left: 1rem; }
-    }
+    
+  [data-lang="en"] .l-no,[data-lang="en"] .l-pt { display:none }
+  [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
+  [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }
   </style>
+  <script>
+  (function(){
+    var l=localStorage.getItem('lang')||'en';
+    document.documentElement.setAttribute('data-lang',l);
+  })();
+</script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VBPFZJZXY9');
+</script>
 </head>
 <body>
 
-  <nav class="nav--page">
-    <a href="index.html" class="nav__name">Simon H.J. Bjørkå Flatin</a>
-    <ul class="nav__links">
-      <li><a href="index.html">Main</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
-
   <div class="services-hero">
-    <div class="services-hero__bg"></div>
+    <img class="services-hero__bg" src="content/services/P1060122-2.jpg" alt="">
     <div class="services-hero__overlay"></div>
+      <nav class="nav--hero">
+    <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+    <div class="nav__link-row">
+      <ul class="nav__links">
+        <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
+        <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+        <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+        <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+        <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Select language">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <span class="lang-sep">&middot;</span>
+        <button class="lang-btn" data-lang="no">NO</button>
+        <span class="lang-sep">&middot;</span>
+        <button class="lang-btn" data-lang="pt">PT</button>
+      </div>
+    </div>
+  </nav>
     <div class="services-hero__text">
-      <h1>Crafting Places that Echo Mountains,<br>Rivers &amp; the Spaces Between</h1>
+      <h1>
+        <span class="l-en">Architecture, visualisation,<br>models and software</span>
+        <span class="l-no">Arkitektur, visualisering,<br>modeller og programvare</span>
+        <span class="l-pt">Arquitetura, visualiza&ccedil;&atilde;o,<br>maquetes e software</span>
+      </h1>
+    </div>
+    <div class="hero__scroll-cue">
+      <span class="l-en">Scroll</span><span class="l-no">Rull</span><span class="l-pt">Rolar</span>
+      <span class="hero__scroll-arrow-wrap" aria-hidden="true"><span class="hero__scroll-arrow"></span></span>
     </div>
   </div>
 
   <div class="services-body">
     <div class="services-intro">
-      <p>My practice is a dialogue between two worlds: the crisp Nordic light that shaped my childhood and the layered landscapes where I now design. I read terrain first — through drone photogrammetry, hand sketches or a block of clay — then guide projects from concept through construction with the same curiosity. The goal: architecture that matures gracefully, treads lightly and feels inevitable in its setting.</p>
+      <p class="l-en">I am an architect working between Norway and S&atilde;o Paulo, mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from planning applications and competition proposals to visualisation, physical models and the software I build for the building industry. Most projects still start with a physical model on the desk.</p>
+      <p class="l-no">Jeg er arkitekt og jobber mellom Norge og S&atilde;o Paulo, mest online, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra bygges&oslash;knader og konkurranseforslag til visualisering, fysiske modeller og programvaren jeg lager for byggebransjen. De fleste prosjektene begynner fortsatt med en fysisk modell p&aring; bordet.</p>
+      <p class="l-pt">Sou arquiteto e trabalho entre a Noruega e S&atilde;o Paulo, principalmente online, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil. O trabalho vai de pedidos de licenciamento e propostas de concurso a visualiza&ccedil;&atilde;o, maquetes f&iacute;sicas e o software que desenvolvo para a constru&ccedil;&atilde;o civil. A maioria dos projetos ainda come&ccedil;a com uma maquete f&iacute;sica sobre a mesa.</p>
     </div>
-
-    <div class="services-label">Services</div>
-
+    <div class="services-label"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></div>
     <div class="services-list">
 
       <div class="service-item">
@@ -198,137 +125,123 @@
           <span class="service-name">Integrated Architecture · Urbanism · Landscape</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Full-service design from site analysis and concept through planning, detailing and construction oversight. I work across scales — from a single room to an urban quarter — always grounding proposals in the specific character of place, light and material.</p>
-        </div>
+        <div class="service-body"><p>Design from site analysis and concept through to planning, detailing and construction follow-up, at scales from a single room to a masterplan. Recent examples are the SESC Mogi das Cruzes competition proposal in Brazil and the Arctic Symphony graduation project in Alta.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">02</span>
-          <span class="service-name">BIM Coordination &amp; Digital Twin Libraries</span>
+          <span class="service-name">BIM Coordination &amp; Parametric Modelling</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Revit-based BIM coordination for complex multi-disciplinary projects, including clash detection, information management and digital twin library development for ongoing facility management.</p>
-        </div>
+        <div class="service-body"><p>Revit-based modelling, coordination and information management, with parametric workflows in Rhino and Grasshopper where geometry is better driven by rules than drawn by hand. Revit, Rhino, Grasshopper and AutoCAD at an advanced level.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">03</span>
           <span class="service-name">CAD / BIM Drafting &amp; Documentation</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Precise technical drawing packages — plans, sections, elevations and details — for planning applications, building permits and contractor tendering. Fluent in AutoCAD, Revit and Vectorworks.</p>
-        </div>
+        <div class="service-body"><p>Technical drawing packages, plans, sections, elevations and details, for planning applications, building permits and contractor tendering. Fluent in AutoCAD and Revit.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">04</span>
           <span class="service-name">Physical Model Making &amp; Prototyping</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Exhibition-quality architectural models at any scale, from study maquettes to museum commission pieces. My models for TU Delft have been exhibited at the Venice Architecture Biennale 2023. Materials range from laser-cut plywood and card to hand-carved stone and resin.</p>
-        </div>
+        <div class="service-body"><p>Exhibition-quality architectural models at any scale, from study maquettes to commissioned pieces. My models for TU Delft were exhibited at the Venice Architecture Biennale 2023 at Palazzo Mora and at the faculty in Delft.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">05</span>
           <span class="service-name">Drone Photogrammetry &amp; 3D Site Analysis</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Aerial photogrammetry surveys producing high-resolution point clouds and 3D meshes of sites, landscapes and existing buildings. Useful for planning, heritage recording, contractor briefings and spatial research.</p>
-        </div>
+        <div class="service-body"><p>Aerial photogrammetry surveys producing point clouds and 3D meshes of sites, landscapes and existing buildings. Useful for planning, site recording, contractor briefings and spatial research.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">06</span>
           <span class="service-name">Research, Material &amp; Form Studies</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Focused research into material behaviour, tectonic systems, and formal strategies. Suitable for academic institutions, design competitions, and practices wanting rigorous conceptual groundwork before committing to a design direction.</p>
-        </div>
+        <div class="service-body"><p>Focused research into material behaviour, tectonic systems and formal strategies. The Arctic Symphony research included a series of sand erosion studies testing how built interventions change sedimentation in a river system.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">07</span>
           <span class="service-name">Planning Applications &amp; Regulatory Compliance</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Preparation and management of planning submissions in Norway and the Netherlands, including neighbourhood consultation documents, heritage impact assessments, and responses to authority queries.</p>
-        </div>
+        <div class="service-body"><p>Preparation and management of planning submissions in Norway, including the supporting documentation and responses to authority queries. Most recently a change-of-use application for a care building for Omsorgsgruppen in Våler.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">08</span>
           <span class="service-name">Sustainable &amp; Circular Design Consulting</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>Integrating circular material flows, passive systems and low-carbon strategies into projects from the outset. I draw on both Nordic and international precedent to find solutions that reduce embodied energy without sacrificing quality or character.</p>
-        </div>
+        <div class="service-body"><p>Circular material flows, passive systems and low-carbon strategies built into a project from the outset. Our Harbour Box proposal, which shared first place in the Upcycle Mall Rotterdam competition, was made from waste materials taken off the Rotterdam docks.</p></div>
       </div>
-
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">09</span>
           <span class="service-name">Remote Consultations &amp; Virtual Collaboration</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body">
-          <p>I work regularly across Norway, the Netherlands, Poland and Brazil. All services are available remotely via structured video consultations, shared cloud models and collaborative drawing reviews.</p>
-        </div>
+        <div class="service-body"><p>I work mostly online, split between Norway and São Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil. All services are available remotely through video consultations, shared cloud models and collaborative drawing reviews.</p></div>
       </div>
-
     </div>
   </div>
 
   <div class="contact-cta">
     <div class="contact-cta__text">
-      <h2>Let's work together</h2>
-      <p>Available for commissions, collaborations and consultations.</p>
+      <h2><span class="l-en">Let&rsquo;s work together</span><span class="l-no">La oss samarbeide</span><span class="l-pt">Vamos trabalhar juntos</span></h2>
+      <p><span class="l-en">Available for commissions, collaborations and consultations.</span><span class="l-no">Tilgjengelig for oppdrag, samarbeid og konsultasjoner.</span><span class="l-pt">Dispon&iacute;vel para comiss&otilde;es, colabora&ccedil;&otilde;es e consultas.</span></p>
     </div>
-    <a href="mailto:simon@simonflatin.com" class="contact-cta__link">Get in touch →</a>
+    <a href="contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span><span class="l-pt">Entre em contato &rarr;</span></a>
   </div>
 
   <footer>
-    <div>© 2026 Simon H.J. Bjørkå Flatin</div>
+    <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="about.html">About</a>
-      <a href="work.html">Work</a>
-      <a href="services.html">Services</a>
+      <a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
+      <a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
+      <a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
     </div>
   </footer>
 
   <script>
     document.querySelectorAll('.service-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
-        const item = btn.closest('.service-item');
+        const item   = btn.closest('.service-item');
         const isOpen = item.classList.contains('open');
-        // Close all
         document.querySelectorAll('.service-item').forEach(i => {
           i.classList.remove('open');
-          i.querySelector('.service-toggle').setAttribute('aria-expanded', 'false');
+          i.querySelector('.service-toggle').setAttribute('aria-expanded','false');
         });
-        // Open clicked if it was closed
-        if (!isOpen) {
-          item.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
+        if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
       });
     });
   </script>
-
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    var cur=document.documentElement.getAttribute('data-lang')||'en';
+    function setActive(lang){
+      document.querySelectorAll('.lang-btn').forEach(function(b){
+        b.classList.toggle('active',b.dataset.lang===lang);
+      });
+    }
+    setActive(cur);
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var lang=btn.dataset.lang;
+        document.documentElement.setAttribute('data-lang',lang);
+        localStorage.setItem('lang',lang);
+        setActive(lang);
+      });
+    });
+  });
+</script>
 </body>
 </html>

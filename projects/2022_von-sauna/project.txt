@@ -9,24 +9,24 @@ grid: third
 
 ---
 
-Von Sauna is a visualization project for a series of floating saunas proposed for two sites in the Seattle area — Ballard Mill and the Hyatt Regency Renton. The renders were produced in collaboration with a friend to support a pitch package with the city. The scope was purely visual: communicating atmosphere and spatial quality to a non-technical audience, not developing or authoring the architectural design.
+Von Sauna is a visualization project for a series of floating saunas proposed for two sites in the Seattle area: Ballard Mill and the Hyatt Regency Renton. The renders were produced together with Ewa Ziemiecka to support a pitch package with the city. The scope was purely visual, communicating atmosphere and spatial quality to a non-technical audience, not developing or authoring the architectural design.
 
-The saunas adapt the Nordic bathing ritual to the waters of the Pacific Northwest, combining a hot room, changing area, and open deck on a low-profile floating platform. The render brief called for images that conveyed mood and materiality — the interplay of heat, cold water, and overcast Pacific Northwest light — rather than technical resolution.
+The saunas adapt the Nordic bathing ritual to the waters of the Pacific Northwest, combining a hot room, a changing area and an open deck on a low-profile floating platform. The render brief called for images that conveyed mood and materiality, the interplay of heat, cold water and overcast Pacific Northwest light, rather than technical resolution.
 
 The project was delivered under a tight deadline, with daily progress updates to the client across a nine-hour time difference.
 
 ===no===
 
-Von Sauna er et visualiseringsprosjekt for en serie flytende badstuer foreslått for to steder i Seattle-området — Ballard Mill og Hyatt Regency Renton. Renderingene ble produsert i samarbeid med en venn for å støtte en pitchpakke til byen. Omfanget var rent visuelt: å formidle atmosfære og romlig kvalitet til et ikke-teknisk publikum, ikke å utvikle eller forfatte det arkitektoniske designet.
+Von Sauna er et visualiseringsprosjekt for en serie flytende badstuer foreslått for to steder i Seattle-området: Ballard Mill og Hyatt Regency Renton. Renderingene ble produsert sammen med Ewa Ziemiecka for å støtte en pitchpakke til byen. Omfanget var rent visuelt, å formidle atmosfære og romlig kvalitet til et ikke-teknisk publikum, ikke å utvikle eller forfatte det arkitektoniske designet.
 
-Badstusene tilpasser den nordiske badetradisjonen til vannene i Pacific Northwest, og kombinerer et varmt rom, garderobe og åpent dekk på en lav flytende plattform. Renderingsoppdraget krevde bilder som formidlet stemning og materialitet — samspillet mellom varme, kaldt vann og det overskyet Pacific Northwest-lyset — snarere enn teknisk oppløsning.
+Badstuene tilpasser den nordiske badetradisjonen til vannet i Pacific Northwest, og kombinerer et varmt rom, garderobe og åpent dekk på en lav flytende plattform. Renderingsoppdraget krevde bilder som formidlet stemning og materialitet, samspillet mellom varme, kaldt vann og det overskyede lyset i Pacific Northwest, snarere enn teknisk oppløsning.
 
 Prosjektet ble levert under en stram tidsfrist, med daglige fremdriftsoppdateringer til klienten på tvers av ni timers tidsforskjell.
 
 ===pt===
 
-Von Sauna é um projeto de visualização para uma série de saunas flutuantes propostas para dois locais na área de Seattle — Ballard Mill e o Hyatt Regency Renton. As renderizações foram produzidas em colaboração com um amigo para apoiar um pacote de apresentação para a cidade. O escopo era puramente visual: comunicar atmosfera e qualidade espacial a um público não técnico, sem desenvolver ou assinar o projeto arquitetônico.
+Von Sauna é um projeto de visualização para uma série de saunas flutuantes propostas para dois locais na área de Seattle: Ballard Mill e o Hyatt Regency Renton. As renderizações foram produzidas junto com Ewa Ziemiecka para apoiar um pacote de apresentação para a cidade. O escopo era puramente visual, comunicar atmosfera e qualidade espacial a um público não técnico, sem desenvolver ou assinar o projeto arquitetônico.
 
-As saunas adaptam o ritual de banho nórdico para as águas do Pacific Northwest, combinando uma sala quente, vestiário e deck aberto sobre uma plataforma flutuante de perfil baixo. O briefing de renderização pedia imagens que transmitissem atmosfera e materialidade — a interação entre calor, água fria e a luz nublada característica do Pacific Northwest — em vez de resolução técnica.
+As saunas adaptam o ritual de banho nórdico para as águas do Pacific Northwest, combinando uma sala quente, vestiário e deck aberto sobre uma plataforma flutuante de perfil baixo. O briefing de renderização pedia imagens que transmitissem atmosfera e materialidade, a interação entre calor, água fria e a luz nublada do Pacific Northwest, em vez de resolução técnica.
 
 O projeto foi entregue dentro de um prazo apertado, com atualizações diárias de progresso ao cliente ao longo de uma diferença de nove horas no fuso horário.

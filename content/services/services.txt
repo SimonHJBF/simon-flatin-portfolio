@@ -4,36 +4,36 @@
 
 [service]
 name: Integrated Architecture · Urbanism · Landscape
-desc: Full-service design from site analysis and concept through planning, detailing and construction oversight. I work across scales — from a single room to an urban quarter — always grounding proposals in the specific character of place, light and material.
+desc: Design from site analysis and concept through to planning, detailing and construction follow-up, at scales from a single room to a masterplan. Recent examples are the SESC Mogi das Cruzes competition proposal in Brazil and the Arctic Symphony graduation project in Alta.
 
 [service]
-name: BIM Coordination & Digital Twin Libraries
-desc: Revit-based BIM coordination for complex multi-disciplinary projects, including clash detection, information management and digital twin library development for ongoing facility management.
+name: BIM Coordination & Parametric Modelling
+desc: Revit-based modelling, coordination and information management, with parametric workflows in Rhino and Grasshopper where geometry is better driven by rules than drawn by hand. Revit, Rhino, Grasshopper and AutoCAD at an advanced level.
 
 [service]
 name: CAD / BIM Drafting & Documentation
-desc: Precise technical drawing packages — plans, sections, elevations and details — for planning applications, building permits and contractor tendering. Fluent in AutoCAD, Revit and Vectorworks.
+desc: Technical drawing packages, plans, sections, elevations and details, for planning applications, building permits and contractor tendering. Fluent in AutoCAD and Revit.
 
 [service]
 name: Physical Model Making & Prototyping
-desc: Exhibition-quality architectural models at any scale, from study maquettes to museum commission pieces. My models for TU Delft have been exhibited at the Venice Architecture Biennale 2023. Materials range from laser-cut plywood and card to hand-carved stone and resin.
+desc: Exhibition-quality architectural models at any scale, from study maquettes to commissioned pieces. My models for TU Delft were exhibited at the Venice Architecture Biennale 2023 at Palazzo Mora and at the faculty in Delft.
 
 [service]
 name: Drone Photogrammetry & 3D Site Analysis
-desc: Aerial photogrammetry surveys producing high-resolution point clouds and 3D meshes of sites, landscapes and existing buildings. Useful for planning, heritage recording, contractor briefings and spatial research.
+desc: Aerial photogrammetry surveys producing point clouds and 3D meshes of sites, landscapes and existing buildings. Useful for planning, site recording, contractor briefings and spatial research.
 
 [service]
 name: Research, Material & Form Studies
-desc: Focused research into material behaviour, tectonic systems, and formal strategies. Suitable for academic institutions, design competitions, and practices wanting rigorous conceptual groundwork before committing to a design direction.
+desc: Focused research into material behaviour, tectonic systems and formal strategies. The Arctic Symphony research included a series of sand erosion studies testing how built interventions change sedimentation in a river system.
 
 [service]
 name: Planning Applications & Regulatory Compliance
-desc: Preparation and management of planning submissions in Norway and the Netherlands, including neighbourhood consultation documents, heritage impact assessments, and responses to authority queries.
+desc: Preparation and management of planning submissions in Norway, including the supporting documentation and responses to authority queries. Most recently a change-of-use application for a care building for Omsorgsgruppen in Våler.
 
 [service]
 name: Sustainable & Circular Design Consulting
-desc: Integrating circular material flows, passive systems and low-carbon strategies into projects from the outset. I draw on both Nordic and international precedent to find solutions that reduce embodied energy without sacrificing quality or character.
+desc: Circular material flows, passive systems and low-carbon strategies built into a project from the outset. Our Harbour Box proposal, which shared first place in the Upcycle Mall Rotterdam competition, was made from waste materials taken off the Rotterdam docks.
 
 [service]
 name: Remote Consultations & Virtual Collaboration
-desc: I work regularly across Norway, the Netherlands, Poland and Brazil. All services are available remotely via structured video consultations, shared cloud models and collaborative drawing reviews.
+desc: I work mostly online, split between Norway and São Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil. All services are available remotely through video consultations, shared cloud models and collaborative drawing reviews.

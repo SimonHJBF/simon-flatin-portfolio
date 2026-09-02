@@ -1,5 +1,5 @@
 /**
- * build.js — Simon H.J. Bjørkå Flatin portfolio builder
+ * build.js - Simon H.J. Bjørkå Flatin portfolio builder
  * ─────────────────────────────────────────────────────
  * Run locally:  node build.js
  * On Netlify:   runs automatically on every push (see netlify.toml)
@@ -15,7 +15,7 @@
  *   1. Duplicate projects/_TEMPLATE/
  *   2. Rename to  YYYY_my-project-name/
  *   3. Fill in project.txt, add cover.jpg + images
- *   4. Commit & push — done.
+ *   4. Commit & push - done.
  */
 
 'use strict';
@@ -48,6 +48,15 @@ const GRADIENTS = [
 
 function esc(s) {
   return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/** Escape body text, then turn [label](url) and bare URLs into links. */
+function escLinks(s) {
+  return esc(s)
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+      (_, label, url) => `<a href="${url}" target="_blank" rel="noopener">${label}</a>`)
+    .replace(/(^|[\s(])(https?:\/\/[^\s<)]+[^\s<).,;:])/g,
+      (_, pre, url) => `${pre}<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
 }
 
 function grad(i) { return GRADIENTS[i % GRADIENTS.length]; }
@@ -303,7 +312,7 @@ function cardHtml(data, index, prefix) {
     : `<div class="card__placeholder" style="background:${grad(index)};width:100%;height:100%;"></div>`;
   const year    = data.year || '';
   const org     = data.organization || '';
-  const sub     = [year, org].filter(Boolean).join(' — ');
+  const sub     = [year, org].filter(Boolean).join(' · ');
   // Comma-separated individual tags for JS filtering
   const cats    = (data.category || '').split('·').map(t => t.trim()).filter(Boolean).join(',');
 
@@ -344,6 +353,7 @@ function generateProjectPage(data, folderName, images) {
     'Status':        { no:'Status',               pt:'Status' },
     'Client':        { no:'Klient',               pt:'Cliente' },
     'Collaborators': { no:'Samarbeidspartnere',   pt:'Colaboradores' },
+    'Mentors':       { no:'Veiledere',            pt:'Orientadores' },
     'Exhibitions':   { no:'Utstillinger',         pt:'Exposições' },
   };
   function mRow(label, val) {
@@ -372,7 +382,7 @@ function generateProjectPage(data, folderName, images) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${esc(title)} &mdash; Simon H.J. Bjørkå Flatin</title>
+  <title>${esc(title)} &middot; Simon H.J. Bjørkå Flatin</title>
   <link rel="stylesheet" href="../../style.css" />
   <style>
     .project-hero { width:100%; max-height:80vh; overflow:hidden; }
@@ -436,9 +446,9 @@ ${heroHtml}
     </div>
     <div class="project-content">
       <h1 class="project-title">${esc(title)}</h1>
-      <div class="l-en">${data.paragraphs.map(p => `<p>${esc(p)}</p>`).join('\n      ')}</div>
-      <div class="l-no">${(data.paragraphs_no && data.paragraphs_no.length ? data.paragraphs_no : data.paragraphs).map(p => `<p>${esc(p)}</p>`).join('\n      ')}</div>
-      <div class="l-pt">${(data.paragraphs_pt && data.paragraphs_pt.length ? data.paragraphs_pt : data.paragraphs).map(p => `<p>${esc(p)}</p>`).join('\n      ')}</div>
+      <div class="l-en">${data.paragraphs.map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
+      <div class="l-no">${(data.paragraphs_no && data.paragraphs_no.length ? data.paragraphs_no : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
+      <div class="l-pt">${(data.paragraphs_pt && data.paragraphs_pt.length ? data.paragraphs_pt : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <a href="../../work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
     </div>
   </div>
@@ -470,7 +480,7 @@ function generateWorkPage(projects) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Work &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <title>Work &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .work-intro { max-width:1400px; margin:0 auto; padding:4rem 4rem 2rem;
@@ -548,11 +558,11 @@ function generateIndexPage(allProjects, featuredSlugs) {
     .filter(Boolean)
     .slice(0, 5);
 
-  // Use fixed grid sizes for the 5 featured slots — organic rhythm:
-  // Row 1: full-width        (slot 1)        — Tinn brand cover, native ratio
-  // Row 2: large + medium    (slots 2, 3)    — asymmetric landscape + portrait
-  // Row 3: wide + wide       (slots 4, 5)    — symmetric landscape pair
-  const featuredGrids = ['card--full','card--large','card--medium','card--wide','card--wide'];
+  // Fixed grid sizes for the 5 featured slots, three rows:
+  // Row 1: wide + wide  (slots 1, 2)  two equal landscape cards
+  // Row 2: full         (slot 3)      one card alone, 40/19 banner ratio
+  // Row 3: wide + wide  (slots 4, 5)  two equal landscape cards
+  const featuredGrids = ['card--wide','card--wide','card--full','card--wide','card--wide'];
 
   const cards = featuredProjects.map((data, i) => {
     const cls     = featuredGrids[i] || 'card--wide';
@@ -561,7 +571,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     const imgHtml = cover
       ? `<img src="projects/${esc(folder)}/${esc(cover)}" alt="${esc(data.title)}" loading="eager" />`
       : `<div class="card__placeholder" style="background:${grad(i)};width:100%;height:100%;"></div>`;
-    const sub = [data.year, data.organization].filter(Boolean).join(' — ');
+    const sub = [data.year, data.organization].filter(Boolean).join(' · ');
 
     return `
       <a class="card ${cls}" href="projects/${esc(data.slug)}/">
@@ -587,10 +597,10 @@ function generateIndexPage(allProjects, featuredSlugs) {
     : `<div class="hero__bg" style="background:linear-gradient(160deg,#2d3d2e 0%,#4a6741 35%,#7a9e6e 60%,#c9d9b8 100%);"></div>`;
 
   // Water ripple on the lower ~45% of the hero (where the water/fjord is).
-  // Technique: an SVG <image> (same src as static hero) clipped to y=55–100%
+  // Technique: an SVG <image> (same src as static hero) clipped to y=55-100%
   // via objectBoundingBox clipPath. An SVG-native filter (feTurbulence +
   // feDisplacementMap) ripples the image. feOffset oscillates sinusoidally
-  // so there is NO scroll-period boundary and NO visible seam — ever.
+  // so there is NO scroll-period boundary and NO visible seam - ever.
   // SVG-native filters work on iOS Safari; CSS filter:url(#id) does not.
   // A CSS mask-image gradient softly fades the water at the waterline and
   // bottom edge for a natural blend with the shore.
@@ -619,18 +629,18 @@ function generateIndexPage(allProjects, featuredSlugs) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simon H.J. Bj&oslash;rk&aring; Flatin &mdash; Architect &amp; Designer</title>
+  <title>Simon H.J. Bj&oslash;rk&aring; Flatin &middot; Architect &amp; Designer</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
     .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    /* Water ripple — full-screen SVG, image clipped to bottom 45% via clipPath.
+    /* Water ripple - full-screen SVG, image clipped to bottom 45% via clipPath.
        Mask fades the water softly at the waterline (top) and bottom edge. */
     .hero__water { position:absolute; inset:0; width:100%; height:100%;
       pointer-events:none;
       -webkit-mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%);
       mask-image:linear-gradient(to top,transparent 0%,black 8%,black 42%,transparent 47%); }
-    /* Mist canvas — WebGL procedural fog, scroll-triggered from top corners */
+    /* Mist canvas - WebGL procedural fog, scroll-triggered from top corners */
     #mc { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; display:block; }
     .hero__overlay { position:absolute; inset:0;
       background:linear-gradient(to bottom,rgba(0,0,0,.08) 0%,rgba(0,0,0,.32) 100%); }
@@ -698,7 +708,7 @@ ${cards}
 
 ${footerHtml()}
 <script>
-// Mist v5: two INDEPENDENT fog fields — LEFT (flows →) and RIGHT (flows ←).
+// Mist v5: two INDEPENDENT fog fields - LEFT (flows →) and RIGHT (flows ←).
 // Each has its own mask that extends PAST the centre to the opposite edge.
 // No shared symmetric mask → no centre seam, no hard stop at x=0.5.
 // Single-level domain warp only → puffy clouds, no swirly tendrils.
@@ -731,7 +741,7 @@ ${footerHtml()}
     // LEFT mask: full at x=0, soft right edge at x≈sp. Extends past centre at sp>0.5+fw
     'float hmL=clamp((sp-uv.x+fw)/fw,0.,1.);'+
     'hmL=hmL*hmL*(3.-2.*hmL);'+
-    // RIGHT mask: mirror — full at x=1, soft left edge. Both fully overlap at 75% scroll
+    // RIGHT mask: mirror - full at x=1, soft left edge. Both fully overlap at 75% scroll
     'float hmR=clamp((sp-(1.-uv.x)+fw)/fw,0.,1.);'+
     'hmR=hmR*hmR*(3.-2.*hmR);'+
     // Always animating (cinematic idle), faster when scrolled
@@ -746,14 +756,14 @@ ${footerHtml()}
     'vec2 qR=vec2(fbm(stR),fbm(stR+vec2(4.1,1.8)));'+
     'float cR=fbm(stR+1.2*qR);'+
     'cR=clamp((cR-0.25)*1.8,0.,1.);'+
-    // Three fixed-height layers — no scroll-driven vertical descent
+    // Three fixed-height layers - no scroll-driven vertical descent
     'float yA=0.60;'+
     'float v1=(1.-smoothstep(yA-0.02,yA+0.10,uv.y))*smoothstep(yA-0.22,yA+0.02,uv.y);'+
     'float yB=0.48;'+
     'float v2=(1.-smoothstep(yB-0.02,yB+0.10,uv.y))*smoothstep(yB-0.28,yB+0.02,uv.y);'+
     'float yC=0.34;'+
     'float v3=(1.-smoothstep(yC-0.01,yC+0.07,uv.y))*smoothstep(yC-0.30,yC+0.01,uv.y);'+
-    // L and R overlap everywhere — no seam. dens ramps from 0.40 at rest to 1.0 at full scroll.
+    // L and R overlap everywhere - no seam. dens ramps from 0.40 at rest to 1.0 at full scroll.
     'float dens=0.40+s*0.60;'+
     'float dL=hmL*(v1*cL*0.63+v2*cL*0.76+v3*cL*0.52)*dens;'+
     'float dR=hmR*(v1*cR*0.63+v2*cR*0.76+v3*cR*0.52)*dens;'+
@@ -802,7 +812,7 @@ ${footerHtml()}
 })();
 </script>
 <script>
-  /* Water ripple — sinusoidal feOffset oscillation, zero seam, works on iOS.
+  /* Water ripple - sinusoidal feOffset oscillation, zero seam, works on iOS.
    * dy and dx oscillate at different periods so the combined motion never
    * exactly repeats, giving endlessly varied, natural-looking ripple. */
   (function(){
@@ -869,7 +879,7 @@ function generateAboutPage(paragraphs, cv) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About &mdash; Simon H.J. Bjørkå Flatin</title>
+  <title>About &middot; Simon H.J. Bjørkå Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .about-body { max-width:1400px; margin:0 auto; padding:5rem 4rem 0;
@@ -942,7 +952,7 @@ ${LANG_TOGGLE_SCRIPT}
 
 function generateServicesPage(services) {
   const servDir  = path.join(CONTENT_DIR, 'services');
-  // Use any image found — prefer one named 'hero', else first image
+  // Use any image found - prefer one named 'hero', else first image
   const heroFile = fs.existsSync(servDir)
     ? (findImages(servDir).find(f => f.toLowerCase().startsWith('hero')) || findImages(servDir)[0])
     : null;
@@ -969,7 +979,7 @@ function generateServicesPage(services) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <title>Services &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .services-hero { position:relative; height:100vh; overflow:hidden; }
@@ -1032,9 +1042,9 @@ function generateServicesPage(services) {
     ${navHtml('', 'hero')}
     <div class="services-hero__text">
       <h1>
-        <span class="l-en">Crafting Places that Echo Mountains,<br>Rivers &amp; the Spaces Between</span>
-        <span class="l-no">Skaper steder som gjenspeiler fjell,<br>elver og rommene imellom</span>
-        <span class="l-pt">Criando Lugares que Ecoam Montanhas,<br>Rios e os Espa&ccedil;os Entre Eles</span>
+        <span class="l-en">Architecture, visualisation,<br>models and software</span>
+        <span class="l-no">Arkitektur, visualisering,<br>modeller og programvare</span>
+        <span class="l-pt">Arquitetura, visualiza&ccedil;&atilde;o,<br>maquetes e software</span>
       </h1>
     </div>
     <div class="hero__scroll-cue">
@@ -1045,9 +1055,9 @@ function generateServicesPage(services) {
 
   <div class="services-body">
     <div class="services-intro">
-      <p class="l-en">My practice is a dialogue between two worlds: the crisp Nordic light that shaped my childhood and the layered landscapes where I now design. I read terrain first &mdash; through drone photogrammetry, hand sketches or a block of clay &mdash; then guide projects from concept through construction. The goal: architecture that matures gracefully, treads lightly and feels inevitable in its setting.</p>
-      <p class="l-no">Min praksis er en dialog mellom to verdener: det klare nordiske lyset som formet barndommen min, og de lagdelte landskapene der jeg n&aring; designer. Jeg leser terrenget f&oslash;rst &mdash; gjennom dronebasert fotogrammetri, h&aring;ndskisser eller en klump leire &mdash; og leder deretter prosjekter fra konsept til ferdigstillelse. M&aring;let: arkitektur som modnes med verdighet, tr&aring;r lett og virker uunng&aring;elig i sin setting.</p>
-      <p class="l-pt">Minha pr&aacute;tica &eacute; um di&aacute;logo entre dois mundos: a luz n&oacute;rdica que moldou minha inf&acirc;ncia e as paisagens em camadas onde agora projeto. Leio o terreno primeiro &mdash; por fotogrametria com drone, esbo&ccedil;os &agrave; m&atilde;o ou um bloco de argila &mdash; e conduzo projetos do conceito &agrave; constru&ccedil;&atilde;o. O objetivo: arquitetura que amadurece com gra&ccedil;a, pisa levemente e parece inevit&aacute;vel em seu contexto.</p>
+      <p class="l-en">I am an architect working between Norway and S&atilde;o Paulo, mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from planning applications and competition proposals to visualisation, physical models and the software I build for the building industry. Most projects still start with a physical model on the desk.</p>
+      <p class="l-no">Jeg er arkitekt og jobber mellom Norge og S&atilde;o Paulo, mest online, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra bygges&oslash;knader og konkurranseforslag til visualisering, fysiske modeller og programvaren jeg lager for byggebransjen. De fleste prosjektene begynner fortsatt med en fysisk modell p&aring; bordet.</p>
+      <p class="l-pt">Sou arquiteto e trabalho entre a Noruega e S&atilde;o Paulo, principalmente online, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil. O trabalho vai de pedidos de licenciamento e propostas de concurso a visualiza&ccedil;&atilde;o, maquetes f&iacute;sicas e o software que desenvolvo para a constru&ccedil;&atilde;o civil. A maioria dos projetos ainda come&ccedil;a com uma maquete f&iacute;sica sobre a mesa.</p>
     </div>
     <div class="services-label"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></div>
     <div class="services-list">
@@ -1090,7 +1100,7 @@ function generateContactSuccessPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Message sent &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <title>Message sent &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>${LANG_CSS}
     .success-wrap { max-width:600px; margin:0 auto; padding:8rem 4rem; text-align:center; }
@@ -1144,7 +1154,7 @@ function generateContactPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact &mdash; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <title>Contact &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="style.css" />
   <style>${LANG_CSS}
     .contact-wrap { max-width:900px; margin:0 auto; padding:5rem 4rem 0;
@@ -1205,9 +1215,9 @@ ${navHtml()}
         <span class="l-pt">Vamos trabalhar<br>juntos</span>
       </h1>
       <p class="contact-info__text">
-        <span class="l-en">Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in Oslo, working across Norway, the Netherlands and beyond.</span>
-        <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og r&aring;dgivning. Basert i Oslo, med oppdrag i Norge, Nederland og internasjonalt.</span>
-        <span class="l-pt">Dispon&iacute;vel para comiss&otilde;es de arquitetura, colabora&ccedil;&otilde;es de pesquisa, modelagem e consultoria. Baseado em Oslo, atuando na Noruega, Pa&iacute;ses Baixos e al&eacute;m.</span>
+        <span class="l-en">Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, splitting my time with S&atilde;o Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil.</span>
+        <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og r&aring;dgivning. Basert i Osloregionen, med tiden delt mot S&atilde;o Paulo, og kunder i Norge, Sverige, Portugal, USA og Brasil.</span>
+        <span class="l-pt">Dispon&iacute;vel para encomendas de arquitetura, colabora&ccedil;&otilde;es de pesquisa, maquetes e consultoria. Baseado na regi&atilde;o de Oslo, dividindo meu tempo com S&atilde;o Paulo, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil.</span>
       </p>
       <div class="contact-info__detail">
         <a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a>
@@ -1277,7 +1287,7 @@ function build() {
 
   // 1. Load all projects
   if (!fs.existsSync(PROJECTS_DIR)) {
-    console.log('No projects/ directory — skipping project build.');
+    console.log('No projects/ directory - skipping project build.');
   }
 
   const projects = [];
@@ -1290,7 +1300,7 @@ function build() {
   for (const folderName of dirs) {
     const sourceDir = path.join(PROJECTS_DIR, folderName);
     const txtPath   = path.join(sourceDir, 'project.txt');
-    if (!fs.existsSync(txtPath)) { console.warn(`  skip  ${folderName}/ — no project.txt`); continue; }
+    if (!fs.existsSync(txtPath)) { console.warn(`  skip  ${folderName}/ - no project.txt`); continue; }
 
     const { year: folderYear, slug } = parseFolderName(folderName);
     const content = fs.readFileSync(txtPath, 'utf8');

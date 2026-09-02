@@ -1,7 +1,7 @@
 title: Omsorgsgruppen Våler
 category: Application · Healthcare
 year: 2025
-location: Våler, Norway
+location: Våler i Østfold, Norway
 typology: Regulatory Application / Change of Use
 organization: Bjørkå Flatin ENK
 status: In Progress
@@ -10,12 +10,12 @@ weight: -10
 
 ---
 
-Omsorgsgruppen Våler is a planning application project for the municipality of Våler, Innlandet. The work involved assessing an existing single-family home and preparing the necessary documentation to obtain municipal approval for its conversion to assisted living use. The focus was on compliance with local planning regulations and care-facility standards — not the architectural design of a new building.
+Omsorgsgruppen Våler is a planning application project for the municipality of Våler i Østfold. The work involved assessing an existing single-family home and preparing the necessary documentation to obtain municipal approval for its conversion to assisted living use. The focus was on compliance with local planning regulations and care-facility standards, not the architectural design of a new building.
 
 ===no===
 
-Omsorgsgruppen Våler er et søknadsprosjekt for Våler kommune i Innlandet. Arbeidet innebar å vurdere en eksisterende enebolig og utarbeide nødvendig dokumentasjon for å oppnå kommunal godkjenning av bruksendring til omsorgsbolig. Fokuset var på overholdelse av lokale planbestemmelser og omsorgsfaglige krav — ikke arkitektonisk utforming av en ny bygning.
+Omsorgsgruppen Våler er et søknadsprosjekt for Våler kommune i Østfold. Arbeidet innebar å vurdere en eksisterende enebolig og utarbeide nødvendig dokumentasjon for å oppnå kommunal godkjenning av bruksendring til omsorgsbolig. Fokuset var på overholdelse av lokale planbestemmelser og omsorgsfaglige krav, ikke arkitektonisk utforming av en ny bygning.
 
 ===pt===
 
-Omsorgsgruppen Våler é um projeto de licenciamento para o município de Våler, Innlandet. O trabalho envolveu a avaliação de uma residência unifamiliar existente e a preparação da documentação necessária para obter aprovação municipal para sua conversão em moradia assistida. O foco foi na conformidade com os regulamentos de planejamento local e padrões de instalações de cuidado — não no projeto arquitetônico de um novo edifício.
+Omsorgsgruppen Våler é um projeto de licenciamento para o município de Våler i Østfold. O trabalho envolveu a avaliação de uma residência unifamiliar existente e a preparação da documentação necessária para obter aprovação municipal para sua conversão em moradia assistida. O foco foi na conformidade com os regulamentos de planejamento local e padrões de instalações de cuidado, não no projeto arquitetônico de um novo edifício.
