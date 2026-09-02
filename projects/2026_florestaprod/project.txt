@@ -1,5 +1,6 @@
 title: Floresta
 category: Web design
+tags: Software
 year: 2026
 location: São Paulo, Brazil
 typology: Website

@@ -1,5 +1,6 @@
 title: Erosion
 category: Photography
+tags: Photography
 year: 2023
 location: Norway
 typology: Photography Series

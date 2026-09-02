@@ -1,5 +1,6 @@
 title: The staircase home
 category: Architecture
+tags: Architecture
 year: 2018
 location: Leidschendam-Voorburg, The Netherlands
 typology: Home with Bed & Breakfast

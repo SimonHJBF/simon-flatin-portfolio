@@ -1,5 +1,6 @@
 title: Arctic Symphony
 category: Architecture
+tags: Architecture · Research
 year: 2023
 location: Alta, Norway
 typology: Residence with workshop and bridge

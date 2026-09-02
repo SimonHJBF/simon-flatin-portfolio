@@ -1,5 +1,6 @@
 title: Tinn
 category: Software · Specification tool
+tags: Software
 year: 2026 (ongoing)
 typology: Desktop application (Windows · macOS)
 status: In testing

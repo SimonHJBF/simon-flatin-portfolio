@@ -31,6 +31,9 @@ const IMAGE_EXTS   = new Set(['.jpg','.jpeg','.png','.webp','.gif','.avif']);
 // Percent-encoded: the profile slug contains the non-ASCII characters oe and aa.
 const LINKEDIN_URL = 'https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa';
 
+// Norwegian organisation number, shown in the footer. Empty until supplied.
+const ORG_NR = '';
+
 // ---------------------------------------------
 //  Per-language output
 // ---------------------------------------------
@@ -431,8 +434,12 @@ function navHtml(prefix, mode) {
 }
 
 function footerHtml(prefix) {
+  // Norwegian clients expect an organisation number somewhere on the site.
+  // Set ORG_NR to have it appear; left empty it is simply omitted.
+  const org = ORG_NR ? ` &middot; org.nr ${ORG_NR}` : '';
   return `  <footer>
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
+    <div class="footer__identity">Architect MSc / ir. &middot; Bj&oslash;rk&aring; Flatin ENK${org} &middot; Larkollen, Norway</div>
     <div class="footer__links">
       <a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
       <a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
@@ -469,7 +476,9 @@ function cardHtml(data, index, prefix) {
   const org     = data.organization || '';
   const sub     = [year, org].filter(Boolean).join(' · ');
   // Comma-separated individual tags for JS filtering
-  const cats    = (data.category || '').split('·').map(t => t.trim()).filter(Boolean).join(',');
+  // `tags` drives the /work filters; `category` stays as the card's label, so a
+  // card can read "Software · Specification tool" while filtering under Software.
+  const cats    = (data.tags || data.category || '').split('·').map(t => t.trim()).filter(Boolean).join(',');
 
   return `
       <a class="card ${cls}" href="__LINKBASE__projects/${esc(slug)}/" data-categories="${esc(cats)}">
@@ -624,7 +633,7 @@ function generateWorkPage(projects) {
   // Collect unique individual category tags (sorted alphabetically)
   const tagSet = new Set();
   projects.forEach(p => {
-    (p.category || '').split('·').map(t => t.trim()).filter(Boolean).forEach(t => tagSet.add(t));
+    (p.tags || p.category || '').split('·').map(t => t.trim()).filter(Boolean).forEach(t => tagSet.add(t));
   });
   const filterTags = ['All', ...Array.from(tagSet).sort()];
   const filterBtns = filterTags.map(tag =>

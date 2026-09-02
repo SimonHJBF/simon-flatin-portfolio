@@ -1,5 +1,6 @@
 title: Omsorgsgruppen Våler
 category: Application · Healthcare
+tags: Architecture
 year: 2025
 location: Våler i Østfold, Norway
 typology: Regulatory Application / Change of Use

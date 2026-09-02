@@ -1,5 +1,6 @@
 title: Oud Alblas
 category: Internship · Architecture
+tags: Architecture
 year: 2021
 location: Peperstraat, Oud-Alblas, The Netherlands
 typology: Architecture

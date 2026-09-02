@@ -1,5 +1,6 @@
 title: Von Sauna - Floating Saunas
 category: Architectural renders
+tags: Architecture
 year: 2025
 location: Seattle, USA
 typology: Render / Pitch Package

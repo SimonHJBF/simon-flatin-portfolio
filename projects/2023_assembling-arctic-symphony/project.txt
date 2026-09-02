@@ -1,5 +1,6 @@
 title: Assembling the Arctic Symphony
 category: Architecture · Model making
+tags: Architecture · Models
 year: 2023
 location: Alta, Norway / Delft, The Netherlands
 typology: Graduation design booklet

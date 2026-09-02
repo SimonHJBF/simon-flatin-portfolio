@@ -1,5 +1,6 @@
 title: Bjørnåsen house addition
 category: Architecture
+tags: Architecture · Built
 year: 2021
 location: Larkollen, Norway
 typology: Garage

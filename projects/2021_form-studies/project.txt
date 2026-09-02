@@ -1,5 +1,6 @@
 title: Form studies
 category: Form studies
+tags: Models
 year: 2017 - 2018
 location: Architecture faculty, TU Delft, The Netherlands
 typology: Form studies

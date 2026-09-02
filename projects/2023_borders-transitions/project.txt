@@ -1,5 +1,6 @@
 title: Borders and Transitions
 category: Photography
+tags: Photography
 year: 2023
 location: Alta, Norway
 typology: Visual Essay

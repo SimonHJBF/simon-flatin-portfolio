@@ -1,5 +1,6 @@
 title: Billow by the Maas
 category: Architecture
+tags: Architecture
 year: 2020
 location: Schiehaven 13, 3024 CE Rotterdam, The Netherlands
 typology: Sports school

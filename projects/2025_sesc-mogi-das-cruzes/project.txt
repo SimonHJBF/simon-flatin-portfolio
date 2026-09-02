@@ -1,5 +1,6 @@
 title: SESC Mogi Das Cruzes
 category: Architecture Design Competition
+tags: Architecture
 year: 2025
 location: Mogi Das Cruzes, Brazil
 typology: Sociocultural & Sports Park

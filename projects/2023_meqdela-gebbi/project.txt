@@ -1,5 +1,6 @@
 title: Meqdela Gebbi modelmaking
 category: Model making
+tags: Models
 year: 2023
 location: Delft, The Netherlands
 typology: Architectural model
