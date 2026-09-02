@@ -1,0 +1,33 @@
+title: Floresta
+category: Web design
+year: 2026
+location: São Paulo, Brazil
+typology: Website
+client: Floresta
+status: Live
+live: florestaprod.com.br
+grid: third
+
+---
+
+Floresta is an audiovisual production company in São Paulo. They have been making film and television since 2010 and produce for Netflix, HBO Max, Paramount+, Globoplay and Multishow among others. They came to me with an older site that no longer matched the work behind it.
+
+I did all of it, the design and the production. The site is built around the catalogue of productions, so the titles carry the page rather than sitting behind it.
+
+It launched in August 2026 and is live at [florestaprod.com.br](https://florestaprod.com.br).
+
+===no===
+
+Floresta er et audiovisuelt produksjonsselskap i São Paulo. De har laget film og TV siden 2010 og produserer blant annet for Netflix, HBO Max, Paramount+, Globoplay og Multishow. De kom til meg med en eldre nettside som ikke lenger sto i stil med arbeidet bak.
+
+Jeg gjorde alt, både design og produksjon. Siden er bygd rundt katalogen av produksjoner, slik at titlene bærer siden i stedet for å ligge bak den.
+
+Den ble lansert i august 2026 og er i drift på [florestaprod.com.br](https://florestaprod.com.br).
+
+===pt===
+
+A Floresta é uma produtora audiovisual em São Paulo. Faz cinema e televisão desde 2010 e produz para Netflix, HBO Max, Paramount+, Globoplay e Multishow, entre outros. Eles me procuraram com um site antigo que já não correspondia ao trabalho por trás dele.
+
+Fiz tudo, o design e a produção. O site é construído em torno do catálogo de produções, de modo que os títulos sustentam a página em vez de ficarem escondidos atrás dela.
+
+Foi lançado em agosto de 2026 e está no ar em [florestaprod.com.br](https://florestaprod.com.br).

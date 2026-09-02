@@ -1,0 +1,7 @@
+# Internal documentation and working files. Netlify publishes the repo root,
+# so anything committed here becomes publicly reachable on simonflatin.com.
+MEMORY/
+
+# OS cruft
+.DS_Store
+Thumbs.db
