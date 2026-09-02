@@ -256,7 +256,12 @@ function youtubeEmbedUrl(url) {
 }
 
 function findImages(dir) {
-  return fs.readdirSync(dir)
+  // The web/ derivatives are what actually deploy; the originals are kept
+  // locally but not committed. Discover from web/ when it exists, so the build
+  // finds the same set of images on the server as it does on this machine.
+  const webDir = path.join(dir, 'web');
+  const from = fs.existsSync(webDir) ? webDir : dir;
+  return fs.readdirSync(from)
     .filter(f => IMAGE_EXTS.has(path.extname(f).toLowerCase()))
     .sort();
 }
