@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="alternate" hreflang="en" href="https://simonflatin.com/services.html" />
+  <link rel="alternate" hreflang="no" href="https://simonflatin.com/no/services.html" />
+  <link rel="alternate" hreflang="pt" href="https://simonflatin.com/pt/services.html" />
+  <link rel="alternate" hreflang="x-default" href="https://simonflatin.com/services.html" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
     .services-hero { position:relative; height:100vh; overflow:hidden; }
     .services-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
@@ -54,16 +58,8 @@
       .service-body, .service-item.open .service-body { padding-left:1rem; }
     }
     
-  [data-lang="en"] .l-no,[data-lang="en"] .l-pt { display:none }
-  [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
-  [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }
   </style>
-  <script>
-  (function(){
-    var l=localStorage.getItem('lang')||'en';
-    document.documentElement.setAttribute('data-lang',l);
-  })();
-</script>
+  
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
 <script>
@@ -76,36 +72,36 @@
 <body>
 
   <div class="services-hero">
-    <img class="services-hero__bg" src="content/services/P1060122-2.jpg" alt="">
+    <img class="services-hero__bg" src="/content/services/P1060122-2.jpg" alt="">
     <div class="services-hero__overlay"></div>
       <nav class="nav--hero">
-    <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+    <a href="/" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
-        <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
-        <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
-        <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
-        <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
-        <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+        <li><a href="/"><span class="l-en">Main</span></a></li>
+        <li><a href="/work.html"><span class="l-en">Work</span></a></li>
+        <li><a href="/services.html"><span class="l-en">Services</span></a></li>
+        <li><a href="/about.html"><span class="l-en">About</span></a></li>
+        <li><a href="/contact.html"><span class="l-en">Contact</span></a></li>
       </ul>
       <div class="lang-toggle" role="group" aria-label="Select language">
-        <button class="lang-btn" data-lang="en">EN</button>
+        <a class="lang-btn active" href="/services.html" hreflang="en" aria-current="page">EN</a>
         <span class="lang-sep">&middot;</span>
-        <button class="lang-btn" data-lang="no">NO</button>
+        <a class="lang-btn" href="/no/services.html" hreflang="no">NO</a>
         <span class="lang-sep">&middot;</span>
-        <button class="lang-btn" data-lang="pt">PT</button>
+        <a class="lang-btn" href="/pt/services.html" hreflang="pt">PT</a>
       </div>
     </div>
   </nav>
     <div class="services-hero__text">
       <h1>
         <span class="l-en">Architecture, visualisation,<br>models and software</span>
-        <span class="l-no">Arkitektur, visualisering,<br>modeller og programvare</span>
-        <span class="l-pt">Arquitetura, visualiza&ccedil;&atilde;o,<br>maquetes e software</span>
+        
+        
       </h1>
     </div>
     <div class="hero__scroll-cue">
-      <span class="l-en">Scroll</span><span class="l-no">Rull</span><span class="l-pt">Rolar</span>
+      <span class="l-en">Scroll</span>
       <span class="hero__scroll-arrow-wrap" aria-hidden="true"><span class="hero__scroll-arrow"></span></span>
     </div>
   </div>
@@ -113,10 +109,10 @@
   <div class="services-body">
     <div class="services-intro">
       <p class="l-en">I am an architect working between Norway and S&atilde;o Paulo, mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from planning applications and competition proposals to visualisation, physical models and the software I build for the building industry. Most projects still start with a physical model on the desk.</p>
-      <p class="l-no">Jeg er arkitekt og jobber mellom Norge og S&atilde;o Paulo, mest online, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra bygges&oslash;knader og konkurranseforslag til visualisering, fysiske modeller og programvaren jeg lager for byggebransjen. De fleste prosjektene begynner fortsatt med en fysisk modell p&aring; bordet.</p>
-      <p class="l-pt">Sou arquiteto e trabalho entre a Noruega e S&atilde;o Paulo, principalmente online, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil. O trabalho vai de pedidos de licenciamento e propostas de concurso a visualiza&ccedil;&atilde;o, maquetes f&iacute;sicas e o software que desenvolvo para a constru&ccedil;&atilde;o civil. A maioria dos projetos ainda come&ccedil;a com uma maquete f&iacute;sica sobre a mesa.</p>
+      
+      
     </div>
-    <div class="services-label"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></div>
+    <div class="services-label"><span class="l-en">Services</span></div>
     <div class="services-list">
 
       <div class="service-item">
@@ -196,18 +192,18 @@
 
   <div class="contact-cta">
     <div class="contact-cta__text">
-      <h2><span class="l-en">Let&rsquo;s work together</span><span class="l-no">La oss samarbeide</span><span class="l-pt">Vamos trabalhar juntos</span></h2>
-      <p><span class="l-en">Available for commissions, collaborations and consultations.</span><span class="l-no">Tilgjengelig for oppdrag, samarbeid og konsultasjoner.</span><span class="l-pt">Dispon&iacute;vel para comiss&otilde;es, colabora&ccedil;&otilde;es e consultas.</span></p>
+      <h2><span class="l-en">Let&rsquo;s work together</span></h2>
+      <p><span class="l-en">Available for commissions, collaborations and consultations.</span></p>
     </div>
-    <a href="contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span><span class="l-pt">Entre em contato &rarr;</span></a>
+    <a href="/contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span></a>
   </div>
 
   <footer>
     <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
-      <a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
-      <a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
+      <a href="/about.html"><span class="l-en">About</span></a>
+      <a href="/work.html"><span class="l-en">Work</span></a>
+      <a href="/contact.html"><span class="l-en">Contact</span></a>
       <a href="https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>
@@ -225,24 +221,6 @@
       });
     });
   </script>
-<script>
-  document.addEventListener('DOMContentLoaded',function(){
-    var cur=document.documentElement.getAttribute('data-lang')||'en';
-    function setActive(lang){
-      document.querySelectorAll('.lang-btn').forEach(function(b){
-        b.classList.toggle('active',b.dataset.lang===lang);
-      });
-    }
-    setActive(cur);
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        var lang=btn.dataset.lang;
-        document.documentElement.setAttribute('data-lang',lang);
-        localStorage.setItem('lang',lang);
-        setActive(lang);
-      });
-    });
-  });
-</script>
+
 </body>
 </html>

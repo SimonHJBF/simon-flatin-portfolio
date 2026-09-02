@@ -31,6 +31,109 @@ const IMAGE_EXTS   = new Set(['.jpg','.jpeg','.png','.webp','.gif','.avif']);
 // Percent-encoded: the profile slug contains the non-ASCII characters oe and aa.
 const LINKEDIN_URL = 'https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa';
 
+// ---------------------------------------------
+//  Per-language output
+// ---------------------------------------------
+// English lives at the site root, Norwegian under /no/, Portuguese under /pt/.
+// Every page is emitted once per language with only that language in the DOM,
+// so crawlers and screen readers see one language per document.
+
+const LANGS    = ['en', 'no', 'pt'];
+const SITE_URL = 'https://simonflatin.com';
+
+/** Base for page links in a language. Assets always use '/'. */
+function linkBase(lang) { return lang === 'en' ? '/' : `/${lang}/`; }
+
+/** Output subdirectory for a language, relative to ROOT. */
+function langDir(lang) { return lang === 'en' ? '' : lang; }
+
+/** Index just past the </tag> closing the element whose open tag ended at `from`. */
+function matchingClose(html, tag, from) {
+  const re = new RegExp(`<${tag}\\b|</${tag}>`, 'g');
+  re.lastIndex = from;
+  let depth = 1, m;
+  while ((m = re.exec(html)) !== null) {
+    if (m[0][1] === '/') { if (--depth === 0) return re.lastIndex; }
+    else depth++;
+  }
+  return -1;
+}
+
+/** Remove every element carrying class="cls", including its contents. */
+function removeTagged(html, cls) {
+  const open = new RegExp(`<(span|div|p)\\s+class="${cls}"[^>]*>`, 'g');
+  let out = '', last = 0, m;
+  while ((m = open.exec(html)) !== null) {
+    const end = matchingClose(html, m[1], open.lastIndex);
+    if (end === -1) continue;
+    out += html.slice(last, m.index);
+    last = end;
+    open.lastIndex = end;
+  }
+  return out + html.slice(last);
+}
+
+/** Keep only one language's blocks in a rendered page. */
+function stripLangs(html, keep) {
+  for (const lang of LANGS) if (lang !== keep) html = removeTagged(html, `l-${lang}`);
+  return html;
+}
+
+/** Clean URL for an output path: projects/tinn/index.html -> projects/tinn/ */
+function urlOf(rel) { return rel.replace(/index\.html$/, ''); }
+
+// Titles per language. Project pages keep their own title (a proper noun),
+// so they are deliberately absent here.
+const NAME = 'Simon H.J. Bj&oslash;rk&aring; Flatin';
+const PAGE_TITLES = {
+  'index.html': {
+    en: `${NAME} &middot; Architect &amp; Designer`,
+    no: `${NAME} &middot; Arkitekt og designer`,
+    pt: `${NAME} &middot; Arquiteto e designer`,
+  },
+  'work.html':    { en: `Work &middot; ${NAME}`,    no: `Prosjekter &middot; ${NAME}`,   pt: `Projetos &middot; ${NAME}` },
+  'about.html':   { en: `About &middot; ${NAME}`,   no: `Om &middot; ${NAME}`,           pt: `Sobre &middot; ${NAME}` },
+  'services.html':{ en: `Services &middot; ${NAME}`,no: `Tjenester &middot; ${NAME}`,    pt: `Servi&ccedil;os &middot; ${NAME}` },
+  'contact.html': { en: `Contact &middot; ${NAME}`, no: `Kontakt &middot; ${NAME}`,      pt: `Contato &middot; ${NAME}` },
+  'contact-success.html': {
+    en: `Message sent &middot; ${NAME}`,
+    no: `Melding sendt &middot; ${NAME}`,
+    pt: `Mensagem enviada &middot; ${NAME}`,
+  },
+};
+
+/** hreflang alternates, so crawlers know the three pages are the same content. */
+function hreflangHtml(rel) {
+  const u = urlOf(rel);
+  const rows = LANGS.map(l =>
+    `  <link rel="alternate" hreflang="${l}" href="${SITE_URL}${linkBase(l)}${u}" />`);
+  rows.push(`  <link rel="alternate" hreflang="x-default" href="${SITE_URL}/${u}" />`);
+  return rows.join('\n');
+}
+
+/** Language switcher: real links to this same page in each language. */
+function langLinksHtml(lang, rel) {
+  const u = urlOf(rel);
+  return LANGS.map(l =>
+    `        <a class="lang-btn${l === lang ? ' active' : ''}" href="${linkBase(l)}${u}"` +
+    ` hreflang="${l}"${l === lang ? ' aria-current="page"' : ''}>${l.toUpperCase()}</a>`
+  ).join('\n        <span class="lang-sep">&middot;</span>\n');
+}
+
+/** Write one page three times, one per language, each with a single language. */
+function emitLangVariants(rel, html) {
+  for (const lang of LANGS) {
+    let out = stripLangs(html, lang);
+    out = out.replace('<html lang="en">', `<html lang="${lang}">`);
+    out = out.replace('<head>', '<head>\n' + hreflangHtml(rel));
+    const title = PAGE_TITLES[rel];
+    if (title) out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${title[lang]}</title>`);
+    out = out.split('<!--LANGNAV-->').join(langLinksHtml(lang, rel));
+    out = out.split('__LINKBASE__').join(linkBase(lang));
+    writeFile(path.join(ROOT, langDir(lang), rel), out);
+  }
+}
+
 // Gradient fallbacks for projects without a cover image
 const GRADIENTS = [
   'linear-gradient(135deg,#1a2a3a 0%,#2d4a6b 50%,#8fb3c8 100%)',
@@ -210,33 +313,11 @@ function parseFeaturedTxt(content) {
 //  Shared HTML blocks
 // ─────────────────────────────────────────────
 
-// Language toggle script (inline, tiny, no flash)
-const LANG_SCRIPT = `<script>
-  (function(){
-    var l=localStorage.getItem('lang')||'en';
-    document.documentElement.setAttribute('data-lang',l);
-  })();
-</script>`;
-
-const LANG_TOGGLE_SCRIPT = `<script>
-  document.addEventListener('DOMContentLoaded',function(){
-    var cur=document.documentElement.getAttribute('data-lang')||'en';
-    function setActive(lang){
-      document.querySelectorAll('.lang-btn').forEach(function(b){
-        b.classList.toggle('active',b.dataset.lang===lang);
-      });
-    }
-    setActive(cur);
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        var lang=btn.dataset.lang;
-        document.documentElement.setAttribute('data-lang',lang);
-        localStorage.setItem('lang',lang);
-        setActive(lang);
-      });
-    });
-  });
-</script>`;
+// Each page is now emitted once per language with only that language in the
+// DOM, so there is nothing left to toggle at runtime. These are kept as empty
+// strings so the page templates below do not all need editing.
+const LANG_SCRIPT = '';
+const LANG_TOGGLE_SCRIPT = '';
 
 const GA_TAG = `<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
@@ -248,43 +329,36 @@ const GA_TAG = `<!-- Google tag (gtag.js) -->
 </script>`;
 
 // Language CSS (goes in <head>)
-const LANG_CSS = `
-  [data-lang="en"] .l-no,[data-lang="en"] .l-pt { display:none }
-  [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
-  [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }`;
+// Was used to hide the two inactive languages. Now unnecessary: only one
+// language is ever present in a document.
+const LANG_CSS = '';
 
 function navHtml(prefix, mode) {
-  const p = prefix || '';
   const navClass = mode === 'hero' ? 'nav--hero' : 'nav--page';
   return `  <nav class="${navClass}">
-    <a href="${p}index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+    <a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
-        <li><a href="${p}index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
-        <li><a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
-        <li><a href="${p}services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
-        <li><a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
-        <li><a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+        <li><a href="__LINKBASE__"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
+        <li><a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+        <li><a href="__LINKBASE__services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+        <li><a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+        <li><a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
       </ul>
       <div class="lang-toggle" role="group" aria-label="Select language">
-        <button class="lang-btn" data-lang="en">EN</button>
-        <span class="lang-sep">&middot;</span>
-        <button class="lang-btn" data-lang="no">NO</button>
-        <span class="lang-sep">&middot;</span>
-        <button class="lang-btn" data-lang="pt">PT</button>
+<!--LANGNAV-->
       </div>
     </div>
   </nav>`;
 }
 
 function footerHtml(prefix) {
-  const p = prefix || '';
   return `  <footer>
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="${p}about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
-      <a href="${p}work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
-      <a href="${p}contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
+      <a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
+      <a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
+      <a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
       <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>`;
@@ -306,13 +380,12 @@ const AUTO_PATTERN = [
 ];
 
 function cardHtml(data, index, prefix) {
-  const p       = prefix || '';
   const cls     = GRID_CLASSES[(data.grid||'').toLowerCase()] || AUTO_PATTERN[index % AUTO_PATTERN.length];
   const slug    = data.slug;
   const folder  = data._folder; // e.g. 2024_lalibela-modelmaking
   const cover   = data._cover;
   const imgHtml = cover
-    ? `<img src="${p}projects/${esc(folder)}/${esc(cover)}" alt="${esc(data.title)}" loading="lazy" />`
+    ? `<img src="/projects/${esc(folder)}/${esc(cover)}" alt="${esc(data.title)}" loading="lazy" />`
     : `<div class="card__placeholder" style="background:${grad(index)};width:100%;height:100%;"></div>`;
   const year    = data.year || '';
   const org     = data.organization || '';
@@ -321,13 +394,13 @@ function cardHtml(data, index, prefix) {
   const cats    = (data.category || '').split('·').map(t => t.trim()).filter(Boolean).join(',');
 
   return `
-      <a class="card ${cls}" href="${p}projects/${esc(slug)}/" data-categories="${esc(cats)}">
+      <a class="card ${cls}" href="__LINKBASE__projects/${esc(slug)}/" data-categories="${esc(cats)}">
         <div class="card__img-wrap">${imgHtml}</div>
         <div class="card__info">
           <div class="card__category">${esc(data.category || '')}</div>
           <div class="card__name">${esc(data.title || slug)}</div>
           ${sub ? `<div class="card__year">${esc(sub)}</div>` : ''}
-          <div class="card__arrow">View project &rarr;</div>
+          <div class="card__arrow"><span class="l-en">View project</span><span class="l-no">Se prosjekt</span><span class="l-pt">Ver projeto</span> &rarr;</div>
         </div>
       </a>`;
 }
@@ -346,7 +419,8 @@ function generateProjectPage(data, folderName, images) {
   const hero   = images.find(f => /^(banner|hero)\./i.test(f)) || cover;
   const gallery = images.filter(f => f !== cover && f !== hero);
   // Images live in the source folder (YYYY_slug), referenced from the output folder (slug/)
-  const imgBase  = `../${folderName}/`;
+  // Absolute so the same markup works from /, /no/ and /pt/ alike.
+  const imgBase  = `/projects/${folderName}/`;
 
   const META_LABELS = {
     'Category':      { no:'Kategori',             pt:'Categoria' },
@@ -387,7 +461,7 @@ function generateProjectPage(data, folderName, images) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${esc(title)} &middot; Simon H.J. Bjørkå Flatin</title>
-  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
     .project-hero { width:100%; max-height:80vh; overflow:hidden; }
     .project-hero img { width:100%; display:block; max-height:80vh; object-fit:cover; }
@@ -453,7 +527,7 @@ ${heroHtml}
       <div class="l-en">${data.paragraphs.map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-no">${(data.paragraphs_no && data.paragraphs_no.length ? data.paragraphs_no : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-pt">${(data.paragraphs_pt && data.paragraphs_pt.length ? data.paragraphs_pt : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
-      <a href="../../work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
+      <a href="__LINKBASE__work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
     </div>
   </div>
 ${galleryHtml}
@@ -485,7 +559,7 @@ function generateWorkPage(projects) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Work &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
     .work-intro { max-width:1400px; margin:0 auto; padding:4rem 4rem 2rem;
       display:flex; align-items:baseline; gap:1.4rem; }
@@ -573,7 +647,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     const folder  = data._folder;
     const cover   = data._cover;
     const imgHtml = cover
-      ? `<img src="projects/${esc(folder)}/${esc(cover)}" alt="${esc(data.title)}" loading="eager" />`
+      ? `<img src="/projects/${esc(folder)}/${esc(cover)}" alt="${esc(data.title)}" loading="eager" />`
       : `<div class="card__placeholder" style="background:${grad(i)};width:100%;height:100%;"></div>`;
     const sub = [data.year, data.organization].filter(Boolean).join(' · ');
 
@@ -584,7 +658,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
           <div class="card__category">${esc(data.category || '')}</div>
           <div class="card__name">${esc(data.title || data.slug)}</div>
           ${sub ? `<div class="card__year">${esc(sub)}</div>` : ''}
-          <div class="card__arrow">View project &rarr;</div>
+          <div class="card__arrow"><span class="l-en">View project</span><span class="l-no">Se prosjekt</span><span class="l-pt">Ver projeto</span> &rarr;</div>
         </div>
       </a>`;
   }).join('');
@@ -594,7 +668,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
   const heroImgFile = fs.existsSync(mainDir)
     ? findImages(mainDir).find(f => /^(hero|cover|mirror)\./i.test(f)) || findImages(mainDir)[0]
     : null;
-  const heroImgPath = heroImgFile ? `content/main/${heroImgFile}` : null;
+  const heroImgPath = heroImgFile ? `/content/main/${heroImgFile}` : null;
 
   const heroBgHtml = heroImgPath
     ? `<img class="hero__bg" src="${heroImgPath}" alt="">`
@@ -634,7 +708,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simon H.J. Bj&oslash;rk&aring; Flatin &middot; Architect &amp; Designer</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
     .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
     .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
@@ -675,14 +749,14 @@ function generateIndexPage(allProjects, featuredSlugs) {
     <div class="hero__overlay"></div>
     <canvas id="mc" aria-hidden="true"></canvas>
     <nav class="nav--hero">
-      <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+      <a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
       <div class="nav__link-row">
         <ul class="nav__links">
-          <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
-          <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
-          <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
-          <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
-          <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+          <li><a href="__LINKBASE__"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
+          <li><a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+          <li><a href="__LINKBASE__services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+          <li><a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+          <li><a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
         </ul>
         <div class="lang-toggle" role="group" aria-label="Select language">
           <button class="lang-btn" data-lang="en">EN</button>
@@ -707,7 +781,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     <div class="projects">
 ${cards}
     </div>
-    <div class="all-work"><a href="work.html"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span><span class="l-pt">Ver todos os projetos</span></a></div>
+    <div class="all-work"><a href="__LINKBASE__work.html"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span><span class="l-pt">Ver todos os projetos</span></a></div>
   </section>
 
 ${footerHtml()}
@@ -861,7 +935,7 @@ function generateAboutPage(paragraphs, cv) {
         </div>`;
 
   const photoHtml = portraitFile
-    ? `<img src="content/about/${portraitFile}" alt="Simon H.J. Bjørkå Flatin" />`
+    ? `<img src="/content/about/${portraitFile}" alt="Simon H.J. Bjørkå Flatin" />`
     : `<div style="width:100%;max-width:320px;aspect-ratio:3/4;background:linear-gradient(160deg,#d4c9b8,#b8aa98);"></div>`;
 
   function cvEntry(e) {
@@ -884,7 +958,7 @@ function generateAboutPage(paragraphs, cv) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About &middot; Simon H.J. Bjørkå Flatin</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
     .about-body { max-width:1400px; margin:0 auto; padding:5rem 4rem 0;
       display:grid; grid-template-columns:1fr 1fr; gap:5rem; }
@@ -962,7 +1036,7 @@ function generateServicesPage(services) {
     : null;
 
   const heroBgHtml = heroFile
-    ? `<img class="services-hero__bg" src="content/services/${heroFile}" alt="">`
+    ? `<img class="services-hero__bg" src="/content/services/${heroFile}" alt="">`
     : `<div class="services-hero__bg" style="background:linear-gradient(160deg,#1a2535 0%,#2d4058 40%,#8aaabb 100%);"></div>`;
 
   const serviceItems = services.map((s, i) => {
@@ -984,7 +1058,7 @@ function generateServicesPage(services) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>
     .services-hero { position:relative; height:100vh; overflow:hidden; }
     .services-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
@@ -1074,7 +1148,7 @@ ${serviceItems}
       <h2><span class="l-en">Let&rsquo;s work together</span><span class="l-no">La oss samarbeide</span><span class="l-pt">Vamos trabalhar juntos</span></h2>
       <p><span class="l-en">Available for commissions, collaborations and consultations.</span><span class="l-no">Tilgjengelig for oppdrag, samarbeid og konsultasjoner.</span><span class="l-pt">Dispon&iacute;vel para comiss&otilde;es, colabora&ccedil;&otilde;es e consultas.</span></p>
     </div>
-    <a href="contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span><span class="l-pt">Entre em contato &rarr;</span></a>
+    <a href="__LINKBASE__contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span><span class="l-pt">Entre em contato &rarr;</span></a>
   </div>
 
 ${footerHtml()}
@@ -1105,7 +1179,7 @@ function generateContactSuccessPage() {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Message sent &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>${LANG_CSS}
     .success-wrap { max-width:600px; margin:0 auto; padding:8rem 4rem; text-align:center; }
     .success-wrap__label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
@@ -1139,7 +1213,7 @@ ${navHtml()}
       <span class="l-no">Meldingen din er mottatt. Jeg tar kontakt innen 2 virkedager.</span>
       <span class="l-pt">Sua mensagem foi recebida. Entrarei em contato em at&eacute; 2 dias &uacute;teis.</span>
     </p>
-    <a href="index.html" class="success-wrap__back">
+    <a href="__LINKBASE__" class="success-wrap__back">
       <span class="l-en">&larr; Back to home</span>
       <span class="l-no">&larr; Tilbake til forsiden</span>
       <span class="l-pt">&larr; Voltar ao in&iacute;cio</span>
@@ -1159,7 +1233,7 @@ function generateContactPage() {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css" />
   <style>${LANG_CSS}
     .contact-wrap { max-width:900px; margin:0 auto; padding:5rem 4rem 0;
       display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; }
@@ -1230,7 +1304,7 @@ ${navHtml()}
     </div>
 
     <div class="contact-form-wrap">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="contact-success.html" class="contact-form">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="__LINKBASE__contact-success.html" class="contact-form">
         <input type="hidden" name="form-name" value="contact" />
         <p class="contact-form__honeypot">
           <label><span class="l-en">Don&rsquo;t fill this in</span><span class="l-no">Ikke fyll ut dette</span><span class="l-pt">N&atilde;o preencha</span>: <input name="bot-field" /></label>
@@ -1321,7 +1395,7 @@ function build() {
     // Write project detail page to projects/[slug]/index.html
     const html      = generateProjectPage(data, folderName, images);
     const outputDir = path.join(PROJECTS_DIR, slug);
-    writeFile(path.join(outputDir, 'index.html'), html);
+    emitLangVariants('projects/' + slug + '/index.html', html);
     console.log(`  built projects/${slug}/  ← ${folderName}/`);
 
     projects.push(data);
@@ -1336,7 +1410,7 @@ function build() {
   });
 
   // 2. Generate work.html
-  writeFile(path.join(ROOT, 'work.html'), generateWorkPage(projects));
+  emitLangVariants('work.html', generateWorkPage(projects));
   console.log(`  built work.html  (${projects.length} projects)`);
 
   // 3. Generate index.html
@@ -1344,7 +1418,7 @@ function build() {
   const featuredSlugs = featuredPath && fs.existsSync(featuredPath)
     ? parseFeaturedTxt(fs.readFileSync(featuredPath, 'utf8'))
     : projects.slice(0, 4).map(p => p.slug);
-  writeFile(path.join(ROOT, 'index.html'), generateIndexPage(projects, featuredSlugs));
+  emitLangVariants('index.html', generateIndexPage(projects, featuredSlugs));
   console.log(`  built index.html`);
 
   // 4. Generate about.html
@@ -1352,19 +1426,19 @@ function build() {
   const cvTxt   = readFile(path.join(CONTENT_DIR, 'about', 'cv.txt'))  || '';
   const bio     = parseBioTxt(bioTxt);
   const cv      = parseCvTxt(cvTxt);
-  writeFile(path.join(ROOT, 'about.html'), generateAboutPage(bio, cv));
+  emitLangVariants('about.html', generateAboutPage(bio, cv));
   console.log(`  built about.html`);
 
   // 5. Generate services.html
   const servicesTxt = readFile(path.join(CONTENT_DIR, 'services', 'services.txt')) || '';
   const services    = parseServicesTxt(servicesTxt);
-  writeFile(path.join(ROOT, 'services.html'), generateServicesPage(services));
+  emitLangVariants('services.html', generateServicesPage(services));
   console.log(`  built services.html`);
 
   // 6. Generate contact.html + success page
-  writeFile(path.join(ROOT, 'contact.html'), generateContactPage());
+  emitLangVariants('contact.html', generateContactPage());
   console.log(`  built contact.html`);
-  writeFile(path.join(ROOT, 'contact-success.html'), generateContactSuccessPage());
+  emitLangVariants('contact-success.html', generateContactSuccessPage());
   console.log(`  built contact-success.html`);
 
   console.log(`\n── Build complete. ${projects.length} project(s). ──\n`);

@@ -2,6 +2,11 @@
 # so anything committed here becomes publicly reachable on simonflatin.com.
 MEMORY/
 
+# Generated language variants. Netlify runs `node build.js` on deploy, so these
+# are rebuilt from content/ and projects/ and do not belong in the repo.
+/no/
+/pt/
+
 # OS cruft
 .DS_Store
 Thumbs.db

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="alternate" hreflang="en" href="https://simonflatin.com/about.html" />
+  <link rel="alternate" hreflang="no" href="https://simonflatin.com/no/about.html" />
+  <link rel="alternate" hreflang="pt" href="https://simonflatin.com/pt/about.html" />
+  <link rel="alternate" hreflang="x-default" href="https://simonflatin.com/about.html" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About &middot; Simon H.J. Bjørkå Flatin</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>About &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <link rel="stylesheet" href="/style.css" />
   <style>
     .about-body { max-width:1400px; margin:0 auto; padding:5rem 4rem 0;
       display:grid; grid-template-columns:1fr 1fr; gap:5rem; }
@@ -35,16 +39,8 @@
       .about-body { grid-template-columns:1fr; gap:4rem; padding:3rem 1.5rem 0; }
     }
     
-  [data-lang="en"] .l-no,[data-lang="en"] .l-pt { display:none }
-  [data-lang="no"] .l-en,[data-lang="no"] .l-pt { display:none }
-  [data-lang="pt"] .l-en,[data-lang="pt"] .l-no { display:none }
   </style>
-  <script>
-  (function(){
-    var l=localStorage.getItem('lang')||'en';
-    document.documentElement.setAttribute('data-lang',l);
-  })();
-</script>
+  
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
 <script>
@@ -57,28 +53,28 @@
 <body>
 
   <nav class="nav--page">
-    <a href="index.html" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+    <a href="/" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
-        <li><a href="index.html"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
-        <li><a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
-        <li><a href="services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
-        <li><a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
-        <li><a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+        <li><a href="/"><span class="l-en">Main</span></a></li>
+        <li><a href="/work.html"><span class="l-en">Work</span></a></li>
+        <li><a href="/services.html"><span class="l-en">Services</span></a></li>
+        <li><a href="/about.html"><span class="l-en">About</span></a></li>
+        <li><a href="/contact.html"><span class="l-en">Contact</span></a></li>
       </ul>
       <div class="lang-toggle" role="group" aria-label="Select language">
-        <button class="lang-btn" data-lang="en">EN</button>
+        <a class="lang-btn active" href="/about.html" hreflang="en" aria-current="page">EN</a>
         <span class="lang-sep">&middot;</span>
-        <button class="lang-btn" data-lang="no">NO</button>
+        <a class="lang-btn" href="/no/about.html" hreflang="no">NO</a>
         <span class="lang-sep">&middot;</span>
-        <button class="lang-btn" data-lang="pt">PT</button>
+        <a class="lang-btn" href="/pt/about.html" hreflang="pt">PT</a>
       </div>
     </div>
   </nav>
 
   <div class="about-body">
     <div class="about-bio">
-      <div class="about-bio__label"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></div>
+      <div class="about-bio__label"><span class="l-en">About</span></div>
       <h1 class="about-bio__name">Simon H.J.<br>Bj&oslash;rk&aring; Flatin</h1>
       <div class="about-bio__text">
         <div class="l-en">
@@ -88,23 +84,11 @@
           <p>I have run my own practice since 2023, registered as Bjørkå Flatin ENK in 2025. I split my time between Norway and São Paulo and work mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from a planning application for a care building, through competition proposals, to architectural visualisation.</p>
           <p>I also build software for the industry I work in. Tinn is a specification tool for the built environment and hytteboka.app is an app for cabin owners. Both are running. Most projects, though, still start with a physical model on the desk.</p>
         </div>
-        <div class="l-no">
-          <p>Jeg er arkitekt. MSc og ir. fra TU Delft, Architecture, Urbanism and Building Sciences, uteksaminert cum laude i 2023.</p>
-          <p>Jeg vokste opp i Larkollen utenfor Oslo, med utsikt over fjorden. Inne i skogen bak huset lå et lite, skjult tjern som endret seg langsomt gjennom året, og det å se på det er der interessen min for tid begynte, tid som noe bygninger lever inni snarere enn står imot. Den interessen gikk gjennom hele avgangsprosjektet mitt, Arctic Symphony, en Explore Lab-oppgave lagt til en vill strekning av elva i Alta.</p>
-          <p>Før Delft hadde jeg et utvekslingsår ved La Trobe University i Melbourne og studerte teknisk design ved Noroff i Oslo. Ved siden av studiene jobbet jeg ni år hos Ebano AS med utforming av restauranter, barer og kafeer med vekt på storkjøkken, fra planløsning til spesialdesignede produkter i rustfritt stål, og senere med planlegging og logistikk for oppføringen av en enebolig. Jeg var praktikant hos Lüchinger Architects i Rotterdam på transformasjonen av en historisk låve i Oud Alblas, og jeg fikk i oppdrag av dekanen ved TU Delft å bygge to arkitekturmodeller av etiopiske bygg, hvorav den ene ble vist på Arkitekturbiennalen i Venezia i 2023. Samme år delte kollektivet vårt Bounding Box førsteplassen i konkurransen Upcycle Mall Rotterdam med Harbour Box, et forslag bygget av avfallsmaterialer fra havna i Rotterdam. Jeg var også medgründer av Alternative Realities, et lite forskningskollektiv som så på hvordan arkitektur og byrom kan utvikles i samspill med naturlige prosesser. Det er ikke lenger aktivt.</p>
-          <p>Jeg har drevet egen praksis siden 2023, registrert som Bjørkå Flatin ENK i 2025. Jeg deler tiden mellom Norge og São Paulo og jobber mest online, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra byggesøknad for et helsebygg, via konkurranseforslag, til arkitekturvisualisering.</p>
-          <p>Jeg lager også programvare for bransjen jeg jobber i. Tinn er et beskrivelsesverktøy for byggebransjen, og hytteboka.app er en app for hytteeiere. Begge er i drift. Men de fleste prosjektene begynner fortsatt med en fysisk modell på bordet.</p>
-        </div>
-        <div class="l-pt">
-          <p>Sou arquiteto. MSc e ir. pela TU Delft, Architecture, Urbanism and Building Sciences, formado cum laude em 2023.</p>
-          <p>Cresci em Larkollen, nos arredores de Oslo, com vista para o fiorde. Na mata atrás da casa havia um pequeno lago escondido que mudava lentamente ao longo do ano, e foi observando-o que começou meu interesse pelo tempo, o tempo como algo dentro do qual os edifícios vivem, em vez de algo a que resistem. Esse interesse atravessou todo o meu projeto de graduação, Arctic Symphony, um trabalho do ateliê Explore Lab situado em um trecho selvagem de rio em Alta.</p>
-          <p>Antes de Delft, passei um ano de intercâmbio na La Trobe University, em Melbourne, e estudei desenho técnico na Noroff, em Oslo. Paralelamente aos estudos, trabalhei nove anos na Ebano AS, projetando restaurantes, bares e cafés com foco em cozinhas industriais, da planta até produtos sob medida em aço inoxidável, e depois cuidando do planejamento e da logística da construção de uma casa. Fui estagiário na Lüchinger Architects, em Roterdã, na transformação de um celeiro histórico em Oud Alblas, e fui encarregado pelo diretor da faculdade da TU Delft de construir duas maquetes de edifícios etíopes, uma das quais foi exibida na Bienal de Arquitetura de Veneza em 2023. No mesmo ano, nosso coletivo Bounding Box dividiu o primeiro lugar no concurso Upcycle Mall Rotterdam com o Harbour Box, uma proposta feita a partir de materiais descartados do porto de Roterdã. Também cofundei a Alternative Realities, um pequeno coletivo de pesquisa que investigava como a arquitetura e o espaço urbano podem se desenvolver junto com processos naturais. Não está mais ativo.</p>
-          <p>Tenho meu próprio escritório desde 2023, registrado como Bjørkå Flatin ENK em 2025. Divido meu tempo entre a Noruega e São Paulo e trabalho principalmente online, com clientes na Noruega, Suécia, Portugal, Estados Unidos e Brasil. O trabalho vai de um pedido de licenciamento para um edifício de saúde, passando por propostas de concurso, até visualização arquitetônica.</p>
-          <p>Também desenvolvo software para o setor em que trabalho. O Tinn é uma ferramenta de especificação para a construção civil, e o hytteboka.app é um aplicativo para donos de cabanas. Ambos estão em operação. Mas a maioria dos projetos ainda começa com uma maquete física sobre a mesa.</p>
-        </div>
+        
+        
       </div>
       <div class="about-photo">
-        <img src="content/about/portrait.jpg" alt="Simon H.J. Bjørkå Flatin" />
+        <img src="/content/about/portrait.jpg" alt="Simon H.J. Bjørkå Flatin" />
         <div class="about-photo__caption">Oslo fjord, Norway</div>
       </div>
     </div>
@@ -112,7 +96,7 @@
     <div class="about-cv">
       <div class="cv-label">CV</div>
       <div class="cv-section">
-        <div class="cv-section__title"><span class="l-en">Working Experience</span><span class="l-no">Arbeidserfaring</span><span class="l-pt">Experi&ecirc;ncia Profissional</span></div>
+        <div class="cv-section__title"><span class="l-en">Working Experience</span></div>
           <div class="cv-entry">
             <div class="cv-entry__period">2023 - Present</div>
             <div class="cv-entry__role">Architect &amp; Designer</div>
@@ -157,7 +141,7 @@
           </div>
       </div>
       <div class="cv-section">
-        <div class="cv-section__title"><span class="l-en">Education</span><span class="l-no">Utdanning</span><span class="l-pt">Educa&ccedil;&atilde;o</span></div>
+        <div class="cv-section__title"><span class="l-en">Education</span></div>
           <div class="cv-entry">
             <div class="cv-entry__period">2020 - 2023</div>
             <div class="cv-entry__role">MSc Architecture, Urbanism and Building Sciences, track Architecture</div>
@@ -193,30 +177,12 @@
   <footer>
     <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__links">
-      <a href="about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
-      <a href="work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
-      <a href="contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
+      <a href="/about.html"><span class="l-en">About</span></a>
+      <a href="/work.html"><span class="l-en">Work</span></a>
+      <a href="/contact.html"><span class="l-en">Contact</span></a>
       <a href="https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>
-<script>
-  document.addEventListener('DOMContentLoaded',function(){
-    var cur=document.documentElement.getAttribute('data-lang')||'en';
-    function setActive(lang){
-      document.querySelectorAll('.lang-btn').forEach(function(b){
-        b.classList.toggle('active',b.dataset.lang===lang);
-      });
-    }
-    setActive(cur);
-    document.querySelectorAll('.lang-btn').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        var lang=btn.dataset.lang;
-        document.documentElement.setAttribute('data-lang',lang);
-        localStorage.setItem('lang',lang);
-        setActive(lang);
-      });
-    });
-  });
-</script>
+
 </body>
 </html>
