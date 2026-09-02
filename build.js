@@ -31,8 +31,8 @@ const IMAGE_EXTS   = new Set(['.jpg','.jpeg','.png','.webp','.gif','.avif']);
 // Percent-encoded: the profile slug contains the non-ASCII characters oe and aa.
 const LINKEDIN_URL = 'https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa';
 
-// Norwegian organisation number, shown in the footer. Empty until supplied.
-const ORG_NR = '';
+// Norwegian organisation number, shown in the footer. Empty means omitted.
+const ORG_NR = '935 392 780';
 
 // ---------------------------------------------
 //  Per-language output
@@ -436,10 +436,12 @@ function navHtml(prefix, mode) {
 function footerHtml(prefix) {
   // Norwegian clients expect an organisation number somewhere on the site.
   // Set ORG_NR to have it appear; left empty it is simply omitted.
-  const org = ORG_NR ? ` &middot; org.nr ${ORG_NR}` : '';
+  const ENK = 'Bj&oslash;rk&aring; Flatin ENK';
+  const orgEn = ORG_NR ? ` &middot; org.no. ${ORG_NR}` : '';
+  const orgNo = ORG_NR ? ` &middot; org.nr. ${ORG_NR}` : '';
   return `  <footer>
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
-    <div class="footer__identity">Architect MSc / ir. &middot; Bj&oslash;rk&aring; Flatin ENK${org} &middot; Larkollen, Norway</div>
+    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; ${ENK}${orgEn} &middot; Larkollen, Norway</span><span class="l-no">Arkitekt MSc / ir. &middot; ${ENK}${orgNo} &middot; Larkollen, Norge</span><span class="l-pt">Arquiteto MSc / ir. &middot; ${ENK}${orgEn} &middot; Larkollen, Noruega</span></div>
     <div class="footer__links">
       <a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
       <a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
