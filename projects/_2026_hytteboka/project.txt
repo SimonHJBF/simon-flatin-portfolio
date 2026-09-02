@@ -1,0 +1,39 @@
+title: Hytteboka
+category: Software · Web app
+tags: Software
+year: 2026 (ongoing)
+typology: Web application
+client: Self-initiated
+status: Live
+live: hytteboka.app
+grid: third
+
+---
+
+Hytteboka is a web app for the shared cabin. Not the booking, the knowledge: where the water shut-off is, whether the chimney was swept this year, what the last group ran out of, who is coming at Easter. None of it is hard to answer. It is just never written down anywhere, and whoever knows is not there this weekend.
+
+A cabin holds rooms, a maintenance log, a shopping list, a calendar, a diary and its own map. The map is drawn on contours from the Norwegian mapping authority's laser survey, and you add your own paths, fishing spots and mushroom patches on top.
+
+Two decisions shaped it. It works with no signal: everything is stored on the device you read it on, so you can write, take photos and tick things off without a single bar, and it sends itself once you are back in range. You can pull down the contours for three kilometres around the cabin before you leave. And there is no account. A cabin is one link. Whoever holds it is in, so it can go up by the door as a QR code, and guests can get a narrower link that shows the manuals but not the calendar or the shopping list.
+
+Creating one takes a name. It costs nothing, and there are no ads and no tracking.
+
+===no===
+
+Hytteboka er en nettapp for felleshytta. Ikke bookingen, men kunnskapen: hvor hovedkrana er, om pipa ble feid i år, hva forrige gjeng gikk tom for, hvem som kommer i påsken. Ingenting av det er vanskelig å svare på. Det står bare ikke skrevet ned noe sted, og den som vet det er ikke der denne helgen.
+
+En hytte har rom, en vedlikeholdslogg, en handleliste, en kalender, en dagbok og sitt eget kart. Kartet er tegnet på høydekurver fra Kartverkets laserskanning, og du legger inn dine egne stier, fiskeplasser og soppsteder oppå.
+
+To valg preger appen. Den fungerer uten dekning: alt ligger lagret på enheten du leser det på, så du kan skrive, ta bilder og huke av uten en eneste strek, og det sender seg selv når du er tilbake i dekning. Du kan laste ned høydekurvene for tre kilometer rundt hytta før du drar. Og det finnes ingen brukerkonto. En hytte er én lenke. Den som har lenken er inne, så den kan henges opp på døra som QR-kode, og gjester kan få en smalere lenke som viser bruksanvisningene, men ikke kalenderen eller handlelista.
+
+Å opprette en hytte krever et navn. Det koster ingenting, og det er ingen reklame og ingen sporing.
+
+===pt===
+
+Hytteboka é um app web para a cabana compartilhada. Não a reserva, mas o conhecimento: onde fica o registro de água, se a chaminé foi limpa este ano, o que o último grupo deixou acabar, quem vem na Páscoa. Nada disso é difícil de responder. Só não está escrito em lugar nenhum, e quem sabe não está lá neste fim de semana.
+
+Uma cabana tem cômodos, um registro de manutenção, uma lista de compras, um calendário, um diário e o seu próprio mapa. O mapa é desenhado sobre curvas de nível do levantamento a laser do serviço cartográfico norueguês, e você acrescenta seus próprios caminhos, pontos de pesca e locais de cogumelos.
+
+Duas decisões moldaram o app. Funciona sem sinal: tudo fica guardado no aparelho em que você lê, então dá para escrever, tirar fotos e marcar itens sem nenhuma barra, e tudo se envia sozinho quando você volta à área de cobertura. Dá para baixar as curvas de nível de três quilômetros ao redor da cabana antes de sair. E não existe conta. Uma cabana é um único link. Quem tem o link está dentro, então ele pode ir na porta como QR code, e visitantes podem receber um link mais restrito que mostra os manuais, mas não o calendário nem a lista de compras.
+
+Criar uma cabana exige um nome. Não custa nada, e não há anúncios nem rastreamento.
