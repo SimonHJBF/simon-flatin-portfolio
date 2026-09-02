@@ -7,6 +7,19 @@ MEMORY/
 /no/
 /pt/
 
+# Original photography, 535 MB. The site serves the optimised derivatives in
+# */web/ instead, which ARE tracked. The originals stay in Google Drive and
+# remain in git history at commit fbf397f, recoverable with:
+#   git checkout fbf397f -- projects/ content/
+# These patterns deliberately do not match */web/*.webp.
+projects/*/*.jpg
+projects/*/*.jpeg
+projects/*/*.png
+content/*/*.jpg
+content/*/*.jpeg
+content/*/*.png
+/Simon Flatin 2024_4.jpg
+
 # OS cruft
 .DS_Store
 Thumbs.db
