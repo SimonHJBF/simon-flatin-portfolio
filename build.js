@@ -102,6 +102,64 @@ const PAGE_TITLES = {
   },
 };
 
+// Meta descriptions for the fixed pages. Project pages derive theirs from
+// their own first paragraph, so they are not listed here.
+const PAGE_DESCRIPTIONS = {
+  'index.html': {
+    en: 'Architect, MSc and ir. from TU Delft, working between Norway and São Paulo. Architecture, visualisation, physical models and software for the building industry.',
+    no: 'Arkitekt, MSc og ir. fra TU Delft, med base mellom Norge og São Paulo. Arkitektur, visualisering, fysiske modeller og programvare for byggebransjen.',
+    pt: 'Arquiteto, MSc e ir. pela TU Delft, entre a Noruega e São Paulo. Arquitetura, visualização, maquetes físicas e software para a construção civil.',
+  },
+  'work.html': {
+    en: 'Selected work: architecture, competitions, architectural models, photography and software, from TU Delft graduation projects to built work in Norway and Brazil.',
+    no: 'Utvalgte prosjekter: arkitektur, konkurranser, arkitekturmodeller, fotografi og programvare, fra avgangsprosjekter ved TU Delft til bygde prosjekter i Norge og Brasil.',
+    pt: 'Trabalhos selecionados: arquitetura, concursos, maquetes, fotografia e software, de projetos de graduação na TU Delft a obras na Noruega e no Brasil.',
+  },
+  'about.html': {
+    en: 'Architect with an MSc and ir. from TU Delft, graduated cum laude. Nine years at Ebano, a graduation project in Arctic Norway, and an independent practice since 2023.',
+    no: 'Arkitekt med MSc og ir. fra TU Delft, uteksaminert cum laude. Ni år hos Ebano, avgangsprosjekt i Nord-Norge og egen praksis siden 2023.',
+    pt: 'Arquiteto com MSc e ir. pela TU Delft, formado cum laude. Nove anos na Ebano, um projeto de graduação no Ártico norueguês e escritório próprio desde 2023.',
+  },
+  'services.html': {
+    en: 'Architecture, BIM and parametric modelling, technical documentation, physical models, drone photogrammetry, research and planning applications in Norway.',
+    no: 'Arkitektur, BIM og parametrisk modellering, teknisk dokumentasjon, fysiske modeller, dronefotogrammetri, research og byggesøknader i Norge.',
+    pt: 'Arquitetura, BIM e modelagem paramétrica, documentação técnica, maquetes físicas, fotogrametria com drone, pesquisa e licenciamento na Noruega.',
+  },
+  'contact.html': {
+    en: 'Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, with clients across five countries.',
+    no: 'Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og rådgivning. Basert i Osloregionen, med kunder i fem land.',
+    pt: 'Disponível para encomendas de arquitetura, colaborações de pesquisa, maquetes e consultoria. Baseado na região de Oslo, com clientes em cinco países.',
+  },
+  'contact-success.html': {
+    en: 'Your message has been sent.',
+    no: 'Meldingen din er sendt.',
+    pt: 'Sua mensagem foi enviada.',
+  },
+};
+
+/** Strip tags and decode the few entities esc() introduces. */
+function plainText(html) {
+  return html.replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&').replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/\s+/g, ' ').trim();
+}
+
+/** Trim to a whole word at or under `n` characters. */
+function truncate(s, n) {
+  if (s.length <= n) return s;
+  const cut = s.slice(0, n);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,.;:]$/, '') + '...';
+}
+
+/** Description for one page in one language. */
+function metaDescription(rel, lang, strippedHtml) {
+  const fixed = PAGE_DESCRIPTIONS[rel];
+  if (fixed) return fixed[lang];
+  const m = strippedHtml.match(/<div class="l-[a-z]{2}">\s*<p>([\s\S]*?)<\/p>/);
+  return m ? truncate(plainText(m[1]), 155) : null;
+}
+
 /** hreflang alternates, so crawlers know the three pages are the same content. */
 function hreflangHtml(rel) {
   const u = urlOf(rel);
@@ -120,14 +178,23 @@ function langLinksHtml(lang, rel) {
   ).join('\n        <span class="lang-sep">&middot;</span>\n');
 }
 
+// Every canonical URL emitted, for sitemap.xml.
+const SITEMAP_URLS = [];
+
 /** Write one page three times, one per language, each with a single language. */
 function emitLangVariants(rel, html) {
   for (const lang of LANGS) {
     let out = stripLangs(html, lang);
     out = out.replace('<html lang="en">', `<html lang="${lang}">`);
-    out = out.replace('<head>', '<head>\n' + hreflangHtml(rel));
+    const desc = metaDescription(rel, lang, out);
+    out = out.replace('<head>', '<head>\n' + hreflangHtml(rel) +
+      (desc ? `\n  <meta name="description" content="${esc(desc)}" />` : ''));
     const title = PAGE_TITLES[rel];
     if (title) out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${title[lang]}</title>`);
+    // The form confirmation page is not worth indexing.
+    if (rel !== 'contact-success.html') {
+      SITEMAP_URLS.push(SITE_URL + linkBase(lang) + urlOf(rel));
+    }
     out = out.split('<!--LANGNAV-->').join(langLinksHtml(lang, rel));
     out = out.split('__LINKBASE__').join(linkBase(lang));
     writeFile(path.join(ROOT, langDir(lang), rel), out);
@@ -165,13 +232,24 @@ function escLinks(s) {
       (_, pre, url) => `${pre}<a href="${url}" target="_blank" rel="noopener">${url}</a>`);
 }
 
+/**
+ * Absolute URL for an image, preferring the web-optimised derivative in
+ * <dir>/web/ produced by the image pipeline. Falls back to the original if a
+ * derivative has not been generated yet, so the build never emits a dead src.
+ */
+function webSrc(dirRel, file) {
+  const webRel = `${dirRel}/web/${file.replace(/\.[^.]+$/, '.webp')}`;
+  return fs.existsSync(path.join(ROOT, webRel)) ? `/${webRel}` : `/${dirRel}/${file}`;
+}
+
 function grad(i) { return GRADIENTS[i % GRADIENTS.length]; }
 
 /** Extract YouTube embed URL from various YouTube URL formats */
 function youtubeEmbedUrl(url) {
   if (!url) return null;
   const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/);
-  return m ? `https://www.youtube.com/embed/${m[1]}` : null;
+  // nocookie: no tracking cookie is set unless the visitor actually plays it.
+  return m ? `https://www.youtube-nocookie.com/embed/${m[1]}` : null;
 }
 
 function findImages(dir) {
@@ -385,7 +463,7 @@ function cardHtml(data, index, prefix) {
   const folder  = data._folder; // e.g. 2024_lalibela-modelmaking
   const cover   = data._cover;
   const imgHtml = cover
-    ? `<img src="/projects/${esc(folder)}/${esc(cover)}" alt="${esc(data.title)}" loading="lazy" />`
+    ? `<img src="${webSrc(`projects/${folder}`, cover)}" alt="${esc(data.title)}" loading="lazy" />`
     : `<div class="card__placeholder" style="background:${grad(index)};width:100%;height:100%;"></div>`;
   const year    = data.year || '';
   const org     = data.organization || '';
@@ -420,7 +498,7 @@ function generateProjectPage(data, folderName, images) {
   const gallery = images.filter(f => f !== cover && f !== hero);
   // Images live in the source folder (YYYY_slug), referenced from the output folder (slug/)
   // Absolute so the same markup works from /, /no/ and /pt/ alike.
-  const imgBase  = `/projects/${folderName}/`;
+  const imgDir = `projects/${folderName}`;
 
   const META_LABELS = {
     'Category':      { no:'Kategori',             pt:'Categoria' },
@@ -441,12 +519,12 @@ function generateProjectPage(data, folderName, images) {
   }
 
   const heroHtml = hero
-    ? `  <div class="project-hero"><img src="${imgBase}${esc(hero)}" alt="${esc(title)}" loading="eager" /></div>`
+    ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}" alt="${esc(title)}" loading="eager" /></div>`
     : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
 
   const galleryHtml = gallery.length
     ? `\n  <div class="project-gallery">\n` +
-      gallery.map(img => `    <figure><img src="${imgBase}${esc(img)}" alt="" loading="lazy" /></figure>`).join('\n') +
+      gallery.map((img, i) => `    <figure><img src="${webSrc(imgDir, img)}" alt="${esc(title)}, image ${i + 1} of ${gallery.length}" loading="lazy" /></figure>`).join('\n') +
       `\n  </div>`
     : '';
 
@@ -647,7 +725,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     const folder  = data._folder;
     const cover   = data._cover;
     const imgHtml = cover
-      ? `<img src="/projects/${esc(folder)}/${esc(cover)}" alt="${esc(data.title)}" loading="eager" />`
+      ? `<img src="${webSrc(`projects/${folder}`, cover)}" alt="${esc(data.title)}" loading="eager" />`
       : `<div class="card__placeholder" style="background:${grad(i)};width:100%;height:100%;"></div>`;
     const sub = [data.year, data.organization].filter(Boolean).join(' · ');
 
@@ -668,7 +746,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
   const heroImgFile = fs.existsSync(mainDir)
     ? findImages(mainDir).find(f => /^(hero|cover|mirror)\./i.test(f)) || findImages(mainDir)[0]
     : null;
-  const heroImgPath = heroImgFile ? `/content/main/${heroImgFile}` : null;
+  const heroImgPath = heroImgFile ? webSrc('content/main', heroImgFile) : null;
 
   const heroBgHtml = heroImgPath
     ? `<img class="hero__bg" src="${heroImgPath}" alt="">`
@@ -935,7 +1013,7 @@ function generateAboutPage(paragraphs, cv) {
         </div>`;
 
   const photoHtml = portraitFile
-    ? `<img src="/content/about/${portraitFile}" alt="Simon H.J. Bjørkå Flatin" />`
+    ? `<img src="${webSrc('content/about', portraitFile)}" alt="Simon H.J. Bjørkå Flatin" />`
     : `<div style="width:100%;max-width:320px;aspect-ratio:3/4;background:linear-gradient(160deg,#d4c9b8,#b8aa98);"></div>`;
 
   function cvEntry(e) {
@@ -1036,7 +1114,7 @@ function generateServicesPage(services) {
     : null;
 
   const heroBgHtml = heroFile
-    ? `<img class="services-hero__bg" src="/content/services/${heroFile}" alt="">`
+    ? `<img class="services-hero__bg" src="${webSrc('content/services', heroFile)}" alt="">`
     : `<div class="services-hero__bg" style="background:linear-gradient(160deg,#1a2535 0%,#2d4058 40%,#8aaabb 100%);"></div>`;
 
   const serviceItems = services.map((s, i) => {
@@ -1440,6 +1518,24 @@ function build() {
   console.log(`  built contact.html`);
   emitLangVariants('contact-success.html', generateContactSuccessPage());
   console.log(`  built contact-success.html`);
+
+  // 7. Sitemap and robots, built from every URL emitted above
+  const urls = SITEMAP_URLS.map(u => `  <url><loc>${u}</loc></url>`).join('\n');
+  writeFile(path.join(ROOT, 'sitemap.xml'),
+`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`);
+  console.log(`  built sitemap.xml  (${SITEMAP_URLS.length} urls)`);
+
+  writeFile(path.join(ROOT, 'robots.txt'),
+`User-agent: *
+Allow: /
+
+Sitemap: ${SITE_URL}/sitemap.xml
+`);
+  console.log(`  built robots.txt`);
 
   console.log(`\n── Build complete. ${projects.length} project(s). ──\n`);
 }
