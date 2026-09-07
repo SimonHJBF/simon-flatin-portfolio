@@ -7,7 +7,7 @@ typology: Architectural model
 status: Realised
 organization: TU Delft / Venice Architecture Biennale
 collaborators: Alex Kirschstein
-exhibitions: Biennale Architettura 2023 · When: May 2023 - November 2023 · Location: Venice, Italy · By: La Biennale di Venezia 2023
+exhibitions: Biennale Architettura 2023, Venice, May to November 2023
 grid: medium
 
 ---

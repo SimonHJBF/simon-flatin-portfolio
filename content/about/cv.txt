@@ -1,48 +1,76 @@
 # CV - Simon H.J. Bjørkå Flatin
 # Format: each entry starts with [experience] or [education]
 # Fields: period, role, org, location, desc
+# Add _no / _pt to any field to give it a translation. Periods, locations and
+# other stock vocabulary are translated by the build, so they need no suffix.
 
 [experience]
 period: 2023 - Present
 role: Architect & Designer
+role_no: Arkitekt og designer
+role_pt: Arquiteto e designer
 org: Bjørkå Flatin
 location: Norway · Brazil
-desc: Independent practice, registered as a sole proprietorship (ENK) in 2025 and VAT registered. Work includes a planning application for a care building (Omsorgsgruppen Våler), the SESC Mogi das Cruzes competition proposal in São Paulo with architect Denis Joelsons, architectural visualisation including the Von Sauna floating saunas, and the design and development of Tinn and hytteboka.app. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Maxxit Systems (US), Adspace Agency (US), Floresta Produções (BR).
+desc: Independent practice, registered as a sole proprietorship (ENK) in 2025 and VAT registered. Work includes a planning application for a care building (Omsorgsgruppen Våler), the SESC Mogi das Cruzes competition proposal in São Paulo with architect Denis Joelsons, architectural visualisation including the Von Sauna floating saunas, and the design and development of Tinn and hytteboka.app. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
+desc_no: Egen praksis, registrert som enkeltpersonforetak i 2025 og mva-registrert. Arbeidet omfatter byggesøknad for et helsebygg (Omsorgsgruppen Våler), konkurranseforslaget til SESC Mogi das Cruzes i São Paulo sammen med arkitekt Denis Joelsons, arkitekturvisualisering blant annet av de flytende badstuene Von Sauna, og design og utvikling av Tinn og hytteboka.app. Utvalgte kunder: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
+desc_pt: Escritório próprio, registrado como firma individual (ENK) em 2025 e inscrito para IVA. O trabalho inclui um pedido de licenciamento para um edifício de saúde (Omsorgsgruppen Våler), a proposta para o concurso do SESC Mogi das Cruzes em São Paulo com o arquiteto Denis Joelsons, visualização arquitetônica incluindo as saunas flutuantes Von Sauna, e o design e desenvolvimento do Tinn e do hytteboka.app. Clientes selecionados: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
 
 [experience]
 period: 2023 - 2024
 role: Model commissions
+role_no: Modelloppdrag
+role_pt: Encomendas de maquetes
 org: TU Delft
 location: Delft, The Netherlands
 desc: Commissioned by the dean of the Faculty of Architecture and the Built Environment to build two architectural models of Meqdela Gebbi and Lalibela, Ethiopia. One was exhibited at the Venice Architecture Biennale 2023 (Palazzo Mora) and at the faculty in Delft.
+desc_no: På oppdrag fra dekanen ved fakultetet for arkitektur og bygde miljø bygde jeg to arkitekturmodeller av Meqdela Gebbi og Lalibela i Etiopia. Den ene ble vist på arkitekturbiennalen i Venezia i 2023 (Palazzo Mora) og på fakultetet i Delft.
+desc_pt: Encomendado pelo diretor da Faculdade de Arquitetura e Ambiente Construído para construir duas maquetes arquitetônicas de Meqdela Gebbi e Lalibela, na Etiópia. Uma delas foi exposta na Bienal de Arquitetura de Veneza de 2023 (Palazzo Mora) e na faculdade em Delft.
 
 [experience]
 period: Nov 2022 - Jun 2023
 role: Co-author, shared first place
+role_no: Medforfatter, delt førsteplass
+role_pt: Coautor, primeiro lugar compartilhado
 org: Upcycle Mall Rotterdam competition, collective Bounding Box
+org_no: Upcycle Mall Rotterdam-konkurransen, kollektivet Bounding Box
+org_pt: Concurso Upcycle Mall Rotterdam, coletivo Bounding Box
 location: Rotterdam, The Netherlands
 desc: Co-author of the winning proposal Harbour Box, built on the reuse of waste materials from the Rotterdam docks, turning industrial by-products into functional architectural elements.
+desc_no: Medforfatter av det vinnende forslaget Harbour Box, bygget på gjenbruk av avfallsmaterialer fra havna i Rotterdam, der industrielle biprodukter gjøres om til funksjonelle bygningselementer.
+desc_pt: Coautor da proposta vencedora Harbour Box, baseada no reaproveitamento de materiais descartados do porto de Roterdã, transformando subprodutos industriais em elementos arquitetônicos funcionais.
 
 [experience]
 period: 2015 - 2024
 role: Technical Designer → Architect
+role_no: Teknisk designer → arkitekt
+role_pt: Projetista técnico → arquiteto
 org: Ebano AS / AKSIE AS
 location: Drøbak, Norway
 desc: Design of restaurants, bars and cafés with an emphasis on commercial kitchens, from layout through to custom stainless steel products. When the company expanded into housing, I ran the planning and logistics for the construction of a detached house, coordinating the build team.
+desc_no: Utforming av restauranter, barer og kafeer med vekt på storkjøkken, fra planløsning til spesialdesignede produkter i rustfritt stål. Da selskapet utvidet til boligbygging, hadde jeg ansvaret for planlegging og logistikk ved oppføringen av en enebolig, og koordinerte byggelaget.
+desc_pt: Projeto de restaurantes, bares e cafés com ênfase em cozinhas industriais, do leiaute até produtos sob medida em aço inoxidável. Quando a empresa passou a atuar em habitação, cuidei do planejamento e da logística da construção de uma casa unifamiliar, coordenando a equipe de obra.
 
 [experience]
 period: Sep - Dec 2021
 role: Architectural intern
+role_no: Arkitektpraktikant
+role_pt: Estagiário de arquitetura
 org: Lüchinger Architects / Mieke Vink
 location: Rotterdam, The Netherlands
 desc: Transformation of a historic barn into a home (Oud Alblas), developed through iterative physical model-making while preserving the original structure.
+desc_no: Transformasjon av en historisk låve til bolig (Oud Alblas), utviklet gjennom gjentatt arbeid med fysiske modeller, samtidig som den opprinnelige konstruksjonen ble bevart.
+desc_pt: Transformação de um celeiro histórico em casa (Oud Alblas), desenvolvida por meio de maquetes físicas sucessivas, preservando a estrutura original.
 
 [experience]
 period: 2023
 role: Co-founder
+role_no: Medgründer
+role_pt: Cofundador
 org: Alternative Realities
 location: The Netherlands
 desc: A small research collective, co-founded with Ewa Ziemiecka and Zofia Sosnierz, examining how architecture and urban space can develop alongside natural processes, with an emphasis on adaptability, sustainability and local participation. No longer active.
+desc_no: Et lite forskningskollektiv, startet sammen med Ewa Ziemiecka og Zofia Sosnierz, som så på hvordan arkitektur og byrom kan utvikles i samspill med naturlige prosesser, med vekt på tilpasningsevne, bærekraft og lokal medvirkning. Ikke lenger aktivt.
+desc_pt: Um pequeno coletivo de pesquisa, cofundado com Ewa Ziemiecka e Zofia Sosnierz, que investigava como a arquitetura e o espaço urbano podem se desenvolver junto com processos naturais, com ênfase em adaptabilidade, sustentabilidade e participação local. Não está mais ativo.
 
 [education]
 period: 2020 - 2023
@@ -50,6 +78,8 @@ role: MSc Architecture, Urbanism and Building Sciences, track Architecture
 org: TU Delft
 location: Delft, The Netherlands
 desc: Graduated cum laude, carrying the right to the Dutch engineering title ingenieur (ir.). Graduation project: Arctic Symphony, an Explore Lab thesis sited in Alta, bringing together time, sustainability and landscape dynamics in an Arctic context.
+desc_no: Uteksaminert cum laude, med rett til den nederlandske ingeniørtittelen ingenieur (ir.). Avgangsprosjekt: Arctic Symphony, en Explore Lab-oppgave lagt til Alta, som samler tid, bærekraft og landskapsdynamikk i en arktisk sammenheng.
+desc_pt: Formado cum laude, com direito ao título holandês de engenheiro ingenieur (ir.). Projeto de graduação: Arctic Symphony, um trabalho do ateliê Explore Lab situado em Alta, que reúne tempo, sustentabilidade e dinâmica da paisagem em um contexto ártico.
 
 [education]
 period: 2017 - 2020
@@ -57,17 +87,29 @@ role: BSc Architecture, Urbanism and the Built Environment
 org: TU Delft
 location: Delft, The Netherlands
 desc: Foundations in architecture, urbanism and building sciences.
+desc_no: Grunnlaget i arkitektur, urbanisme og bygningsfag.
+desc_pt: Fundamentos em arquitetura, urbanismo e ciências da construção.
 
 [education]
 period: 2014 - 2015
 role: Technical design with CAD 2D/3D
+role_no: Teknisk design med CAD 2D/3D
+role_pt: Design técnico com CAD 2D/3D
 org: Noroff Vocational School
+org_no: Noroff fagskole
+org_pt: Escola técnica Noroff
 location: Oslo, Norway
 desc: Grounding in technical drawing with AutoCAD, Revit, Inventor and 3ds Max, alongside the start of my work for Ebano.
+desc_no: Grunnlag i teknisk tegning med AutoCAD, Revit, Inventor og 3ds Max, samtidig som jeg begynte å jobbe for Ebano.
+desc_pt: Base em desenho técnico com AutoCAD, Revit, Inventor e 3ds Max, ao mesmo tempo em que comecei a trabalhar para a Ebano.
 
 [education]
 period: 2013 - 2014
 role: Exchange year
+role_no: Utvekslingsår
+role_pt: Ano de intercâmbio
 org: La Trobe University
 location: Melbourne, Australia
 desc: A year abroad that widened both my architectural perspective and my network, with international contacts and exposure to other ways of thinking about architecture.
+desc_no: Et år i utlandet som utvidet både det arkitektoniske perspektivet og nettverket mitt, med internasjonale kontakter og møter med andre måter å tenke arkitektur på.
+desc_pt: Um ano no exterior que ampliou tanto minha perspectiva arquitetônica quanto minha rede de contatos, com contatos internacionais e o encontro com outras formas de pensar arquitetura.

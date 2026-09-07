@@ -6,7 +6,7 @@ location: Alta, Norway
 typology: Visual Essay
 status: Realised
 collaborators: Håvard Bjørkå Flatin (photography assistance)
-exhibitions: BK Expo: Sight, Sites, Situations: Photography as an Instrument for Design · When: 26 September 2023 to 20 October 2023 · Location: Oostserre, Architecture faculty at TU Delft, The Netherlands · By: Communicatie BK
+exhibitions: BK Expo: Sight, Sites, Situations. Photography as an Instrument for Design. Oostserre, Faculty of Architecture, TU Delft, 26 September to 20 October 2023
 grid: medium
 
 ---

@@ -7,8 +7,8 @@ typology: Architectural model
 size: 1 x 1,2 x 0,5m
 status: Realised
 organization: TU Delft
-collaborators: Alex Kirschstein · Prof. Dirk van Gameren
-exhibitions: TU Delft, 1 September - 1 November 2024
+collaborators: Alex Kirschstein · Dick van Gameren
+exhibitions: TU Delft, 1 September to 1 November 2024
 grid: medium
 featured: yes
 

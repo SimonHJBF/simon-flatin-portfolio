@@ -1,39 +1,77 @@
 # Services list
 # Format: each service starts with [service]
 # Fields: name, desc
+# Add _no / _pt to a field to give it a translation. The Norwegian and the
+# Portuguese are translations of the English, never written separately.
 
 [service]
 name: Integrated Architecture · Urbanism · Landscape
+name_no: Arkitektur · Urbanisme · Landskap
+name_pt: Arquitetura · Urbanismo · Paisagem
 desc: Design from site analysis and concept through to planning, detailing and construction follow-up, at scales from a single room to a masterplan. Recent examples are the SESC Mogi das Cruzes competition proposal in Brazil and the Arctic Symphony graduation project in Alta.
+desc_no: Prosjektering fra stedsanalyse og konsept til planlegging, detaljering og oppfølging i byggefasen, i skalaer fra ett enkelt rom til en masterplan. Nyere eksempler er konkurranseforslaget til SESC Mogi das Cruzes i Brasil og avgangsprosjektet Arctic Symphony i Alta.
+desc_pt: Projeto desde a análise do terreno e o conceito até o planejamento, o detalhamento e o acompanhamento de obra, em escalas que vão de um único ambiente a um plano diretor. Exemplos recentes são a proposta para o concurso do SESC Mogi das Cruzes, no Brasil, e o projeto de graduação Arctic Symphony, em Alta.
 
 [service]
 name: BIM Coordination & Parametric Modelling
+name_no: BIM-koordinering og parametrisk modellering
+name_pt: Coordenação BIM e modelagem paramétrica
 desc: Revit-based modelling, coordination and information management, with parametric workflows in Rhino and Grasshopper where geometry is better driven by rules than drawn by hand. Revit, Rhino, Grasshopper and AutoCAD at an advanced level.
+desc_no: Modellering, koordinering og informasjonshåndtering i Revit, med parametriske arbeidsflyter i Rhino og Grasshopper der geometrien er bedre tjent med å styres av regler enn å tegnes for hånd. Revit, Rhino, Grasshopper og AutoCAD på avansert nivå.
+desc_pt: Modelagem, coordenação e gestão da informação em Revit, com fluxos paramétricos em Rhino e Grasshopper onde a geometria funciona melhor governada por regras do que desenhada à mão. Revit, Rhino, Grasshopper e AutoCAD em nível avançado.
 
 [service]
 name: CAD / BIM Drafting & Documentation
+name_no: CAD- og BIM-tegning og dokumentasjon
+name_pt: Desenho e documentação em CAD e BIM
 desc: Technical drawing packages, plans, sections, elevations and details, for planning applications, building permits and contractor tendering. Fluent in AutoCAD and Revit.
+desc_no: Tekniske tegningspakker, planer, snitt, fasader og detaljer, til byggesøknader, rammetillatelser og anbudsgrunnlag. Fortrolig med AutoCAD og Revit.
+desc_pt: Pacotes de desenho técnico, plantas, cortes, elevações e detalhes, para licenciamento, alvarás e concorrências com empreiteiras. Domínio de AutoCAD e Revit.
 
 [service]
 name: Physical Model Making & Prototyping
+name_no: Fysisk modellbygging og prototyping
+name_pt: Maquetes físicas e prototipagem
 desc: Exhibition-quality architectural models at any scale, from study maquettes to commissioned pieces. My models for TU Delft were exhibited at the Venice Architecture Biennale 2023 at Palazzo Mora and at the faculty in Delft.
+desc_no: Arkitekturmodeller i utstillingskvalitet i alle skalaer, fra studiemodeller til bestilte arbeider. Modellene mine for TU Delft ble vist på arkitekturbiennalen i Venezia i 2023 i Palazzo Mora og på fakultetet i Delft.
+desc_pt: Maquetes arquitetônicas com qualidade de exposição em qualquer escala, de modelos de estudo a peças encomendadas. Minhas maquetes para a TU Delft foram exibidas na Bienal de Arquitetura de Veneza de 2023, no Palazzo Mora, e na faculdade em Delft.
 
 [service]
 name: Drone Photogrammetry & 3D Site Analysis
+name_no: Dronefotogrammetri og 3D-analyse av tomt
+name_pt: Fotogrametria com drone e análise 3D de terreno
 desc: Aerial photogrammetry surveys producing point clouds and 3D meshes of sites, landscapes and existing buildings. Useful for planning, site recording, contractor briefings and spatial research.
+desc_no: Fotogrammetriske oppmålinger fra lufta som gir punktskyer og 3D-modeller av tomter, landskap og eksisterende bygg. Nyttig til planlegging, dokumentasjon av tomt, underlag til entreprenør og romlig research.
+desc_pt: Levantamentos aerofotogramétricos que geram nuvens de pontos e malhas 3D de terrenos, paisagens e edifícios existentes. Úteis para planejamento, registro do local, briefings para empreiteiras e pesquisa espacial.
 
 [service]
 name: Research, Material & Form Studies
+name_no: Research, material- og formstudier
+name_pt: Pesquisa, estudos de material e de forma
 desc: Focused research into material behaviour, tectonic systems and formal strategies. The Arctic Symphony research included a series of sand erosion studies testing how built interventions change sedimentation in a river system.
+desc_no: Målrettet research på materialoppførsel, tektoniske systemer og formstrategier. Forskningsdelen av Arctic Symphony omfattet en serie erosjonsstudier i sand som testet hvordan bygde inngrep endrer avsetningen i et elvesystem.
+desc_pt: Pesquisa dirigida sobre comportamento dos materiais, sistemas tectônicos e estratégias formais. A pesquisa do Arctic Symphony incluiu uma série de estudos de erosão em areia, testando como intervenções construídas alteram a sedimentação em um sistema fluvial.
 
 [service]
 name: Planning Applications & Regulatory Compliance
+name_no: Byggesøknader og offentlige krav
+name_pt: Licenciamento e conformidade regulatória
 desc: Preparation and management of planning submissions in Norway, including the supporting documentation and responses to authority queries. Most recently a change-of-use application for a care building for Omsorgsgruppen in Våler.
+desc_no: Utarbeiding og oppfølging av byggesøknader i Norge, med tilhørende dokumentasjon og svar på spørsmål fra myndighetene. Sist en søknad om bruksendring for et helsebygg for Omsorgsgruppen i Våler.
+desc_pt: Preparação e acompanhamento de processos de licenciamento na Noruega, incluindo a documentação de apoio e as respostas às exigências dos órgãos competentes. O mais recente foi um pedido de mudança de uso para um edifício de saúde da Omsorgsgruppen, em Våler.
 
 [service]
 name: Sustainable & Circular Design Consulting
+name_no: Rådgivning innen bærekraftig og sirkulær design
+name_pt: Consultoria em design sustentável e circular
 desc: Circular material flows, passive systems and low-carbon strategies built into a project from the outset. Our Harbour Box proposal, which shared first place in the Upcycle Mall Rotterdam competition, was made from waste materials taken off the Rotterdam docks.
+desc_no: Sirkulære materialstrømmer, passive systemer og lavutslippsstrategier lagt inn i prosjektet fra starten. Forslaget vårt Harbour Box, som delte førsteplassen i konkurransen Upcycle Mall Rotterdam, var laget av avfallsmaterialer hentet fra havna i Rotterdam.
+desc_pt: Fluxos circulares de materiais, sistemas passivos e estratégias de baixo carbono incorporados ao projeto desde o início. Nossa proposta Harbour Box, que dividiu o primeiro lugar no concurso Upcycle Mall Rotterdam, foi feita com materiais descartados retirados do porto de Roterdã.
 
 [service]
 name: Remote Consultations & Virtual Collaboration
+name_no: Rådgivning og samarbeid på nett
+name_pt: Consultoria e colaboração a distância
 desc: I work mostly online, split between Norway and São Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil. All services are available remotely through video consultations, shared cloud models and collaborative drawing reviews.
+desc_no: Jeg jobber mest online, delt mellom Norge og São Paulo, med kunder i Norge, Sverige, Portugal, USA og Brasil. Alle tjenester er tilgjengelige på avstand gjennom videomøter, delte skymodeller og felles gjennomgang av tegninger.
+desc_pt: Trabalho principalmente online, dividido entre a Noruega e São Paulo, com clientes na Noruega, Suécia, Portugal, Estados Unidos e Brasil. Todos os serviços estão disponíveis a distância, por videoconferência, modelos compartilhados na nuvem e revisões de desenho em conjunto.

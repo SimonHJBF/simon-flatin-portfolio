@@ -85,8 +85,8 @@ function stripLangs(html, keep) {
 /** Clean URL for an output path: projects/tinn/index.html -> projects/tinn/ */
 function urlOf(rel) { return rel.replace(/index\.html$/, ''); }
 
-// Titles per language. Project pages keep their own title (a proper noun),
-// so they are deliberately absent here.
+// Titles per language. Project page titles are registered into this table as
+// each project is built, so they can be localised the same way.
 const NAME = 'Simon H.J. Bj&oslash;rk&aring; Flatin';
 const PAGE_TITLES = {
   'index.html': {
@@ -104,6 +104,183 @@ const PAGE_TITLES = {
     pt: `Mensagem enviada &middot; ${NAME}`,
   },
 };
+
+// ─────────────────────────────────────────────
+//  Metadata vocabulary
+// ─────────────────────────────────────────────
+// The dt labels were translated from the start, the dd values were not, so a
+// Norwegian page read "Kategori: Architecture". A whole-value match wins, which
+// lets a phrase that does not survive being chopped up ("Render / Pitch Package")
+// carry a translation of its own. Otherwise the value is split on its separators
+// and each piece is looked up alone, so "Alta, Norway / Delft, The Netherlands"
+// needs no entry. Anything unlisted is a proper noun and passes through.
+const TERMS = {
+  // Categories and filter tags
+  'All':                          { no:'Alle',                       pt:'Todos' },
+  'Application':                  { no:'Byggesak',                   pt:'Licenciamento' },
+  'Architectural renders':        { no:'Arkitekturvisualisering',    pt:'Renders arquitetônicos' },
+  'Architecture':                 { no:'Arkitektur',                 pt:'Arquitetura' },
+  'Architecture Design Competition': { no:'Arkitektkonkurranse',     pt:'Concurso de arquitetura' },
+  'Built':                        { no:'Bygget',                     pt:'Construído' },
+  'Competition':                  { no:'Konkurranse',                pt:'Concurso' },
+  'Form studies':                 { no:'Formstudier',                pt:'Estudos de forma' },
+  'Healthcare':                   { no:'Helsebygg',                  pt:'Saúde' },
+  'Internship':                   { no:'Praksis',                    pt:'Estágio' },
+  'Making':                       { no:'Bygging',                    pt:'Construção' },
+  'Model making':                 { no:'Modellbygging',              pt:'Maquetes' },
+  'Models':                       { no:'Modeller',                   pt:'Maquetes' },
+  'Photography':                  { no:'Fotografi',                  pt:'Fotografia' },
+  'Research':                     { no:'Forskning',                  pt:'Pesquisa' },
+  'Software':                     { no:'Programvare',                pt:'Software' },
+  'Specification tool':           { no:'Spesifikasjonsverktøy',      pt:'Ferramenta de especificação' },
+  'Web app':                      { no:'Webapp',                     pt:'App web' },
+  'Web design':                   { no:'Webdesign',                  pt:'Web design' },
+
+  // Places
+  'Australia':                    { no:'Australia',                  pt:'Austrália' },
+  'Architecture faculty':         { no:'Arkitekturfakultetet',       pt:'Faculdade de Arquitetura' },
+  'Brazil':                       { no:'Brasil',                     pt:'Brasil' },
+  'Italy':                        { no:'Italia',                     pt:'Itália' },
+  'Norway':                       { no:'Norge',                      pt:'Noruega' },
+  'The Netherlands':              { no:'Nederland',                  pt:'Países Baixos' },
+  'USA':                          { no:'USA',                        pt:'EUA' },
+  'Venice':                       { no:'Venezia',                    pt:'Veneza' },
+
+  // Typologies
+  'Architectural model':          { no:'Arkitekturmodell',           pt:'Maquete arquitetônica' },
+  'Chicken coop':                 { no:'Hønsehus',                   pt:'Galinheiro' },
+  'Desktop application (Windows · macOS)': { no:'Skrivebordsapp (Windows · macOS)', pt:'App de desktop (Windows · macOS)' },
+  'Dwellings':                    { no:'Boliger',                    pt:'Habitações' },
+  'Garage':                       { no:'Garasje',                    pt:'Garagem' },
+  'Graduation design booklet':    { no:'Designhefte, avgangsprosjekt', pt:'Caderno de projeto de graduação' },
+  'Graduation research booklet':  { no:'Forskningshefte, avgangsprosjekt', pt:'Caderno de pesquisa de graduação' },
+  'Home with Bed & Breakfast':    { no:'Bolig med bed and breakfast', pt:'Casa com bed and breakfast' },
+  'Photography Series':           { no:'Fotoserie',                  pt:'Série fotográfica' },
+  'Regulatory Application / Change of Use': { no:'Byggesak og bruksendring', pt:'Licenciamento e mudança de uso' },
+  'Render / Pitch Package':       { no:'Visualisering og presentasjonsmateriell', pt:'Render e material de apresentação' },
+  'Residence with workshop and bridge': { no:'Bolig med verksted og bru', pt:'Residência com oficina e ponte' },
+  'Sociocultural & Sports Park':  { no:'Sosiokulturell park og idrettspark', pt:'Parque sociocultural e esportivo' },
+  'Sports school':                { no:'Idrettsskole',               pt:'Escola esportiva' },
+  'Visual Essay':                 { no:'Visuelt essay',              pt:'Ensaio visual' },
+  'Web application':              { no:'Webapplikasjon',             pt:'Aplicação web' },
+  'Website':                      { no:'Nettside',                   pt:'Site' },
+
+  // Status
+  'Concept':                      { no:'Konsept',                    pt:'Conceito' },
+  'Design proposal':              { no:'Forslag',                    pt:'Proposta de projeto' },
+  'In Progress':                  { no:'Pågår',                      pt:'Em andamento' },
+  'In testing':                   { no:'Under testing',              pt:'Em testes' },
+  'Live':                         { no:'I drift',                    pt:'No ar' },
+  'Realised':                     { no:'Realisert',                  pt:'Realizado' },
+
+  // CV periods
+  '2023 - Present':               { no:'2023 - i dag',               pt:'2023 - presente' },
+  'Nov 2022 - Jun 2023':          { no:'nov. 2022 - juni 2023',      pt:'nov. 2022 - jun. 2023' },
+  'Sep - Dec 2021':               { no:'sep. - des. 2021',           pt:'set. - dez. 2021' },
+
+  // Client and year
+  'Self-initiated':               { no:'Eget initiativ',             pt:'Iniciativa própria' },
+  '2026 (ongoing)':               { no:'2026 (pågår)',               pt:'2026 (em andamento)' },
+
+  // Credited roles, which sit in brackets after a name
+  'build':                        { no:'bygging',                    pt:'construção' },
+  'building technology mentor':   { no:'veileder bygningsteknikk',   pt:'orientador de tecnologia da construção' },
+  'dance':                        { no:'dans',                       pt:'dança' },
+  'delegate':                     { no:'delegat',                    pt:'delegada' },
+  'design mentor':                { no:'designveileder',             pt:'orientadora de projeto' },
+  'drawing':                      { no:'tegning',                    pt:'desenho' },
+  'erosion studies':              { no:'erosjonsstudier',            pt:'estudos de erosão' },
+  'fieldwork':                    { no:'feltarbeid',                 pt:'trabalho de campo' },
+  'film':                         { no:'film',                       pt:'filme' },
+  'music':                        { no:'musikk',                     pt:'música' },
+  'photography':                  { no:'foto',                       pt:'fotografia' },
+  'photography assistance':       { no:'fotoassistanse',             pt:'assistência de fotografia' },
+  'research mentor':              { no:'forskningsveileder',         pt:'orientadora de pesquisa' },
+  'visualisation':                { no:'visualisering',              pt:'visualização' },
+
+  // Exhibitions, which only read well translated whole
+  'Biennale Architettura 2023, Venice, May to November 2023': {
+    no:'Biennale Architettura 2023, Venezia, mai til november 2023',
+    pt:'Biennale Architettura 2023, Veneza, de maio a novembro de 2023' },
+  'BK Expo: Sight, Sites, Situations. Photography as an Instrument for Design. Oostserre, Faculty of Architecture, TU Delft, 26 September to 20 October 2023': {
+    no:'BK Expo: Sight, Sites, Situations. Photography as an Instrument for Design. Oostserre, arkitekturfakultetet ved TU Delft, 26. september til 20. oktober 2023',
+    pt:'BK Expo: Sight, Sites, Situations. Photography as an Instrument for Design. Oostserre, Faculdade de Arquitetura da TU Delft, 26 de setembro a 20 de outubro de 2023' },
+  'TU Delft, 1 September to 1 November 2024': {
+    no:'TU Delft, 1. september til 1. november 2024',
+    pt:'TU Delft, 1 de setembro a 1 de novembro de 2024' },
+  'TU Delft Graduation 2023': {
+    no:'TU Delft, avgangsutstilling 2023',
+    pt:'TU Delft, mostra de graduação 2023' },
+};
+
+// A project name stays as it is; the descriptive half of one does not.
+// "Lalibela modelmaking" is a place plus a description, and the description
+// belongs in the reader's language.
+const PROJECT_TITLES = {
+  'Bjørnåsen house addition':  { no:'Bjørnåsen tilbygg',         pt:'Ampliação em Bjørnåsen' },
+  'Borders and Transitions':   { no:'Grenser og overganger',     pt:'Fronteiras e transições' },
+  'Chicken coop':              { no:'Hønsehus',                  pt:'Galinheiro' },
+  'Erosion':                   { no:'Erosjon',                   pt:'Erosão' },
+  'Form studies':              { no:'Formstudier',               pt:'Estudos de forma' },
+  'Lalibela modelmaking':      { no:'Lalibela-modell',           pt:'Maquete de Lalibela' },
+  'Meqdela Gebbi modelmaking': { no:'Meqdela Gebbi-modell',      pt:'Maquete de Meqdela Gebbi' },
+  'Stilt House':               { no:'Pælehuset',                 pt:'Casa sobre palafitas' },
+  'The staircase home':        { no:'Trappehuset',               pt:'A casa da escada' },
+  'Von Sauna - Floating Saunas': { no:'Von Sauna - flytende badstuer', pt:'Von Sauna - saunas flutuantes' },
+};
+
+/** Translate one metadata value. English passes straight through. */
+function tVal(val, lang) {
+  if (!val) return val;
+  if (lang === 'en') return String(val);
+  const whole = TERMS[String(val).trim()];
+  if (whole) return whole[lang];
+  // split() with a capturing group keeps the separators in the array.
+  return String(val).split(/( · |, | \/ )/).map(part => {
+    if (/^( · |, | \/ )$/.test(part)) return part;
+    const hit = TERMS[part.trim()];
+    if (hit) return hit[lang];
+    // "Ewa Ziemiecka (dance)" keeps the name and translates the role.
+    return part.replace(/\(([^)]+)\)/g, (m, role) => {
+      const r = TERMS[role.trim()];
+      return r ? `(${r[lang]})` : m;
+    });
+  }).join('');
+}
+
+/** Translate a project title, if it has a translation. */
+function tTitle(title, lang) {
+  if (!title) return title;
+  if (lang === 'en') return String(title);
+  const hit = PROJECT_TITLES[String(title).trim()];
+  return hit ? hit[lang] : String(title);
+}
+
+// Text that lands inside an attribute cannot carry l-xx spans, so it is written
+// as a token and swapped in per language when the page is emitted.
+const ATTR_TEXT = {
+  '__PH_NAME__':    { en:'Your name',                              no:'Navnet ditt',                                pt:'Seu nome' },
+  '__PH_EMAIL__':   { en:'your@email.com',                         no:'din@epost.no',                               pt:'seu@email.com' },
+  '__PH_SUBJECT__': { en:'e.g. Commission inquiry',                no:'f.eks. forespørsel om oppdrag',              pt:'ex. proposta de trabalho' },
+  '__PH_MESSAGE__': { en:'Tell me about your project or question...', no:'Fortell om prosjektet eller spørsmålet ditt...', pt:'Conte sobre seu projeto ou sua dúvida...' },
+};
+
+/** One <span class="l-xx"> per language, or plain text when all three agree. */
+function langSpans(value, translate) {
+  const vals = LANGS.map(l => translate(value, l));
+  if (vals.every(v => v === vals[0])) return esc(vals[0]);
+  return LANGS.map((l, i) => `<span class="l-${l}">${esc(vals[i])}</span>`).join('');
+}
+
+/**
+ * Per-language spans for a content field that carries its own translations as
+ * name_no, desc_pt and so on. A field without one falls back to the shared
+ * vocabulary, which already covers periods and locations, and then to English.
+ */
+function fieldSpans(obj, key) {
+  return langSpans(obj[key] || '', (v, lang) =>
+    lang === 'en' ? v : (obj[`${key}_${lang}`] || tVal(v, lang)));
+}
 
 // Meta descriptions for the fixed pages. Project pages derive theirs from
 // their own first paragraph, so they are not listed here.
@@ -200,6 +377,7 @@ function emitLangVariants(rel, html) {
     }
     out = out.split('<!--LANGNAV-->').join(langLinksHtml(lang, rel));
     out = out.split('__LINKBASE__').join(linkBase(lang));
+    for (const [token, t] of Object.entries(ATTR_TEXT)) out = out.split(token).join(esc(t[lang]));
     writeFile(path.join(ROOT, langDir(lang), rel), out);
   }
 }
@@ -491,9 +669,9 @@ function cardHtml(data, index, prefix) {
       <a class="card ${cls}" href="__LINKBASE__projects/${esc(slug)}/" data-categories="${esc(cats)}">
         <div class="card__img-wrap">${imgHtml}</div>
         <div class="card__info">
-          <div class="card__category">${esc(data.category || '')}</div>
-          <div class="card__name">${esc(data.title || slug)}</div>
-          ${sub ? `<div class="card__year">${esc(sub)}</div>` : ''}
+          <div class="card__category">${langSpans(data.category || '', tVal)}</div>
+          <div class="card__name">${langSpans(data.title || slug, tTitle)}</div>
+          ${sub ? `<div class="card__year">${langSpans(sub, tVal)}</div>` : ''}
           <div class="card__arrow"><span class="l-en">View project</span><span class="l-no">Se prosjekt</span><span class="l-pt">Ver projeto</span> &rarr;</div>
         </div>
       </a>`;
@@ -531,7 +709,7 @@ function generateProjectPage(data, folderName, images) {
   function mRow(label, val) {
     if (!val) return '';
     const t = META_LABELS[label] || { no:label, pt:label };
-    return `\n          <dt><span class="l-en">${esc(label)}</span><span class="l-no">${esc(t.no)}</span><span class="l-pt">${esc(t.pt)}</span></dt><dd>${esc(val)}</dd>`;
+    return `\n          <dt><span class="l-en">${esc(label)}</span><span class="l-no">${esc(t.no)}</span><span class="l-pt">${esc(t.pt)}</span></dt><dd>${langSpans(val, tVal)}</dd>`;
   }
 
   const heroHtml = hero
@@ -617,7 +795,7 @@ ${heroHtml}
       </dl>
     </div>
     <div class="project-content">
-      <h1 class="project-title">${esc(title)}</h1>
+      <h1 class="project-title">${langSpans(title, tTitle)}</h1>
       <div class="l-en">${data.paragraphs.map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-no">${(data.paragraphs_no && data.paragraphs_no.length ? data.paragraphs_no : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-pt">${(data.paragraphs_pt && data.paragraphs_pt.length ? data.paragraphs_pt : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
@@ -644,7 +822,7 @@ function generateWorkPage(projects) {
   });
   const filterTags = ['All', ...Array.from(tagSet).sort()];
   const filterBtns = filterTags.map(tag =>
-    `<button class="work-filter-btn${tag === 'All' ? ' active' : ''}" data-filter="${esc(tag)}">${esc(tag)}</button>`
+    `<button class="work-filter-btn${tag === 'All' ? ' active' : ''}" data-filter="${esc(tag)}">${langSpans(tag, tVal)}</button>`
   ).join('\n      ');
 
   return `<!DOCTYPE html>
@@ -749,9 +927,9 @@ function generateIndexPage(allProjects, featuredSlugs) {
       <a class="card ${cls}" href="projects/${esc(data.slug)}/">
         <div class="card__img-wrap">${imgHtml}</div>
         <div class="card__info">
-          <div class="card__category">${esc(data.category || '')}</div>
-          <div class="card__name">${esc(data.title || data.slug)}</div>
-          ${sub ? `<div class="card__year">${esc(sub)}</div>` : ''}
+          <div class="card__category">${langSpans(data.category || '', tVal)}</div>
+          <div class="card__name">${langSpans(data.title || data.slug, tTitle)}</div>
+          ${sub ? `<div class="card__year">${langSpans(sub, tVal)}</div>` : ''}
           <div class="card__arrow"><span class="l-en">View project</span><span class="l-no">Se prosjekt</span><span class="l-pt">Ver projeto</span> &rarr;</div>
         </div>
       </a>`;
@@ -1035,11 +1213,11 @@ function generateAboutPage(paragraphs, cv) {
   function cvEntry(e) {
     return `
           <div class="cv-entry">
-            <div class="cv-entry__period">${esc(e.period||'')}</div>
-            <div class="cv-entry__role">${esc(e.role||'')}</div>
-            <div class="cv-entry__org">${esc(e.org||'')}</div>
-            ${e.location ? `<div class="cv-entry__location">${esc(e.location)}</div>` : ''}
-            ${e.desc ? `<div class="cv-entry__desc">${esc(e.desc)}</div>` : ''}
+            <div class="cv-entry__period">${fieldSpans(e, 'period')}</div>
+            <div class="cv-entry__role">${fieldSpans(e, 'role')}</div>
+            <div class="cv-entry__org">${fieldSpans(e, 'org')}</div>
+            ${e.location ? `<div class="cv-entry__location">${fieldSpans(e, 'location')}</div>` : ''}
+            ${e.desc ? `<div class="cv-entry__desc">${fieldSpans(e, 'desc')}</div>` : ''}
           </div>`;
   }
 
@@ -1100,7 +1278,7 @@ ${bioHtml}
       </div>
       <div class="about-photo">
         ${photoHtml}
-        <div class="about-photo__caption">Oslo fjord, Norway</div>
+        <div class="about-photo__caption"><span class="l-en">Oslo fjord, Norway</span><span class="l-no">Oslofjorden, Norge</span><span class="l-pt">Fiorde de Oslo, Noruega</span></div>
       </div>
     </div>
 
@@ -1139,10 +1317,10 @@ function generateServicesPage(services) {
       <div class="service-item">
         <button class="service-toggle" aria-expanded="false">
           <span class="service-num">${num}</span>
-          <span class="service-name">${esc(s.name)}</span>
+          <span class="service-name">${fieldSpans(s, 'name')}</span>
           <span class="service-icon">+</span>
         </button>
-        <div class="service-body"><p>${esc(s.desc || '')}</p></div>
+        <div class="service-body"><p>${fieldSpans(s, 'desc')}</p></div>
       </div>`;
   }).join('');
 
@@ -1408,25 +1586,25 @@ ${navHtml()}
           <span class="l-en">Name</span><span class="l-no">Navn</span><span class="l-pt">Nome</span>
         </label>
         <input type="text" id="name" name="name" required autocomplete="name"
-          placeholder="Your name" />
+          placeholder="__PH_NAME__" />
 
         <label for="email">
           <span class="l-en">Email</span><span class="l-no">E-post</span><span class="l-pt">E-mail</span>
         </label>
         <input type="email" id="email" name="email" required autocomplete="email"
-          placeholder="your@email.com" />
+          placeholder="__PH_EMAIL__" />
 
         <label for="subject">
           <span class="l-en">Subject</span><span class="l-no">Emne</span><span class="l-pt">Assunto</span>
         </label>
         <input type="text" id="subject" name="subject"
-          placeholder="e.g. Commission inquiry" />
+          placeholder="__PH_SUBJECT__" />
 
         <label for="message">
           <span class="l-en">Message</span><span class="l-no">Melding</span><span class="l-pt">Mensagem</span>
         </label>
         <textarea id="message" name="message" required
-          placeholder="Tell me about your project or question..."></textarea>
+          placeholder="__PH_MESSAGE__"></textarea>
 
         <div class="contact-form__submit">
           <button type="submit" class="contact-form__btn">
@@ -1489,7 +1667,12 @@ function build() {
     // Write project detail page to projects/[slug]/index.html
     const html      = generateProjectPage(data, folderName, images);
     const outputDir = path.join(PROJECTS_DIR, slug);
-    emitLangVariants('projects/' + slug + '/index.html', html);
+    const projRel   = 'projects/' + slug + '/index.html';
+    // Register the localised <title>; emitLangVariants swaps it in per language.
+    PAGE_TITLES[projRel] = Object.fromEntries(
+      LANGS.map(l => [l, esc(tTitle(data.title, l)) + ' &middot; ' + NAME])
+    );
+    emitLangVariants(projRel, html);
     console.log(`  built projects/${slug}/  ← ${folderName}/`);
 
     projects.push(data);
