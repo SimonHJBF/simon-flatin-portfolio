@@ -430,14 +430,24 @@ function grad(i) { return GRADIENTS[i % GRADIENTS.length]; }
 function videoDir(folder) { return `projects/${folder}/video`; }
 
 /** Which of base.webm / base.mp4 / base.jpg actually exist in that folder. */
+// If a <base>-sm cut has been encoded alongside the full-size one, narrow
+// screens get it instead. A browser plays the first <source> it supports whose
+// media matches, so the small pair has to come first and carry the query.
+const SMALL_SUFFIX = '-sm';
+const SMALL_MEDIA  = '(max-width: 900px)';
+
 function videoParts(folder, name) {
   const dir = videoDir(folder);
   const base = String(name).replace(/\.[^.]+$/, '');
-  const has = ext => fs.existsSync(path.join(ROOT, dir, base + ext));
-  const sources = [['.webm', 'video/webm'], ['.mp4', 'video/mp4']]
-    .filter(([e]) => has(e))
-    .map(([e, t]) => `<source src="/${dir}/${base}${e}" type="${t}" />`).join('');
-  return { sources, poster: has('.jpg') ? `/${dir}/${base}.jpg` : null };
+  const has = file => fs.existsSync(path.join(ROOT, dir, file));
+  const pair = (suffix, media) => [['.webm', 'video/webm'], ['.mp4', 'video/mp4']]
+    .filter(([e]) => has(base + suffix + e))
+    .map(([e, t]) => `<source${media ? ` media="${media}"` : ''} src="/${dir}/${base}${suffix}${e}" type="${t}" />`)
+    .join('');
+  return {
+    sources: pair(SMALL_SUFFIX, SMALL_MEDIA) + pair('', ''),
+    poster: has(base + '.jpg') ? `/${dir}/${base}.jpg` : null,
+  };
 }
 
 /**
