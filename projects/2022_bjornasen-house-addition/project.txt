@@ -1,7 +1,7 @@
 title: Bjørnåsen house addition
 category: Architecture
 tags: Architecture · Built
-year: 2021
+year: 2020 - 2024
 location: Larkollen, Norway
 typology: Garage
 size: 50 m²
