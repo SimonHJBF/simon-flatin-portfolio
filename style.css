@@ -158,14 +158,19 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 /* Tinn cover is a 40/19 banner. Override per-card aspect everywhere
    the Tinn card appears so the wordmark and tagline are never cropped. */
 .card[href*="/tinn/"] .card__img-wrap { aspect-ratio: 40/19; }
+/* Floresta's card is a screen recording of a 16/9 page. Match it, or cover
+   crops the outer columns of the grid and cuts the titles in half. */
+.card[href*="/florestaprod/"] .card__img-wrap { aspect-ratio: 16/9; }
 
 .card__img-wrap img,
+.card__img-wrap video,
 .card__placeholder {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
   transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 .card:hover .card__img-wrap img,
+.card:hover .card__img-wrap video,
 .card:hover .card__placeholder { transform: scale(1.04); }
 
 .card__info   { padding: 1rem 0 0.4rem; }

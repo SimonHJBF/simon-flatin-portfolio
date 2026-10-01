@@ -289,6 +289,18 @@
     }else{requestAnimationFrame(step);}
   })();
 </script>
+  <script>
+    (function(){
+      document.querySelectorAll('.card__video').forEach(function(v){
+        var card = v.closest('.card');
+        if(!card) return;
+        card.addEventListener('mouseenter', function(){
+          var p = v.play(); if(p && p.catch) p.catch(function(){});
+        });
+        card.addEventListener('mouseleave', function(){ v.pause(); v.currentTime = 0; });
+      });
+    })();
+  </script>
 
 </body>
 </html>

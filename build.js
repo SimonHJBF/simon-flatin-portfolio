@@ -425,6 +425,54 @@ function webSrc(dirRel, file) {
 
 function grad(i) { return GRADIENTS[i % GRADIENTS.length]; }
 
+// Video files live in projects/<folder>/video/, a sibling of web/, so the image
+// discovery in findImages() never picks up a poster frame as a gallery image.
+function videoDir(folder) { return `projects/${folder}/video`; }
+
+/** Which of base.webm / base.mp4 / base.jpg actually exist in that folder. */
+function videoParts(folder, name) {
+  const dir = videoDir(folder);
+  const base = String(name).replace(/\.[^.]+$/, '');
+  const has = ext => fs.existsSync(path.join(ROOT, dir, base + ext));
+  const sources = [['.webm', 'video/webm'], ['.mp4', 'video/mp4']]
+    .filter(([e]) => has(e))
+    .map(([e, t]) => `<source src="/${dir}/${base}${e}" type="${t}" />`).join('');
+  return { sources, poster: has('.jpg') ? `/${dir}/${base}.jpg` : null };
+}
+
+/**
+ * The face of a project card: a hover-played loop when the project declares a
+ * cardvideo, otherwise the cover image, otherwise a gradient. preload="none"
+ * keeps the bytes off the page until someone actually hovers the card.
+ */
+function cardMedia(data, index, eager) {
+  if (data.cardvideo) {
+    const { sources, poster } = videoParts(data._folder, data.cardvideo);
+    if (sources) {
+      return `<video class="card__video" muted loop playsinline preload="none"` +
+        `${poster ? ` poster="${poster}"` : ''} aria-label="${esc(data.title)}">${sources}</video>`;
+    }
+  }
+  return data._cover
+    ? `<img src="${webSrc(`projects/${data._folder}`, data._cover)}" alt="${esc(data.title)}" loading="${eager ? 'eager' : 'lazy'}" />`
+    : `<div class="card__placeholder" style="background:${grad(index)};width:100%;height:100%;"></div>`;
+}
+
+// Card loops hold on their poster until hovered, so /work does not turn into a
+// wall of motion. Touch devices never fire mouseenter and simply keep the still.
+const CARD_VIDEO_SCRIPT = `  <script>
+    (function(){
+      document.querySelectorAll('.card__video').forEach(function(v){
+        var card = v.closest('.card');
+        if(!card) return;
+        card.addEventListener('mouseenter', function(){
+          var p = v.play(); if(p && p.catch) p.catch(function(){});
+        });
+        card.addEventListener('mouseleave', function(){ v.pause(); v.currentTime = 0; });
+      });
+    })();
+  </script>`;
+
 /** Extract YouTube embed URL from various YouTube URL formats */
 function youtubeEmbedUrl(url) {
   if (!url) return null;
@@ -654,9 +702,7 @@ function cardHtml(data, index, prefix) {
   const slug    = data.slug;
   const folder  = data._folder; // e.g. 2024_lalibela-modelmaking
   const cover   = data._cover;
-  const imgHtml = cover
-    ? `<img src="${webSrc(`projects/${folder}`, cover)}" alt="${esc(data.title)}" loading="lazy" />`
-    : `<div class="card__placeholder" style="background:${grad(index)};width:100%;height:100%;"></div>`;
+  const imgHtml = cardMedia(data, index, false);
   const year    = data.year || '';
   const org     = data.organization || '';
   const sub     = [year, org].filter(Boolean).join(' · ');
@@ -722,10 +768,16 @@ function generateProjectPage(data, folderName, images) {
       `\n  </div>`
     : '';
 
+  // `video:` takes either a YouTube URL, which is embedded, or a bare filename,
+  // which is served from the project's own video/ folder as a silent loop.
   const embedUrl = youtubeEmbedUrl(data.video);
+  const local    = !embedUrl && data.video ? videoParts(folderName, data.video) : null;
   const videoHtml = embedUrl
     ? `\n  <div class="project-video">\n    <iframe src="${embedUrl}" title="${esc(title)}" allowfullscreen loading="lazy"></iframe>\n  </div>`
-    : '';
+    : (local && local.sources
+      ? `\n  <div class="project-video">\n    <video autoplay muted loop playsinline preload="metadata"` +
+        `${local.poster ? ` poster="${local.poster}"` : ''} aria-label="${esc(title)}">${local.sources}</video>\n  </div>`
+      : '');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -761,7 +813,9 @@ function generateProjectPage(data, folderName, images) {
     .project-gallery figure { margin:0; }
     .project-gallery img { width:100%; display:block; }
     .project-video { max-width:1200px; margin:4rem auto 0; padding:0 4rem; }
-    .project-video iframe { width:100%; aspect-ratio:16/9; border:none; display:block; }
+    .project-video iframe,
+    .project-video video { width:100%; aspect-ratio:16/9; border:none; display:block;
+      background:#000; object-fit:cover; }
     @media(max-width:800px) {
       .project-body { grid-template-columns:1fr; gap:3rem; padding:3rem 1.5rem 0; }
       .project-gallery { padding:0 1.5rem; }
@@ -895,6 +949,7 @@ ${footerHtml()}
       });
     })();
   </script>
+${CARD_VIDEO_SCRIPT}
 ${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
@@ -918,9 +973,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     const cls     = featuredGrids[i] || 'card--wide';
     const folder  = data._folder;
     const cover   = data._cover;
-    const imgHtml = cover
-      ? `<img src="${webSrc(`projects/${folder}`, cover)}" alt="${esc(data.title)}" loading="eager" />`
-      : `<div class="card__placeholder" style="background:${grad(i)};width:100%;height:100%;"></div>`;
+    const imgHtml = cardMedia(data, i, true);
     const sub = [data.year, data.organization].filter(Boolean).join(' · ');
 
     return `
@@ -1181,6 +1234,7 @@ ${footerHtml()}
     }else{requestAnimationFrame(step);}
   })();
 </script>
+${CARD_VIDEO_SCRIPT}
 ${LANG_TOGGLE_SCRIPT}
 </body>
 </html>

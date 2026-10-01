@@ -7,6 +7,8 @@ typology: Website
 client: Floresta
 status: Live
 live: florestaprod.com.br
+video: walkthrough.mp4
+cardvideo: card.mp4
 grid: third
 
 ---
