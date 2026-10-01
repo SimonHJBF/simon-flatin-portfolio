@@ -804,10 +804,13 @@ function generateProjectPage(data, folderName, images) {
   <style>
     .project-hero { width:100%; max-height:80vh; overflow:hidden; }
     .project-hero img { width:100%; display:block; max-height:80vh; object-fit:cover; }
-    /* A walkthrough is a recording of a 16/9 page: cropping it to the hero
-       band cuts the site's own header out of frame, so it keeps its ratio. */
-    .project-hero--video { max-height:none; }
-    .project-hero video { width:100%; height:auto; display:block; }
+    /* The walkthrough is a fixed-size recording, not a photograph, so it is
+       framed rather than stretched: never shown wider than it was captured,
+       centred in a black band. Enlarging it past its own resolution only
+       softens it. The video keeps a black background of its own because a
+       height cap can leave the element fractionally wider than the picture. */
+    .project-hero--video { max-height:none; background:#000; display:flex; align-items:center; justify-content:center; }
+    .project-hero video { display:block; width:100%; max-width:1280px; max-height:78vh; height:auto; background:#000; }
     .project-hero--placeholder { height:60vh; }
     .project-body { max-width:1200px; margin:0 auto; padding:4rem 4rem 0;
       display:grid; grid-template-columns:260px 1fr; gap:5rem; }
