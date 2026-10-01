@@ -758,9 +758,19 @@ function generateProjectPage(data, folderName, images) {
     return `\n          <dt><span class="l-en">${esc(label)}</span><span class="l-no">${esc(t.no)}</span><span class="l-pt">${esc(t.pt)}</span></dt><dd>${langSpans(val, tVal)}</dd>`;
   }
 
-  const heroHtml = hero
-    ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}" alt="${esc(title)}" loading="eager" /></div>`
-    : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
+  // `video:` takes either a YouTube URL, which embeds in a block further down
+  // exactly as before, or a bare filename served from the project's own video/
+  // folder. A self-hosted walkthrough becomes the hero instead: on a website
+  // project the moving page says more than any still of it, so it leads.
+  const embedUrl = youtubeEmbedUrl(data.video);
+  const local    = !embedUrl && data.video ? videoParts(folderName, data.video) : null;
+
+  const heroHtml = local && local.sources
+    ? `  <div class="project-hero project-hero--video"><video autoplay muted loop playsinline preload="auto"` +
+      `${local.poster ? ` poster="${local.poster}"` : ''} aria-label="${esc(title)}">${local.sources}</video></div>`
+    : hero
+      ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}" alt="${esc(title)}" loading="eager" /></div>`
+      : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
 
   const galleryHtml = gallery.length
     ? `\n  <div class="project-gallery">\n` +
@@ -768,16 +778,11 @@ function generateProjectPage(data, folderName, images) {
       `\n  </div>`
     : '';
 
-  // `video:` takes either a YouTube URL, which is embedded, or a bare filename,
-  // which is served from the project's own video/ folder as a silent loop.
-  const embedUrl = youtubeEmbedUrl(data.video);
-  const local    = !embedUrl && data.video ? videoParts(folderName, data.video) : null;
+  // A self-hosted video is already the hero, so only a YouTube embed gets a
+  // block of its own down here.
   const videoHtml = embedUrl
     ? `\n  <div class="project-video">\n    <iframe src="${embedUrl}" title="${esc(title)}" allowfullscreen loading="lazy"></iframe>\n  </div>`
-    : (local && local.sources
-      ? `\n  <div class="project-video">\n    <video autoplay muted loop playsinline preload="metadata"` +
-        `${local.poster ? ` poster="${local.poster}"` : ''} aria-label="${esc(title)}">${local.sources}</video>\n  </div>`
-      : '');
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -789,6 +794,10 @@ function generateProjectPage(data, folderName, images) {
   <style>
     .project-hero { width:100%; max-height:80vh; overflow:hidden; }
     .project-hero img { width:100%; display:block; max-height:80vh; object-fit:cover; }
+    /* A walkthrough is a recording of a 16/9 page: cropping it to the hero
+       band cuts the site's own header out of frame, so it keeps its ratio. */
+    .project-hero--video { max-height:none; }
+    .project-hero video { width:100%; height:auto; display:block; }
     .project-hero--placeholder { height:60vh; }
     .project-body { max-width:1200px; margin:0 auto; padding:4rem 4rem 0;
       display:grid; grid-template-columns:260px 1fr; gap:5rem; }
