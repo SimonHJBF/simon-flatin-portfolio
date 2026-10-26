@@ -82,8 +82,12 @@ function stripLangs(html, keep) {
   return html;
 }
 
-/** Clean URL for an output path: projects/tinn/index.html -> projects/tinn/ */
-function urlOf(rel) { return rel.replace(/index\.html$/, ''); }
+/**
+ * Clean URL for an output path: projects/tinn/index.html -> projects/tinn/,
+ * about.html -> about. Netlify serves and links pages without .html, so this is
+ * the form canonical, hreflang and the sitemap must agree on.
+ */
+function urlOf(rel) { return rel.replace(/index\.html$/, '').replace(/\.html$/, ''); }
 
 // Titles per language. Project page titles are registered into this table as
 // each project is built, so they can be localised the same way.
@@ -358,6 +362,26 @@ function langLinksHtml(lang, rel) {
   ).join('\n        <span class="lang-sep">&middot;</span>\n');
 }
 
+// Link previews in mail, LinkedIn and chat apps. One JPEG for every page,
+// because not every preview renderer reads WebP.
+const OG_IMAGE  = '/content/main/web/og.jpg';
+const OG_LOCALE = { en:'en_GB', no:'nb_NO', pt:'pt_BR' };
+
+/** Open Graph tags. `title` arrives already entity-encoded from <title>. */
+function ogHtml(url, title, desc, lang) {
+  const rows = [
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:site_name" content="${NAME}" />`,
+    `<meta property="og:url" content="${url}" />`,
+    `<meta property="og:title" content="${title}" />`,
+    desc ? `<meta property="og:description" content="${esc(desc)}" />` : '',
+    `<meta property="og:locale" content="${OG_LOCALE[lang]}" />`,
+    fs.existsSync(path.join(ROOT, OG_IMAGE)) ? `<meta property="og:image" content="${SITE_URL}${OG_IMAGE}" />` : '',
+    `<meta name="twitter:card" content="summary_large_image" />`,
+  ];
+  return rows.filter(Boolean).map(r => '\n  ' + r).join('');
+}
+
 // Every canonical URL emitted, for sitemap.xml.
 const SITEMAP_URLS = [];
 
@@ -367,10 +391,15 @@ function emitLangVariants(rel, html) {
     let out = stripLangs(html, lang);
     out = out.replace('<html lang="en">', `<html lang="${lang}">`);
     const desc = metaDescription(rel, lang, out);
-    out = out.replace('<head>', '<head>\n' + hreflangHtml(rel) +
-      (desc ? `\n  <meta name="description" content="${esc(desc)}" />` : ''));
+    const url = SITE_URL + linkBase(lang) + urlOf(rel);
     const title = PAGE_TITLES[rel];
     if (title) out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${title[lang]}</title>`);
+    // Read back from the page, so project titles registered at build time count too.
+    const shownTitle = (out.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '';
+    out = out.replace('<head>', '<head>\n' + hreflangHtml(rel) +
+      `\n  <link rel="canonical" href="${url}" />` +
+      (desc ? `\n  <meta name="description" content="${esc(desc)}" />` : '') +
+      ogHtml(url, shownTitle, desc, lang));
     // The form confirmation page is not worth indexing.
     if (rel !== 'contact-success.html') {
       SITEMAP_URLS.push(SITE_URL + linkBase(lang) + urlOf(rel));
@@ -678,8 +707,9 @@ function footerHtml(prefix) {
   // Norwegian clients expect an organisation number somewhere on the site.
   // Set ORG_NR to have it appear; left empty it is simply omitted.
   const ENK = 'Bj&oslash;rk&aring; Flatin ENK';
-  const orgEn = ORG_NR ? ` &middot; org.no. ${ORG_NR}` : '';
-  const orgNo = ORG_NR ? ` &middot; org.nr. ${ORG_NR}` : '';
+  // MVA marks the VAT registration, which ehandelsloven section 8 asks for.
+  const orgEn = ORG_NR ? ` &middot; org.no. ${ORG_NR} MVA` : '';
+  const orgNo = ORG_NR ? ` &middot; org.nr. ${ORG_NR} MVA` : '';
   return `  <footer>
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; ${ENK}${orgEn} &middot; Larkollen, Norway</span><span class="l-no">Arkitekt MSc / ir. &middot; ${ENK}${orgNo} &middot; Larkollen, Norge</span><span class="l-pt">Arquiteto MSc / ir. &middot; ${ENK}${orgEn} &middot; Larkollen, Noruega</span></div>
@@ -1096,7 +1126,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     <div class="hero__overlay"></div>
     <canvas id="mc" aria-hidden="true"></canvas>
     <nav class="nav--hero">
-      <a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+      <h1 class="nav__h1"><a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a></h1>
       <div class="nav__link-row">
         <ul class="nav__links">
           <li><a href="__LINKBASE__"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
@@ -1106,11 +1136,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
           <li><a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
         </ul>
         <div class="lang-toggle" role="group" aria-label="Select language">
-          <button class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep">&middot;</span>
-          <button class="lang-btn" data-lang="no">NO</button>
-          <span class="lang-sep">&middot;</span>
-          <button class="lang-btn" data-lang="pt">PT</button>
+<!--LANGNAV-->
         </div>
       </div>
     </nav>
@@ -1241,6 +1267,7 @@ ${footerHtml()}
    * dy and dx oscillate at different periods so the combined motion never
    * exactly repeats, giving endlessly varied, natural-looking ripple. */
   (function(){
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
     var fo=document.getElementById('wo');
     if(!fo)return;
     var t=0,lastTs=null;

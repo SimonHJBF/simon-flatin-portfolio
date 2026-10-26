@@ -4,3 +4,87 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Netlify publishes the repo root, so the build inputs below would otherwise be
+# downloadable. None of them is linked from the site. They answer 404 instead;
+# force = true is what makes a rule win over a file that exists.
+[[redirects]]
+  from = "/build.js"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.claude/*"
+  to = "/404"
+  status = 404
+  force = true
+
+# The text sources behind the About, start and Services pages.
+[[redirects]]
+  from = "/content/about/bio.txt"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/content/about/cv.txt"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/content/main/featured.txt"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/content/main/tagline.txt"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/content/services/services.txt"
+  to = "/404"
+  status = 404
+  force = true
+
+# Unused; the start page shows a still photo.
+[[redirects]]
+  from = "/content/main/lake-loop.mp4"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/projects/:folder/project.txt"
+  to = "/404"
+  status = 404
+  force = true
+
+# Unpublished drafts and the template live in folders starting with _.
+[[redirects]]
+  from = "/projects/_template/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/projects/_2026_hytteboka/*"
+  to = "/404"
+  status = 404
+  force = true

@@ -5,7 +5,16 @@
   <link rel="alternate" hreflang="no" href="https://simonflatin.com/no/" />
   <link rel="alternate" hreflang="pt" href="https://simonflatin.com/pt/" />
   <link rel="alternate" hreflang="x-default" href="https://simonflatin.com/" />
+  <link rel="canonical" href="https://simonflatin.com/" />
   <meta name="description" content="Architect, MSc and ir. from TU Delft, working between Norway and São Paulo. Architecture, visualisation, physical models and software for the building industry." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Simon H.J. Bj&oslash;rk&aring; Flatin" />
+  <meta property="og:url" content="https://simonflatin.com/" />
+  <meta property="og:title" content="Simon H.J. Bj&oslash;rk&aring; Flatin &middot; Architect &amp; Designer" />
+  <meta property="og:description" content="Architect, MSc and ir. from TU Delft, working between Norway and São Paulo. Architecture, visualisation, physical models and software for the building industry." />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://simonflatin.com/content/main/web/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simon H.J. Bj&oslash;rk&aring; Flatin &middot; Architect &amp; Designer</title>
@@ -75,7 +84,7 @@
     <div class="hero__overlay"></div>
     <canvas id="mc" aria-hidden="true"></canvas>
     <nav class="nav--hero">
-      <a href="/" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+      <h1 class="nav__h1"><a href="/" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a></h1>
       <div class="nav__link-row">
         <ul class="nav__links">
           <li><a href="/"><span class="l-en">Main</span></a></li>
@@ -85,11 +94,11 @@
           <li><a href="/contact.html"><span class="l-en">Contact</span></a></li>
         </ul>
         <div class="lang-toggle" role="group" aria-label="Select language">
-          <button class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep">&middot;</span>
-          <button class="lang-btn" data-lang="no">NO</button>
-          <span class="lang-sep">&middot;</span>
-          <button class="lang-btn" data-lang="pt">PT</button>
+        <a class="lang-btn active" href="/" hreflang="en" aria-current="page">EN</a>
+        <span class="lang-sep">&middot;</span>
+        <a class="lang-btn" href="/no/" hreflang="no">NO</a>
+        <span class="lang-sep">&middot;</span>
+        <a class="lang-btn" href="/pt/" hreflang="pt">PT</a>
         </div>
       </div>
     </nav>
@@ -157,7 +166,7 @@
 
   <footer>
     <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
-    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; Bj&oslash;rk&aring; Flatin ENK &middot; org.no. 935 392 780 &middot; Larkollen, Norway</span></div>
+    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; Bj&oslash;rk&aring; Flatin ENK &middot; org.no. 935 392 780 MVA &middot; Larkollen, Norway</span></div>
     <div class="footer__links">
       <a href="/about.html"><span class="l-en">About</span></a>
       <a href="/work.html"><span class="l-en">Work</span></a>
@@ -274,6 +283,7 @@
    * dy and dx oscillate at different periods so the combined motion never
    * exactly repeats, giving endlessly varied, natural-looking ripple. */
   (function(){
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
     var fo=document.getElementById('wo');
     if(!fo)return;
     var t=0,lastTs=null;

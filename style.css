@@ -48,6 +48,8 @@ nav.nav--page {
   text-decoration: none;
 }
 
+/* The start page wraps the name in its h1; the heading itself adds nothing. */
+.nav__h1 { margin: 0; font: inherit; }
 nav.nav--hero .nav__name  { color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,0.35); }
 nav.nav--page .nav__name  { color: var(--dark); }
 
@@ -91,6 +93,7 @@ nav.nav--page .nav__links a:hover { color: var(--dark); transform: scale(1.1); l
   letter-spacing: 0.14em;
   padding: 0;
   font-family: var(--sans);
+  text-decoration: none;
   transition: color 0.2s;
 }
 .lang-sep {
@@ -128,6 +131,9 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 @keyframes scrollBounce {
   0%, 100% { transform: translateY(0);   opacity: 0.55; }
   50%       { transform: translateY(5px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-arrow-wrap { animation: none; }
 }
 
 /* ---- PROJECT CARDS ---- */
@@ -194,6 +200,10 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
   transition: opacity 0.25s, transform 0.25s;
 }
 .card:hover .card__arrow { opacity: 1; transform: translateX(0); }
+/* A touch screen never hovers, so the label would otherwise never appear. */
+@media (hover: none) {
+  .card__arrow { opacity: 1; transform: none; }
+}
 
 /* ---- FOOTER ---- */
 footer {
@@ -281,6 +291,21 @@ footer a:hover { color: var(--dark); }
     justify-content: center;
   }
   nav.nav--hero .lang-toggle { border-top-color: rgba(255,255,255,0.2); border-left: none; }
+}
+
+/* Finger-sized targets: at least 24px tall, as WCAG 2.5.8 asks. The text
+   stays the same size; only the tappable box grows. */
+@media (pointer: coarse) {
+  .nav__links a, .lang-btn {
+    min-height: 24px; min-width: 24px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .nav__links { row-gap: 0; }
+}
+/* The taller targets already space the phone nav; take back what they added. */
+@media (pointer: coarse) and (max-width: 660px) {
+  .nav__link-row { gap: 0.25rem; }
+  .lang-toggle { padding-top: 0.2rem; }
 }
 
 @media (max-width: 400px) {
