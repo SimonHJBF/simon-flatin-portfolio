@@ -5,6 +5,27 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# simonflatin.com is the one address. simonflatin.no forwards: its front page
+# to the Norwegian front page, every other page to the same page on .com.
+# These come first because the first matching rule wins.
+[[redirects]]
+  from = "https://simonflatin.no/"
+  to = "https://simonflatin.com/no/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://simonflatin.no/*"
+  to = "https://simonflatin.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://simonflatin.no/*"
+  to = "https://simonflatin.com/:splat"
+  status = 301
+  force = true
+
 # Netlify publishes the repo root, so the build inputs below would otherwise be
 # downloadable. None of them is linked from the site. They answer 404 instead;
 # force = true is what makes a rule win over a file that exists.
