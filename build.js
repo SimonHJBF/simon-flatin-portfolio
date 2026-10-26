@@ -459,6 +459,63 @@ function webSrc(dirRel, file) {
   return fs.existsSync(path.join(ROOT, webRel)) ? `/${webRel}` : `/${dirRel}/${file}`;
 }
 
+/**
+ * Pixel size of a WebP or JPEG, read from its header. Written into width and
+ * height so the browser reserves the space before the file arrives, instead of
+ * pushing the text down when it lands. Null for anything it cannot read.
+ */
+function imageSize(urlPath) {
+  let b;
+  try { b = fs.readFileSync(path.join(ROOT, decodeURI(urlPath))); } catch (e) { return null; }
+  if (b.toString('ascii', 0, 4) === 'RIFF' && b.toString('ascii', 8, 12) === 'WEBP') {
+    const kind = b.toString('ascii', 12, 16);
+    if (kind === 'VP8X') return { w: 1 + b.readUIntLE(24, 3), h: 1 + b.readUIntLE(27, 3) };
+    if (kind === 'VP8 ') return { w: b.readUInt16LE(26) & 0x3fff, h: b.readUInt16LE(28) & 0x3fff };
+    if (kind === 'VP8L') { const n = b.readUInt32LE(21); return { w: (n & 0x3fff) + 1, h: ((n >> 14) & 0x3fff) + 1 }; }
+  }
+  if (b[0] === 0xff && b[1] === 0xd8) {
+    let i = 2;
+    while (i + 9 < b.length) {
+      if (b[i] !== 0xff) { i++; continue; }
+      const m = b[i + 1];
+      if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) return { w: b.readUInt16BE(i + 7), h: b.readUInt16BE(i + 5) };
+      i += 2 + b.readUInt16BE(i + 2);
+    }
+  }
+  return null;
+}
+
+/** width="" height="" for an image URL, or nothing. */
+function sizeAttrs(urlPath) {
+  const s = urlPath && imageSize(urlPath);
+  return s ? ` width="${s.w}" height="${s.h}"` : '';
+}
+
+/**
+ * srcset and sizes for an image URL, listing the -800 and -1200 copies that
+ * MEMORY/make_image_sizes.js writes beside it. Nothing when there are none.
+ */
+function srcsetAttrs(urlPath, sizes) {
+  const full = urlPath && imageSize(urlPath);
+  if (!full || !/\.webp$/.test(urlPath)) return '';
+  const set = [800, 1200]
+    .map(w => [urlPath.replace(/\.webp$/, `-${w}.webp`), w])
+    .filter(([u, w]) => w < full.w && fs.existsSync(path.join(ROOT, decodeURI(u))))
+    .map(([u, w]) => `${u} ${w}w`);
+  if (!set.length) return '';
+  set.push(`${urlPath} ${full.w}w`);
+  return ` srcset="${set.join(', ')}" sizes="${sizes}"`;
+}
+
+// How wide each card class is drawn, for sizes. Phones always show one column.
+const CARD_SIZES = {
+  'card--full': '(max-width: 900px) 100vw, 1400px',
+  'card--large': '(max-width: 900px) 100vw, 60vw',
+  'card--medium': '(max-width: 900px) 100vw, 45vw',
+  'card--wide': '(max-width: 900px) 100vw, 50vw',
+  'card--third': '(max-width: 900px) 100vw, 35vw',
+};
+
 function grad(i) { return GRADIENTS[i % GRADIENTS.length]; }
 
 // Video files live in projects/<folder>/video/, a sibling of web/, so the image
@@ -491,7 +548,7 @@ function videoParts(folder, name) {
  * cardvideo, otherwise the cover image, otherwise a gradient. preload="none"
  * keeps the bytes off the page until someone actually hovers the card.
  */
-function cardMedia(data, index, eager) {
+function cardMedia(data, index, eager, cls) {
   if (data.cardvideo) {
     const { sources, poster } = videoParts(data._folder, data.cardvideo);
     if (sources) {
@@ -500,7 +557,7 @@ function cardMedia(data, index, eager) {
     }
   }
   return data._cover
-    ? `<img src="${webSrc(`projects/${data._folder}`, data._cover)}" alt="${esc(data.title)}" loading="${eager ? 'eager' : 'lazy'}" />`
+    ? `<img src="${webSrc(`projects/${data._folder}`, data._cover)}"${srcsetAttrs(webSrc(`projects/${data._folder}`, data._cover), CARD_SIZES[cls] || CARD_SIZES['card--wide'])} alt="${esc(data.title)}" loading="${eager ? 'eager' : 'lazy'}" />`
     : `<div class="card__placeholder" style="background:${grad(index)};width:100%;height:100%;"></div>`;
 }
 
@@ -535,6 +592,9 @@ function findImages(dir) {
   const from = fs.existsSync(webDir) ? webDir : dir;
   return fs.readdirSync(from)
     .filter(f => IMAGE_EXTS.has(path.extname(f).toLowerCase()))
+    // Smaller copies for srcset, the phone crop and the link preview are not
+    // images of their own.
+    .filter(f => !/-(800|1200|sm)\.webp$/.test(f) && f !== 'og.jpg')
     .sort();
 }
 
@@ -794,7 +854,7 @@ function cardHtml(data, index, prefix) {
   const slug    = data.slug;
   const folder  = data._folder; // e.g. 2024_lalibela-modelmaking
   const cover   = data._cover;
-  const imgHtml = cardMedia(data, index, false);
+  const imgHtml = cardMedia(data, index, false, cls);
   const year    = data.year || '';
   const org     = data.organization || '';
   const sub     = [year, org].filter(Boolean).join(' · ');
@@ -859,14 +919,14 @@ function generateProjectPage(data, folderName, images) {
 
   const heroHtml = local && local.sources
     ? `  <div class="project-hero project-hero--video"><video autoplay muted loop playsinline preload="auto"` +
-      `${local.poster ? ` poster="${local.poster}"` : ''} aria-label="${esc(title)}">${local.sources}</video></div>`
+      `${local.poster ? ` poster="${local.poster}"${sizeAttrs(local.poster)}` : ''} aria-label="${esc(title)}">${local.sources}</video></div>`
     : hero
-      ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}" alt="${esc(title)}" loading="eager" /></div>`
+      ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}"${sizeAttrs(webSrc(imgDir, hero))}${srcsetAttrs(webSrc(imgDir, hero), '100vw')} alt="${esc(title)}" loading="eager" fetchpriority="high" /></div>`
       : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
 
   const galleryHtml = gallery.length
     ? `\n  <div class="project-gallery">\n` +
-      gallery.map((img, i) => `    <figure><img src="${webSrc(imgDir, img)}" alt="${esc(title)}, image ${i + 1} of ${gallery.length}" loading="lazy" /></figure>`).join('\n') +
+      gallery.map((img, i) => `    <figure><img src="${webSrc(imgDir, img)}"${sizeAttrs(webSrc(imgDir, img))}${srcsetAttrs(webSrc(imgDir, img), '(max-width: 1200px) 100vw, 1200px')} alt="${esc(title)}, image ${i + 1} of ${gallery.length}" loading="lazy" /></figure>`).join('\n') +
       `\n  </div>`
     : '';
 
@@ -885,7 +945,7 @@ function generateProjectPage(data, folderName, images) {
   <link rel="stylesheet" href="/style.css" />
   <style>
     .project-hero { width:100%; max-height:80vh; overflow:hidden; }
-    .project-hero img { width:100%; display:block; max-height:80vh; object-fit:cover; }
+    .project-hero img { width:100%; height:auto; display:block; max-height:80vh; object-fit:cover; }
     /* The walkthrough is a fixed-size recording, not a photograph, so it is
        framed rather than stretched: never shown wider than it was captured,
        centred in a black band. Enlarging it past its own resolution only
@@ -915,7 +975,7 @@ function generateProjectPage(data, folderName, images) {
     .project-gallery { max-width:1200px; margin:4rem auto 0; padding:0 4rem;
       display:flex; flex-direction:column; gap:1.5rem; }
     .project-gallery figure { margin:0; }
-    .project-gallery img { width:100%; display:block; }
+    .project-gallery img { width:100%; height:auto; display:block; }
     .project-video { max-width:1200px; margin:4rem auto 0; padding:0 4rem; }
     .project-video iframe,
     .project-video video { width:100%; aspect-ratio:16/9; border:none; display:block;
@@ -1115,7 +1175,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     const cls     = featuredGrids[i] || 'card--wide';
     const folder  = data._folder;
     const cover   = data._cover;
-    const imgHtml = cardMedia(data, i, true);
+    const imgHtml = cardMedia(data, i, true, cls);
     const sub = [data.year, data.organization].filter(Boolean).join(' · ');
 
     return `
@@ -1137,8 +1197,14 @@ function generateIndexPage(allProjects, featuredSlugs) {
     : null;
   const heroImgPath = heroImgFile ? webSrc('content/main', heroImgFile) : null;
 
+  // Phones get a portrait crop from the middle of the photo, a third of the
+  // weight, instead of downloading 2000px to show a narrow slice of it.
+  const heroSmPath = heroImgPath && heroImgPath.replace(/\.webp$/, '-sm.webp');
+  const hasSm = heroSmPath && heroSmPath !== heroImgPath && fs.existsSync(path.join(ROOT, heroSmPath));
   const heroBgHtml = heroImgPath
-    ? `<img class="hero__bg" src="${heroImgPath}" alt="">`
+    ? (hasSm ? `<picture><source media="(max-width: 700px) and (orientation: portrait)" srcset="${heroSmPath}"${sizeAttrs(heroSmPath)}>` : '') +
+      `<img class="hero__bg" src="${heroImgPath}"${sizeAttrs(heroImgPath)} alt="" fetchpriority="high">` +
+      (hasSm ? '</picture>' : '')
     : `<div class="hero__bg" style="background:linear-gradient(160deg,#2d3d2e 0%,#4a6741 35%,#7a9e6e 60%,#c9d9b8 100%);"></div>`;
 
   // Water ripple on the lower ~45% of the hero (where the water/fjord is).
@@ -1163,7 +1229,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
         <rect x="0" y="0.55" width="1" height="0.45"/>
       </clipPath>
     </defs>
-    <image href="${heroImgPath}" width="100%" height="100%"
+    <image width="100%" height="100%"
            preserveAspectRatio="xMidYMid slice"
            filter="url(#wf)"
            clip-path="url(#wc)"/>
@@ -1354,6 +1420,14 @@ ${footerHtml()}
 })();
 </script>
 <script>
+  /* The water layer takes whichever photo the browser chose for the hero, so a
+   * phone never downloads the large one just for the ripple. */
+  (function(){
+    var img=document.querySelector('.hero__bg'),wi=document.querySelector('.hero__water image');
+    if(!img||!wi||!img.src)return;
+    function use(){wi.setAttribute('href',img.currentSrc||img.src);}
+    if(img.complete)use();else img.addEventListener('load',use);
+  })();
   /* Water ripple - sinusoidal feOffset oscillation, zero seam, works on iOS.
    * dy and dx oscillate at different periods so the combined motion never
    * exactly repeats, giving endlessly varied, natural-looking ripple. */
