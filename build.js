@@ -102,6 +102,7 @@ const PAGE_TITLES = {
   'about.html':   { en: `About &middot; ${NAME}`,   no: `Om &middot; ${NAME}`,           pt: `Sobre &middot; ${NAME}` },
   'services.html':{ en: `Services &middot; ${NAME}`,no: `Tjenester &middot; ${NAME}`,    pt: `Servi&ccedil;os &middot; ${NAME}` },
   'contact.html': { en: `Contact &middot; ${NAME}`, no: `Kontakt &middot; ${NAME}`,      pt: `Contato &middot; ${NAME}` },
+  'privacy.html': { en: `Privacy &middot; ${NAME}`, no: `Personvern &middot; ${NAME}`, pt: `Privacidade &middot; ${NAME}` },
   'contact-success.html': {
     en: `Message sent &middot; ${NAME}`,
     no: `Melding sendt &middot; ${NAME}`,
@@ -263,6 +264,7 @@ function tTitle(title, lang) {
 // Text that lands inside an attribute cannot carry l-xx spans, so it is written
 // as a token and swapped in per language when the page is emitted.
 const ATTR_TEXT = {
+  '__CONSENT_LABEL__': { en:'Analytics consent',                    no:'Samtykke til analyse',                       pt:'Consentimento para análise' },
   '__PH_NAME__':    { en:'Your name',                              no:'Navnet ditt',                                pt:'Seu nome' },
   '__PH_EMAIL__':   { en:'your@email.com',                         no:'din@epost.no',                               pt:'seu@email.com' },
   '__PH_SUBJECT__': { en:'e.g. Commission inquiry',                no:'f.eks. forespørsel om oppdrag',              pt:'ex. proposta de trabalho' },
@@ -313,6 +315,11 @@ const PAGE_DESCRIPTIONS = {
     en: 'Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, with clients across five countries.',
     no: 'Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og rådgivning. Basert i Osloregionen, med kunder i fem land.',
     pt: 'Disponível para encomendas de arquitetura, colaborações de pesquisa, maquetes e consultoria. Baseado na região de Oslo, com clientes em cinco países.',
+  },
+  'privacy.html': {
+    en: 'How simonflatin.com handles analytics, application links and messages from the contact form.',
+    no: 'Hvordan simonflatin.com håndterer analyse, lenker i søknader og meldinger fra kontaktskjemaet.',
+    pt: 'Como o simonflatin.com trata análise, links em candidaturas e mensagens do formulário de contato.',
   },
   'contact-success.html': {
     en: 'Your message has been sent.',
@@ -670,13 +677,49 @@ function parseFeaturedTxt(content) {
 const LANG_SCRIPT = '';
 const LANG_TOGGLE_SCRIPT = '';
 
-const GA_TAG = `<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VBPFZJZXY9');
+// Google Analytics loads only after the visitor chooses Allow in the consent
+// bar (ekomloven section 3-15). The choice itself is kept in localStorage so the
+// bar does not return on every page; declining also clears any _ga cookies left
+// from an earlier Allow. The bar's markup lives in footerHtml().
+const GA_TAG = `<script>
+(function(){
+  var ID='G-VBPFZJZXY9',KEY='sf-analytics',loaded=false;
+  function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+  function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+  function load(){
+    if(loaded)return;loaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date());gtag('config',ID);
+    var s=document.createElement('script');s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+ID;
+    document.head.appendChild(s);
+  }
+  function clearCookies(){
+    var host=location.hostname.replace(/^www\\./,'');
+    document.cookie.split(';').forEach(function(c){
+      var n=c.split('=')[0].trim();
+      if(!/^_ga/.test(n))return;
+      ['','; domain=.'+host,'; domain='+location.hostname].forEach(function(d){
+        document.cookie=n+'=; Max-Age=0; path=/'+d;
+      });
+    });
+  }
+  function bar(on){var b=document.getElementById('consent');if(b)b.hidden=!on;}
+  if(get()==='yes')load();
+  document.addEventListener('DOMContentLoaded',function(){
+    if(!get())bar(true);
+    document.addEventListener('click',function(e){
+      var t=e.target.closest('[data-consent]');
+      if(!t)return;
+      var v=t.getAttribute('data-consent');
+      if(v==='open'){bar(true);return;}
+      set(v);bar(false);
+      if(v==='yes')load();
+      else{clearCookies();if(loaded)location.reload();}
+    });
+  });
+})();
 </script>`;
 
 // Language CSS (goes in <head>)
@@ -710,14 +753,23 @@ function footerHtml(prefix) {
   // MVA marks the VAT registration, which ehandelsloven section 8 asks for.
   const orgEn = ORG_NR ? ` &middot; org.no. ${ORG_NR} MVA` : '';
   const orgNo = ORG_NR ? ` &middot; org.nr. ${ORG_NR} MVA` : '';
-  return `  <footer>
+  return `  <section id="consent" class="consent" aria-label="__CONSENT_LABEL__" hidden>
+    <p class="consent__text"><span class="l-en">May I count your visit with Google Analytics? It uses cookies, and nothing is stored unless you allow it.</span><span class="l-no">Kan jeg telle bes&oslash;ket ditt med Google Analytics? Det bruker informasjonskapsler, og ingenting lagres med mindre du tillater det.</span><span class="l-pt">Posso contar sua visita com o Google Analytics? Ele usa cookies, e nada &eacute; armazenado sem a sua permiss&atilde;o.</span> <a href="__LINKBASE__privacy.html"><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></a></p>
+    <div class="consent__buttons">
+      <button type="button" data-consent="yes"><span class="l-en">Allow</span><span class="l-no">Tillat</span><span class="l-pt">Permitir</span></button>
+      <button type="button" data-consent="no"><span class="l-en">Decline</span><span class="l-no">Avsl&aring;</span><span class="l-pt">Recusar</span></button>
+    </div>
+  </section>
+  <footer>
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
-    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; ${ENK}${orgEn} &middot; Larkollen, Norway</span><span class="l-no">Arkitekt MSc / ir. &middot; ${ENK}${orgNo} &middot; Larkollen, Norge</span><span class="l-pt">Arquiteto MSc / ir. &middot; ${ENK}${orgEn} &middot; Larkollen, Noruega</span></div>
+    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; ${ENK}${orgEn} &middot; Oslo region, Norway and S&atilde;o Paulo</span><span class="l-no">Arkitekt MSc / ir. &middot; ${ENK}${orgNo} &middot; Osloregionen og S&atilde;o Paulo</span><span class="l-pt">Arquiteto MSc / ir. &middot; ${ENK}${orgEn} &middot; Regi&atilde;o de Oslo, Noruega, e S&atilde;o Paulo</span></div>
     <div class="footer__links">
       <a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
       <a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
       <a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
       <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="__LINKBASE__privacy.html"><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></a>
+      <button type="button" class="footer__cookies" data-consent="open"><span class="l-en">Cookies</span><span class="l-no">Informasjonskapsler</span><span class="l-pt">Cookies</span></button>
     </div>
   </footer>`;
 }
@@ -1008,6 +1060,44 @@ ${LANG_TOGGLE_SCRIPT}
 `;
 }
 
+// Who and where, in the form Google and AI search read: one person, one
+// practice, every spelling of the name, and the profiles that confirm them.
+const PERSON_JSONLD = `<script type="application/ld+json">
+${JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#person`,
+      name: 'Simon H.J. Bjørkå Flatin',
+      alternateName: ['Simon Flatin', 'Simon Bjørkå Flatin', 'Simon Holger Julian Bjørkå Flatin'],
+      jobTitle: 'Architect',
+      url: `${SITE_URL}/`,
+      image: `${SITE_URL}/content/about/web/portrait.webp`,
+      alumniOf: { '@type': 'CollegeOrUniversity', name: 'Delft University of Technology' },
+      memberOf: { '@type': 'Organization', name: 'Norske arkitekters landsforbund (NAL)', url: 'https://arkitektur.no/' },
+      homeLocation: [
+        { '@type': 'Place', name: 'Oslo region, Norway' },
+        { '@type': 'Place', name: 'São Paulo, Brazil' },
+      ],
+      worksFor: { '@id': `${SITE_URL}/#practice` },
+      sameAs: [LINKEDIN_URL],
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#practice`,
+      name: 'Bjørkå Flatin ENK',
+      legalName: 'BJØRKÅ FLATIN',
+      taxID: ORG_NR.replace(/ /g, ''),
+      vatID: `NO${ORG_NR.replace(/ /g, '')}MVA`,
+      url: `${SITE_URL}/`,
+      founder: { '@id': `${SITE_URL}/#person` },
+      areaServed: ['Norway', 'Brazil'],
+    },
+  ],
+}, null, 2)}
+</script>`;
+
 function generateIndexPage(allProjects, featuredSlugs) {
   // Match featured slugs to project data (in order)
   const featuredProjects = featuredSlugs
@@ -1117,6 +1207,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
   </style>
   ${LANG_SCRIPT}
   ${GA_TAG}
+  ${PERSON_JSONLD}
 </head>
 <body>
 
@@ -1601,6 +1692,64 @@ ${LANG_TOGGLE_SCRIPT}
 `;
 }
 
+// Cloudflare rewrites email addresses into a script-only link unless they sit
+// between these markers, which left "[email protected]" for anyone without JS.
+const EMAIL = '<!--email_off--><a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a><!--/email_off-->';
+
+function generatePrivacyPage() {
+  const p = (en, no, pt) => `    <p><span class="l-en">${en}</span><span class="l-no">${no}</span><span class="l-pt">${pt}</span></p>`;
+  const h = (en, no, pt) => `    <h2><span class="l-en">${en}</span><span class="l-no">${no}</span><span class="l-pt">${pt}</span></h2>`;
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .privacy { max-width:680px; margin:0 auto; padding:6rem 4rem 2rem; }
+    .privacy h1 { font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.8rem); font-weight:400; margin-bottom:2rem; }
+    .privacy h2 { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--muted); margin:2.5rem 0 .8rem; }
+    .privacy p { font-size:.95rem; line-height:1.8; color:var(--accent); }
+    .privacy button { margin-top:1rem; font:inherit; font-size:.78rem; font-weight:700; letter-spacing:.16em;
+      text-transform:uppercase; background:none; border:none; border-bottom:1px solid var(--dark);
+      padding:0 0 2px; color:var(--dark); cursor:pointer; }
+    @media(max-width:600px){ .privacy { padding:4rem 1.5rem 1rem; } }
+  </style>
+  ${GA_TAG}
+</head>
+<body>
+${navHtml()}
+  <div class="privacy">
+    <h1><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></h1>
+${p(`This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. ${ORG_NR}. Questions about your data go to ${EMAIL}.`,
+    `Dette nettstedet tilh&oslash;rer Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.nr. ${ORG_NR}. Sp&oslash;rsm&aring;l om dataene dine sendes til ${EMAIL}.`,
+    `Este site pertence a Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org. nº ${ORG_NR}. Perguntas sobre seus dados podem ser enviadas para ${EMAIL}.`)}
+${h('Analytics', 'Analyse', 'An&aacute;lise')}
+${p('If you allow it, the site uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies and sends information about the visit to Google. Nothing is stored or sent unless you choose Allow, and you can change your choice at any time.',
+    'Hvis du tillater det, bruker nettstedet Google Analytics til &aring; telle bes&oslash;k og se hvilke sider som leses. Google Analytics setter informasjonskapsler og sender opplysninger om bes&oslash;ket til Google. Ingenting lagres eller sendes med mindre du velger Tillat, og du kan endre valget n&aring;r som helst.',
+    'Se voc&ecirc; permitir, o site usa o Google Analytics para contar visitas e ver quais p&aacute;ginas s&atilde;o lidas. O Google Analytics grava cookies e envia informa&ccedil;&otilde;es sobre a visita ao Google. Nada &eacute; armazenado ou enviado se voc&ecirc; n&atilde;o escolher Permitir, e voc&ecirc; pode mudar sua escolha a qualquer momento.')}
+    <button type="button" data-consent="open"><span class="l-en">Change your choice</span><span class="l-no">Endre valget</span><span class="l-pt">Mudar sua escolha</span></button>
+${h('Links in applications', 'Lenker i s&oslash;knader', 'Links em candidaturas')}
+${p('When I send this site with a job application, the link can carry a short code naming the application, for example the office I applied to. If you allow analytics, the code tells me that the link was opened. It is not tied to your name, and I use it for nothing else.',
+    'N&aring;r jeg sender nettstedet med en jobbs&oslash;knad, kan lenken ha en kort kode som viser til s&oslash;knaden, for eksempel kontoret jeg s&oslash;kte hos. Hvis du tillater analyse, forteller koden meg at lenken ble &aring;pnet. Den er ikke knyttet til navnet ditt, og jeg bruker den ikke til noe annet.',
+    'Quando envio este site com uma candidatura de emprego, o link pode levar um c&oacute;digo curto que identifica a candidatura, por exemplo o escrit&oacute;rio ao qual me candidatei. Se voc&ecirc; permitir a an&aacute;lise, o c&oacute;digo me mostra que o link foi aberto. Ele n&atilde;o est&aacute; ligado ao seu nome, e n&atilde;o o uso para mais nada.')}
+${h('Contact form', 'Kontaktskjema', 'Formul&aacute;rio de contato')}
+${p('Messages sent through the contact form are delivered by Netlify, which hosts the site. I keep them only as long as the conversation needs them.',
+    'Meldinger fra kontaktskjemaet leveres av Netlify, som drifter nettstedet. Jeg tar vare p&aring; dem bare s&aring; lenge samtalen trenger det.',
+    'As mensagens enviadas pelo formul&aacute;rio de contato s&atilde;o entregues pela Netlify, que hospeda o site. Eu as guardo apenas pelo tempo que a conversa exigir.')}
+${h('Your rights', 'Dine rettigheter', 'Seus direitos')}
+${p('You can ask to see or delete what I hold about you. You can also complain to Datatilsynet, the Norwegian Data Protection Authority.',
+    'Du kan be om &aring; f&aring; se eller slette det jeg har om deg. Du kan ogs&aring; klage til Datatilsynet.',
+    'Voc&ecirc; pode pedir para ver ou apagar o que tenho sobre voc&ecirc;. Tamb&eacute;m pode reclamar ao Datatilsynet, a autoridade norueguesa de prote&ccedil;&atilde;o de dados.')}
+  </div>
+${footerHtml()}
+</body>
+</html>
+`;
+}
+
 function generateContactPage() {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1673,7 +1822,7 @@ ${navHtml()}
         <span class="l-pt">Dispon&iacute;vel para encomendas de arquitetura, colabora&ccedil;&otilde;es de pesquisa, maquetes e consultoria. Baseado na regi&atilde;o de Oslo, dividindo meu tempo com S&atilde;o Paulo, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil.</span>
       </p>
       <div class="contact-info__detail">
-        <a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a>
+        ${EMAIL}
         <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
@@ -1819,6 +1968,7 @@ function build() {
   emitLangVariants('contact.html', generateContactPage());
   console.log(`  built contact.html`);
   emitLangVariants('contact-success.html', generateContactSuccessPage());
+  emitLangVariants('privacy.html', generatePrivacyPage());
   console.log(`  built contact-success.html`);
 
   // 7. Sitemap and robots, built from every URL emitted above

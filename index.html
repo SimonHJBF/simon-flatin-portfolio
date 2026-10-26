@@ -49,13 +49,106 @@
     /* lang-toggle hero styles handled in style.css */
   </style>
   
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VBPFZJZXY9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-VBPFZJZXY9');
+  <script>
+(function(){
+  var ID='G-VBPFZJZXY9',KEY='sf-analytics',loaded=false;
+  function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+  function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+  function load(){
+    if(loaded)return;loaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date());gtag('config',ID);
+    var s=document.createElement('script');s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+ID;
+    document.head.appendChild(s);
+  }
+  function clearCookies(){
+    var host=location.hostname.replace(/^www\./,'');
+    document.cookie.split(';').forEach(function(c){
+      var n=c.split('=')[0].trim();
+      if(!/^_ga/.test(n))return;
+      ['','; domain=.'+host,'; domain='+location.hostname].forEach(function(d){
+        document.cookie=n+'=; Max-Age=0; path=/'+d;
+      });
+    });
+  }
+  function bar(on){var b=document.getElementById('consent');if(b)b.hidden=!on;}
+  if(get()==='yes')load();
+  document.addEventListener('DOMContentLoaded',function(){
+    if(!get())bar(true);
+    document.addEventListener('click',function(e){
+      var t=e.target.closest('[data-consent]');
+      if(!t)return;
+      var v=t.getAttribute('data-consent');
+      if(v==='open'){bar(true);return;}
+      set(v);bar(false);
+      if(v==='yes')load();
+      else{clearCookies();if(loaded)location.reload();}
+    });
+  });
+})();
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://simonflatin.com/#person",
+      "name": "Simon H.J. Bjørkå Flatin",
+      "alternateName": [
+        "Simon Flatin",
+        "Simon Bjørkå Flatin",
+        "Simon Holger Julian Bjørkå Flatin"
+      ],
+      "jobTitle": "Architect",
+      "url": "https://simonflatin.com/",
+      "image": "https://simonflatin.com/content/about/web/portrait.webp",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Delft University of Technology"
+      },
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Norske arkitekters landsforbund (NAL)",
+        "url": "https://arkitektur.no/"
+      },
+      "homeLocation": [
+        {
+          "@type": "Place",
+          "name": "Oslo region, Norway"
+        },
+        {
+          "@type": "Place",
+          "name": "São Paulo, Brazil"
+        }
+      ],
+      "worksFor": {
+        "@id": "https://simonflatin.com/#practice"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://simonflatin.com/#practice",
+      "name": "Bjørkå Flatin ENK",
+      "legalName": "BJØRKÅ FLATIN",
+      "taxID": "935392780",
+      "vatID": "NO935392780MVA",
+      "url": "https://simonflatin.com/",
+      "founder": {
+        "@id": "https://simonflatin.com/#person"
+      },
+      "areaServed": [
+        "Norway",
+        "Brazil"
+      ]
+    }
+  ]
+}
 </script>
 </head>
 <body>
@@ -164,14 +257,23 @@
     <div class="all-work"><a href="/work.html"><span class="l-en">See all work</span></a></div>
   </section>
 
+  <section id="consent" class="consent" aria-label="Analytics consent" hidden>
+    <p class="consent__text"><span class="l-en">May I count your visit with Google Analytics? It uses cookies, and nothing is stored unless you allow it.</span> <a href="/privacy.html"><span class="l-en">Privacy</span></a></p>
+    <div class="consent__buttons">
+      <button type="button" data-consent="yes"><span class="l-en">Allow</span></button>
+      <button type="button" data-consent="no"><span class="l-en">Decline</span></button>
+    </div>
+  </section>
   <footer>
     <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
-    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; Bj&oslash;rk&aring; Flatin ENK &middot; org.no. 935 392 780 MVA &middot; Larkollen, Norway</span></div>
+    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; Bj&oslash;rk&aring; Flatin ENK &middot; org.no. 935 392 780 MVA &middot; Oslo region, Norway and S&atilde;o Paulo</span></div>
     <div class="footer__links">
       <a href="/about.html"><span class="l-en">About</span></a>
       <a href="/work.html"><span class="l-en">Work</span></a>
       <a href="/contact.html"><span class="l-en">Contact</span></a>
       <a href="https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="/privacy.html"><span class="l-en">Privacy</span></a>
+      <button type="button" class="footer__cookies" data-consent="open"><span class="l-en">Cookies</span></button>
     </div>
   </footer>
 <script>

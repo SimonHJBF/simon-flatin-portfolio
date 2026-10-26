@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="alternate" hreflang="en" href="https://simonflatin.com/privacy" />
+  <link rel="alternate" hreflang="no" href="https://simonflatin.com/no/privacy" />
+  <link rel="alternate" hreflang="pt" href="https://simonflatin.com/pt/privacy" />
+  <link rel="alternate" hreflang="x-default" href="https://simonflatin.com/privacy" />
+  <link rel="canonical" href="https://simonflatin.com/privacy" />
+  <meta name="description" content="How simonflatin.com handles analytics, application links and messages from the contact form." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Simon H.J. Bj&oslash;rk&aring; Flatin" />
+  <meta property="og:url" content="https://simonflatin.com/privacy" />
+  <meta property="og:title" content="Privacy &middot; Simon H.J. Bj&oslash;rk&aring; Flatin" />
+  <meta property="og:description" content="How simonflatin.com handles analytics, application links and messages from the contact form." />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:image" content="https://simonflatin.com/content/main/web/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .privacy { max-width:680px; margin:0 auto; padding:6rem 4rem 2rem; }
+    .privacy h1 { font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.8rem); font-weight:400; margin-bottom:2rem; }
+    .privacy h2 { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+      color:var(--muted); margin:2.5rem 0 .8rem; }
+    .privacy p { font-size:.95rem; line-height:1.8; color:var(--accent); }
+    .privacy button { margin-top:1rem; font:inherit; font-size:.78rem; font-weight:700; letter-spacing:.16em;
+      text-transform:uppercase; background:none; border:none; border-bottom:1px solid var(--dark);
+      padding:0 0 2px; color:var(--dark); cursor:pointer; }
+    @media(max-width:600px){ .privacy { padding:4rem 1.5rem 1rem; } }
+  </style>
+  <script>
+(function(){
+  var ID='G-VBPFZJZXY9',KEY='sf-analytics',loaded=false;
+  function get(){try{return localStorage.getItem(KEY);}catch(e){return null;}}
+  function set(v){try{localStorage.setItem(KEY,v);}catch(e){}}
+  function load(){
+    if(loaded)return;loaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);};
+    gtag('js',new Date());gtag('config',ID);
+    var s=document.createElement('script');s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id='+ID;
+    document.head.appendChild(s);
+  }
+  function clearCookies(){
+    var host=location.hostname.replace(/^www\./,'');
+    document.cookie.split(';').forEach(function(c){
+      var n=c.split('=')[0].trim();
+      if(!/^_ga/.test(n))return;
+      ['','; domain=.'+host,'; domain='+location.hostname].forEach(function(d){
+        document.cookie=n+'=; Max-Age=0; path=/'+d;
+      });
+    });
+  }
+  function bar(on){var b=document.getElementById('consent');if(b)b.hidden=!on;}
+  if(get()==='yes')load();
+  document.addEventListener('DOMContentLoaded',function(){
+    if(!get())bar(true);
+    document.addEventListener('click',function(e){
+      var t=e.target.closest('[data-consent]');
+      if(!t)return;
+      var v=t.getAttribute('data-consent');
+      if(v==='open'){bar(true);return;}
+      set(v);bar(false);
+      if(v==='yes')load();
+      else{clearCookies();if(loaded)location.reload();}
+    });
+  });
+})();
+</script>
+</head>
+<body>
+  <nav class="nav--page">
+    <a href="/" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
+    <div class="nav__link-row">
+      <ul class="nav__links">
+        <li><a href="/"><span class="l-en">Main</span></a></li>
+        <li><a href="/work.html"><span class="l-en">Work</span></a></li>
+        <li><a href="/services.html"><span class="l-en">Services</span></a></li>
+        <li><a href="/about.html"><span class="l-en">About</span></a></li>
+        <li><a href="/contact.html"><span class="l-en">Contact</span></a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Select language">
+        <a class="lang-btn active" href="/privacy" hreflang="en" aria-current="page">EN</a>
+        <span class="lang-sep">&middot;</span>
+        <a class="lang-btn" href="/no/privacy" hreflang="no">NO</a>
+        <span class="lang-sep">&middot;</span>
+        <a class="lang-btn" href="/pt/privacy" hreflang="pt">PT</a>
+      </div>
+    </div>
+  </nav>
+  <div class="privacy">
+    <h1><span class="l-en">Privacy</span></h1>
+    <p><span class="l-en">This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. 935 392 780. Questions about your data go to <!--email_off--><a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a><!--/email_off-->.</span></p>
+    <h2><span class="l-en">Analytics</span></h2>
+    <p><span class="l-en">If you allow it, the site uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies and sends information about the visit to Google. Nothing is stored or sent unless you choose Allow, and you can change your choice at any time.</span></p>
+    <button type="button" data-consent="open"><span class="l-en">Change your choice</span></button>
+    <h2><span class="l-en">Links in applications</span></h2>
+    <p><span class="l-en">When I send this site with a job application, the link can carry a short code naming the application, for example the office I applied to. If you allow analytics, the code tells me that the link was opened. It is not tied to your name, and I use it for nothing else.</span></p>
+    <h2><span class="l-en">Contact form</span></h2>
+    <p><span class="l-en">Messages sent through the contact form are delivered by Netlify, which hosts the site. I keep them only as long as the conversation needs them.</span></p>
+    <h2><span class="l-en">Your rights</span></h2>
+    <p><span class="l-en">You can ask to see or delete what I hold about you. You can also complain to Datatilsynet, the Norwegian Data Protection Authority.</span></p>
+  </div>
+  <section id="consent" class="consent" aria-label="Analytics consent" hidden>
+    <p class="consent__text"><span class="l-en">May I count your visit with Google Analytics? It uses cookies, and nothing is stored unless you allow it.</span> <a href="/privacy.html"><span class="l-en">Privacy</span></a></p>
+    <div class="consent__buttons">
+      <button type="button" data-consent="yes"><span class="l-en">Allow</span></button>
+      <button type="button" data-consent="no"><span class="l-en">Decline</span></button>
+    </div>
+  </section>
+  <footer>
+    <div>&copy; 2026 Simon H.J. Bj&oslash;rk&aring; Flatin</div>
+    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; Bj&oslash;rk&aring; Flatin ENK &middot; org.no. 935 392 780 MVA &middot; Oslo region, Norway and S&atilde;o Paulo</span></div>
+    <div class="footer__links">
+      <a href="/about.html"><span class="l-en">About</span></a>
+      <a href="/work.html"><span class="l-en">Work</span></a>
+      <a href="/contact.html"><span class="l-en">Contact</span></a>
+      <a href="https://www.linkedin.com/in/simon-h-j-bj%C3%B8rk%C3%A5-flatin-97947baa" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="/privacy.html"><span class="l-en">Privacy</span></a>
+      <button type="button" class="footer__cookies" data-consent="open"><span class="l-en">Cookies</span></button>
+    </div>
+  </footer>
+</body>
+</html>

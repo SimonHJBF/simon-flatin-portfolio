@@ -7,7 +7,7 @@ status: In testing
 client: Self-initiated
 live: tinn.app
 grid: wide
-weight: 20
+weight: -5
 
 ---
 
