@@ -33,8 +33,23 @@
     .work-filter-btn:hover { color:var(--dark); }
     .work-filter-btn.active { color:var(--dark); border-bottom-color:var(--dark); }
     .work-grid  { max-width:1400px; margin:0 auto; padding:4rem 4rem 0; }
+    .work-view { margin-left:auto; display:flex; gap:1rem; }
+    .work-list { display:none; max-width:1400px; margin:0 auto; padding:2rem 4rem 0; }
+    body.view-list .work-grid { display:none; }
+    body.view-list .work-list { display:block; }
+    .work-row { display:grid; grid-template-columns:7rem 1.4fr 1fr 1fr; gap:1.5rem; align-items:baseline;
+      padding:1rem 0; border-bottom:1px solid rgba(28,28,26,.1); text-decoration:none; color:var(--accent); }
+    .work-row__year { font-size:.75rem; color:var(--muted); }
+    .work-row__title { font-family:var(--serif); font-size:1.15rem; color:var(--dark); }
+    .work-row__cat, .work-row__place { font-size:.8rem; color:var(--muted); }
+    .work-row:hover .work-row__title { color:var(--muted); }
+    @media(max-width:700px) {
+      .work-row { grid-template-columns:4.5rem 1fr; gap:.2rem 1rem; }
+      .work-row__cat { grid-column:2; }
+      .work-row__place { display:none; }
+    }
     @media(max-width:900px) {
-      .work-intro, .work-filters, .work-grid { padding-left:1.5rem; padding-right:1.5rem; }
+      .work-intro, .work-filters, .work-grid, .work-list { padding-left:1.5rem; padding-right:1.5rem; }
     }
     
   </style>
@@ -86,7 +101,6 @@
     <a href="/" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
-        <li><a href="/"><span class="l-en">Main</span></a></li>
         <li><a href="/work.html"><span class="l-en">Work</span></a></li>
         <li><a href="/services.html"><span class="l-en">Services</span></a></li>
         <li><a href="/about.html"><span class="l-en">About</span></a></li>
@@ -115,6 +129,10 @@
       <button class="work-filter-btn" data-filter="Photography"><span class="l-en">Photography</span></button>
       <button class="work-filter-btn" data-filter="Research"><span class="l-en">Research</span></button>
       <button class="work-filter-btn" data-filter="Software"><span class="l-en">Software</span></button>
+      <div class="work-view" role="group" aria-label="View">
+        <button class="work-filter-btn active" data-view="grid" aria-pressed="true"><span class="l-en">Images</span></button>
+        <button class="work-filter-btn" data-view="list" aria-pressed="false"><span class="l-en">List</span></button>
+      </div>
   </div>
 
   <div class="work-grid">
@@ -126,6 +144,24 @@
           <div class="card__category"><span class="l-en">Architecture Design Competition</span></div>
           <div class="card__name">SESC Mogi Das Cruzes</div>
           <div class="card__year">2025</div>
+          <div class="card__arrow"><span class="l-en">View project</span> &rarr;</div>
+        </div>
+      </a>
+      <a class="card card--third" href="/projects/omsorgsgruppen-valer/" data-categories="Architecture">
+        <div class="card__img-wrap"><img src="/projects/2025_omsorgsgruppen-valer/web/cover.webp" srcset="/projects/2025_omsorgsgruppen-valer/web/cover-800.webp 800w, /projects/2025_omsorgsgruppen-valer/web/cover-1200.webp 1200w, /projects/2025_omsorgsgruppen-valer/web/cover.webp 2000w" sizes="(max-width: 900px) 100vw, 35vw" alt="Omsorgsgruppen Våler" loading="lazy" /></div>
+        <div class="card__info">
+          <div class="card__category"><span class="l-en">Application · Healthcare</span></div>
+          <div class="card__name">Omsorgsgruppen Våler</div>
+          <div class="card__year">2025 · Bjørkå Flatin ENK</div>
+          <div class="card__arrow"><span class="l-en">View project</span> &rarr;</div>
+        </div>
+      </a>
+      <a class="card card--large" href="/projects/bjornasen-house-addition/" data-categories="Architecture,Built">
+        <div class="card__img-wrap"><img src="/projects/2022_bjornasen-house-addition/web/cover.webp" srcset="/projects/2022_bjornasen-house-addition/web/cover-800.webp 800w, /projects/2022_bjornasen-house-addition/web/cover-1200.webp 1200w, /projects/2022_bjornasen-house-addition/web/cover.webp 2000w" sizes="(max-width: 900px) 100vw, 60vw" alt="Bjørnåsen house addition" loading="lazy" /></div>
+        <div class="card__info">
+          <div class="card__category"><span class="l-en">Architecture</span></div>
+          <div class="card__name"><span class="l-en">Bjørnåsen house addition</span></div>
+          <div class="card__year">2020 - 2024</div>
           <div class="card__arrow"><span class="l-en">View project</span> &rarr;</div>
         </div>
       </a>
@@ -228,15 +264,6 @@
           <div class="card__arrow"><span class="l-en">View project</span> &rarr;</div>
         </div>
       </a>
-      <a class="card card--large" href="/projects/bjornasen-house-addition/" data-categories="Architecture,Built">
-        <div class="card__img-wrap"><img src="/projects/2022_bjornasen-house-addition/web/cover.webp" srcset="/projects/2022_bjornasen-house-addition/web/cover-800.webp 800w, /projects/2022_bjornasen-house-addition/web/cover-1200.webp 1200w, /projects/2022_bjornasen-house-addition/web/cover.webp 2000w" sizes="(max-width: 900px) 100vw, 60vw" alt="Bjørnåsen house addition" loading="lazy" /></div>
-        <div class="card__info">
-          <div class="card__category"><span class="l-en">Architecture</span></div>
-          <div class="card__name"><span class="l-en">Bjørnåsen house addition</span></div>
-          <div class="card__year">2020 - 2024</div>
-          <div class="card__arrow"><span class="l-en">View project</span> &rarr;</div>
-        </div>
-      </a>
       <a class="card card--wide" href="/projects/billow-maas/" data-categories="Architecture">
         <div class="card__img-wrap"><img src="/projects/2020_billow-maas/web/cover.webp" srcset="/projects/2020_billow-maas/web/cover-800.webp 800w, /projects/2020_billow-maas/web/cover-1200.webp 1200w, /projects/2020_billow-maas/web/cover.webp 2000w" sizes="(max-width: 900px) 100vw, 50vw" alt="Billow by the Maas" loading="lazy" /></div>
         <div class="card__info">
@@ -282,16 +309,29 @@
           <div class="card__arrow"><span class="l-en">View project</span> &rarr;</div>
         </div>
       </a>
-      <a class="card card--third" href="/projects/omsorgsgruppen-valer/" data-categories="Architecture">
-        <div class="card__img-wrap"><img src="/projects/2025_omsorgsgruppen-valer/web/cover.webp" srcset="/projects/2025_omsorgsgruppen-valer/web/cover-800.webp 800w, /projects/2025_omsorgsgruppen-valer/web/cover-1200.webp 1200w, /projects/2025_omsorgsgruppen-valer/web/cover.webp 2000w" sizes="(max-width: 900px) 100vw, 35vw" alt="Omsorgsgruppen Våler" loading="lazy" /></div>
-        <div class="card__info">
-          <div class="card__category"><span class="l-en">Application · Healthcare</span></div>
-          <div class="card__name">Omsorgsgruppen Våler</div>
-          <div class="card__year">2025 · Bjørkå Flatin ENK</div>
-          <div class="card__arrow"><span class="l-en">View project</span> &rarr;</div>
-        </div>
-      </a>
     </div>
+  </div>
+
+  <div class="work-list">
+        <a class="work-row" href="/projects/sesc-mogi-das-cruzes/" data-categories="Architecture"><span class="work-row__year">2025</span><span class="work-row__title">SESC Mogi Das Cruzes</span><span class="work-row__cat"><span class="l-en">Architecture Design Competition</span></span><span class="work-row__place"><span class="l-en">Mogi Das Cruzes, Brazil</span></span></a>
+        <a class="work-row" href="/projects/omsorgsgruppen-valer/" data-categories="Architecture"><span class="work-row__year">2025</span><span class="work-row__title">Omsorgsgruppen Våler</span><span class="work-row__cat"><span class="l-en">Application · Healthcare</span></span><span class="work-row__place"><span class="l-en">Våler i Østfold, Norway</span></span></a>
+        <a class="work-row" href="/projects/bjornasen-house-addition/" data-categories="Architecture,Built"><span class="work-row__year">2020 - 2024</span><span class="work-row__title"><span class="l-en">Bjørnåsen house addition</span></span><span class="work-row__cat"><span class="l-en">Architecture</span></span><span class="work-row__place"><span class="l-en">Larkollen, Norway</span></span></a>
+        <a class="work-row" href="/projects/von-sauna/" data-categories="Architecture"><span class="work-row__year">2025</span><span class="work-row__title"><span class="l-en">Von Sauna - Floating Saunas</span></span><span class="work-row__cat"><span class="l-en">Architectural renders</span></span><span class="work-row__place"><span class="l-en">Seattle, USA</span></span></a>
+        <a class="work-row" href="/projects/lalibela-modelmaking/" data-categories="Models"><span class="work-row__year">2024</span><span class="work-row__title"><span class="l-en">Lalibela modelmaking</span></span><span class="work-row__cat"><span class="l-en">Model making</span></span><span class="work-row__place"><span class="l-en">Delft, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/chicken-coop/" data-categories="Architecture,Built"><span class="work-row__year">2024</span><span class="work-row__title"><span class="l-en">Chicken coop</span></span><span class="work-row__cat"><span class="l-en">Architecture · Making</span></span><span class="work-row__place"><span class="l-en">Larkollen, Norway</span></span></a>
+        <a class="work-row" href="/projects/arctic-symphony/" data-categories="Architecture,Research"><span class="work-row__year">2023</span><span class="work-row__title">Arctic Symphony</span><span class="work-row__cat"><span class="l-en">Architecture</span></span><span class="work-row__place"><span class="l-en">Alta, Norway</span></span></a>
+        <a class="work-row" href="/projects/meqdela-gebbi/" data-categories="Models"><span class="work-row__year">2023</span><span class="work-row__title"><span class="l-en">Meqdela Gebbi modelmaking</span></span><span class="work-row__cat"><span class="l-en">Model making</span></span><span class="work-row__place"><span class="l-en">Delft, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/borders-transitions/" data-categories="Photography"><span class="work-row__year">2023</span><span class="work-row__title"><span class="l-en">Borders and Transitions</span></span><span class="work-row__cat"><span class="l-en">Photography</span></span><span class="work-row__place"><span class="l-en">Alta, Norway</span></span></a>
+        <a class="work-row" href="/projects/symphony-time-architecture/" data-categories="Research"><span class="work-row__year">2023</span><span class="work-row__title">Symphony of Time and Architecture</span><span class="work-row__cat"><span class="l-en">Research</span></span><span class="work-row__place"><span class="l-en">Alta, Norway</span></span></a>
+        <a class="work-row" href="/projects/erosion/" data-categories="Photography"><span class="work-row__year">2023</span><span class="work-row__title"><span class="l-en">Erosion</span></span><span class="work-row__cat"><span class="l-en">Photography</span></span><span class="work-row__place"><span class="l-en">Norway</span></span></a>
+        <a class="work-row" href="/projects/assembling-arctic-symphony/" data-categories="Architecture,Models"><span class="work-row__year">2023</span><span class="work-row__title">Assembling the Arctic Symphony</span><span class="work-row__cat"><span class="l-en">Architecture · Model making</span></span><span class="work-row__place"><span class="l-en">Alta, Norway / Delft, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/oud-alblas/" data-categories="Architecture"><span class="work-row__year">2021</span><span class="work-row__title">Oud Alblas</span><span class="work-row__cat"><span class="l-en">Internship · Architecture</span></span><span class="work-row__place"><span class="l-en">Peperstraat, Oud-Alblas, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/stilt-house/" data-categories="Architecture"><span class="work-row__year">2021</span><span class="work-row__title"><span class="l-en">Stilt House</span></span><span class="work-row__cat"><span class="l-en">Architecture</span></span><span class="work-row__place"><span class="l-en">Julianalaan 134, 2628 BL Delft, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/billow-maas/" data-categories="Architecture"><span class="work-row__year">2020</span><span class="work-row__title">Billow by the Maas</span><span class="work-row__cat"><span class="l-en">Architecture</span></span><span class="work-row__place"><span class="l-en">Schiehaven 13, 3024 CE Rotterdam, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/staircase-home/" data-categories="Architecture"><span class="work-row__year">2018</span><span class="work-row__title"><span class="l-en">The staircase home</span></span><span class="work-row__cat"><span class="l-en">Architecture</span></span><span class="work-row__place"><span class="l-en">Leidschendam-Voorburg, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/form-studies/" data-categories="Models"><span class="work-row__year">2017 - 2018</span><span class="work-row__title"><span class="l-en">Form studies</span></span><span class="work-row__cat"><span class="l-en">Form studies</span></span><span class="work-row__place"><span class="l-en">Architecture faculty, TU Delft, The Netherlands</span></span></a>
+        <a class="work-row" href="/projects/tinn/" data-categories="Software"><span class="work-row__year">2026 (ongoing)</span><span class="work-row__title">Tinn</span><span class="work-row__cat"><span class="l-en">Software · Specification tool</span></span><span class="work-row__place"></span></a>
+        <a class="work-row" href="/projects/florestaprod/" data-categories="Software"><span class="work-row__year">2026</span><span class="work-row__title">Floresta</span><span class="work-row__cat"><span class="l-en">Web design</span></span><span class="work-row__place"><span class="l-en">São Paulo, Brazil</span></span></a>
   </div>
 
   <section id="consent" class="consent" aria-label="Analytics consent" hidden>
@@ -315,8 +355,16 @@
   </footer>
   <script>
     (function(){
-      var btns  = document.querySelectorAll('.work-filter-btn');
-      var cards = document.querySelectorAll('#work-projects .card');
+      var btns  = document.querySelectorAll('.work-filter-btn[data-filter]');
+      var cards = document.querySelectorAll('#work-projects .card, .work-row');
+      var views = document.querySelectorAll('.work-filter-btn[data-view]');
+      views.forEach(function(v){
+        v.addEventListener('click', function(){
+          views.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+          v.classList.add('active'); v.setAttribute('aria-pressed','true');
+          document.body.classList.toggle('view-list', v.dataset.view === 'list');
+        });
+      });
       btns.forEach(function(btn){
         btn.addEventListener('click', function(){
           btns.forEach(function(b){ b.classList.remove('active'); });

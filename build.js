@@ -264,6 +264,8 @@ function tTitle(title, lang) {
 // Text that lands inside an attribute cannot carry l-xx spans, so it is written
 // as a token and swapped in per language when the page is emitted.
 const ATTR_TEXT = {
+  '__VIEW_LABEL__':    { en:'View',                                 no:'Visning',                                    pt:'Visualização' },
+  '__PAGER_LABEL__':   { en:'More projects',                        no:'Flere prosjekter',                           pt:'Mais projetos' },
   '__CONSENT_LABEL__': { en:'Analytics consent',                    no:'Samtykke til analyse',                       pt:'Consentimento para análise' },
   '__PH_NAME__':    { en:'Your name',                              no:'Navnet ditt',                                pt:'Seu nome' },
   '__PH_EMAIL__':   { en:'your@email.com',                         no:'din@epost.no',                               pt:'seu@email.com' },
@@ -793,7 +795,6 @@ function navHtml(prefix, mode) {
     <a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
-        <li><a href="__LINKBASE__"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
         <li><a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
         <li><a href="__LINKBASE__services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
         <li><a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
@@ -879,7 +880,7 @@ function cardHtml(data, index, prefix) {
 //  Page generators
 // ─────────────────────────────────────────────
 
-function generateProjectPage(data, folderName, images) {
+function generateProjectPage(data, folderName, images, prev, next) {
   const slug   = data.slug;
   const title  = data.title || slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
   const cover  = images.find(f => /^cover\./i.test(f)) || images[0] || null;
@@ -980,9 +981,23 @@ function generateProjectPage(data, folderName, images) {
     .project-video iframe,
     .project-video video { width:100%; aspect-ratio:16/9; border:none; display:block;
       background:#000; object-fit:cover; }
+    .project-role { font-size:.95rem; line-height:1.7; color:var(--dark); margin:-1rem 0 2rem; max-width:620px; }
+    .project-role__label { display:block; font-size:.68rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--muted); margin-bottom:.3rem; }
+    .project-pager { max-width:1200px; margin:5rem auto 0; padding:2rem 4rem 0;
+      border-top:1px solid rgba(28,28,26,.1); display:flex; justify-content:space-between; gap:2rem; }
+    .project-pager a { text-decoration:none; color:var(--dark); display:flex; flex-direction:column; gap:.4rem; max-width:45%; }
+    .project-pager__next { text-align:right; margin-left:auto; }
+    .project-pager__dir { font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+    .project-pager__name { font-family:var(--serif); font-size:clamp(1.05rem,1.6vw,1.3rem); line-height:1.3; }
+    .project-pager a:hover .project-pager__name { color:var(--muted); }
     @media(max-width:800px) {
       .project-body { grid-template-columns:1fr; gap:3rem; padding:3rem 1.5rem 0; }
+      /* On a phone the text comes first; the facts follow it instead of
+         pushing the description below the first screen. */
+      .project-body > div:first-child { order:2; }
       .project-gallery { padding:0 1.5rem; }
+      .project-pager { padding:2rem 1.5rem 0; }
     }
     ${LANG_CSS}
   </style>
@@ -1014,7 +1029,7 @@ ${heroHtml}
     </div>
     <div class="project-content">
       <h1 class="project-title">${langSpans(title, tTitle)}</h1>
-      <div class="l-en">${data.paragraphs.map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
+${data.role ? `      <p class="project-role"><span class="project-role__label"><span class="l-en">My role</span><span class="l-no">Min rolle</span><span class="l-pt">Meu papel</span></span>${fieldSpans(data, 'role')}</p>\n` : ''}      <div class="l-en">${data.paragraphs.map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-no">${(data.paragraphs_no && data.paragraphs_no.length ? data.paragraphs_no : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-pt">${(data.paragraphs_pt && data.paragraphs_pt.length ? data.paragraphs_pt : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <a href="__LINKBASE__work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
@@ -1022,6 +1037,11 @@ ${heroHtml}
   </div>
 ${galleryHtml}
 ${videoHtml}
+${prev && next && prev !== data ? `
+  <nav class="project-pager" aria-label="__PAGER_LABEL__">
+    <a href="__LINKBASE__projects/${esc(prev.slug)}/" class="project-pager__prev"><span class="project-pager__dir"><span class="l-en">&larr; Previous</span><span class="l-no">&larr; Forrige</span><span class="l-pt">&larr; Anterior</span></span><span class="project-pager__name">${langSpans(prev.title, tTitle)}</span></a>
+    <a href="__LINKBASE__projects/${esc(next.slug)}/" class="project-pager__next"><span class="project-pager__dir"><span class="l-en">Next &rarr;</span><span class="l-no">Neste &rarr;</span><span class="l-pt">Pr&oacute;ximo &rarr;</span></span><span class="project-pager__name">${langSpans(next.title, tTitle)}</span></a>
+  </nav>` : ''}
 
 ${footerHtml('../../')}
 ${LANG_TOGGLE_SCRIPT}
@@ -1032,6 +1052,17 @@ ${LANG_TOGGLE_SCRIPT}
 
 function generateWorkPage(projects) {
   const cards = projects.map((d, i) => cardHtml(d, i, '')).join('');
+  // The same projects as a plain list, for a reader who wants the whole body
+  // of work at a glance rather than one image at a time.
+  const rows = projects.map(d => {
+    const cats = (d.tags || d.category || '').split('·').map(x => x.trim()).filter(Boolean).join(',');
+    return `
+        <a class="work-row" href="__LINKBASE__projects/${esc(d.slug)}/" data-categories="${esc(cats)}">` +
+      `<span class="work-row__year">${esc(d.year || '')}</span>` +
+      `<span class="work-row__title">${langSpans(d.title || d.slug, tTitle)}</span>` +
+      `<span class="work-row__cat">${langSpans(d.category || '', tVal)}</span>` +
+      `<span class="work-row__place">${langSpans(d.location || '', tVal)}</span></a>`;
+  }).join('');
 
   // Collect unique individual category tags (sorted alphabetically)
   const tagSet = new Set();
@@ -1064,8 +1095,23 @@ function generateWorkPage(projects) {
     .work-filter-btn:hover { color:var(--dark); }
     .work-filter-btn.active { color:var(--dark); border-bottom-color:var(--dark); }
     .work-grid  { max-width:1400px; margin:0 auto; padding:4rem 4rem 0; }
+    .work-view { margin-left:auto; display:flex; gap:1rem; }
+    .work-list { display:none; max-width:1400px; margin:0 auto; padding:2rem 4rem 0; }
+    body.view-list .work-grid { display:none; }
+    body.view-list .work-list { display:block; }
+    .work-row { display:grid; grid-template-columns:7rem 1.4fr 1fr 1fr; gap:1.5rem; align-items:baseline;
+      padding:1rem 0; border-bottom:1px solid rgba(28,28,26,.1); text-decoration:none; color:var(--accent); }
+    .work-row__year { font-size:.75rem; color:var(--muted); }
+    .work-row__title { font-family:var(--serif); font-size:1.15rem; color:var(--dark); }
+    .work-row__cat, .work-row__place { font-size:.8rem; color:var(--muted); }
+    .work-row:hover .work-row__title { color:var(--muted); }
+    @media(max-width:700px) {
+      .work-row { grid-template-columns:4.5rem 1fr; gap:.2rem 1rem; }
+      .work-row__cat { grid-column:2; }
+      .work-row__place { display:none; }
+    }
     @media(max-width:900px) {
-      .work-intro, .work-filters, .work-grid { padding-left:1.5rem; padding-right:1.5rem; }
+      .work-intro, .work-filters, .work-grid, .work-list { padding-left:1.5rem; padding-right:1.5rem; }
     }
     ${LANG_CSS}
   </style>
@@ -1083,6 +1129,10 @@ ${navHtml()}
 
   <div class="work-filters">
       ${filterBtns}
+      <div class="work-view" role="group" aria-label="__VIEW_LABEL__">
+        <button class="work-filter-btn active" data-view="grid" aria-pressed="true"><span class="l-en">Images</span><span class="l-no">Bilder</span><span class="l-pt">Imagens</span></button>
+        <button class="work-filter-btn" data-view="list" aria-pressed="false"><span class="l-en">List</span><span class="l-no">Liste</span><span class="l-pt">Lista</span></button>
+      </div>
   </div>
 
   <div class="work-grid">
@@ -1091,11 +1141,22 @@ ${cards}
     </div>
   </div>
 
+  <div class="work-list">${rows}
+  </div>
+
 ${footerHtml()}
   <script>
     (function(){
-      var btns  = document.querySelectorAll('.work-filter-btn');
-      var cards = document.querySelectorAll('#work-projects .card');
+      var btns  = document.querySelectorAll('.work-filter-btn[data-filter]');
+      var cards = document.querySelectorAll('#work-projects .card, .work-row');
+      var views = document.querySelectorAll('.work-filter-btn[data-view]');
+      views.forEach(function(v){
+        v.addEventListener('click', function(){
+          views.forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+          v.classList.add('active'); v.setAttribute('aria-pressed','true');
+          document.body.classList.toggle('view-list', v.dataset.view === 'list');
+        });
+      });
       btns.forEach(function(btn){
         btn.addEventListener('click', function(){
           btns.forEach(function(b){ b.classList.remove('active'); });
@@ -1286,7 +1347,6 @@ function generateIndexPage(allProjects, featuredSlugs) {
       <h1 class="nav__h1"><a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a></h1>
       <div class="nav__link-row">
         <ul class="nav__links">
-          <li><a href="__LINKBASE__"><span class="l-en">Main</span><span class="l-no">Forside</span><span class="l-pt">In&iacute;cio</span></a></li>
           <li><a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
           <li><a href="__LINKBASE__services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
           <li><a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
@@ -1330,7 +1390,7 @@ ${footerHtml()}
   var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}';
   var fs=
     'precision mediump float;'+
-    'uniform float u_t,u_s;'+
+    'uniform float u_t,u_s,u_l;'+
     'uniform vec2 u_r;'+
     'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}'+
     'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);'+
@@ -1378,6 +1438,12 @@ ${footerHtml()}
     'float base=(hmL+hmR)*0.5*(0.25+s*0.75)*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.10;'+
     'float d=clamp(dL+dR+base,0.,1.)*smoothstep(0.03,0.10,uv.y);'+
     // Portrait screens: boost density so fog feels solid on tall vertical canvases
+    // The lift: on arrival a veil covers the landscape below the name. Its
+    // lower edge climbs from the water as u_l falls from 1 to 0, so the mist
+    // rises off the lake and the photograph comes through from below.
+    'float e=(1.-u_l)*1.35-0.15;'+
+    'float cover=smoothstep(e-0.30,e,uv.y+(cL+cR-1.)*0.16)*(1.-smoothstep(0.58,0.90,uv.y+(cL-0.5)*0.10));'+
+    'd=max(d,cover*(0.45+0.40*max(cL,cR))*min(u_l*2.5,1.));'+
     'd=clamp(d*(1.0+max(0.,(1.-aspect)*0.5)),0.,1.);'+
     'd=smoothstep(0.02,0.96,d)*0.86;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
@@ -1397,26 +1463,40 @@ ${footerHtml()}
   var uT=gl.getUniformLocation(p,'u_t');
   var uS=gl.getUniformLocation(p,'u_s');
   var uR=gl.getUniformLocation(p,'u_r');
+  var uL=gl.getUniformLocation(p,'u_l');
   var sT=0,sC=0;
+  // A visitor arriving from outside sees the mist lift; one coming back from
+  // another page here finds it already lifted. Read from the referrer, so
+  // nothing is stored on the device.
+  var lift=document.referrer.indexOf(location.origin+'/')===0?0:1;
+  var LIFT=4.5,SETTLE=LIFT+5;
+  // After SETTLE seconds the drift stops and the fog holds still, so nothing
+  // moves on its own for more than a few seconds (WCAG 2.2.2). Scrolling wakes
+  // it again until it has caught up.
+  var tAcc=0,last=null,running=false;
   function resize(){var w=c.offsetWidth||window.innerWidth,h=c.offsetHeight||window.innerHeight;if(c.width!==w||c.height!==h){c.width=w;c.height=h;gl.viewport(0,0,w,h);}}
-  function onScroll(){sT=Math.min((window.scrollY||window.pageYOffset)/(c.parentElement.offsetHeight||window.innerHeight),1);}
+  function onScroll(){sT=Math.min((window.scrollY||window.pageYOffset)/(c.parentElement.offsetHeight||window.innerHeight),1);kick();}
+  function kick(){if(!running){running=true;last=null;requestAnimationFrame(frame);}}
   window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',resize);
+  window.addEventListener('resize',function(){resize();kick();});
   resize();
-  var t0=null;
   function frame(ts){
-    if(!t0)t0=ts;
+    if(last===null)last=ts;
+    tAcc+=Math.min((ts-last)/1000,0.1);last=ts;
     sC+=(sT-sC)*0.06;
+    var k=Math.min(tAcc/LIFT,1),L=lift*(1-k*k*(3-2*k));
     resize();
     gl.clearColor(0,0,0,0);
     gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniform1f(uT,(ts-t0)/1000);
+    gl.uniform1f(uT,tAcc);
     gl.uniform1f(uS,sC);
+    gl.uniform1f(uL,L);
     gl.uniform2f(uR,c.width,c.height);
     gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
-    requestAnimationFrame(frame);
+    if(tAcc<SETTLE||Math.abs(sT-sC)>0.002)requestAnimationFrame(frame);
+    else running=false;
   }
-  requestAnimationFrame(frame);
+  kick();
 })();
 </script>
 <script>
@@ -1429,19 +1509,21 @@ ${footerHtml()}
     if(img.complete)use();else img.addEventListener('load',use);
   })();
   /* Water ripple - sinusoidal feOffset oscillation, zero seam, works on iOS.
-   * dy and dx oscillate at different periods so the combined motion never
-   * exactly repeats, giving endlessly varied, natural-looking ripple. */
+   * dy and dx oscillate at different periods so the motion never exactly
+   * repeats. After about nine seconds it calms over three more and the lake
+   * lies still, with the fog. */
   (function(){
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
     var fo=document.getElementById('wo');
     if(!fo)return;
-    var t=0,lastTs=null;
+    var t=0,lastTs=null,CALM=9.2,STILL=12.2;
     function step(ts){
       if(lastTs===null)lastTs=ts;
       var dt=Math.min((ts-lastTs)/1000,0.1); lastTs=ts; t+=dt;
-      fo.setAttribute('dy',String(-35*Math.sin(t*0.25)));
-      fo.setAttribute('dx',String(12*Math.sin(t*0.4+1.0)));
-      requestAnimationFrame(step);
+      var a=t<CALM?1:Math.max(0,1-(t-CALM)/(STILL-CALM));a=a*a*(3-2*a);
+      fo.setAttribute('dy',String(-35*a*Math.sin(t*0.25)));
+      fo.setAttribute('dx',String(12*a*Math.sin(t*0.4+1.0)));
+      if(t<STILL)requestAnimationFrame(step);
     }
     if(document.readyState==='loading'){
       document.addEventListener('DOMContentLoaded',function(){requestAnimationFrame(step);});
@@ -1581,13 +1663,14 @@ function generateServicesPage(services) {
 
   const serviceItems = services.map((s, i) => {
     const num = String(i + 1).padStart(2, '0');
+    // Open, not an accordion: a client should be able to read the whole list
+    // without clicking seven times.
     return `
       <div class="service-item">
-        <button class="service-toggle" aria-expanded="false">
+        <h3 class="service-head">
           <span class="service-num">${num}</span>
           <span class="service-name">${fieldSpans(s, 'name')}</span>
-          <span class="service-icon">+</span>
-        </button>
+        </h3>
         <div class="service-body"><p>${fieldSpans(s, 'desc')}</p></div>
       </div>`;
   }).join('');
@@ -1616,21 +1699,19 @@ function generateServicesPage(services) {
       text-transform:uppercase; color:var(--muted); margin-bottom:2.5rem; }
     .service-item { border-top:1px solid rgba(28,28,26,.12); }
     .service-item:last-child { border-bottom:1px solid rgba(28,28,26,.12); }
-    .service-toggle { width:100%; background:none; border:none; cursor:pointer;
-      padding:1.6rem 0; display:flex; justify-content:space-between;
-      align-items:center; gap:1rem; text-align:left; }
+    .service-head { padding:1.6rem 0 .6rem; display:flex; align-items:baseline; gap:1rem; margin:0; }
     .service-num { font-size:.72rem; font-weight:700; letter-spacing:.12em;
       color:var(--muted); min-width:2rem; }
-    .service-name { font-family:var(--serif); font-size:clamp(1rem,1.6vw,1.25rem);
-      font-weight:400; color:var(--accent); flex:1; transition:color .2s; }
-    .service-icon { font-size:1.2rem; color:var(--muted);
-      transition:transform .3s,color .2s; flex-shrink:0; }
-    .service-item.open .service-icon { transform:rotate(45deg); color:var(--dark); }
-    .service-item.open .service-name { color:var(--dark); }
-    .service-body { max-height:0; overflow:hidden;
-      transition:max-height .4s ease,padding .3s ease; padding:0 0 0 2rem; }
-    .service-item.open .service-body { max-height:400px; padding:0 0 1.8rem 2rem; }
-    .service-body p { font-size:.9rem; line-height:1.75; color:var(--muted); max-width:580px; }
+    .service-name { font-family:var(--serif); font-size:clamp(1.05rem,1.6vw,1.3rem);
+      font-weight:400; color:var(--dark); flex:1; }
+    .service-body { padding:0 0 1.6rem 3rem; }
+    .service-body p { font-size:.92rem; line-height:1.75; color:var(--accent); max-width:600px; }
+    .services-steps { margin-top:5rem; }
+    .services-steps ol { list-style:none; counter-reset:step; display:grid; gap:1.4rem; padding:0; }
+    .services-steps li { counter-increment:step; display:flex; gap:1rem;
+      font-size:.92rem; line-height:1.75; color:var(--accent); max-width:640px; }
+    .services-steps li::before { content:counter(step, decimal-leading-zero); font-size:.72rem;
+      font-weight:700; letter-spacing:.12em; color:var(--muted); min-width:2rem; padding-top:.2rem; }
     .contact-cta { max-width:900px; margin:5rem auto 0; padding:4rem 4rem 0;
       border-top:1px solid rgba(28,28,26,.12);
       display:flex; justify-content:space-between; align-items:center;
@@ -1645,7 +1726,7 @@ function generateServicesPage(services) {
     .contact-cta__link:hover { color:var(--muted); border-color:var(--muted); }
     @media(max-width:900px) {
       .services-body, .contact-cta { padding-left:1.5rem; padding-right:1.5rem; }
-      .service-body, .service-item.open .service-body { padding-left:1rem; }
+      .service-body { padding-left:3rem; }
     }
     ${LANG_CSS}
   </style>
@@ -1660,9 +1741,9 @@ function generateServicesPage(services) {
     ${navHtml('', 'hero')}
     <div class="services-hero__text">
       <h1>
-        <span class="l-en">Architecture, visualisation,<br>models and software</span>
-        <span class="l-no">Arkitektur, visualisering,<br>modeller og programvare</span>
-        <span class="l-pt">Arquitetura, visualiza&ccedil;&atilde;o,<br>maquetes e software</span>
+        <span class="l-en">Architecture, drawings<br>and models</span>
+        <span class="l-no">Arkitektur, tegninger<br>og modeller</span>
+        <span class="l-pt">Arquitetura, desenhos<br>e maquetes</span>
       </h1>
     </div>
     <div class="hero__scroll-cue">
@@ -1681,31 +1762,26 @@ function generateServicesPage(services) {
     <div class="services-list">
 ${serviceItems}
     </div>
+
+    <div class="services-steps">
+      <h2 class="services-label"><span class="l-en">How a commission starts</span><span class="l-no">Slik starter et oppdrag</span><span class="l-pt">Como come&ccedil;a uma encomenda</span></h2>
+      <ol>
+        <li><span class="l-en">Write to me with the address or property number, what you want to build or change, and roughly when.</span><span class="l-no">Skriv til meg med adresse eller g&aring;rds- og bruksnummer, hva du vil bygge eller endre, og omtrent n&aring;r.</span><span class="l-pt">Escreva-me com o endere&ccedil;o ou o n&uacute;mero do im&oacute;vel, o que voc&ecirc; quer construir ou mudar e mais ou menos quando.</span></li>
+        <li><span class="l-en">I reply within two business days, and we talk it through on site or by video.</span><span class="l-no">Jeg svarer innen to virkedager, og vi g&aring;r gjennom det p&aring; stedet eller p&aring; video.</span><span class="l-pt">Respondo em at&eacute; dois dias &uacute;teis, e conversamos sobre o projeto no local ou por v&iacute;deo.</span></li>
+        <li><span class="l-en">You get a written offer for the first stage, with a fixed price or an hourly rate, plus VAT. Nothing starts before you have agreed to it.</span><span class="l-no">Du f&aring;r et skriftlig tilbud p&aring; f&oslash;rste fase, med fastpris eller timepris, pluss mva. Ingenting starter f&oslash;r du har sagt ja.</span><span class="l-pt">Voc&ecirc; recebe uma proposta por escrito para a primeira etapa, com pre&ccedil;o fechado ou valor por hora, mais impostos. Nada come&ccedil;a antes de voc&ecirc; concordar.</span></li>
+      </ol>
+    </div>
   </div>
 
   <div class="contact-cta">
     <div class="contact-cta__text">
-      <h2><span class="l-en">Let&rsquo;s work together</span><span class="l-no">La oss samarbeide</span><span class="l-pt">Vamos trabalhar juntos</span></h2>
-      <p><span class="l-en">Available for commissions, collaborations and consultations.</span><span class="l-no">Tilgjengelig for oppdrag, samarbeid og konsultasjoner.</span><span class="l-pt">Dispon&iacute;vel para comiss&otilde;es, colabora&ccedil;&otilde;es e consultas.</span></p>
+      <h2><span class="l-en">Tell me about your project</span><span class="l-no">Fortell om prosjektet ditt</span><span class="l-pt">Conte sobre o seu projeto</span></h2>
+      <p><span class="l-en">By email or through the short form on the contact page.</span><span class="l-no">P&aring; e-post eller gjennom det korte skjemaet p&aring; kontaktsiden.</span><span class="l-pt">Por e-mail ou pelo formul&aacute;rio curto na p&aacute;gina de contato.</span></p>
     </div>
-    <a href="__LINKBASE__contact.html" class="contact-cta__link"><span class="l-en">Get in touch &rarr;</span><span class="l-no">Ta kontakt &rarr;</span><span class="l-pt">Entre em contato &rarr;</span></a>
+    <a href="__LINKBASE__contact.html" class="contact-cta__link"><span class="l-en">Contact &rarr;</span><span class="l-no">Kontakt &rarr;</span><span class="l-pt">Contato &rarr;</span></a>
   </div>
 
 ${footerHtml()}
-
-  <script>
-    document.querySelectorAll('.service-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item   = btn.closest('.service-item');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.service-item').forEach(i => {
-          i.classList.remove('open');
-          i.querySelector('.service-toggle').setAttribute('aria-expanded','false');
-        });
-        if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
-      });
-    });
-  </script>
 ${LANG_TOGGLE_SCRIPT}
 </body>
 </html>
@@ -1886,9 +1962,9 @@ ${navHtml()}
         <span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span>
       </div>
       <h1 class="contact-info__name">
-        <span class="l-en">Let&rsquo;s work<br>together</span>
-        <span class="l-no">La oss<br>samarbeide</span>
-        <span class="l-pt">Vamos trabalhar<br>juntos</span>
+        <span class="l-en">Tell me about<br>your project</span>
+        <span class="l-no">Fortell om<br>prosjektet ditt</span>
+        <span class="l-pt">Conte sobre<br>o seu projeto</span>
       </h1>
       <p class="contact-info__text">
         <span class="l-en">Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, splitting my time with S&atilde;o Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil.</span>
@@ -1989,17 +2065,7 @@ function build() {
 
     const images   = findImages(sourceDir);
     data._cover    = images.find(f => /^cover\./i.test(f)) || images[0] || null;
-
-    // Write project detail page to projects/[slug]/index.html
-    const html      = generateProjectPage(data, folderName, images);
-    const outputDir = path.join(PROJECTS_DIR, slug);
-    const projRel   = 'projects/' + slug + '/index.html';
-    // Register the localised <title>; emitLangVariants swaps it in per language.
-    PAGE_TITLES[projRel] = Object.fromEntries(
-      LANGS.map(l => [l, esc(tTitle(data.title, l)) + ' &middot; ' + NAME])
-    );
-    emitLangVariants(projRel, html);
-    console.log(`  built projects/${slug}/  ← ${folderName}/`);
+    data._images   = images;
 
     projects.push(data);
   }
@@ -2010,6 +2076,21 @@ function build() {
     const wa = parseInt(a.weight || 0), wb = parseInt(b.weight || 0);
     if (wb !== wa) return wb - wa;
     return parseInt(b.year || 0) - parseInt(a.year || 0);
+  });
+
+  // Project pages come after the sort, so each can link to its neighbours in
+  // the same order as the Work page. The list wraps at both ends.
+  projects.forEach((data, i) => {
+    const prev = projects[(i - 1 + projects.length) % projects.length];
+    const next = projects[(i + 1) % projects.length];
+    const html    = generateProjectPage(data, data._folder, data._images, prev, next);
+    const projRel = 'projects/' + data.slug + '/index.html';
+    // Register the localised <title>; emitLangVariants swaps it in per language.
+    PAGE_TITLES[projRel] = Object.fromEntries(
+      LANGS.map(l => [l, esc(tTitle(data.title, l)) + ' &middot; ' + NAME])
+    );
+    emitLangVariants(projRel, html);
+    console.log(`  built projects/${data.slug}/  ← ${data._folder}/`);
   });
 
   // 2. Generate work.html
