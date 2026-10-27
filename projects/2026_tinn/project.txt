@@ -21,13 +21,13 @@ Tinn is still being tested. I add to it most weeks, a bit more depth and a few r
 
 ===no===
 
-Tinn er en skrivebordsapp for den minst glamorøse delen av et byggeprosjekt: å skrive spesifikasjonen. Hvert materiale, hvert produkt, hver overflate og hver dimensjon i et rom må skrives ned et sted, og det stedet var alltid et rot for meg. Et regneark, en InDesign-fil, en e-posttråd. Så jeg bygde et skikkelig verktøy for det. Et prosjekt i Tinn er én fil du har på din egen maskin. Den fungerer uten nett og skriver ut rent, fordi dette arbeidet fortsatt skjer med papir på bordet, og ofte på en byggeplass uten dekning.
+Tinn er en skrivebordsapp for den minst glamorøse delen av et byggeprosjekt: å skrive spesifikasjonen. Hvert materiale, hvert produkt, hver overflate og hver dimensjon i et rom må skrives ned et sted, og det stedet var alltid et rot for meg. Et regneark, en InDesign-fil, en e-posttråd. Så jeg bygde et skikkelig verktøy for det. Et prosjekt i Tinn er én fil du har på din egen maskin. Programmet fungerer uten nett og gir rene utskrifter, fordi dette arbeidet fortsatt skjer med papir på bordet, og ofte på en byggeplass uten dekning.
 
-Det begynte med frustrasjon. Verktøyene som selges til dette, selv de som er rettet mot arkitekter og ingeniører, var egentlig laget for noen andre: prosjektledere, forhandlere, nettbutikker. Ingen av dem passet måten en bygning faktisk tegnes opp på. Så jeg lagde verktøyet jeg ønsket meg i stedet, mens jeg fortsatt gjorde arbeidet det var ment å fikse.
+Det begynte med frustrasjon. Verktøyene som selges til dette, selv de som er rettet mot arkitekter og ingeniører, var egentlig laget for noen andre: prosjektledere, forhandlere, nettbutikker. Ingen av dem passet måten et bygg faktisk prosjekteres på. Så jeg lagde verktøyet jeg ønsket meg i stedet, mens jeg fortsatt gjorde arbeidet det var ment å løse.
 
-Jeg har gjort alt selv: idéen, designet, merkevaren og koden. Den kjører på Windows nå, med macOS på vei. Uttrykket er bevisst stille. Enkel typografi, tynne svarte linjer, skarpe hjørner. Det henter mye fra katalogene og bøkene på studio-hyllen min: Sirotov, Ecohaus, Branco Arquitetura.
+Jeg har gjort alt selv: ideen, designet, merkevaren og koden. Den kjører på Windows nå, med macOS på vei. Uttrykket er bevisst stille. Enkel typografi, tynne svarte linjer, skarpe hjørner. Det henter mye fra katalogene og bøkene i bokhyllen i studioet mitt: Sirotov, Ecohaus, Branco Arquitetura.
 
-Tinn er fortsatt under testing. Jeg legger til noe de fleste uker, litt mer dybde og noen ujevne kanter slipt ned. Det har vært det mest givende jeg har bygd. Hvis du planlegger rom til daglig og vil prøve det, finner du det på tinn.app.
+Tinn er fortsatt under testing. Jeg legger til noe nesten hver uke: litt mer dybde, og noen ujevne kanter som slipes ned. Det har vært det mest givende jeg har bygd. Hvis du planlegger rom til daglig og vil prøve det, finner du det på tinn.app.
 
 ===pt===
 

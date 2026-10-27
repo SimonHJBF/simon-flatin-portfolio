@@ -24,7 +24,7 @@ It launched in August 2026 and is live at [florestaprod.com.br](https://floresta
 
 Floresta er et audiovisuelt produksjonsselskap i São Paulo. De har laget film og TV siden 2010 og produserer blant annet for Netflix, HBO Max, Paramount+, Globoplay og Multishow. De kom til meg med en eldre nettside som ikke lenger sto i stil med arbeidet bak.
 
-Jeg gjorde alt, både design og produksjon. Siden er bygd rundt katalogen av produksjoner, slik at titlene bærer siden i stedet for å ligge bak den.
+Jeg sto for alt, både design og utvikling. Siden er bygd rundt produksjonskatalogen, slik at titlene bærer siden i stedet for å ligge bak den.
 
 Den ble lansert i august 2026 og er i drift på [florestaprod.com.br](https://florestaprod.com.br).
 

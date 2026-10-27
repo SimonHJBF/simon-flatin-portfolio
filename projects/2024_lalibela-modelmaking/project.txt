@@ -22,11 +22,11 @@ The project comes out of an interest in taking historical research and turning i
 
 ===no===
 
-Som del av arbeidet mitt med etiopisk arkitektur og modellbygging laget jeg sammen med Alex Kirschstein en detaljert modell av Biet Gabriel-Rufael i Lalibela, et UNESCO-verdensarvsted kjent for sine bergkirker. Biet Gabriel-Rufael er hugget ut av én enkelt masse vulkansk stein, med indre kamre, passasjer og særegne geometriske former.
+Som en del av arbeidet mitt med etiopisk arkitektur og modellbygging laget jeg sammen med Alex Kirschstein en detaljert modell av Biet Gabriel-Rufael i Lalibela, et UNESCO-verdensarvsted kjent for klippekirkene. Biet Gabriel-Rufael er hugget ut av én enkelt masse vulkansk stein, med indre kamre, passasjer og særegne geometriske former.
 
-Vi arbeidet ut fra Lino Bianchi Barrivieras Lalibela-tegninger fra 1938, som dokumenterer kirkene og landskapet rundt dem, sammen med samtidsfotografi og 3D-skanninger av stedet. Mesteparten av arbeidet gikk med til teksturene i stein og lav, for det er det som binder arkitekturen til fjellet den er skåret ut av.
+Vi tok utgangspunkt i tegningene Lino Bianchi Barriviera laget av Lalibela i 1938, som dokumenterer kirkene og landskapet rundt dem, og brukte i tillegg nyere fotografier og 3D-skanninger av stedet. Mesteparten av arbeidet gikk med til teksturene i stein og lav, for det er det som binder arkitekturen til fjellet den er skåret ut av.
 
-Prosjektet kommer ut av en interesse for å ta historisk forskning og gjøre den om til noe man kan stå foran.
+Prosjektet springer ut av en interesse for å gjøre historisk forskning om til noe man kan stå foran.
 
 ===pt===
 

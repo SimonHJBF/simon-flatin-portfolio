@@ -129,9 +129,9 @@ const TERMS = {
   'Built':                        { no:'Bygget',                     pt:'Construído' },
   'Competition':                  { no:'Konkurranse',                pt:'Concurso' },
   'Form studies':                 { no:'Formstudier',                pt:'Estudos de forma' },
-  'Healthcare':                   { no:'Helsebygg',                  pt:'Saúde' },
+  'Healthcare':                   { no:'Helse og omsorg',                  pt:'Saúde' },
   'Internship':                   { no:'Praksis',                    pt:'Estágio' },
-  'Making':                       { no:'Bygging',                    pt:'Construção' },
+  'Making':                       { no:'Håndverk',                    pt:'Construção' },
   'Model making':                 { no:'Modellbygging',              pt:'Maquetes' },
   'Models':                       { no:'Modeller',                   pt:'Maquetes' },
   'Photography':                  { no:'Fotografi',                  pt:'Fotografia' },
@@ -150,6 +150,7 @@ const TERMS = {
   'The Netherlands':              { no:'Nederland',                  pt:'Países Baixos' },
   'USA':                          { no:'USA',                        pt:'EUA' },
   'Venice':                       { no:'Venezia',                    pt:'Veneza' },
+  'Venice Architecture Biennale': { no:'arkitekturbiennalen i Venezia', pt:'Bienal de Arquitetura de Veneza' },
 
   // Typologies
   'Architectural model':          { no:'Arkitekturmodell',           pt:'Maquete arquitetônica' },
@@ -161,7 +162,7 @@ const TERMS = {
   'Graduation research booklet':  { no:'Forskningshefte, avgangsprosjekt', pt:'Caderno de pesquisa de graduação' },
   'Home with Bed & Breakfast':    { no:'Bolig med bed and breakfast', pt:'Casa com bed and breakfast' },
   'Photography Series':           { no:'Fotoserie',                  pt:'Série fotográfica' },
-  'Regulatory Application / Change of Use': { no:'Byggesak og bruksendring', pt:'Licenciamento e mudança de uso' },
+  'Regulatory Application / Change of Use': { no:'Søknad om bruksendring', pt:'Licenciamento e mudança de uso' },
   'Render / Pitch Package':       { no:'Visualisering og presentasjonsmateriell', pt:'Render e material de apresentação' },
   'Residence with workshop and bridge': { no:'Bolig med verksted og bru', pt:'Residência com oficina e ponte' },
   'Sociocultural & Sports Park':  { no:'Sosiokulturell park og idrettspark', pt:'Parque sociocultural e esportivo' },
@@ -172,7 +173,7 @@ const TERMS = {
 
   // Status
   'Concept':                      { no:'Konsept',                    pt:'Conceito' },
-  'Design proposal':              { no:'Forslag',                    pt:'Proposta de projeto' },
+  'Design proposal':              { no:'Prosjektforslag',                    pt:'Proposta de projeto' },
   'In Progress':                  { no:'Pågår',                      pt:'Em andamento' },
   'In testing':                   { no:'Under testing',              pt:'Em testes' },
   'Live':                         { no:'I drift',                    pt:'No ar' },
@@ -188,18 +189,18 @@ const TERMS = {
   '2026 (ongoing)':               { no:'2026 (pågår)',               pt:'2026 (em andamento)' },
 
   // Credited roles, which sit in brackets after a name
-  'build':                        { no:'bygging',                    pt:'construção' },
-  'building technology mentor':   { no:'veileder bygningsteknikk',   pt:'orientador de tecnologia da construção' },
+  'build':                        { no:'byggearbeid',                    pt:'construção' },
+  'building technology mentor':   { no:'bygningsteknisk veileder',   pt:'orientador de tecnologia da construção' },
   'dance':                        { no:'dans',                       pt:'dança' },
-  'delegate':                     { no:'delegat',                    pt:'delegada' },
+  'delegate':                     { no:'sensor',                    pt:'delegada' },
   'design mentor':                { no:'designveileder',             pt:'orientadora de projeto' },
-  'drawing':                      { no:'tegning',                    pt:'desenho' },
+  'drawing':                      { no:'tegninger',                    pt:'desenho' },
   'erosion studies':              { no:'erosjonsstudier',            pt:'estudos de erosão' },
   'fieldwork':                    { no:'feltarbeid',                 pt:'trabalho de campo' },
   'film':                         { no:'film',                       pt:'filme' },
   'music':                        { no:'musikk',                     pt:'música' },
   'photography':                  { no:'foto',                       pt:'fotografia' },
-  'photography assistance':       { no:'fotoassistanse',             pt:'assistência de fotografia' },
+  'photography assistance':       { no:'fotoassistent',             pt:'assistência de fotografia' },
   'research mentor':              { no:'forskningsveileder',         pt:'orientadora de pesquisa' },
   'visualisation':                { no:'visualisering',              pt:'visualização' },
 
@@ -222,7 +223,7 @@ const TERMS = {
 // "Lalibela modelmaking" is a place plus a description, and the description
 // belongs in the reader's language.
 const PROJECT_TITLES = {
-  'Bjørnåsen house addition':  { no:'Bjørnåsen tilbygg',         pt:'Ampliação em Bjørnåsen' },
+  'Bjørnåsen house addition':  { no:'Tilbygg på Bjørnåsen',         pt:'Ampliação em Bjørnåsen' },
   'Borders and Transitions':   { no:'Grenser og overganger',     pt:'Fronteiras e transições' },
   'Chicken coop':              { no:'Hønsehus',                  pt:'Galinheiro' },
   'Erosion':                   { no:'Erosjon',                   pt:'Erosão' },
@@ -266,12 +267,21 @@ function tTitle(title, lang) {
 const ATTR_TEXT = {
   '__VIEW_LABEL__':    { en:'View',                                 no:'Visning',                                    pt:'Visualização' },
   '__PAGER_LABEL__':   { en:'More projects',                        no:'Flere prosjekter',                           pt:'Mais projetos' },
+  '__LANG_LABEL__':   { en:'Select language',                      no:'Velg språk',                                 pt:'Selecionar idioma' },
   '__CONSENT_LABEL__': { en:'Analytics consent',                    no:'Samtykke til analyse',                       pt:'Consentimento para análise' },
   '__PH_NAME__':    { en:'Your name',                              no:'Navnet ditt',                                pt:'Seu nome' },
   '__PH_EMAIL__':   { en:'your@email.com',                         no:'din@epost.no',                               pt:'seu@email.com' },
   '__PH_SUBJECT__': { en:'e.g. Commission inquiry',                no:'f.eks. forespørsel om oppdrag',              pt:'ex. proposta de trabalho' },
   '__PH_MESSAGE__': { en:'Tell me about your project or question...', no:'Fortell om prosjektet eller spørsmålet ditt...', pt:'Conte sobre seu projeto ou sua dúvida...' },
 };
+
+// Attribute text that differs per page (an image's alt from its project title)
+// is registered here and written as [[A:n]], then swapped in like ATTR_TEXT.
+const ATTR_DYN = [];
+function attrLang(f) {
+  ATTR_DYN.push({ en: f('en'), no: f('no'), pt: f('pt') });
+  return `[[A:${ATTR_DYN.length - 1}]]`;
+}
 
 /** One <span class="l-xx"> per language, or plain text when all three agree. */
 function langSpans(value, translate) {
@@ -295,12 +305,12 @@ function fieldSpans(obj, key) {
 const PAGE_DESCRIPTIONS = {
   'index.html': {
     en: 'Architect, MSc and ir. from TU Delft, working between Norway and São Paulo. Architecture, visualisation, physical models and software for the building industry.',
-    no: 'Arkitekt, MSc og ir. fra TU Delft, med base mellom Norge og São Paulo. Arkitektur, visualisering, fysiske modeller og programvare for byggebransjen.',
+    no: 'Arkitekt, MSc og ir. fra TU Delft, som jobber mellom Norge og São Paulo. Arkitektur, visualisering, fysiske modeller og programvare for byggebransjen.',
     pt: 'Arquiteto, MSc e ir. pela TU Delft, entre a Noruega e São Paulo. Arquitetura, visualização, maquetes físicas e software para a construção civil.',
   },
   'work.html': {
     en: 'Selected work: architecture, competitions, architectural models, photography and software, from TU Delft graduation projects to built work in Norway and Brazil.',
-    no: 'Utvalgte prosjekter: arkitektur, konkurranser, arkitekturmodeller, fotografi og programvare, fra avgangsprosjekter ved TU Delft til bygde prosjekter i Norge og Brasil.',
+    no: 'Utvalgte prosjekter: arkitektur, konkurranser, arkitekturmodeller, fotografi og programvare, fra avgangsprosjekter ved TU Delft til realiserte prosjekter i Norge og Brasil.',
     pt: 'Trabalhos selecionados: arquitetura, concursos, maquetes, fotografia e software, de projetos de graduação na TU Delft a obras na Noruega e no Brasil.',
   },
   'about.html': {
@@ -310,12 +320,12 @@ const PAGE_DESCRIPTIONS = {
   },
   'services.html': {
     en: 'Architecture, BIM and parametric modelling, technical documentation, physical models, drone photogrammetry, research and planning applications in Norway.',
-    no: 'Arkitektur, BIM og parametrisk modellering, teknisk dokumentasjon, fysiske modeller, dronefotogrammetri, research og byggesøknader i Norge.',
+    no: 'Arkitektur, BIM og parametrisk modellering, teknisk dokumentasjon, fysiske modeller, dronefotogrammetri, forskning og byggesøknader i Norge.',
     pt: 'Arquitetura, BIM e modelagem paramétrica, documentação técnica, maquetes físicas, fotogrametria com drone, pesquisa e licenciamento na Noruega.',
   },
   'contact.html': {
     en: 'Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, with clients across five countries.',
-    no: 'Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og rådgivning. Basert i Osloregionen, med kunder i fem land.',
+    no: 'Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og rådgivning. Med base i Osloregionen og kunder i fem land.',
     pt: 'Disponível para encomendas de arquitetura, colaborações de pesquisa, maquetes e consultoria. Baseado na região de Oslo, com clientes em cinco países.',
   },
   'privacy.html': {
@@ -405,7 +415,8 @@ function emitLangVariants(rel, html) {
     if (title) out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${title[lang]}</title>`);
     // Read back from the page, so project titles registered at build time count too.
     const shownTitle = (out.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '';
-    out = out.replace('<head>', '<head>\n' + hreflangHtml(rel) +
+    const headAt = out.includes('<meta charset="UTF-8" />') ? '<meta charset="UTF-8" />' : '<head>';
+    out = out.replace(headAt, headAt + '\n  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />\n' + hreflangHtml(rel) +
       `\n  <link rel="canonical" href="${url}" />` +
       (desc ? `\n  <meta name="description" content="${esc(desc)}" />` : '') +
       ogHtml(url, shownTitle, desc, lang));
@@ -416,6 +427,7 @@ function emitLangVariants(rel, html) {
     out = out.split('<!--LANGNAV-->').join(langLinksHtml(lang, rel));
     out = out.split('__LINKBASE__').join(linkBase(lang));
     for (const [token, t] of Object.entries(ATTR_TEXT)) out = out.split(token).join(esc(t[lang]));
+    out = out.replace(/\[\[A:(\d+)\]\]/g, (m, i) => esc(ATTR_DYN[i][lang]));
     writeFile(path.join(ROOT, langDir(lang), rel), out);
   }
 }
@@ -559,7 +571,7 @@ function cardMedia(data, index, eager, cls) {
     }
   }
   return data._cover
-    ? `<img src="${webSrc(`projects/${data._folder}`, data._cover)}"${srcsetAttrs(webSrc(`projects/${data._folder}`, data._cover), CARD_SIZES[cls] || CARD_SIZES['card--wide'])} alt="${esc(data.title)}" loading="${eager ? 'eager' : 'lazy'}" />`
+    ? `<img src="${webSrc(`projects/${data._folder}`, data._cover)}"${srcsetAttrs(webSrc(`projects/${data._folder}`, data._cover), CARD_SIZES[cls] || CARD_SIZES['card--wide'])} alt="${attrLang(l => tTitle(data.title, l))}" loading="${eager ? 'eager' : 'lazy'}" />`
     : `<div class="card__placeholder" style="background:${grad(index)};width:100%;height:100%;"></div>`;
 }
 
@@ -795,12 +807,12 @@ function navHtml(prefix, mode) {
     <a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a>
     <div class="nav__link-row">
       <ul class="nav__links">
-        <li><a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
-        <li><a href="__LINKBASE__services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
-        <li><a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
-        <li><a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+        <li><a href="__LINKBASE__work"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+        <li><a href="__LINKBASE__services"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+        <li><a href="__LINKBASE__about"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+        <li><a href="__LINKBASE__contact"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
       </ul>
-      <div class="lang-toggle" role="group" aria-label="Select language">
+      <div class="lang-toggle" role="group" aria-label="__LANG_LABEL__">
 <!--LANGNAV-->
       </div>
     </div>
@@ -815,7 +827,7 @@ function footerHtml(prefix) {
   const orgEn = ORG_NR ? ` &middot; org.no. ${ORG_NR} MVA` : '';
   const orgNo = ORG_NR ? ` &middot; org.nr. ${ORG_NR} MVA` : '';
   return `  <section id="consent" class="consent" aria-label="__CONSENT_LABEL__" hidden>
-    <p class="consent__text"><span class="l-en">May I use cookies to count visits?</span><span class="l-no">Kan jeg bruke informasjonskapsler til &aring; telle bes&oslash;k?</span><span class="l-pt">Posso usar cookies para contar as visitas?</span> <a href="__LINKBASE__privacy.html"><span class="l-en">More</span><span class="l-no">Mer</span><span class="l-pt">Mais</span></a></p>
+    <p class="consent__text"><span class="l-en">May I use cookies to count visits?</span><span class="l-no">Kan jeg bruke informasjonskapsler til &aring; telle bes&oslash;k?</span><span class="l-pt">Posso usar cookies para contar as visitas?</span> <a href="__LINKBASE__privacy"><span class="l-en">More</span><span class="l-no">Mer</span><span class="l-pt">Mais</span></a></p>
     <div class="consent__buttons">
       <button type="button" data-consent="yes"><span class="l-en">Allow</span><span class="l-no">Tillat</span><span class="l-pt">Permitir</span></button>
       <button type="button" data-consent="no"><span class="l-en">Decline</span><span class="l-no">Avsl&aring;</span><span class="l-pt">Recusar</span></button>
@@ -825,11 +837,11 @@ function footerHtml(prefix) {
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
     <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; ${ENK}${orgEn} &middot; Oslo region, Norway and S&atilde;o Paulo</span><span class="l-no">Arkitekt MSc / ir. &middot; ${ENK}${orgNo} &middot; Osloregionen og S&atilde;o Paulo</span><span class="l-pt">Arquiteto MSc / ir. &middot; ${ENK}${orgEn} &middot; Regi&atilde;o de Oslo, Noruega, e S&atilde;o Paulo</span></div>
     <div class="footer__links">
-      <a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
-      <a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
-      <a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
+      <a href="__LINKBASE__about"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
+      <a href="__LINKBASE__work"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
+      <a href="__LINKBASE__contact"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a>
       <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="__LINKBASE__privacy.html"><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></a>
+      <a href="__LINKBASE__privacy"><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></a>
       <button type="button" class="footer__cookies" data-consent="open"><span class="l-en">Cookies</span><span class="l-no">Informasjonskapsler</span><span class="l-pt">Cookies</span></button>
     </div>
   </footer>`;
@@ -898,9 +910,9 @@ function generateProjectPage(data, folderName, images, prev, next) {
     'Year':          { no:'År',                   pt:'Ano' },
     'Location':      { no:'Sted',                 pt:'Localização' },
     'Typology':      { no:'Typologi',             pt:'Tipologia' },
-    'Size':          { no:'Størrelse',            pt:'Tamanho' },
+    'Size':          { no:'Areal',                pt:'Tamanho' },
     'Status':        { no:'Status',               pt:'Status' },
-    'Client':        { no:'Klient',               pt:'Cliente' },
+    'Client':        { no:'Oppdragsgiver',           pt:'Cliente' },
     'Collaborators': { no:'Samarbeidspartnere',   pt:'Colaboradores' },
     'Mentors':       { no:'Veiledere',            pt:'Orientadores' },
     'Exhibitions':   { no:'Utstillinger',         pt:'Exposições' },
@@ -919,22 +931,26 @@ function generateProjectPage(data, folderName, images, prev, next) {
   const local    = !embedUrl && data.video ? videoParts(folderName, data.video) : null;
 
   const heroHtml = local && local.sources
-    ? `  <div class="project-hero project-hero--video"><video autoplay muted loop playsinline preload="auto"` +
+    ? `  <div class="project-hero project-hero--video"><video autoplay muted loop playsinline controls preload="metadata"` +
       `${local.poster ? ` poster="${local.poster}"${sizeAttrs(local.poster)}` : ''} aria-label="${esc(title)}">${local.sources}</video></div>`
     : hero
-      ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}"${sizeAttrs(webSrc(imgDir, hero))}${srcsetAttrs(webSrc(imgDir, hero), '100vw')} alt="${esc(title)}" loading="eager" fetchpriority="high" /></div>`
+      ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}"${sizeAttrs(webSrc(imgDir, hero))}${srcsetAttrs(webSrc(imgDir, hero), '100vw')} alt="${attrLang(l => tTitle(title, l))}" loading="eager" fetchpriority="high" /></div>`
       : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
 
   const galleryHtml = gallery.length
     ? `\n  <div class="project-gallery">\n` +
-      gallery.map((img, i) => `    <figure><img src="${webSrc(imgDir, img)}"${sizeAttrs(webSrc(imgDir, img))}${srcsetAttrs(webSrc(imgDir, img), '(max-width: 1200px) 100vw, 1200px')} alt="${esc(title)}, image ${i + 1} of ${gallery.length}" loading="lazy" /></figure>`).join('\n') +
+      gallery.map((img, i) => `    <figure><img src="${webSrc(imgDir, img)}"${sizeAttrs(webSrc(imgDir, img))}${srcsetAttrs(webSrc(imgDir, img), '(max-width: 1200px) 100vw, 1200px')} alt="${attrLang(l => `${tTitle(title, l)}, ${({ en:'image', no:'bilde', pt:'imagem' })[l]} ${i + 1} ${({ en:'of', no:'av', pt:'de' })[l]} ${gallery.length}`)}" loading="lazy" /></figure>`).join('\n') +
       `\n  </div>`
     : '';
 
   // A self-hosted video is already the hero, so only a YouTube embed gets a
   // block of its own down here.
   const videoHtml = embedUrl
-    ? `\n  <div class="project-video">\n    <iframe src="${embedUrl}" title="${esc(title)}" allowfullscreen loading="lazy"></iframe>\n  </div>`
+    ? `\n  <div class="project-video">\n    <button type="button" class="yt-facade" data-yt="${embedUrl}?autoplay=1" data-title="${esc(title)}"` +
+      `${hero ? ` style="background-image:url('${webSrc(imgDir, hero)}')"` : ''}>` +
+      `<span class="yt-facade__play"><span class="l-en">Play video</span><span class="l-no">Spill av video</span><span class="l-pt">Reproduzir v&iacute;deo</span></span>` +
+      `<span class="yt-facade__note"><span class="l-en">Plays from YouTube</span><span class="l-no">Spilles av fra YouTube</span><span class="l-pt">Reproduzido do YouTube</span></span></button>\n` +
+      `    <script>document.querySelector('.yt-facade').addEventListener('click',function(){var f=document.createElement('iframe');f.src=this.dataset.yt;f.title=this.dataset.title;f.allow='autoplay; fullscreen';f.allowFullscreen=true;this.replaceWith(f);});</script>\n  </div>`
     : '';
 
   return `<!DOCTYPE html>
@@ -978,6 +994,12 @@ function generateProjectPage(data, folderName, images, prev, next) {
     .project-gallery figure { margin:0; }
     .project-gallery img { width:100%; height:auto; display:block; }
     .project-video { max-width:1200px; margin:4rem auto 0; padding:0 4rem; }
+    .yt-facade { width:100%; aspect-ratio:16/9; border:none; cursor:pointer; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:.5rem; color:#fff; font:inherit;
+      background:#1c1c1a center/cover no-repeat; box-shadow:inset 0 0 0 100vmax rgba(0,0,0,.4); }
+    .yt-facade__play { font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; border:1px solid rgba(255,255,255,.8); padding:.8rem 1.4rem; }
+    .yt-facade:hover .yt-facade__play { background:#fff; color:#1c1c1a; }
+    .yt-facade__note { font-size:.7rem; opacity:.8; }
     .project-video iframe,
     .project-video video { width:100%; aspect-ratio:16/9; border:none; display:block;
       background:#000; object-fit:cover; }
@@ -1032,7 +1054,7 @@ ${heroHtml}
 ${data.role ? `      <p class="project-role"><span class="project-role__label"><span class="l-en">My role</span><span class="l-no">Min rolle</span><span class="l-pt">Meu papel</span></span>${fieldSpans(data, 'role')}</p>\n` : ''}      <div class="l-en">${data.paragraphs.map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-no">${(data.paragraphs_no && data.paragraphs_no.length ? data.paragraphs_no : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
       <div class="l-pt">${(data.paragraphs_pt && data.paragraphs_pt.length ? data.paragraphs_pt : data.paragraphs).map(p => `<p>${escLinks(p)}</p>`).join('\n      ')}</div>
-      <a href="__LINKBASE__work.html" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
+      <a href="__LINKBASE__work" class="project-back"><span class="l-en">&larr; All work</span><span class="l-no">&larr; Alle prosjekter</span><span class="l-pt">&larr; Todo o trabalho</span></a>
     </div>
   </div>
 ${galleryHtml}
@@ -1219,6 +1241,15 @@ ${JSON.stringify({
 }, null, 2)}
 </script>`;
 
+// About is the page that describes the person, so it says so to search engines.
+const PROFILE_JSONLD = `<script type="application/ld+json">
+${JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: { '@type': 'Person', '@id': `${SITE_URL}/#person`, name: 'Simon H.J. Bjørkå Flatin', url: `${SITE_URL}/` },
+}, null, 2)}
+</script>`;
+
 function generateIndexPage(allProjects, featuredSlugs) {
   // Match featured slugs to project data (in order)
   const featuredProjects = featuredSlugs
@@ -1236,7 +1267,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
     const cls     = featuredGrids[i] || 'card--wide';
     const folder  = data._folder;
     const cover   = data._cover;
-    const imgHtml = cardMedia(data, i, true, cls);
+    const imgHtml = cardMedia(data, i, i === 0, cls);
     const sub = [data.year, data.organization].filter(Boolean).join(' · ');
 
     return `
@@ -1304,7 +1335,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <title>Simon H.J. Bj&oslash;rk&aring; Flatin &middot; Architect &amp; Designer</title>
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
+    .hero { position:relative; width:100%; height:100vh; height:100svh; overflow:hidden; }
     .hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
     /* Water ripple - full-screen SVG, image clipped to bottom 45% via clipPath.
        Mask fades the water softly at the waterline (top) and bottom edge. */
@@ -1347,18 +1378,18 @@ function generateIndexPage(allProjects, featuredSlugs) {
       <h1 class="nav__h1"><a href="__LINKBASE__" class="nav__name">Simon H.J. Bj&oslash;rk&aring; Flatin</a></h1>
       <div class="nav__link-row">
         <ul class="nav__links">
-          <li><a href="__LINKBASE__work.html"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
-          <li><a href="__LINKBASE__services.html"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
-          <li><a href="__LINKBASE__about.html"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
-          <li><a href="__LINKBASE__contact.html"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
+          <li><a href="__LINKBASE__work"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a></li>
+          <li><a href="__LINKBASE__services"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></a></li>
+          <li><a href="__LINKBASE__about"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a></li>
+          <li><a href="__LINKBASE__contact"><span class="l-en">Contact</span><span class="l-no">Kontakt</span><span class="l-pt">Contato</span></a></li>
         </ul>
-        <div class="lang-toggle" role="group" aria-label="Select language">
+        <div class="lang-toggle" role="group" aria-label="__LANG_LABEL__">
 <!--LANGNAV-->
         </div>
       </div>
     </nav>
     <div class="hero__scroll-cue">
-      <span class="l-en">Scroll</span><span class="l-no">Rull</span><span class="l-pt">Rolar</span>
+      <span class="l-en">Scroll</span><span class="l-no">Rull ned</span><span class="l-pt">Rolar</span>
       <span class="hero__scroll-arrow-wrap" aria-hidden="true"><span class="hero__scroll-arrow"></span></span>
     </div>
   </section>
@@ -1366,12 +1397,12 @@ function generateIndexPage(allProjects, featuredSlugs) {
   <section class="featured">
     <div class="featured__header">
       <span class="section-label"><span class="l-en">Selected Work</span><span class="l-no">Utvalgte prosjekter</span><span class="l-pt">Trabalho Selecionado</span></span>
-      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">Signatur&shy;prosjekter</span><span class="l-pt">Projetos de Destaque</span></h2>
+      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">N&oslash;kkel&shy;prosjekter</span><span class="l-pt">Projetos de Destaque</span></h2>
     </div>
     <div class="projects">
 ${cards}
     </div>
-    <div class="all-work"><a href="__LINKBASE__work.html"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span><span class="l-pt">Ver todos os projetos</span></a></div>
+    <div class="all-work"><a href="__LINKBASE__work"><span class="l-en">See all work</span><span class="l-no">Se alle prosjekter</span><span class="l-pt">Ver todos os projetos</span></a></div>
   </section>
 
 ${footerHtml()}
@@ -1614,6 +1645,7 @@ function generateAboutPage(paragraphs, cv) {
   </style>
   ${LANG_SCRIPT}
   ${GA_TAG}
+  ${PROFILE_JSONLD}
 </head>
 <body>
 
@@ -1683,7 +1715,7 @@ function generateServicesPage(services) {
   <title>Services &middot; Simon H.J. Bj&oslash;rk&aring; Flatin</title>
   <link rel="stylesheet" href="/style.css" />
   <style>
-    .services-hero { position:relative; height:100vh; overflow:hidden; }
+    .services-hero { position:relative; height:100vh; height:100svh; overflow:hidden; }
     .services-hero__bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
     .services-hero__overlay { position:absolute; inset:0;
       background:linear-gradient(to bottom,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 100%); }
@@ -1747,7 +1779,7 @@ function generateServicesPage(services) {
       </h1>
     </div>
     <div class="hero__scroll-cue">
-      <span class="l-en">Scroll</span><span class="l-no">Rull</span><span class="l-pt">Rolar</span>
+      <span class="l-en">Scroll</span><span class="l-no">Rull ned</span><span class="l-pt">Rolar</span>
       <span class="hero__scroll-arrow-wrap" aria-hidden="true"><span class="hero__scroll-arrow"></span></span>
     </div>
   </div>
@@ -1755,7 +1787,7 @@ function generateServicesPage(services) {
   <div class="services-body">
     <div class="services-intro">
       <p class="l-en">I am an architect working between Norway and S&atilde;o Paulo, mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from planning applications and competition proposals to visualisation, physical models and the software I build for the building industry. Most projects still start with a physical model on the desk.</p>
-      <p class="l-no">Jeg er arkitekt og jobber mellom Norge og S&atilde;o Paulo, mest online, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra bygges&oslash;knader og konkurranseforslag til visualisering, fysiske modeller og programvaren jeg lager for byggebransjen. De fleste prosjektene begynner fortsatt med en fysisk modell p&aring; bordet.</p>
+      <p class="l-no">Jeg er arkitekt og jobber mellom Norge og S&atilde;o Paulo, mest p&aring; nett, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra bygges&oslash;knader og konkurranseforslag til visualisering, fysiske modeller og programvaren jeg lager for byggebransjen. De fleste prosjektene begynner fortsatt med en fysisk modell p&aring; bordet.</p>
       <p class="l-pt">Sou arquiteto e trabalho entre a Noruega e S&atilde;o Paulo, principalmente online, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil. O trabalho vai de pedidos de licenciamento e propostas de concurso a visualiza&ccedil;&atilde;o, maquetes f&iacute;sicas e o software que desenvolvo para a constru&ccedil;&atilde;o civil. A maioria dos projetos ainda come&ccedil;a com uma maquete f&iacute;sica sobre a mesa.</p>
     </div>
     <div class="services-label"><span class="l-en">Services</span><span class="l-no">Tjenester</span><span class="l-pt">Servi&ccedil;os</span></div>
@@ -1778,7 +1810,7 @@ ${serviceItems}
       <h2><span class="l-en">Tell me about your project</span><span class="l-no">Fortell om prosjektet ditt</span><span class="l-pt">Conte sobre o seu projeto</span></h2>
       <p><span class="l-en">By email or through the short form on the contact page.</span><span class="l-no">P&aring; e-post eller gjennom det korte skjemaet p&aring; kontaktsiden.</span><span class="l-pt">Por e-mail ou pelo formul&aacute;rio curto na p&aacute;gina de contato.</span></p>
     </div>
-    <a href="__LINKBASE__contact.html" class="contact-cta__link"><span class="l-en">Contact &rarr;</span><span class="l-no">Kontakt &rarr;</span><span class="l-pt">Contato &rarr;</span></a>
+    <a href="__LINKBASE__contact" class="contact-cta__link"><span class="l-en">Contact &rarr;</span><span class="l-no">Kontakt &rarr;</span><span class="l-pt">Contato &rarr;</span></a>
   </div>
 
 ${footerHtml()}
@@ -1826,7 +1858,7 @@ ${navHtml()}
     </h1>
     <p class="success-wrap__text">
       <span class="l-en">Your message has been received. I&rsquo;ll be in touch within 2 business days.</span>
-      <span class="l-no">Meldingen din er mottatt. Jeg tar kontakt innen 2 virkedager.</span>
+      <span class="l-no">Meldingen din er mottatt. Jeg tar kontakt innen to virkedager.</span>
       <span class="l-pt">Sua mensagem foi recebida. Entrarei em contato em at&eacute; 2 dias &uacute;teis.</span>
     </p>
     <a href="__LINKBASE__" class="success-wrap__back">
@@ -1873,26 +1905,30 @@ function generatePrivacyPage() {
 ${navHtml()}
   <div class="privacy">
     <h1><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></h1>
-${p(`This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. ${ORG_NR}. Questions about your data go to ${EMAIL}.`,
-    `Dette nettstedet tilh&oslash;rer Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.nr. ${ORG_NR}. Sp&oslash;rsm&aring;l om dataene dine sendes til ${EMAIL}.`,
-    `Este site pertence a Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org. nº ${ORG_NR}. Perguntas sobre seus dados podem ser enviadas para ${EMAIL}.`)}
+${p(`This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. ${ORG_NR} in Enhetsregisteret, who is responsible for the personal data handled here. Questions about it go to ${EMAIL}.`,
+    `Dette nettstedet tilh&oslash;rer Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.nr. ${ORG_NR} i Enhetsregisteret, som er ansvarlig for personopplysningene som behandles her. Sp&oslash;rsm&aring;l om dem kan sendes til ${EMAIL}.`,
+    `Este site pertence a Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org. nº ${ORG_NR} no Enhetsregisteret, respons&aacute;vel pelos dados pessoais tratados aqui. Perguntas sobre eles podem ser enviadas para ${EMAIL}.`)}
 ${h('Analytics', 'Analyse', 'An&aacute;lise')}
-${p('If you allow it, the site uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies and sends information about the visit to Google. Nothing is stored or sent unless you choose Allow, and you can change your choice at any time.',
-    'Hvis du tillater det, bruker nettstedet Google Analytics til &aring; telle bes&oslash;k og se hvilke sider som leses. Google Analytics setter informasjonskapsler og sender opplysninger om bes&oslash;ket til Google. Ingenting lagres eller sendes med mindre du velger Tillat, og du kan endre valget n&aring;r som helst.',
-    'Se voc&ecirc; permitir, o site usa o Google Analytics para contar visitas e ver quais p&aacute;ginas s&atilde;o lidas. O Google Analytics grava cookies e envia informa&ccedil;&otilde;es sobre a visita ao Google. Nada &eacute; armazenado ou enviado se voc&ecirc; n&atilde;o escolher Permitir, e voc&ecirc; pode mudar sua escolha a qualquer momento.')}
+${p('If you allow it, the site uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies, which last up to two years, and sends information about the visit, such as pages viewed, device type and an approximate location, to Google. Google may process this in the United States, under the EU-US Data Privacy Framework, and keeps it for up to 14 months. The legal basis is your consent. Nothing is stored or sent unless you choose Allow, and you can withdraw your consent at any time.',
+    'Hvis du tillater det, bruker nettstedet Google Analytics til &aring; telle bes&oslash;k og se hvilke sider som leses. Google Analytics setter informasjonskapsler, som varer i opptil to &aring;r, og sender opplysninger om bes&oslash;ket, som sidene du ser, type enhet og omtrentlig sted, til Google. Google kan behandle dette i USA, under rammeverket EU-US Data Privacy Framework, og lagrer det i opptil 14 m&aring;neder. Behandlingsgrunnlaget er samtykket ditt. Ingenting lagres eller sendes med mindre du velger Tillat, og du kan trekke samtykket tilbake n&aring;r som helst.',
+    'Se voc&ecirc; permitir, o site usa o Google Analytics para contar visitas e ver quais p&aacute;ginas s&atilde;o lidas. O Google Analytics grava cookies, que duram at&eacute; dois anos, e envia ao Google informa&ccedil;&otilde;es sobre a visita, como as p&aacute;ginas vistas, o tipo de dispositivo e uma localiza&ccedil;&atilde;o aproximada. O Google pode tratar esses dados nos Estados Unidos, no &acirc;mbito do EU-US Data Privacy Framework, e os guarda por at&eacute; 14 meses. A base legal &eacute; o seu consentimento. Nada &eacute; armazenado ou enviado se voc&ecirc; n&atilde;o escolher Permitir, e voc&ecirc; pode retirar o consentimento a qualquer momento.')}
     <button type="button" data-consent="open"><span class="l-en">Change your choice</span><span class="l-no">Endre valget</span><span class="l-pt">Mudar sua escolha</span></button>
 ${h('Links in applications', 'Lenker i s&oslash;knader', 'Links em candidaturas')}
-${p('When I send this site with a job application, the link can carry a short code naming the application, for example the office I applied to. If you allow analytics, the code tells me that the link was opened. It is not tied to your name, and I use it for nothing else.',
-    'N&aring;r jeg sender nettstedet med en jobbs&oslash;knad, kan lenken ha en kort kode som viser til s&oslash;knaden, for eksempel kontoret jeg s&oslash;kte hos. Hvis du tillater analyse, forteller koden meg at lenken ble &aring;pnet. Den er ikke knyttet til navnet ditt, og jeg bruker den ikke til noe annet.',
-    'Quando envio este site com uma candidatura de emprego, o link pode levar um c&oacute;digo curto que identifica a candidatura, por exemplo o escrit&oacute;rio ao qual me candidatei. Se voc&ecirc; permitir a an&aacute;lise, o c&oacute;digo me mostra que o link foi aberto. Ele n&atilde;o est&aacute; ligado ao seu nome, e n&atilde;o o uso para mais nada.')}
+${p('When I include a link to this site in a job application, the link can carry a short code. If you allow analytics, the code tells me that a link from my applications was opened. It is not tied to your name, and I use it for nothing else.',
+    'N&aring;r jeg legger ved en lenke til nettstedet i en jobbs&oslash;knad, kan lenken inneholde en kort kode. Hvis du tillater analyse, forteller koden meg at en lenke fra s&oslash;knadene mine ble &aring;pnet. Den er ikke knyttet til navnet ditt, og jeg bruker den ikke til noe annet.',
+    'Quando incluo um link para este site em uma candidatura de emprego, o link pode levar um c&oacute;digo curto. Se voc&ecirc; permitir a an&aacute;lise, o c&oacute;digo me mostra que um link das minhas candidaturas foi aberto. Ele n&atilde;o est&aacute; ligado ao seu nome, e n&atilde;o o uso para mais nada.')}
+${h('Video', 'Video', 'V&iacute;deo')}
+${p('One project page has a video from YouTube. It only loads when you press play. YouTube, which belongs to Google, then receives information about your visit.',
+    'En prosjektside har en video fra YouTube. Den lastes bare inn n&aring;r du trykker p&aring; avspilling. Da mottar YouTube, som eies av Google, opplysninger om bes&oslash;ket ditt.',
+    'Uma p&aacute;gina de projeto tem um v&iacute;deo do YouTube. Ele s&oacute; carrega quando voc&ecirc; aperta o play. O YouTube, que pertence ao Google, recebe ent&atilde;o informa&ccedil;&otilde;es sobre a sua visita.')}
 ${h('Contact form', 'Kontaktskjema', 'Formul&aacute;rio de contato')}
-${p('Messages sent through the contact form are delivered by Netlify, which hosts the site. I keep them only as long as the conversation needs them.',
-    'Meldinger fra kontaktskjemaet leveres av Netlify, som drifter nettstedet. Jeg tar vare p&aring; dem bare s&aring; lenge samtalen trenger det.',
-    'As mensagens enviadas pelo formul&aacute;rio de contato s&atilde;o entregues pela Netlify, que hospeda o site. Eu as guardo apenas pelo tempo que a conversa exigir.')}
+${p('Messages sent through the contact form are delivered by Netlify, which hosts the site. The legal basis is my legitimate interest in answering you. I keep messages only as long as needed to answer them.',
+    'Meldinger fra kontaktskjemaet leveres av Netlify, der nettstedet ligger. Behandlingsgrunnlaget er min berettigede interesse i &aring; svare deg. Jeg tar vare p&aring; meldingene bare s&aring; lenge det trengs for &aring; besvare dem.',
+    'As mensagens enviadas pelo formul&aacute;rio de contato s&atilde;o entregues pela Netlify, que hospeda o site. A base legal &eacute; o meu leg&iacute;timo interesse em responder a voc&ecirc;. Guardo as mensagens apenas pelo tempo necess&aacute;rio para respond&ecirc;-las.')}
 ${h('Your rights', 'Dine rettigheter', 'Seus direitos')}
-${p('You can ask to see or delete what I hold about you. You can also complain to Datatilsynet, the Norwegian Data Protection Authority.',
-    'Du kan be om &aring; f&aring; se eller slette det jeg har om deg. Du kan ogs&aring; klage til Datatilsynet.',
-    'Voc&ecirc; pode pedir para ver ou apagar o que tenho sobre voc&ecirc;. Tamb&eacute;m pode reclamar ao Datatilsynet, a autoridade norueguesa de prote&ccedil;&atilde;o de dados.')}
+${p('You can ask to see, correct or delete what I hold about you. You can also complain to Datatilsynet, the Norwegian Data Protection Authority.',
+    'Du kan be om innsyn i, retting av og sletting av opplysningene jeg har om deg. Du kan ogs&aring; klage til Datatilsynet.',
+    'Voc&ecirc; pode pedir para ver, corrigir ou apagar o que tenho sobre voc&ecirc;. Tamb&eacute;m pode reclamar ao Datatilsynet, a autoridade norueguesa de prote&ccedil;&atilde;o de dados.')}
   </div>
 ${footerHtml()}
 </body>
@@ -1968,7 +2004,7 @@ ${navHtml()}
       </h1>
       <p class="contact-info__text">
         <span class="l-en">Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, splitting my time with S&atilde;o Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil.</span>
-        <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og r&aring;dgivning. Basert i Osloregionen, med tiden delt mot S&atilde;o Paulo, og kunder i Norge, Sverige, Portugal, USA og Brasil.</span>
+        <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og r&aring;dgivning. Jeg holder til i Osloregionen, deler tiden med S&atilde;o Paulo og har kunder i Norge, Sverige, Portugal, USA og Brasil.</span>
         <span class="l-pt">Dispon&iacute;vel para encomendas de arquitetura, colabora&ccedil;&otilde;es de pesquisa, maquetes e consultoria. Baseado na regi&atilde;o de Oslo, dividindo meu tempo com S&atilde;o Paulo, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil.</span>
       </p>
       <div class="contact-info__detail">
@@ -1978,7 +2014,7 @@ ${navHtml()}
     </div>
 
     <div class="contact-form-wrap">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="__LINKBASE__contact-success.html" class="contact-form">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="__LINKBASE__contact-success" class="contact-form">
         <input type="hidden" name="form-name" value="contact" />
         <p class="contact-form__honeypot">
           <label><span class="l-en">Don&rsquo;t fill this in</span><span class="l-no">Ikke fyll ut dette</span><span class="l-pt">N&atilde;o preencha</span>: <input name="bot-field" /></label>
@@ -2016,7 +2052,7 @@ ${navHtml()}
           </button>
           <span class="contact-form__note">
             <span class="l-en">I usually reply within 2 business days.</span>
-            <span class="l-no">Jeg svarer vanligvis innen 2 arbeidsdager.</span>
+            <span class="l-no">Jeg svarer vanligvis innen to virkedager.</span>
             <span class="l-pt">Geralmente respondo em at&eacute; 2 dias &uacute;teis.</span>
           </span>
         </div>

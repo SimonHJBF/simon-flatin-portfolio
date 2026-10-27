@@ -26,6 +26,134 @@
   status = 301
   force = true
 
+
+# Old .html addresses forward to the clean ones the site links and indexes.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/work.html"
+  to = "/work"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services.html"
+  to = "/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact-success.html"
+  to = "/contact-success"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/no/index.html"
+  to = "/no/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/no/about.html"
+  to = "/no/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/no/work.html"
+  to = "/no/work"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/no/services.html"
+  to = "/no/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/no/contact.html"
+  to = "/no/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/no/privacy.html"
+  to = "/no/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/no/contact-success.html"
+  to = "/no/contact-success"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/index.html"
+  to = "/pt/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/about.html"
+  to = "/pt/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/work.html"
+  to = "/pt/work"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/services.html"
+  to = "/pt/services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/contact.html"
+  to = "/pt/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/privacy.html"
+  to = "/pt/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/contact-success.html"
+  to = "/pt/contact-success"
+  status = 301
+  force = true
+
 # Netlify publishes the repo root, so the build inputs below would otherwise be
 # downloadable. None of them is linked from the site. They answer 404 instead;
 # force = true is what makes a rule win over a file that exists.
@@ -43,6 +171,12 @@
 
 [[redirects]]
   from = "/netlify.toml"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/.gitignore"
   to = "/404"
   status = 404
   force = true

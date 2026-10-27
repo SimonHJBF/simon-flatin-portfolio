@@ -12,7 +12,7 @@ role_pt: Arquiteto e designer
 org: Bjørkå Flatin
 location: Norway · Brazil
 desc: Independent practice, registered as a sole proprietorship (ENK) in 2025 and VAT registered. Work includes a planning application for a care building (Omsorgsgruppen Våler), the SESC Mogi das Cruzes competition proposal in São Paulo with architect Denis Joelsons, architectural visualisation including the Von Sauna floating saunas, and the design and development of Tinn and hytteboka.app. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
-desc_no: Egen praksis, registrert som enkeltpersonforetak i 2025 og mva-registrert. Arbeidet omfatter byggesøknad for et helsebygg (Omsorgsgruppen Våler), konkurranseforslaget til SESC Mogi das Cruzes i São Paulo sammen med arkitekt Denis Joelsons, arkitekturvisualisering blant annet av de flytende badstuene Von Sauna, og design og utvikling av Tinn og hytteboka.app. Utvalgte kunder: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
+desc_no: Egen praksis, registrert som enkeltpersonforetak i 2025 og mva-registrert. Arbeidet omfatter byggesøknad for en omsorgsbolig (Omsorgsgruppen Våler), konkurranseforslaget til SESC Mogi das Cruzes i São Paulo sammen med arkitekt Denis Joelsons, arkitekturvisualisering blant annet av de flytende badstuene Von Sauna, og design og utvikling av Tinn og hytteboka.app. Utvalgte kunder: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
 desc_pt: Escritório próprio, registrado como firma individual (ENK) em 2025 e inscrito para IVA. O trabalho inclui um pedido de licenciamento para um edifício de saúde (Omsorgsgruppen Våler), a proposta para o concurso do SESC Mogi das Cruzes em São Paulo com o arquiteto Denis Joelsons, visualização arquitetônica incluindo as saunas flutuantes Von Sauna, e o design e desenvolvimento do Tinn e do hytteboka.app. Clientes selecionados: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
 
 [experience]
@@ -23,7 +23,7 @@ role_pt: Encomendas de maquetes
 org: TU Delft
 location: Delft, The Netherlands
 desc: Commissioned by the dean of the Faculty of Architecture and the Built Environment to build two architectural models of Meqdela Gebbi and Lalibela, Ethiopia. One was exhibited at the Venice Architecture Biennale 2023 (Palazzo Mora) and at the faculty in Delft.
-desc_no: På oppdrag fra dekanen ved fakultetet for arkitektur og bygde miljø bygde jeg to arkitekturmodeller av Meqdela Gebbi og Lalibela i Etiopia. Den ene ble vist på arkitekturbiennalen i Venezia i 2023 (Palazzo Mora) og på fakultetet i Delft.
+desc_no: På oppdrag fra dekanen ved fakultetet for arkitektur og det bygde miljø laget jeg to arkitekturmodeller av Meqdela Gebbi og Lalibela i Etiopia. Den ene ble vist på arkitekturbiennalen i Venezia i 2023 (Palazzo Mora) og på fakultetet i Delft.
 desc_pt: Encomendado pelo diretor da Faculdade de Arquitetura e Ambiente Construído para construir duas maquetes arquitetônicas de Meqdela Gebbi e Lalibela, na Etiópia. Uma delas foi exposta na Bienal de Arquitetura de Veneza de 2023 (Palazzo Mora) e na faculdade em Delft.
 
 [experience]
@@ -47,7 +47,7 @@ role_pt: Projetista técnico → arquiteto
 org: Ebano AS / AKSIE AS
 location: Drøbak, Norway
 desc: Design of restaurants, bars and cafés with an emphasis on commercial kitchens, from layout through to custom stainless steel products. When the company expanded into housing, I ran the planning and logistics for the construction of a detached house, coordinating the build team.
-desc_no: Utforming av restauranter, barer og kafeer med vekt på storkjøkken, fra planløsning til spesialdesignede produkter i rustfritt stål. Da selskapet utvidet til boligbygging, hadde jeg ansvaret for planlegging og logistikk ved oppføringen av en enebolig, og koordinerte byggelaget.
+desc_no: Utforming av restauranter, barer og kafeer med vekt på storkjøkken, fra planløsning til spesialdesignede produkter i rustfritt stål. Da selskapet også begynte med boligbygging, hadde jeg ansvaret for planlegging og logistikk ved oppføringen av en enebolig, og koordinerte byggelaget.
 desc_pt: Projeto de restaurantes, bares e cafés com ênfase em cozinhas industriais, do leiaute até produtos sob medida em aço inoxidável. Quando a empresa passou a atuar em habitação, cuidei do planejamento e da logística da construção de uma casa unifamiliar, coordenando a equipe de obra.
 
 [experience]
@@ -58,7 +58,7 @@ role_pt: Estagiário de arquitetura
 org: Lüchinger Architects / Mieke Vink
 location: Rotterdam, The Netherlands
 desc: Transformation of a historic barn into a home (Oud Alblas), developed through iterative physical model-making while preserving the original structure.
-desc_no: Transformasjon av en historisk låve til bolig (Oud Alblas), utviklet gjennom gjentatt arbeid med fysiske modeller, samtidig som den opprinnelige konstruksjonen ble bevart.
+desc_no: Ombygging av en historisk låve til bolig (Oud Alblas), utviklet gjennom flere runder med fysiske modeller, samtidig som den opprinnelige konstruksjonen ble bevart.
 desc_pt: Transformação de um celeiro histórico em casa (Oud Alblas), desenvolvida por meio de maquetes físicas sucessivas, preservando a estrutura original.
 
 [experience]
@@ -87,7 +87,7 @@ role: BSc Architecture, Urbanism and the Built Environment
 org: TU Delft
 location: Delft, The Netherlands
 desc: Foundations in architecture, urbanism and building sciences.
-desc_no: Grunnlaget i arkitektur, urbanisme og bygningsfag.
+desc_no: Grunnutdanning i arkitektur, urbanisme og bygningsfag.
 desc_pt: Fundamentos em arquitetura, urbanismo e ciências da construção.
 
 [education]
@@ -100,7 +100,7 @@ org_no: Noroff fagskole
 org_pt: Escola técnica Noroff
 location: Oslo, Norway
 desc: Grounding in technical drawing with AutoCAD, Revit, Inventor and 3ds Max, alongside the start of my work for Ebano.
-desc_no: Grunnlag i teknisk tegning med AutoCAD, Revit, Inventor og 3ds Max, samtidig som jeg begynte å jobbe for Ebano.
+desc_no: Grunnlag i teknisk tegning med AutoCAD, Revit, Inventor og 3ds Max, samtidig som jeg begynte å jobbe hos Ebano.
 desc_pt: Base em desenho técnico com AutoCAD, Revit, Inventor e 3ds Max, ao mesmo tempo em que comecei a trabalhar para a Ebano.
 
 [education]

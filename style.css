@@ -63,14 +63,14 @@ nav.nav--page .nav__name  { color: var(--dark); }
 .nav__links { display: flex; gap: 2.5rem; list-style: none; }
 .nav__links a {
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
   transition: color 0.2s, transform 0.18s, letter-spacing 0.18s;
 }
-nav.nav--hero .nav__links a       { color: rgba(255,255,255,0.85); }
+nav.nav--hero .nav__links a       { color: rgba(255,255,255,0.9); text-shadow: 0 1px 8px rgba(0,0,0,0.35); }
 nav.nav--hero .nav__links a:hover { color: #fff; transform: scale(1.1); letter-spacing: 0.22em; }
 nav.nav--page .nav__links a       { color: var(--muted); }
 nav.nav--page .nav__links a:hover { color: var(--dark); transform: scale(1.1); letter-spacing: 0.22em; }
@@ -89,7 +89,7 @@ nav.nav--page .nav__links a:hover { color: var(--dark); transform: scale(1.1); l
   border: none;
   cursor: pointer;
   font-size: 0.62rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.14em;
   padding: 0;
   font-family: var(--sans);
@@ -337,6 +337,9 @@ footer a:hover { color: var(--dark); }
     display: inline-flex; align-items: center; justify-content: center;
   }
   .nav__links { row-gap: 0; }
+  .footer__links a, .footer__cookies, .work-filter-btn, .all-work a {
+    min-height: 24px; display: inline-flex; align-items: center;
+  }
 }
 /* The taller targets already space the phone nav; take back what they added. */
 @media (pointer: coarse) and (max-width: 660px) {

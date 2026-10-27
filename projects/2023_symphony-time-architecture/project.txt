@@ -23,11 +23,11 @@ The full graduation work can be downloaded from the [TU Delft repository](https:
 
 ===no===
 
-Symphony of Time and Architecture er forskningsheftet for avgangsprosjektet mitt ved TU Delft, i studioet Explore Lab. Det spør hva tid faktisk er, før det spør hva arkitekturen skal gjøre med den. Første del arbeider seg gjennom tid fra flere kanter: fysikk, nevrovitenskap og litteratur, med utgangspunkt i blant andre Rovelli, Hawking og Buonomano. Andre del vender seg mot Arktis, mot Altadalen og den strekningen av Eibyelva der prosjektet til slutt skulle ligge.
+Symphony of Time and Architecture er forskningsheftet for avgangsprosjektet mitt ved TU Delft, i studioet Explore Lab. Det spør først hva tid egentlig er, og deretter hva arkitekturen bør gjøre med den. Første del nærmer seg tid fra flere kanter: fysikk, nevrovitenskap og litteratur, med utgangspunkt i blant andre Rovelli, Hawking og Buonomano. Andre del vender seg mot Arktis, mot Altadalen og den strekningen av Eibyelva der prosjektet til slutt skulle ligge.
 
-Argumentet er at bygninger ikke er statiske objekter satt opp mot endring, men ting som lever i tid og kan tegnes for å bevege seg med den. I stedet for å motstå vær, erosjon og årstider kan en struktur settes opp for å svare på dem.
+Argumentet er at bygninger ikke er statiske objekter satt opp mot endring, men ting som lever i tid og kan tegnes for å bevege seg med den. I stedet for å motstå vær, erosjon og årstider kan en konstruksjon utformes for å reagere på dem.
 
-En del av arbeidet var praktisk. Jeg gjennomførte en serie erosjonsstudier i sand, der jeg testet hvordan ulike inngrep oppfører seg i et elvesystem. Én enkelt søyle viser seg å gjøre nesten ingenting med avsetningen, og noen elementer skyver til og med sedimentene unna og etterlater et tomrom bak seg. Samlet i klynger øker de samme elementene avsetningen kraftig. Det funnet gikk rett inn i designet: man kan plassere strukturer slik at de oppmuntrer eller demper elvas egne avsetninger.
+En del av arbeidet var praktisk. Jeg gjennomførte en serie erosjonsstudier i sand, der jeg testet hvordan ulike inngrep oppfører seg i et elvesystem. Én enkelt søyle viser seg å gjøre nesten ingenting med avsetningen, og noen elementer skyver til og med sedimentene unna og etterlater et tomrom bak seg. Samlet i klynger øker de samme elementene avsetningen kraftig. Det funnet gikk rett inn i designet: man kan plassere strukturer slik at de fremmer eller hemmer elvas egne avsetninger.
 
 Hele avgangsarbeidet kan lastes ned fra [TU Delfts arkiv](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
 

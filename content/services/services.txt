@@ -18,7 +18,7 @@ name: Building applications in Norway
 name_no: Byggesøknader i Norge
 name_pt: Licenciamento na Noruega
 desc: Preparation and follow-up of building applications in Norway, including the supporting documentation and answers to the municipality's questions. Most recently a change-of-use application for a care building for Omsorgsgruppen in Våler.
-desc_no: Utarbeiding og oppfølging av byggesøknader i Norge, med tilhørende dokumentasjon og svar på spørsmål fra kommunen. Sist en søknad om bruksendring for et helsebygg for Omsorgsgruppen i Våler.
+desc_no: Utarbeiding og oppfølging av byggesøknader i Norge, med tilhørende dokumentasjon og svar på spørsmål fra kommunen. Sist en søknad om bruksendring til omsorgsbolig for Omsorgsgruppen i Våler.
 desc_pt: Preparação e acompanhamento de processos de licenciamento na Noruega, incluindo a documentação de apoio e as respostas às exigências do município. O mais recente foi um pedido de mudança de uso para um edifício de saúde da Omsorgsgruppen, em Våler.
 
 [service]
@@ -26,7 +26,7 @@ name: Drawings and BIM models
 name_no: Tegninger og BIM-modeller
 name_pt: Desenhos e modelos BIM
 desc: Technical drawing packages, plans, sections, elevations and details, for building applications and contractor tendering. Revit models with coordination and information management, and parametric workflows in Rhino and Grasshopper where geometry is better driven by rules than drawn by hand. Revit, Rhino, Grasshopper and AutoCAD at an advanced level.
-desc_no: Tekniske tegningspakker, planer, snitt, fasader og detaljer, til byggesøknader og anbudsgrunnlag. Revit-modeller med koordinering og informasjonshåndtering, og parametriske arbeidsflyter i Rhino og Grasshopper der geometrien er bedre tjent med å styres av regler enn å tegnes for hånd. Revit, Rhino, Grasshopper og AutoCAD på avansert nivå.
+desc_no: Tekniske tegningssett med plan-, snitt- og fasadetegninger og detaljer, til byggesøknader og anbudsgrunnlag. Revit-modeller med koordinering og informasjonshåndtering, og parametriske arbeidsflyter i Rhino og Grasshopper der geometrien er bedre tjent med å styres av regler enn å tegnes for hånd. Revit, Rhino, Grasshopper og AutoCAD på avansert nivå.
 desc_pt: Pacotes de desenho técnico, plantas, cortes, elevações e detalhes, para licenciamento e concorrências com empreiteiras. Modelos em Revit com coordenação e gestão da informação, e fluxos paramétricos em Rhino e Grasshopper onde a geometria funciona melhor governada por regras do que desenhada à mão. Revit, Rhino, Grasshopper e AutoCAD em nível avançado.
 
 [service]
@@ -34,7 +34,7 @@ name: Architectural models
 name_no: Arkitekturmodeller
 name_pt: Maquetes de arquitetura
 desc: Exhibition-quality architectural models at any scale, from study maquettes to commissioned pieces. My models for TU Delft were exhibited at the Venice Architecture Biennale 2023 at Palazzo Mora and at the faculty in Delft.
-desc_no: Arkitekturmodeller i utstillingskvalitet i alle skalaer, fra studiemodeller til bestilte arbeider. Modellene mine for TU Delft ble vist på arkitekturbiennalen i Venezia i 2023 i Palazzo Mora og på fakultetet i Delft.
+desc_no: Arkitekturmodeller i utstillingskvalitet i alle skalaer, fra studiemodeller til modeller laget på bestilling. Modellene mine for TU Delft ble vist på arkitekturbiennalen i Venezia i 2023, i Palazzo Mora, og på fakultetet i Delft.
 desc_pt: Maquetes arquitetônicas com qualidade de exposição em qualquer escala, de modelos de estudo a peças encomendadas. Minhas maquetes para a TU Delft foram exibidas na Bienal de Arquitetura de Veneza de 2023, no Palazzo Mora, e na faculdade em Delft.
 
 [service]
@@ -42,7 +42,7 @@ name: Drone survey of sites and buildings
 name_no: Droneoppmåling av tomter og bygg
 name_pt: Levantamento com drone de terrenos e edifícios
 desc: Aerial photogrammetry surveys producing point clouds and 3D meshes of sites, landscapes and existing buildings. Useful for planning, site recording, contractor briefings and spatial research.
-desc_no: Fotogrammetriske oppmålinger fra lufta som gir punktskyer og 3D-modeller av tomter, landskap og eksisterende bygg. Nyttig til planlegging, dokumentasjon av tomt, underlag til entreprenør og romlig research.
+desc_no: Fotogrammetriske oppmålinger fra lufta som gir punktskyer og 3D-modeller av tomter, landskap og eksisterende bygg. Nyttig til planlegging, dokumentasjon av tomt, underlag for entreprenør og romlige undersøkelser.
 desc_pt: Levantamentos aerofotogramétricos que geram nuvens de pontos e malhas 3D de terrenos, paisagens e edifícios existentes. Úteis para planejamento, registro do local, briefings para empreiteiras e pesquisa espacial.
 
 [service]
@@ -55,8 +55,8 @@ desc_pt: Fluxos circulares de materiais, sistemas passivos e estratégias de bai
 
 [service]
 name: Research and material studies
-name_no: Research og materialstudier
+name_no: Forskning og materialstudier
 name_pt: Pesquisa e estudos de material
 desc: Focused research into material behaviour, tectonic systems and formal strategies. The Arctic Symphony research included a series of sand erosion studies testing how built interventions change sedimentation in a river system.
-desc_no: Målrettet research på materialoppførsel, tektoniske systemer og formstrategier. Forskningsdelen av Arctic Symphony omfattet en serie erosjonsstudier i sand som testet hvordan bygde inngrep endrer avsetningen i et elvesystem.
+desc_no: Målrettede undersøkelser av materialoppførsel, tektoniske systemer og formstrategier. Forskningsdelen av Arctic Symphony omfattet en serie erosjonsstudier i sand som testet hvordan bygde inngrep endrer avsetningen i et elvesystem.
 desc_pt: Pesquisa dirigida sobre comportamento dos materiais, sistemas tectônicos e estratégias formais. A pesquisa do Arctic Symphony incluiu uma série de estudos de erosão em areia, testando como intervenções construídas alteram a sedimentação em um sistema fluvial.
