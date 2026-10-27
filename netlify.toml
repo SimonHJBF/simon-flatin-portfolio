@@ -239,6 +239,12 @@
   force = true
 
 [[redirects]]
+  from = "/projects/_2023_harbour-box/*"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/projects/_2026_hytteboka/*"
   to = "/404"
   status = 404
