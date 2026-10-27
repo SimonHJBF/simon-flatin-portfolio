@@ -1,0 +1,40 @@
+title: SKNF Flagship
+category: Architecture · Interior
+tags: Architecture
+year: 2025 - 2026
+location: London, United Kingdom
+typology: Youth AI hub
+size: ~500 m²
+status: Concept
+grid: wide
+weight: 8
+
+---
+
+SKNF Flagship is a concept for a new kind of youth space in London: part creative studio, part tech incubator, where young people learn to build with AI. The client needed a design that could sell the idea, so the brief was to show what the place could feel like before there was a building to put it in.
+
+To test the concept I applied the program to a typical single-story brick warehouse on Fish Island, by the River Lee Navigation, one of London's Creative Enterprise Zones. The aim was "industrial warmth": keep the raw brick and steel of the shell, and soften it with timber, planting and warm light, so the space reads as a professional workplace rather than a school.
+
+Instead of corridors and closed doors, the 500 m² floor is organized as a small village. Services, staff and toilets line the street edge as an acoustic buffer. The AI lab, podcast and filming studios, auditorium and breakout rooms sit as curved glass cells in the middle of the hall, and the open space between them becomes the central hub, a market square with a café, shared tables and bleacher seating. The glass keeps everyone visible, which gives passive supervision without feeling controlling, while the cells stay quiet enough for focused work and recording. The hub holds around 115 people.
+
+I delivered the concept strategy, the layout and a set of renders in three milestones over December 2025 and January 2026.
+
+===no===
+
+SKNF Flagship er et konsept for en ny type ungdomslokale i London: dels kreativt studio, dels teknologisk inkubator, der unge lærer å bygge med kunstig intelligens. Oppdragsgiveren trengte et design som kunne selge idéen, så oppgaven var å vise hvordan stedet kunne føles før det fantes et bygg å sette det i.
+
+For å teste konseptet la jeg programmet inn i et typisk lagerbygg i tegl på én etasje på Fish Island, ved River Lee Navigation, en av Londons soner for kreativ næring. Målet var «industriell varme»: beholde den rå teglen og stålet i skallet, og myke det opp med tre, planter og varmt lys, slik at rommet oppleves som en profesjonell arbeidsplass og ikke som en skole.
+
+I stedet for korridorer og lukkede dører er de 500 m² organisert som en liten landsby. Tekniske rom, personalrom og toaletter ligger langs gatesiden som en akustisk buffer. KI-laben, podkast- og filmstudioene, auditoriet og grupperommene står som buede glasskjerner midt i hallen, og det åpne rommet mellom dem blir det sentrale knutepunktet, et torg med kafé, felles bord og tribuneseter. Glasset gjør at alle er synlige, noe som gir naturlig tilsyn uten å føles kontrollerende, samtidig som kjernene er stille nok til konsentrert arbeid og opptak. Lokalet har plass til rundt 115 personer.
+
+Jeg leverte konseptstrategien, planløsningen og et sett med visualiseringer i tre milepæler i desember 2025 og januar 2026.
+
+===pt===
+
+O SKNF Flagship é um conceito para um novo tipo de espaço para jovens em Londres: em parte estúdio criativo, em parte incubadora de tecnologia, onde jovens aprendem a criar com inteligência artificial. O cliente precisava de um projeto que vendesse a ideia, então o desafio era mostrar como o lugar poderia ser antes de existir um edifício para ele.
+
+Para testar o conceito, apliquei o programa a um típico galpão de tijolos de um pavimento em Fish Island, às margens do River Lee Navigation, uma das Zonas de Economia Criativa de Londres. O objetivo era um "calor industrial": manter o tijolo e o aço aparentes da estrutura e suavizá-los com madeira, plantas e luz quente, para que o espaço pareça um ambiente de trabalho profissional, e não uma escola.
+
+Em vez de corredores e portas fechadas, os 500 m² são organizados como uma pequena vila. Serviços, equipe e banheiros ficam ao longo da fachada da rua, como um amortecedor acústico. O laboratório de IA, os estúdios de podcast e filmagem, o auditório e as salas de reunião ficam como células curvas de vidro no meio do galpão, e o espaço aberto entre elas se torna o centro de convivência, uma praça com café, mesas compartilhadas e arquibancadas. O vidro mantém todos visíveis, o que permite uma supervisão natural sem parecer controladora, enquanto as células são silenciosas o bastante para trabalho concentrado e gravações. O espaço recebe cerca de 115 pessoas.
+
+Entreguei a estratégia conceitual, o layout e um conjunto de renders em três etapas, entre dezembro de 2025 e janeiro de 2026.
