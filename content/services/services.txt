@@ -33,9 +33,9 @@ desc_pt: Pacotes de desenho técnico, plantas, cortes, elevações e detalhes, p
 name: Architectural models
 name_no: Arkitekturmodeller
 name_pt: Maquetes de arquitetura
-desc: Exhibition-quality architectural models at any scale, from study maquettes to commissioned pieces. My models for TU Delft were exhibited at the Venice Architecture Biennale 2023 at Palazzo Mora and at the faculty in Delft.
-desc_no: Arkitekturmodeller i utstillingskvalitet i alle skalaer, fra studiemodeller til modeller laget på bestilling. Modellene mine for TU Delft ble vist på arkitekturbiennalen i Venezia i 2023, i Palazzo Mora, og på fakultetet i Delft.
-desc_pt: Maquetes arquitetônicas com qualidade de exposição em qualquer escala, de modelos de estudo a peças encomendadas. Minhas maquetes para a TU Delft foram exibidas na Bienal de Arquitetura de Veneza de 2023, no Palazzo Mora, e na faculdade em Delft.
+desc: Exhibition-quality architectural models at any scale, from study maquettes to commissioned pieces. Of the two models I built for TU Delft, one was exhibited at the Venice Architecture Biennale 2023 at Palazzo Mora and at the faculty in Delft.
+desc_no: Arkitekturmodeller i utstillingskvalitet i alle skalaer, fra studiemodeller til modeller laget på bestilling. Av de to modellene jeg bygde for TU Delft, ble den ene vist på arkitekturbiennalen i Venezia i 2023, i Palazzo Mora, og på fakultetet i Delft.
+desc_pt: Maquetes arquitetônicas com qualidade de exposição em qualquer escala, de modelos de estudo a peças encomendadas. Das duas maquetes que construí para a TU Delft, uma foi exibida na Bienal de Arquitetura de Veneza de 2023, no Palazzo Mora, e na faculdade em Delft.
 
 [service]
 name: Drone survey of sites and buildings

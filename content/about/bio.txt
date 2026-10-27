@@ -6,7 +6,7 @@ Before Delft I spent an exchange year at La Trobe University in Melbourne and st
 
 I have run my own practice since 2023, registered as Bjørkå Flatin ENK in 2025. I split my time between Norway and São Paulo and work mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from a planning application for a care building, through competition proposals, to architectural visualization.
 
-I also build software for the industry I work in. Tinn is a specification tool for the built environment and hytteboka.app is an app for cabin owners. Both are running. Most projects, though, still start with a physical model on the desk.
+I also build software for the industry I work in. Tinn is a specification tool for the built environment and hytteboka.app is an app for cabin owners. Hytteboka is in use, and Tinn is in testing. Most projects, though, still start with a physical model on the desk.
 
 ===no===
 
@@ -18,7 +18,7 @@ Før Delft hadde jeg et utvekslingsår ved La Trobe University i Melbourne og st
 
 Jeg har drevet egen praksis siden 2023, registrert som Bjørkå Flatin ENK i 2025. Jeg deler tiden mellom Norge og São Paulo og jobber mest på nett, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra en byggesøknad for en omsorgsbolig, via konkurranseforslag, til arkitekturvisualisering.
 
-Jeg lager også programvare for bransjen jeg jobber i. Tinn er et spesifikasjonsverktøy for byggebransjen, og hytteboka.app er en app for hytteeiere. Begge er i bruk. Men de fleste prosjektene begynner fortsatt med en fysisk modell på bordet.
+Jeg lager også programvare for bransjen jeg jobber i. Tinn er et spesifikasjonsverktøy for byggebransjen, og hytteboka.app er en app for hytteeiere. Hytteboka er i bruk, og Tinn er under testing. Men de fleste prosjektene begynner fortsatt med en fysisk modell på bordet.
 
 ===pt===
 
@@ -30,4 +30,4 @@ Antes de Delft, passei um ano de intercâmbio na La Trobe University, em Melbour
 
 Tenho meu próprio escritório desde 2023, registrado como Bjørkå Flatin ENK em 2025. Divido meu tempo entre a Noruega e São Paulo e trabalho principalmente online, com clientes na Noruega, Suécia, Portugal, Estados Unidos e Brasil. O trabalho vai de um pedido de licenciamento para moradia assistida, passando por propostas de concurso, até visualização arquitetônica.
 
-Também desenvolvo software para o setor em que trabalho. O Tinn é uma ferramenta de especificação para a construção civil, e o hytteboka.app é um aplicativo para donos de cabanas. Ambos estão em operação. Mas a maioria dos projetos ainda começa com uma maquete física sobre a mesa.
+Também desenvolvo software para o setor em que trabalho. O Tinn é uma ferramenta de especificação para a construção civil, e o hytteboka.app é um aplicativo para donos de cabanas. O Hytteboka está em uso, e o Tinn está em testes. Mas a maioria dos projetos ainda começa com uma maquete física sobre a mesa.

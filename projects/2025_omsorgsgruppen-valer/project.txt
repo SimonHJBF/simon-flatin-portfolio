@@ -11,7 +11,7 @@ weight: 9
 
 ---
 
-Omsorgsgruppen Våler is a planning application project for the municipality of Våler i Østfold. The work involved assessing an existing single-family home and preparing the necessary documentation to obtain municipal approval for its conversion to assisted living use. The focus was on compliance with local planning regulations and care-facility standards, not the architectural design of a new building.
+Omsorgsgruppen Våler is a planning application project in the municipality of Våler i Østfold. The work involved assessing an existing single-family home and preparing the necessary documentation to obtain municipal approval for its conversion to assisted living use. The focus was on compliance with local planning regulations and care-facility standards, not the architectural design of a new building.
 
 ===no===
 
