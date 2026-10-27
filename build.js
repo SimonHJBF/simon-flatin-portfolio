@@ -1456,7 +1456,7 @@ ${footerHtml()}
   var vs='attribute vec2 a;void main(){gl_Position=vec4(a,0,1);}';
   var fs=
     'precision mediump float;'+
-    'uniform float u_t,u_s,u_l;'+
+    'uniform float u_t,u_s;'+
     'uniform vec2 u_r;'+
     'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.545);}'+
     'float n(vec2 p){vec2 i=floor(p),f=fract(p),u=f*f*(3.-2.*f);'+
@@ -1504,12 +1504,6 @@ ${footerHtml()}
     'float base=(hmL+hmR)*0.5*(0.25+s*0.75)*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.10;'+
     'float d=clamp(dL+dR+base,0.,1.)*smoothstep(0.03,0.10,uv.y);'+
     // Portrait screens: boost density so fog feels solid on tall vertical canvases
-    // The lift: on arrival a veil covers the landscape below the name. Its
-    // lower edge climbs from the water as u_l falls from 1 to 0, so the mist
-    // rises off the lake and the photograph comes through from below.
-    'float e=(1.-u_l)*1.35-0.15;'+
-    'float cover=smoothstep(e-0.30,e,uv.y+(cL+cR-1.)*0.16)*(1.-smoothstep(0.58,0.90,uv.y+(cL-0.5)*0.10));'+
-    'd=max(d,cover*(0.45+0.40*max(cL,cR))*min(u_l*2.5,1.));'+
     'd=clamp(d*(1.0+max(0.,(1.-aspect)*0.5)),0.,1.);'+
     'd=smoothstep(0.02,0.96,d)*0.92;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
@@ -1529,40 +1523,26 @@ ${footerHtml()}
   var uT=gl.getUniformLocation(p,'u_t');
   var uS=gl.getUniformLocation(p,'u_s');
   var uR=gl.getUniformLocation(p,'u_r');
-  var uL=gl.getUniformLocation(p,'u_l');
   var sT=0,sC=0;
-  // A visitor arriving from outside sees the mist lift; one coming back from
-  // another page here finds it already lifted. Read from the referrer, so
-  // nothing is stored on the device.
-  var lift=document.referrer.indexOf(location.origin+'/')===0?0:1;
-  var LIFT=4.5,SETTLE=LIFT+5;
-  // After SETTLE seconds the drift stops and the fog holds still, so nothing
-  // moves on its own for more than a few seconds (WCAG 2.2.2). Scrolling wakes
-  // it again until it has caught up.
-  var tAcc=0,last=null,running=false;
   function resize(){var w=c.offsetWidth||window.innerWidth,h=c.offsetHeight||window.innerHeight;if(c.width!==w||c.height!==h){c.width=w;c.height=h;gl.viewport(0,0,w,h);}}
-  function onScroll(){sT=Math.min((window.scrollY||window.pageYOffset)/(c.parentElement.offsetHeight||window.innerHeight),1);kick();}
-  function kick(){if(!running){running=true;last=null;requestAnimationFrame(frame);}}
+  function onScroll(){sT=Math.min((window.scrollY||window.pageYOffset)/(c.parentElement.offsetHeight||window.innerHeight),1);}
   window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',function(){resize();kick();});
+  window.addEventListener('resize',resize);
   resize();
+  var t0=null;
   function frame(ts){
-    if(last===null)last=ts;
-    tAcc+=Math.min((ts-last)/1000,0.1);last=ts;
+    if(!t0)t0=ts;
     sC+=(sT-sC)*0.06;
-    var k=Math.min(tAcc/LIFT,1),L=lift*(1-k*k*(3-2*k));
     resize();
     gl.clearColor(0,0,0,0);
     gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniform1f(uT,tAcc);
+    gl.uniform1f(uT,(ts-t0)/1000);
     gl.uniform1f(uS,sC);
-    gl.uniform1f(uL,L);
     gl.uniform2f(uR,c.width,c.height);
     gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
-    if(tAcc<SETTLE||Math.abs(sT-sC)>0.002)requestAnimationFrame(frame);
-    else running=false;
+    requestAnimationFrame(frame);
   }
-  kick();
+  requestAnimationFrame(frame);
 })();
 </script>
 <script>
@@ -1575,21 +1555,19 @@ ${footerHtml()}
     if(img.complete)use();else img.addEventListener('load',use);
   })();
   /* Water ripple - sinusoidal feOffset oscillation, zero seam, works on iOS.
-   * dy and dx oscillate at different periods so the motion never exactly
-   * repeats. After about nine seconds it calms over three more and the lake
-   * lies still, with the fog. */
+   * dy and dx oscillate at different periods so the combined motion never
+   * exactly repeats, giving endlessly varied, natural-looking ripple. */
   (function(){
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
     var fo=document.getElementById('wo');
     if(!fo)return;
-    var t=0,lastTs=null,CALM=9.2,STILL=12.2;
+    var t=0,lastTs=null;
     function step(ts){
       if(lastTs===null)lastTs=ts;
       var dt=Math.min((ts-lastTs)/1000,0.1); lastTs=ts; t+=dt;
-      var a=t<CALM?1:Math.max(0,1-(t-CALM)/(STILL-CALM));a=a*a*(3-2*a);
-      fo.setAttribute('dy',String(-35*a*Math.sin(t*0.25)));
-      fo.setAttribute('dx',String(12*a*Math.sin(t*0.4+1.0)));
-      if(t<STILL)requestAnimationFrame(step);
+      fo.setAttribute('dy',String(-35*Math.sin(t*0.25)));
+      fo.setAttribute('dx',String(12*Math.sin(t*0.4+1.0)));
+      requestAnimationFrame(step);
     }
     if(document.readyState==='loading'){
       document.addEventListener('DOMContentLoaded',function(){requestAnimationFrame(step);});
