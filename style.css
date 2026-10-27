@@ -68,12 +68,12 @@ nav.nav--page .nav__name  { color: var(--dark); }
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
-  transition: color 0.2s, transform 0.18s, letter-spacing 0.18s;
+  transition: color 0.4s;
 }
 nav.nav--hero .nav__links a       { color: rgba(255,255,255,0.9); text-shadow: 0 1px 8px rgba(0,0,0,0.35); }
-nav.nav--hero .nav__links a:hover { color: #fff; transform: scale(1.1); letter-spacing: 0.22em; }
+nav.nav--hero .nav__links a:hover { color: #fff; }
 nav.nav--page .nav__links a       { color: var(--muted); }
-nav.nav--page .nav__links a:hover { color: var(--dark); transform: scale(1.1); letter-spacing: 0.22em; }
+nav.nav--page .nav__links a:hover { color: var(--dark); }
 
 /* Language toggle - three clickable buttons */
 .lang-toggle {
@@ -119,7 +119,7 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 /* Wrapper bounces straight down; arrow stays rotated */
 .hero__scroll-arrow-wrap {
   display: block;
-  animation: scrollBounce 2s ease-in-out infinite;
+  animation: scrollBounce 2s ease-in-out 3;
 }
 .hero__scroll-arrow {
   display: block;
@@ -173,17 +173,17 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 .card__placeholder {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
-  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+  transition: transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 /* A playing video is deliberately left out of the lift: scaling it resamples
    every frame, which reads as a flicker rather than as movement. */
 .card:hover .card__img-wrap img,
-.card:hover .card__placeholder { transform: scale(1.04); }
+.card:hover .card__placeholder { transform: scale(1.015); }
 
 .card__info   { padding: 1rem 0 0.4rem; }
 .card__category {
-  font-size: 0.68rem; font-weight: 700;
-  letter-spacing: 0.18em; text-transform: uppercase;
+  font-size: 0.68rem; font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--muted); margin-bottom: 0.35rem;
 }
 .card__name {
@@ -192,18 +192,6 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
   font-weight: 400; color: var(--dark); line-height: 1.25;
 }
 .card__year { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
-.card__arrow {
-  display: inline-block; margin-top: 0.6rem;
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
-  color: var(--accent); opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.25s, transform 0.25s;
-}
-.card:hover .card__arrow { opacity: 1; transform: translateX(0); }
-/* A touch screen never hovers, so the label would otherwise never appear. */
-@media (hover: none) {
-  .card__arrow { opacity: 1; transform: none; }
-}
 
 /* ---- FOOTER ---- */
 footer {
@@ -280,8 +268,8 @@ footer a:hover { color: var(--dark); }
   margin-bottom: 3.5rem;
 }
 .section-label {
-  font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.22em; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--muted);
 }
 .section-title {

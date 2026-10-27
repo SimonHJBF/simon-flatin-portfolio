@@ -888,7 +888,6 @@ function cardHtml(data, index, prefix) {
           <div class="card__category">${langSpans(data.category || '', tVal)}</div>
           <div class="card__name">${langSpans(data.title || slug, tTitle)}</div>
           ${sub ? `<div class="card__year">${langSpans(sub, tVal)}</div>` : ''}
-          <div class="card__arrow"><span class="l-en">View project</span><span class="l-no">Se prosjekt</span><span class="l-pt">Ver projeto</span> &rarr;</div>
         </div>
       </a>`;
 }
@@ -942,10 +941,32 @@ function generateProjectPage(data, folderName, images, prev, next) {
       ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}"${sizeAttrs(webSrc(imgDir, hero))}${srcsetAttrs(webSrc(imgDir, hero), '100vw')} alt="${attrLang(l => tTitle(title, l))}" loading="eager" fetchpriority="high" /></div>`
       : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
 
+  // The gallery reads like a book rather than a feed. Drawings (found by their
+  // file name) sit narrower, printed onto the page. A project can also set
+  //   layout image-03-ai-lab: small | pair | full | drawing
+  //   caption image-03-ai-lab: English | Norsk | Português
+  // in its header. Two neighbouring `pair` images share a row.
+  const DRAWING = /(^|-)(plans?|sections?|elevations?|axonometric|axo|drawings?|sketch(es)?|diagram)(-|$)/i;
+  const stem    = f => f.replace(/\.[^.]+$/, '').toLowerCase();
+  const figs = gallery.map((img, i) => {
+    const lay = (data['layout_' + stem(img)] || '').toLowerCase() || (DRAWING.test(stem(img)) ? 'drawing' : 'full');
+    const capRaw = data['caption_' + stem(img)];
+    const cap = capRaw ? (([en, no, pt]) => ({ en, no: no || en, pt: pt || en }))(capRaw.split('|').map(s => s.trim())) : null;
+    const src = webSrc(imgDir, img);
+    const alt = attrLang(l => cap ? `${tTitle(title, l)}: ${cap[l]}`
+      : `${tTitle(title, l)}, ${({ en:'image', no:'bilde', pt:'imagem' })[l]} ${i + 1} ${({ en:'of', no:'av', pt:'de' })[l]} ${gallery.length}`);
+    const sizes = lay === 'full' ? '(max-width: 1200px) 100vw, 1200px' : '(max-width: 800px) 100vw, 880px';
+    const capHtml = cap ? `<figcaption><span class="l-en">${esc(cap.en)}</span><span class="l-no">${esc(cap.no)}</span><span class="l-pt">${esc(cap.pt)}</span></figcaption>` : '';
+    return { lay, html: `<figure class="fig--${lay}"><img src="${src}"${sizeAttrs(src)}${srcsetAttrs(src, sizes)} alt="${alt}" loading="lazy" />${capHtml}</figure>` };
+  });
+  const rows = [];
+  for (let i = 0; i < figs.length; i++) {
+    if (figs[i].lay === 'pair' && figs[i + 1] && figs[i + 1].lay === 'pair') {
+      rows.push(`    <div class="fig-pair">${figs[i].html}${figs[i + 1].html}</div>`); i++;
+    } else rows.push(`    ${figs[i].html}`);
+  }
   const galleryHtml = gallery.length
-    ? `\n  <div class="project-gallery">\n` +
-      gallery.map((img, i) => `    <figure><img src="${webSrc(imgDir, img)}"${sizeAttrs(webSrc(imgDir, img))}${srcsetAttrs(webSrc(imgDir, img), '(max-width: 1200px) 100vw, 1200px')} alt="${attrLang(l => `${tTitle(title, l)}, ${({ en:'image', no:'bilde', pt:'imagem' })[l]} ${i + 1} ${({ en:'of', no:'av', pt:'de' })[l]} ${gallery.length}`)}" loading="lazy" /></figure>`).join('\n') +
-      `\n  </div>`
+    ? `\n  <div class="project-gallery">\n` + rows.join('\n') + `\n  </div>`
     : '';
 
   // A self-hosted video is already the hero, so only a YouTube embed gets a
@@ -979,7 +1000,7 @@ function generateProjectPage(data, folderName, images, prev, next) {
     .project-body { max-width:1200px; margin:0 auto; padding:4rem 4rem 0;
       display:grid; grid-template-columns:260px 1fr; gap:5rem; }
     .project-meta { display:grid; grid-template-columns:1fr; }
-    .project-meta dt { font-size:.68rem; font-weight:700; letter-spacing:.14em;
+    .project-meta dt { font-size:.68rem; font-weight:400; letter-spacing:.14em;
       text-transform:uppercase; color:var(--muted); padding-top:1.2rem; }
     .project-meta dt:first-child { padding-top:0; }
     .project-meta dd { font-size:.88rem; line-height:1.55; color:var(--accent);
@@ -989,15 +1010,23 @@ function generateProjectPage(data, folderName, images, prev, next) {
     .project-content p { font-size:.95rem; line-height:1.85; color:var(--accent);
       margin-bottom:1.3rem; max-width:620px; }
     .project-back { display:inline-block; margin-top:2.5rem; font-size:.78rem;
-      font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+      font-weight:400; letter-spacing:.14em; text-transform:uppercase;
       color:var(--muted); text-decoration:none;
       border-bottom:1px solid rgba(107,104,96,.4); padding-bottom:2px;
       transition:color .2s,border-color .2s; }
     .project-back:hover { color:var(--dark); border-color:var(--dark); }
-    .project-gallery { max-width:1200px; margin:4rem auto 0; padding:0 4rem;
-      display:flex; flex-direction:column; gap:1.5rem; }
+    .project-content a { color:inherit; text-decoration:underline; text-decoration-color:rgba(28,28,26,.3);
+      text-decoration-thickness:1px; text-underline-offset:3px; transition:text-decoration-color .4s; }
+    .project-content a:hover { text-decoration-color:var(--dark); }
+    .project-gallery { max-width:1200px; margin:5rem auto 0; padding:0 4rem;
+      display:flex; flex-direction:column; gap:3.5rem; }
     .project-gallery figure { margin:0; }
     .project-gallery img { width:100%; height:auto; display:block; }
+    .project-gallery figcaption { font-size:.78rem; line-height:1.5; color:var(--muted); margin-top:.8rem; }
+    .project-gallery .fig--small { width:min(560px,100%); margin:3.5rem auto; }
+    .project-gallery .fig--drawing { width:min(880px,100%); margin:3.5rem auto; }
+    .fig--drawing img { mix-blend-mode:multiply; }
+    .fig-pair { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:start; }
     .project-video { max-width:1200px; margin:4rem auto 0; padding:0 4rem; }
     .yt-facade { width:100%; aspect-ratio:16/9; border:none; cursor:pointer; display:flex; flex-direction:column;
       align-items:center; justify-content:center; gap:.5rem; color:#fff; font:inherit;
@@ -1009,13 +1038,13 @@ function generateProjectPage(data, folderName, images, prev, next) {
     .project-video video { width:100%; aspect-ratio:16/9; border:none; display:block;
       background:#000; object-fit:cover; }
     .project-role { font-size:.95rem; line-height:1.7; color:var(--dark); margin:-1rem 0 2rem; max-width:620px; }
-    .project-role__label { display:block; font-size:.68rem; font-weight:700; letter-spacing:.14em;
+    .project-role__label { display:block; font-size:.68rem; font-weight:400; letter-spacing:.14em;
       text-transform:uppercase; color:var(--muted); margin-bottom:.3rem; }
     .project-pager { max-width:1200px; margin:5rem auto 0; padding:2rem 4rem 0;
       border-top:1px solid rgba(28,28,26,.1); display:flex; justify-content:space-between; gap:2rem; }
     .project-pager a { text-decoration:none; color:var(--dark); display:flex; flex-direction:column; gap:.4rem; max-width:45%; }
     .project-pager__next { text-align:right; margin-left:auto; }
-    .project-pager__dir { font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+    .project-pager__dir { font-size:.68rem; font-weight:400; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
     .project-pager__name { font-family:var(--serif); font-size:clamp(1.05rem,1.6vw,1.3rem); line-height:1.3; }
     .project-pager a:hover .project-pager__name { color:var(--muted); }
     @media(max-width:800px) {
@@ -1023,7 +1052,9 @@ function generateProjectPage(data, folderName, images, prev, next) {
       /* On a phone the text comes first; the facts follow it instead of
          pushing the description below the first screen. */
       .project-body > div:first-child { order:2; }
-      .project-gallery { padding:0 1.5rem; }
+      .project-gallery { padding:0 1.5rem; gap:2.5rem; }
+      .project-gallery .fig--small, .project-gallery .fig--drawing { margin:1rem auto; }
+      .fig-pair { grid-template-columns:1fr; gap:2.5rem; }
       .project-pager { padding:2rem 1.5rem 0; }
     }
     ${LANG_CSS}
@@ -1115,7 +1146,7 @@ function generateWorkPage(projects) {
       display:flex; flex-wrap:wrap; gap:0.4rem 1.4rem;
       border-bottom:1px solid rgba(28,28,26,.1); }
     .work-filter-btn { background:none; border:none; cursor:pointer;
-      font-size:0.68rem; font-weight:700; letter-spacing:0.18em;
+      font-size:0.68rem; font-weight:400; letter-spacing:0.14em;
       text-transform:uppercase; color:var(--muted); padding:0.2rem 0;
       font-family:var(--sans); border-bottom:1.5px solid transparent;
       transition:color 0.2s, border-color 0.2s; }
@@ -1283,7 +1314,6 @@ function generateIndexPage(allProjects, featuredSlugs) {
           <div class="card__category">${langSpans(data.category || '', tVal)}</div>
           <div class="card__name">${langSpans(data.title || data.slug, tTitle)}</div>
           ${sub ? `<div class="card__year">${langSpans(sub, tVal)}</div>` : ''}
-          <div class="card__arrow"><span class="l-en">View project</span><span class="l-no">Se prosjekt</span><span class="l-pt">Ver projeto</span> &rarr;</div>
         </div>
       </a>`;
   }).join('');
@@ -1360,9 +1390,9 @@ function generateIndexPage(allProjects, featuredSlugs) {
     .featured { max-width:1400px; margin:0 auto; padding:6rem 4rem 0; }
     .featured__header { display:flex; align-items:baseline; gap:1.4rem; margin-bottom:4rem; }
     .all-work { margin-top:4rem; text-align:right; }
-    .all-work a { font-size:.78rem; font-weight:700; letter-spacing:.16em;
+    .all-work a { font-size:.78rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; color:var(--dark); text-decoration:none;
-      border-bottom:1.5px solid var(--dark); padding-bottom:2px;
+      border-bottom:1px solid var(--dark); padding-bottom:2px;
       transition:color .2s,border-color .2s; }
     .all-work a:hover { color:var(--muted); border-color:var(--muted); }
     @media(max-width:900px) { .featured { padding:3rem 1.5rem 0; } }
@@ -1402,8 +1432,7 @@ function generateIndexPage(allProjects, featuredSlugs) {
 
   <section class="featured">
     <div class="featured__header">
-      <span class="section-label"><span class="l-en">Selected Work</span><span class="l-no">Utvalgte prosjekter</span><span class="l-pt">Trabalho Selecionado</span></span>
-      <h2 class="section-title"><span class="l-en">Signature Projects</span><span class="l-no">N&oslash;kkel&shy;prosjekter</span><span class="l-pt">Projetos de Destaque</span></h2>
+      <h2 class="section-title"><span class="l-en">Selected work</span><span class="l-no">Utvalgte prosjekter</span><span class="l-pt">Trabalhos selecionados</span></h2>
     </div>
     <div class="projects">
 ${cards}
@@ -1469,7 +1498,7 @@ ${footerHtml()}
     'float yC=0.34;'+
     'float v3=(1.-smoothstep(yC-0.01,yC+0.07,uv.y))*smoothstep(yC-0.30,yC+0.01,uv.y);'+
     // L and R overlap everywhere - no seam. dens ramps from 0.40 at rest to 1.0 at full scroll.
-    'float dens=0.40+s*0.60;'+
+    'float dens=0.55+s*0.45;'+
     'float dL=hmL*(v1*cL*0.63+v2*cL*0.76+v3*cL*0.52)*dens;'+
     'float dR=hmR*(v1*cR*0.63+v2*cR*0.76+v3*cR*0.52)*dens;'+
     'float base=(hmL+hmR)*0.5*(0.25+s*0.75)*smoothstep(0.04,0.16,uv.y)*(1.-smoothstep(0.54,0.62,uv.y))*0.10;'+
@@ -1482,7 +1511,7 @@ ${footerHtml()}
     'float cover=smoothstep(e-0.30,e,uv.y+(cL+cR-1.)*0.16)*(1.-smoothstep(0.58,0.90,uv.y+(cL-0.5)*0.10));'+
     'd=max(d,cover*(0.45+0.40*max(cL,cR))*min(u_l*2.5,1.));'+
     'd=clamp(d*(1.0+max(0.,(1.-aspect)*0.5)),0.,1.);'+
-    'd=smoothstep(0.02,0.96,d)*0.86;'+
+    'd=smoothstep(0.02,0.96,d)*0.92;'+
     'gl_FragColor=vec4(0.97*d,0.96*d,0.94*d,d);}';
   function mk(t,s){var sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);return gl.getShaderParameter(sh,gl.COMPILE_STATUS)?sh:null;}
   var sv=mk(gl.VERTEX_SHADER,vs),sf=mk(gl.FRAGMENT_SHADER,fs);
@@ -1621,7 +1650,7 @@ function generateAboutPage(paragraphs, cv) {
   <style>
     .about-body { max-width:1400px; margin:0 auto; padding:5rem 4rem 0;
       display:grid; grid-template-columns:1fr 1fr; gap:5rem; }
-    .about-bio__label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+    .about-bio__label { font-size:.72rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
     .about-bio__name { font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.8rem);
       font-weight:400; line-height:1.15; margin-bottom:2.5rem; }
@@ -1630,14 +1659,14 @@ function generateAboutPage(paragraphs, cv) {
     .about-photo { margin-top:3rem; }
     .about-photo img { width:100%; max-width:380px; display:block; object-fit:cover; aspect-ratio:3/4; object-position:center top; }
     .about-photo__caption { font-size:.72rem; color:var(--muted); margin-top:.75rem; }
-    .cv-label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+    .cv-label { font-size:.72rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
     .cv-section { margin-bottom:3.5rem; }
-    .cv-section__title { font-size:.78rem; font-weight:700; letter-spacing:.16em;
+    .cv-section__title { font-size:.78rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; color:var(--dark);
       border-bottom:1px solid rgba(28,28,26,.12); padding-bottom:.75rem; margin-bottom:1.5rem; }
     .cv-entry { margin-bottom:2rem; }
-    .cv-entry__period { font-size:.72rem; font-weight:700; letter-spacing:.1em;
+    .cv-entry__period { font-size:.72rem; font-weight:400; letter-spacing:.1em;
       text-transform:uppercase; color:var(--muted); margin-bottom:.3rem; }
     .cv-entry__role { font-family:var(--serif); font-size:1rem;
       font-weight:400; color:var(--dark); margin-bottom:.2rem; }
@@ -1733,12 +1762,12 @@ function generateServicesPage(services) {
     .services-body { max-width:900px; margin:0 auto; padding:5rem 4rem 0; }
     .services-intro { margin-bottom:4rem; }
     .services-intro p { font-size:1.05rem; line-height:1.8; color:var(--accent); max-width:640px; }
-    .services-label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+    .services-label { font-size:.72rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; color:var(--muted); margin-bottom:2.5rem; }
     .service-item { border-top:1px solid rgba(28,28,26,.12); }
     .service-item:last-child { border-bottom:1px solid rgba(28,28,26,.12); }
     .service-head { padding:1.6rem 0 .6rem; display:flex; align-items:baseline; gap:1rem; margin:0; }
-    .service-num { font-size:.72rem; font-weight:700; letter-spacing:.12em;
+    .service-num { font-size:.72rem; font-weight:400; letter-spacing:.12em;
       color:var(--muted); min-width:2rem; }
     .service-name { font-family:var(--serif); font-size:clamp(1.05rem,1.6vw,1.3rem);
       font-weight:400; color:var(--dark); flex:1; }
@@ -1749,7 +1778,7 @@ function generateServicesPage(services) {
     .services-steps li { counter-increment:step; display:flex; gap:1rem;
       font-size:.92rem; line-height:1.75; color:var(--accent); max-width:640px; }
     .services-steps li::before { content:counter(step, decimal-leading-zero); font-size:.72rem;
-      font-weight:700; letter-spacing:.12em; color:var(--muted); min-width:2rem; padding-top:.2rem; }
+      font-weight:400; letter-spacing:.12em; color:var(--muted); min-width:2rem; padding-top:.2rem; }
     .contact-cta { max-width:900px; margin:5rem auto 0; padding:4rem 4rem 0;
       border-top:1px solid rgba(28,28,26,.12);
       display:flex; justify-content:space-between; align-items:center;
@@ -1757,9 +1786,9 @@ function generateServicesPage(services) {
     .contact-cta__text h2 { font-family:var(--serif);
       font-size:clamp(1.4rem,2.5vw,2rem); font-weight:400; margin-bottom:.5rem; }
     .contact-cta__text p { font-size:.88rem; color:var(--muted); }
-    .contact-cta__link { display:inline-block; font-size:.78rem; font-weight:700;
+    .contact-cta__link { display:inline-block; font-size:.78rem; font-weight:400;
       letter-spacing:.16em; text-transform:uppercase; color:var(--dark);
-      text-decoration:none; border-bottom:1.5px solid var(--dark); padding-bottom:2px;
+      text-decoration:none; border-bottom:1px solid var(--dark); padding-bottom:2px;
       transition:color .2s,border-color .2s; }
     .contact-cta__link:hover { color:var(--muted); border-color:var(--muted); }
     @media(max-width:900px) {
@@ -1836,12 +1865,12 @@ function generateContactSuccessPage() {
   <link rel="stylesheet" href="/style.css" />
   <style>${LANG_CSS}
     .success-wrap { max-width:600px; margin:0 auto; padding:8rem 4rem; text-align:center; }
-    .success-wrap__label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+    .success-wrap__label { font-size:.72rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
     .success-wrap__heading { font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.8rem);
       font-weight:400; line-height:1.2; margin-bottom:1.5rem; }
     .success-wrap__text { font-size:.9rem; line-height:1.85; color:var(--accent); margin-bottom:2.5rem; }
-    .success-wrap__back { display:inline-block; font-size:.78rem; font-weight:700;
+    .success-wrap__back { display:inline-block; font-size:.78rem; font-weight:400;
       letter-spacing:.16em; text-transform:uppercase; color:var(--dark);
       text-decoration:none; border-bottom:1px solid var(--dark); padding-bottom:2px; }
     @media(max-width:600px){ .success-wrap { padding:5rem 1.5rem; } }
@@ -1898,10 +1927,10 @@ function generatePrivacyPage() {
   <style>
     .privacy { max-width:680px; margin:0 auto; padding:6rem 4rem 2rem; }
     .privacy h1 { font-family:var(--serif); font-size:clamp(2rem,3.5vw,2.8rem); font-weight:400; margin-bottom:2rem; }
-    .privacy h2 { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+    .privacy h2 { font-size:.72rem; font-weight:400; letter-spacing:.16em; text-transform:uppercase;
       color:var(--muted); margin:2.5rem 0 .8rem; }
     .privacy p { font-size:.95rem; line-height:1.8; color:var(--accent); }
-    .privacy button { margin-top:1rem; font:inherit; font-size:.78rem; font-weight:700; letter-spacing:.16em;
+    .privacy button { margin-top:1rem; font:inherit; font-size:.78rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; background:none; border:none; border-bottom:1px solid var(--dark);
       padding:0 0 2px; color:var(--dark); cursor:pointer; }
     @media(max-width:600px){ .privacy { padding:4rem 1.5rem 1rem; } }
@@ -1954,7 +1983,7 @@ function generateContactPage() {
   <style>${LANG_CSS}
     .contact-wrap { max-width:900px; margin:0 auto; padding:5rem 4rem 0;
       display:grid; grid-template-columns:1fr 1.4fr; gap:5rem; }
-    .contact-info__label { font-size:.72rem; font-weight:700; letter-spacing:.22em;
+    .contact-info__label { font-size:.72rem; font-weight:400; letter-spacing:.16em;
       text-transform:uppercase; color:var(--muted); margin-bottom:1.5rem; }
     .contact-info__name { font-family:var(--serif); font-size:clamp(1.8rem,3vw,2.4rem);
       font-weight:400; line-height:1.2; margin-bottom:2rem; }
@@ -1967,7 +1996,7 @@ function generateContactPage() {
       transition:border-color .2s; }
     .contact-info__detail a:hover { border-color:var(--dark); }
     .contact-info__address { font-size:.85rem; color:var(--muted); }
-    .contact-form label { display:block; font-size:.68rem; font-weight:700;
+    .contact-form label { display:block; font-size:.68rem; font-weight:400;
       letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
       margin-bottom:.5rem; margin-top:1.8rem; }
     .contact-form label:first-of-type { margin-top:0; }
@@ -1984,7 +2013,7 @@ function generateContactPage() {
     .contact-form__submit { margin-top:2rem; display:flex;
       align-items:center; gap:1.5rem; flex-wrap:wrap; }
     .contact-form__btn { background:var(--dark); color:#fff;
-      border:none; padding:.9rem 2.2rem; font-size:.78rem; font-weight:700;
+      border:none; padding:.9rem 2.2rem; font-size:.78rem; font-weight:400;
       letter-spacing:.16em; text-transform:uppercase; cursor:pointer;
       transition:background .2s; }
     .contact-form__btn:hover { background:var(--muted); }

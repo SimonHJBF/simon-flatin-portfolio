@@ -8,6 +8,14 @@ size: ~500 m²
 status: Concept
 grid: wide
 weight: 8
+layout image-03-ai-lab: pair
+layout image-04-auditorium: pair
+layout image-05-focus-zone: small
+caption image-02-central-hub: The central hub, a market square between the glass cells | Det sentrale knutepunktet, et torg mellom glasskjernene | O centro de convivência, uma praça entre as células de vidro
+caption image-03-ai-lab: The AI lab | KI-laben | O laboratório de IA
+caption image-04-auditorium: The auditorium, for pitch days and hackathons | Auditoriet, for pitchdager og hackathons | O auditório, para dias de pitch e hackathons
+caption image-05-focus-zone: The focus zone, with a lamp at every desk | Fokussonen, med en lampe ved hver pult | A zona de foco, com uma luminária em cada mesa
+caption image-06-plan: Plan, 1:200 | Plan, 1:200 | Planta, 1:200
 
 ---
 
