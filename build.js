@@ -787,7 +787,15 @@ const GA_TAG = `<script>
   function bar(on){var b=document.getElementById('consent');if(b)b.hidden=!on;}
   if(get()==='yes')load();
   document.addEventListener('DOMContentLoaded',function(){
-    if(!get())bar(true);
+    // On the start page the question waits until the visitor scrolls or has
+    // had five seconds with the photograph; the footer button opens it anytime.
+    if(!get()){
+      if(document.getElementById('mc')){
+        var asked=false;
+        var ask=function(){if(asked)return;asked=true;window.removeEventListener('scroll',ask);if(!get())bar(true);};
+        setTimeout(ask,5000);window.addEventListener('scroll',ask,{passive:true});
+      }else bar(true);
+    }
     document.addEventListener('click',function(e){
       var t=e.target.closest('[data-consent]');
       if(!t)return;
@@ -797,6 +805,23 @@ const GA_TAG = `<script>
       if(v==='yes')load();
       else{clearCookies();if(loaded)location.reload();}
     });
+  });
+})();
+</script>
+<script>
+/* Images arrive from the page slowly, once, as they come into view. Without
+ * this script, or with reduced motion, they are simply there. */
+(function(){
+  if(!('IntersectionObserver' in window)||(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches))return;
+  document.documentElement.classList.add('img-fade');
+  document.addEventListener('DOMContentLoaded',function(){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var i=e.target;io.unobserve(i);
+      var show=function(){i.classList.add('is-in');};
+      if(i.complete)show();else{i.addEventListener('load',show);i.addEventListener('error',show);}
+    });},{rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.project-gallery img, .card__img-wrap img').forEach(function(i){io.observe(i);});
   });
 })();
 </script>`;
@@ -934,11 +959,15 @@ function generateProjectPage(data, folderName, images, prev, next) {
   const embedUrl = youtubeEmbedUrl(data.video);
   const local    = !embedUrl && data.video ? videoParts(folderName, data.video) : null;
 
+  // A near-square or upright picture would lose its top and bottom to the
+  // 80vh crop, so it is shown whole, centred on the page, instead.
+  const heroSize = hero && imageSize(webSrc(imgDir, hero));
+  const heroTall = !!(heroSize && heroSize.h / heroSize.w > 0.8);
   const heroHtml = local && local.sources
     ? `  <div class="project-hero project-hero--video"><video autoplay muted loop playsinline controls preload="metadata"` +
       `${local.poster ? ` poster="${local.poster}"${sizeAttrs(local.poster)}` : ''} aria-label="${esc(title)}">${local.sources}</video></div>`
     : hero
-      ? `  <div class="project-hero"><img src="${webSrc(imgDir, hero)}"${sizeAttrs(webSrc(imgDir, hero))}${srcsetAttrs(webSrc(imgDir, hero), '100vw')} alt="${attrLang(l => tTitle(title, l))}" loading="eager" fetchpriority="high" /></div>`
+      ? `  <div class="project-hero${heroTall ? ' project-hero--tall' : ''}"><img src="${webSrc(imgDir, hero)}"${sizeAttrs(webSrc(imgDir, hero))}${srcsetAttrs(webSrc(imgDir, hero), '100vw')} alt="${attrLang(l => tTitle(title, l))}" loading="eager" fetchpriority="high" /></div>`
       : `  <div class="project-hero project-hero--placeholder" style="background:${grad(0)};"></div>`;
 
   // The gallery reads like a book rather than a feed. Drawings (found by their
@@ -989,6 +1018,7 @@ function generateProjectPage(data, folderName, images, prev, next) {
   <style>
     .project-hero { width:100%; max-height:80vh; overflow:hidden; }
     .project-hero img { width:100%; height:auto; display:block; max-height:80vh; object-fit:cover; }
+    .project-hero--tall img { width:auto; max-width:100%; margin:0 auto; object-fit:contain; }
     /* The walkthrough is a fixed-size recording, not a photograph, so it is
        framed rather than stretched: never shown wider than it was captured,
        centred in a black band. Enlarging it past its own resolution only
