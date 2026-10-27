@@ -815,7 +815,7 @@ function footerHtml(prefix) {
   const orgEn = ORG_NR ? ` &middot; org.no. ${ORG_NR} MVA` : '';
   const orgNo = ORG_NR ? ` &middot; org.nr. ${ORG_NR} MVA` : '';
   return `  <section id="consent" class="consent" aria-label="__CONSENT_LABEL__" hidden>
-    <p class="consent__text"><span class="l-en">May I count your visit with Google Analytics? It uses cookies, and nothing is stored unless you allow it.</span><span class="l-no">Kan jeg telle bes&oslash;ket ditt med Google Analytics? Det bruker informasjonskapsler, og ingenting lagres med mindre du tillater det.</span><span class="l-pt">Posso contar sua visita com o Google Analytics? Ele usa cookies, e nada &eacute; armazenado sem a sua permiss&atilde;o.</span> <a href="__LINKBASE__privacy.html"><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></a></p>
+    <p class="consent__text"><span class="l-en">May I use cookies to count visits?</span><span class="l-no">Kan jeg bruke informasjonskapsler til &aring; telle bes&oslash;k?</span><span class="l-pt">Posso usar cookies para contar as visitas?</span> <a href="__LINKBASE__privacy.html"><span class="l-en">More</span><span class="l-no">Mer</span><span class="l-pt">Mais</span></a></p>
     <div class="consent__buttons">
       <button type="button" data-consent="yes"><span class="l-en">Allow</span><span class="l-no">Tillat</span><span class="l-pt">Permitir</span></button>
       <button type="button" data-consent="no"><span class="l-en">Decline</span><span class="l-no">Avsl&aring;</span><span class="l-pt">Recusar</span></button>
