@@ -5,7 +5,7 @@ year: 2025
 location: Mogi Das Cruzes, Brazil
 typology: Sociocultural & Sports Park
 status: Design proposal
-collaborators: Denis Joelsons · Miguel Mincache · Sofia Comini
+collaborators: Denis Joelsons · Miguel Mincache · Sofia Comini · Christian Nascimento · Pedro Flores
 grid: large
 weight: 10
 
