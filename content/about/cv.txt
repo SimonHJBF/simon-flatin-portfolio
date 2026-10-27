@@ -35,9 +35,9 @@ org: Upcycle Mall Rotterdam competition, collective Bounding Box
 org_no: Upcycle Mall Rotterdam-konkurransen, kollektivet Bounding Box
 org_pt: Concurso Upcycle Mall Rotterdam, coletivo Bounding Box
 location: Rotterdam, The Netherlands
-desc: Co-author of the winning proposal Harbour Box, built on the reuse of waste materials from the Rotterdam docks, turning industrial by-products into functional architectural elements.
-desc_no: Medforfatter av det vinnende forslaget Harbour Box, bygget på gjenbruk av avfallsmaterialer fra havna i Rotterdam, der industrielle biprodukter gjøres om til funksjonelle bygningselementer.
-desc_pt: Coautor da proposta vencedora Harbour Box, baseada no reaproveitamento de materiais descartados do porto de Roterdã, transformando subprodutos industriais em elementos arquitetônicos funcionais.
+desc: Designed the Construction Site's Box in The Nine Boxes, a collective entry of nine upcycled boxes of which four won. Then developed the winning Harbour Box with Alex Kirschstein for the Municipality of Rotterdam, through to the drawing set.
+desc_no: Tegnet Construction Site's Box i The Nine Boxes, et felles bidrag med ni bokser av gjenbrukte materialer, der fire vant. Videreutviklet deretter den vinnende Harbour Box sammen med Alex Kirschstein for Rotterdam kommune, frem til tegningssettet.
+desc_pt: Projetei a Construction Site's Box em The Nine Boxes, uma proposta coletiva de nove caixas de materiais reaproveitados, das quais quatro venceram. Depois desenvolvi a vencedora Harbour Box com Alex Kirschstein para a Prefeitura de Roterdã, até o conjunto de desenhos.
 
 [experience]
 period: 2015 - 2024
