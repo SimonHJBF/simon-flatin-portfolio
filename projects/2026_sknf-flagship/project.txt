@@ -11,7 +11,7 @@ weight: 8
 
 ---
 
-SKNF Flagship is a concept for a new kind of youth space in London: part creative studio, part tech incubator, where young people learn to build with AI. The client needed a design that could sell the idea, so the brief was to show what the place could feel like before there was a building to put it in.
+SKNF Flagship, for Same Kids, New Futures, is a concept for a new kind of youth space in London: part creative studio, part tech incubator, where young people learn to build with AI. The client needed a design that could sell the idea, so the brief was to show what the place could feel like before there was a building to put it in.
 
 To test the concept I applied the program to a typical single-story brick warehouse on Fish Island, by the River Lee Navigation, one of London's Creative Enterprise Zones. The aim was "industrial warmth": keep the raw brick and steel of the shell, and soften it with timber, planting and warm light, so the space reads as a professional workplace rather than a school.
 
@@ -21,7 +21,7 @@ I delivered the concept strategy, the layout and a set of renders in three miles
 
 ===no===
 
-SKNF Flagship er et konsept for en ny type ungdomslokale i London: dels kreativt studio, dels teknologisk inkubator, der unge lærer å bygge med kunstig intelligens. Oppdragsgiveren trengte et design som kunne selge idéen, så oppgaven var å vise hvordan stedet kunne føles før det fantes et bygg å sette det i.
+SKNF Flagship, for Same Kids, New Futures, er et konsept for en ny type ungdomslokale i London: dels kreativt studio, dels teknologisk inkubator, der unge lærer å bygge med kunstig intelligens. Oppdragsgiveren trengte et design som kunne selge idéen, så oppgaven var å vise hvordan stedet kunne føles før det fantes et bygg å sette det i.
 
 For å teste konseptet la jeg programmet inn i et typisk lagerbygg i tegl på én etasje på Fish Island, ved River Lee Navigation, en av Londons soner for kreativ næring. Målet var «industriell varme»: beholde den rå teglen og stålet i skallet, og myke det opp med tre, planter og varmt lys, slik at rommet oppleves som en profesjonell arbeidsplass og ikke som en skole.
 
@@ -31,7 +31,7 @@ Jeg leverte konseptstrategien, planløsningen og et sett med visualiseringer i t
 
 ===pt===
 
-O SKNF Flagship é um conceito para um novo tipo de espaço para jovens em Londres: em parte estúdio criativo, em parte incubadora de tecnologia, onde jovens aprendem a criar com inteligência artificial. O cliente precisava de um projeto que vendesse a ideia, então o desafio era mostrar como o lugar poderia ser antes de existir um edifício para ele.
+O SKNF Flagship, do Same Kids, New Futures, é um conceito para um novo tipo de espaço para jovens em Londres: em parte estúdio criativo, em parte incubadora de tecnologia, onde jovens aprendem a criar com inteligência artificial. O cliente precisava de um projeto que vendesse a ideia, então o desafio era mostrar como o lugar poderia ser antes de existir um edifício para ele.
 
 Para testar o conceito, apliquei o programa a um típico galpão de tijolos de um pavimento em Fish Island, às margens do River Lee Navigation, uma das Zonas de Economia Criativa de Londres. O objetivo era um "calor industrial": manter o tijolo e o aço aparentes da estrutura e suavizá-los com madeira, plantas e luz quente, para que o espaço pareça um ambiente de trabalho profissional, e não uma escola.
 
