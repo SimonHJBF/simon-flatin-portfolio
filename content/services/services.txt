@@ -49,9 +49,9 @@ desc_pt: Levantamentos aerofotogramétricos que geram nuvens de pontos e malhas 
 name: Reuse and low-carbon design
 name_no: Ombruk og lavutslippsdesign
 name_pt: Reúso e projeto de baixo carbono
-desc: Circular material flows, passive systems and low-carbon strategies built into a project from the outset. In The Nine Boxes, a competition for the Upcycle Mall in Rotterdam where four of our nine boxes won, each box was built from one of the city's waste streams.
-desc_no: Sirkulære materialstrømmer, passive systemer og lavutslippsstrategier lagt inn i prosjektet fra starten. I The Nine Boxes, en konkurranse om Upcycle Mall i Rotterdam der fire av våre ni bokser vant, ble hver boks laget av én av byens avfallsstrømmer.
-desc_pt: Fluxos circulares de materiais, sistemas passivos e estratégias de baixo carbono incorporados ao projeto desde o início. Em The Nine Boxes, um concurso para o Upcycle Mall em Roterdã no qual quatro das nossas nove caixas venceram, cada caixa foi feita a partir de um dos fluxos de resíduos da cidade.
+desc: Circular material flows, passive systems and low-carbon strategies built into a project from the outset. In The Nine Boxes, a competition for the Upcycle Mall in Rotterdam where four of our nine boxes won and three were built, each box was built from one of the city's waste streams.
+desc_no: Sirkulære materialstrømmer, passive systemer og lavutslippsstrategier lagt inn i prosjektet fra starten. I The Nine Boxes, en konkurranse om Upcycle Mall i Rotterdam der fire av våre ni bokser vant og tre ble bygget, ble hver boks laget av én av byens avfallsstrømmer.
+desc_pt: Fluxos circulares de materiais, sistemas passivos e estratégias de baixo carbono incorporados ao projeto desde o início. Em The Nine Boxes, um concurso para o Upcycle Mall em Roterdã no qual quatro das nossas nove caixas venceram e três foram construídas, cada caixa foi feita a partir de um dos fluxos de resíduos da cidade.
 
 [service]
 name: Research and material studies
