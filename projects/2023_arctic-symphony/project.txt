@@ -6,7 +6,7 @@ location: Alta, Norway
 typology: Residence with workshop and bridge
 status: Design proposal
 organization: TU Delft
-collaborators: Ewa Ziemiecka (dance) · Bintang Manira Manik (music) · Alex Kirschstein (film) · Håvard Flatin (fieldwork) · Zofia Sosnierz (visualisation)
+collaborators: Ewa Ziemiecka (dance) · Bintang Manira Manik (music) · Alex Kirschstein (film) · Håvard Flatin (fieldwork) · Zofia Sosnierz (visualization)
 mentors: Suzana Milinovic (design mentor) · Taneha Kuzniecow Bacchin (research mentor) · Rufus R. van den Ban (building technology mentor) · Denise Piccinini (delegate)
 exhibitions: TU Delft Graduation 2023
 grid: large

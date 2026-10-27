@@ -1,11 +1,11 @@
-title: Lalibela modelmaking
+title: Lalibela model making
 category: Model making
 tags: Models
 year: 2024
 location: Delft, The Netherlands
 typology: Architectural model
 size: 1 x 1,2 x 0,5m
-status: Realised
+status: Realized
 organization: TU Delft
 collaborators: Alex Kirschstein · Dick van Gameren
 exhibitions: TU Delft, 1 September to 1 November 2024

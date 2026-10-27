@@ -1,11 +1,11 @@
-title: Bjørnåsen house addition
+title: Bjørnåsen garage
 category: Architecture
 tags: Architecture · Built
 year: 2020 - 2024
 location: Larkollen, Norway
 typology: Garage
-size: 50 m²
-status: Realised
+size: 49 m² gross area
+status: Realized
 grid: large
 weight: 8
 role: Design, drawings and follow-up from the first sketch to the finished building.
@@ -14,12 +14,12 @@ role_pt: Projeto, desenhos e acompanhamento do primeiro esboço até o edifício
 
 ---
 
-The main objective of this project was to design an addition to my parents' house with a flexible program. They wanted a dry place to park their cars, but also a space that could extend as a showcase room for my dad's art, as well as a place for barbecues or gatherings if it rains. The two sides are connected with an opening between them.
+The main objective of this project was to design a garage next to my parents' house with a flexible program. They wanted a dry place to park their cars, but also a space that could extend as a showcase room for my dad's art, as well as a place for barbecues or gatherings if it rains. The two sides are connected with an opening between them.
 
 ===no===
 
-Hovedmålet med dette prosjektet var å tegne et tilbygg til huset til foreldrene mine med et fleksibelt program. De ønsket seg et tørt sted å parkere bilene, men også et rom som kunne fungere som utstillingsrom for kunsten til faren min, og som et sted for grilling eller samvær når det regner. De to delene er forbundet med en åpning.
+Hovedmålet med dette prosjektet var å tegne en garasje ved huset til foreldrene mine med et fleksibelt program. De ønsket seg et tørt sted å parkere bilene, men også et rom som kunne fungere som utstillingsrom for kunsten til faren min, og som et sted for grilling eller samvær når det regner. De to delene er forbundet med en åpning.
 
 ===pt===
 
-O principal objetivo deste projeto era projetar uma extensão da casa dos meus pais com um programa flexível. Eles queriam um lugar seco para estacionar os carros, mas também um espaço que pudesse servir de sala de exposição para a arte do meu pai, e ainda um lugar para churrascos ou encontros quando chove. Os dois lados são ligados por uma abertura entre eles.
+O principal objetivo deste projeto era projetar uma garagem ao lado da casa dos meus pais com um programa flexível. Eles queriam um lugar seco para estacionar os carros, mas também um espaço que pudesse servir de sala de exposição para a arte do meu pai, e ainda um lugar para churrascos ou encontros quando chove. Os dois lados são ligados por uma abertura entre eles.

@@ -9,9 +9,9 @@
 name: Architecture, from sketch to building
 name_no: Arkitektur, fra skisse til ferdig bygg
 name_pt: Arquitetura, do esboço à obra
-desc: Design from site analysis and concept through to planning, detailing and construction follow-up, at scales from a single room to a masterplan. Recent examples are the Bjørnåsen house addition in Larkollen, the SESC Mogi das Cruzes competition proposal in Brazil and the Arctic Symphony graduation project in Alta.
-desc_no: Prosjektering fra stedsanalyse og konsept til planlegging, detaljering og oppfølging i byggefasen, i skalaer fra ett enkelt rom til en masterplan. Nyere eksempler er tilbygget på Bjørnåsen i Larkollen, konkurranseforslaget til SESC Mogi das Cruzes i Brasil og avgangsprosjektet Arctic Symphony i Alta.
-desc_pt: Projeto desde a análise do terreno e o conceito até o planejamento, o detalhamento e o acompanhamento de obra, em escalas que vão de um único ambiente a um plano diretor. Exemplos recentes são a ampliação em Bjørnåsen, em Larkollen, a proposta para o concurso do SESC Mogi das Cruzes, no Brasil, e o projeto de graduação Arctic Symphony, em Alta.
+desc: Design from site analysis and concept through to planning, detailing and construction follow-up, at scales from a single room to a masterplan. Recent examples are the Bjørnåsen garage in Larkollen, the SESC Mogi das Cruzes competition proposal in Brazil and the Arctic Symphony graduation project in Alta.
+desc_no: Prosjektering fra stedsanalyse og konsept til planlegging, detaljering og oppfølging i byggefasen, i skalaer fra ett enkelt rom til en masterplan. Nyere eksempler er garasjen på Bjørnåsen i Larkollen, konkurranseforslaget til SESC Mogi das Cruzes i Brasil og avgangsprosjektet Arctic Symphony i Alta.
+desc_pt: Projeto desde a análise do terreno e o conceito até o planejamento, o detalhamento e o acompanhamento de obra, em escalas que vão de um único ambiente a um plano diretor. Exemplos recentes são a garagem em Bjørnåsen, em Larkollen, a proposta para o concurso do SESC Mogi das Cruzes, no Brasil, e o projeto de graduação Arctic Symphony, em Alta.
 
 [service]
 name: Building applications in Norway
@@ -19,7 +19,7 @@ name_no: Byggesøknader i Norge
 name_pt: Licenciamento na Noruega
 desc: Preparation and follow-up of building applications in Norway, including the supporting documentation and answers to the municipality's questions. Most recently a change-of-use application for a care building for Omsorgsgruppen in Våler.
 desc_no: Utarbeiding og oppfølging av byggesøknader i Norge, med tilhørende dokumentasjon og svar på spørsmål fra kommunen. Sist en søknad om bruksendring til omsorgsbolig for Omsorgsgruppen i Våler.
-desc_pt: Preparação e acompanhamento de processos de licenciamento na Noruega, incluindo a documentação de apoio e as respostas às exigências do município. O mais recente foi um pedido de mudança de uso para um edifício de saúde da Omsorgsgruppen, em Våler.
+desc_pt: Preparação e acompanhamento de processos de licenciamento na Noruega, incluindo a documentação de apoio e as respostas às exigências do município. O mais recente foi um pedido de mudança de uso para moradia assistida da Omsorgsgruppen, em Våler.
 
 [service]
 name: Drawings and BIM models
@@ -57,6 +57,6 @@ desc_pt: Fluxos circulares de materiais, sistemas passivos e estratégias de bai
 name: Research and material studies
 name_no: Forskning og materialstudier
 name_pt: Pesquisa e estudos de material
-desc: Focused research into material behaviour, tectonic systems and formal strategies. The Arctic Symphony research included a series of sand erosion studies testing how built interventions change sedimentation in a river system.
+desc: Focused research into material behavior, tectonic systems and formal strategies. The Arctic Symphony research included a series of sand erosion studies testing how built interventions change sedimentation in a river system.
 desc_no: Målrettede undersøkelser av materialoppførsel, tektoniske systemer og formstrategier. Forskningsdelen av Arctic Symphony omfattet en serie erosjonsstudier i sand som testet hvordan bygde inngrep endrer avsetningen i et elvesystem.
 desc_pt: Pesquisa dirigida sobre comportamento dos materiais, sistemas tectônicos e estratégias formais. A pesquisa do Arctic Symphony incluiu uma série de estudos de erosão em areia, testando como intervenções construídas alteram a sedimentação em um sistema fluvial.

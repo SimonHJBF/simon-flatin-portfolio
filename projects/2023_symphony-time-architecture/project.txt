@@ -7,7 +7,7 @@ typology: Graduation research booklet
 organization: TU Delft
 collaborators: Veronica Torri (erosion studies)
 mentors: Suzana Milinovic (design mentor) · Taneha Kuzniecow Bacchin (research mentor) · Rufus R. van den Ban (building technology mentor) · Denise Piccinini (delegate)
-status: Realised
+status: Realized
 exhibitions: TU Delft Graduation 2023
 grid: large
 

@@ -5,7 +5,7 @@ year: 2024
 location: Larkollen, Norway
 typology: Chicken coop
 size: 4 m²
-status: Realised
+status: Realized
 collaborators: Håvard Flatin (build) · Alex Kirschstein (photography)
 grid: wide
 
@@ -15,7 +15,7 @@ I designed and built a wooden chicken coop for my parents, out of my father's fa
 
 The plan is two lines set perpendicular to each other. One holds the coop itself along with the storage, giving the chickens shelter and keeping feed and equipment to hand. The other forms the outdoor run where they can scratch and forage. The run is modest, so when the weather is good we let them out into the rest of the garden.
 
-The coop extends the garage we built a few years earlier and picks up its lines. It is built in rough-sawn Norwegian spruce, left to grey down on its own. The run wraps around the family pear tree, and I chose the planting around it to pick up the geometry of the building and tie it back into the garden.
+The coop extends the garage we built a few years earlier and picks up its lines. It is built in rough-sawn Norwegian spruce, left to gray down on its own. The run wraps around the family pear tree, and I chose the planting around it to pick up the geometry of the building and tie it back into the garden.
 
 ===no===
 

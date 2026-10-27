@@ -150,6 +150,7 @@ const TERMS = {
   'The Netherlands':              { no:'Nederland',                  pt:'Países Baixos' },
   'USA':                          { no:'USA',                        pt:'EUA' },
   'Venice':                       { no:'Venezia',                    pt:'Veneza' },
+  '49 m² gross area':             { no:'49 m² BTA',                  pt:'49 m² de área bruta' },
   'Venice Architecture Biennale': { no:'arkitekturbiennalen i Venezia', pt:'Bienal de Arquitetura de Veneza' },
 
   // Typologies
@@ -177,7 +178,7 @@ const TERMS = {
   'In Progress':                  { no:'Pågår',                      pt:'Em andamento' },
   'In testing':                   { no:'Under testing',              pt:'Em testes' },
   'Live':                         { no:'I drift',                    pt:'No ar' },
-  'Realised':                     { no:'Realisert',                  pt:'Realizado' },
+  'Realized':                     { no:'Realisert',                  pt:'Realizado' },
 
   // CV periods
   '2023 - Present':               { no:'2023 - i dag',               pt:'2023 - presente' },
@@ -202,7 +203,7 @@ const TERMS = {
   'photography':                  { no:'foto',                       pt:'fotografia' },
   'photography assistance':       { no:'fotoassistent',             pt:'assistência de fotografia' },
   'research mentor':              { no:'forskningsveileder',         pt:'orientadora de pesquisa' },
-  'visualisation':                { no:'visualisering',              pt:'visualização' },
+  'visualization':                { no:'visualisering',              pt:'visualização' },
 
   // Exhibitions, which only read well translated whole
   'Biennale Architettura 2023, Venice, May to November 2023': {
@@ -220,16 +221,16 @@ const TERMS = {
 };
 
 // A project name stays as it is; the descriptive half of one does not.
-// "Lalibela modelmaking" is a place plus a description, and the description
+// "Lalibela model making" is a place plus a description, and the description
 // belongs in the reader's language.
 const PROJECT_TITLES = {
-  'Bjørnåsen house addition':  { no:'Tilbygg på Bjørnåsen',         pt:'Ampliação em Bjørnåsen' },
+  'Bjørnåsen garage':          { no:'Garasje på Bjørnåsen',      pt:'Garagem em Bjørnåsen' },
   'Borders and Transitions':   { no:'Grenser og overganger',     pt:'Fronteiras e transições' },
   'Chicken coop':              { no:'Hønsehus',                  pt:'Galinheiro' },
   'Erosion':                   { no:'Erosjon',                   pt:'Erosão' },
   'Form studies':              { no:'Formstudier',               pt:'Estudos de forma' },
-  'Lalibela modelmaking':      { no:'Lalibela-modell',           pt:'Maquete de Lalibela' },
-  'Meqdela Gebbi modelmaking': { no:'Meqdela Gebbi-modell',      pt:'Maquete de Meqdela Gebbi' },
+  'Lalibela model making':     { no:'Lalibela-modell',           pt:'Maquete de Lalibela' },
+  'Meqdela Gebbi model making': { no:'Meqdela Gebbi-modell',      pt:'Maquete de Meqdela Gebbi' },
   'Stilt House':               { no:'Pælehuset',                 pt:'Casa sobre palafitas' },
   'The staircase home':        { no:'Trappehuset',               pt:'A casa da escada' },
   'Von Sauna - Floating Saunas': { no:'Von Sauna - flytende badstuer', pt:'Von Sauna - saunas flutuantes' },
@@ -304,7 +305,7 @@ function fieldSpans(obj, key) {
 // their own first paragraph, so they are not listed here.
 const PAGE_DESCRIPTIONS = {
   'index.html': {
-    en: 'Architect, MSc and ir. from TU Delft, working between Norway and São Paulo. Architecture, visualisation, physical models and software for the building industry.',
+    en: 'Architect, MSc and ir. from TU Delft, working between Norway and São Paulo. Architecture, visualization, physical models and software for the building industry.',
     no: 'Arkitekt, MSc og ir. fra TU Delft, som jobber mellom Norge og São Paulo. Arkitektur, visualisering, fysiske modeller og programvare for byggebransjen.',
     pt: 'Arquiteto, MSc e ir. pela TU Delft, entre a Noruega e São Paulo. Arquitetura, visualização, maquetes físicas e software para a construção civil.',
   },
@@ -319,12 +320,12 @@ const PAGE_DESCRIPTIONS = {
     pt: 'Arquiteto com MSc e ir. pela TU Delft, formado cum laude. Nove anos na Ebano, um projeto de graduação no Ártico norueguês e escritório próprio desde 2023.',
   },
   'services.html': {
-    en: 'Architecture, BIM and parametric modelling, technical documentation, physical models, drone photogrammetry, research and planning applications in Norway.',
+    en: 'Architecture, BIM and parametric modeling, technical documentation, physical models, drone photogrammetry, research and planning applications in Norway.',
     no: 'Arkitektur, BIM og parametrisk modellering, teknisk dokumentasjon, fysiske modeller, dronefotogrammetri, forskning og byggesøknader i Norge.',
     pt: 'Arquitetura, BIM e modelagem paramétrica, documentação técnica, maquetes físicas, fotogrametria com drone, pesquisa e licenciamento na Noruega.',
   },
   'contact.html': {
-    en: 'Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, with clients across five countries.',
+    en: 'Available for architectural commissions, research collaborations, model making and consultancy. Based in the Oslo region, with clients across five countries.',
     no: 'Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og rådgivning. Med base i Osloregionen og kunder i fem land.',
     pt: 'Disponível para encomendas de arquitetura, colaborações de pesquisa, maquetes e consultoria. Baseado na região de Oslo, com clientes em cinco países.',
   },
@@ -835,7 +836,7 @@ function footerHtml(prefix) {
   </section>
   <footer>
     <div>&copy; ${new Date().getFullYear()} Simon H.J. Bj&oslash;rk&aring; Flatin</div>
-    <div class="footer__identity"><span class="l-en">Architect MSc / ir. &middot; ${ENK}${orgEn} &middot; Oslo region, Norway and S&atilde;o Paulo</span><span class="l-no">Arkitekt MSc / ir. &middot; ${ENK}${orgNo} &middot; Osloregionen og S&atilde;o Paulo</span><span class="l-pt">Arquiteto MSc / ir. &middot; ${ENK}${orgEn} &middot; Regi&atilde;o de Oslo, Noruega, e S&atilde;o Paulo</span></div>
+    <div class="footer__identity"><span class="l-en">Architect MNAL, MSc / ir. &middot; ${ENK}${orgEn} &middot; Oslo region, Norway and S&atilde;o Paulo</span><span class="l-no">Arkitekt MNAL, MSc / ir. &middot; ${ENK}${orgNo} &middot; Osloregionen og S&atilde;o Paulo</span><span class="l-pt">Arquiteto MNAL, MSc / ir. &middot; ${ENK}${orgEn} &middot; Regi&atilde;o de Oslo, Noruega, e S&atilde;o Paulo</span></div>
     <div class="footer__links">
       <a href="__LINKBASE__about"><span class="l-en">About</span><span class="l-no">Om</span><span class="l-pt">Sobre</span></a>
       <a href="__LINKBASE__work"><span class="l-en">Work</span><span class="l-no">Prosjekter</span><span class="l-pt">Projetos</span></a>
@@ -1236,6 +1237,7 @@ ${JSON.stringify({
       url: `${SITE_URL}/`,
       founder: { '@id': `${SITE_URL}/#person` },
       areaServed: ['Norway', 'Brazil'],
+      address: { '@type': 'PostalAddress', streetAddress: 'Bjørnåsen 21', postalCode: '1560', addressLocality: 'Larkollen', addressCountry: 'NO' },
     },
   ],
 }, null, 2)}
@@ -1786,7 +1788,7 @@ function generateServicesPage(services) {
 
   <div class="services-body">
     <div class="services-intro">
-      <p class="l-en">I am an architect working between Norway and S&atilde;o Paulo, mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from planning applications and competition proposals to visualisation, physical models and the software I build for the building industry. Most projects still start with a physical model on the desk.</p>
+      <p class="l-en">I am an architect working between Norway and S&atilde;o Paulo, mostly online, with clients in Norway, Sweden, Portugal, the United States and Brazil. The work runs from planning applications and competition proposals to visualization, physical models and the software I build for the building industry. Most projects still start with a physical model on the desk.</p>
       <p class="l-no">Jeg er arkitekt og jobber mellom Norge og S&atilde;o Paulo, mest p&aring; nett, med kunder i Norge, Sverige, Portugal, USA og Brasil. Arbeidet spenner fra bygges&oslash;knader og konkurranseforslag til visualisering, fysiske modeller og programvaren jeg lager for byggebransjen. De fleste prosjektene begynner fortsatt med en fysisk modell p&aring; bordet.</p>
       <p class="l-pt">Sou arquiteto e trabalho entre a Noruega e S&atilde;o Paulo, principalmente online, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil. O trabalho vai de pedidos de licenciamento e propostas de concurso a visualiza&ccedil;&atilde;o, maquetes f&iacute;sicas e o software que desenvolvo para a constru&ccedil;&atilde;o civil. A maioria dos projetos ainda come&ccedil;a com uma maquete f&iacute;sica sobre a mesa.</p>
     </div>
@@ -1877,6 +1879,7 @@ ${LANG_TOGGLE_SCRIPT}
 // Cloudflare rewrites email addresses into a script-only link unless they sit
 // between these markers, which left "[email protected]" for anyone without JS.
 const EMAIL = '<!--email_off--><a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a><!--/email_off-->';
+const ADDRESS = 'Bj&oslash;rn&aring;sen 21, 1560 Larkollen';
 
 function generatePrivacyPage() {
   const p = (en, no, pt) => `    <p><span class="l-en">${en}</span><span class="l-no">${no}</span><span class="l-pt">${pt}</span></p>`;
@@ -1905,9 +1908,9 @@ function generatePrivacyPage() {
 ${navHtml()}
   <div class="privacy">
     <h1><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></h1>
-${p(`This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. ${ORG_NR} in Enhetsregisteret, who is responsible for the personal data handled here. Questions about it go to ${EMAIL}.`,
-    `Dette nettstedet tilh&oslash;rer Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.nr. ${ORG_NR} i Enhetsregisteret, som er ansvarlig for personopplysningene som behandles her. Sp&oslash;rsm&aring;l om dem kan sendes til ${EMAIL}.`,
-    `Este site pertence a Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org. nº ${ORG_NR} no Enhetsregisteret, respons&aacute;vel pelos dados pessoais tratados aqui. Perguntas sobre eles podem ser enviadas para ${EMAIL}.`)}
+${p(`This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. ${ORG_NR} in Enhetsregisteret, ${ADDRESS}, who is responsible for the personal data handled here. Questions about it go to ${EMAIL}.`,
+    `Dette nettstedet tilh&oslash;rer Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.nr. ${ORG_NR} i Enhetsregisteret, ${ADDRESS}, som er ansvarlig for personopplysningene som behandles her. Sp&oslash;rsm&aring;l om dem kan sendes til ${EMAIL}.`,
+    `Este site pertence a Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org. nº ${ORG_NR} no Enhetsregisteret, ${ADDRESS}, respons&aacute;vel pelos dados pessoais tratados aqui. Perguntas sobre eles podem ser enviadas para ${EMAIL}.`)}
 ${h('Analytics', 'Analyse', 'An&aacute;lise')}
 ${p('If you allow it, the site uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies, which last up to two years, and sends information about the visit, such as pages viewed, device type and an approximate location, to Google. Google may process this in the United States, under the EU-US Data Privacy Framework, and keeps it for up to 14 months. The legal basis is your consent. Nothing is stored or sent unless you choose Allow, and you can withdraw your consent at any time.',
     'Hvis du tillater det, bruker nettstedet Google Analytics til &aring; telle bes&oslash;k og se hvilke sider som leses. Google Analytics setter informasjonskapsler, som varer i opptil to &aring;r, og sender opplysninger om bes&oslash;ket, som sidene du ser, type enhet og omtrentlig sted, til Google. Google kan behandle dette i USA, under rammeverket EU-US Data Privacy Framework, og lagrer det i opptil 14 m&aring;neder. Behandlingsgrunnlaget er samtykket ditt. Ingenting lagres eller sendes med mindre du velger Tillat, og du kan trekke samtykket tilbake n&aring;r som helst.',
@@ -1959,6 +1962,7 @@ function generateContactPage() {
       border-bottom:1px solid rgba(28,28,26,.2); padding-bottom:1px;
       transition:border-color .2s; }
     .contact-info__detail a:hover { border-color:var(--dark); }
+    .contact-info__address { font-size:.85rem; color:var(--muted); }
     .contact-form label { display:block; font-size:.68rem; font-weight:700;
       letter-spacing:.16em; text-transform:uppercase; color:var(--muted);
       margin-bottom:.5rem; margin-top:1.8rem; }
@@ -2003,13 +2007,14 @@ ${navHtml()}
         <span class="l-pt">Conte sobre<br>o seu projeto</span>
       </h1>
       <p class="contact-info__text">
-        <span class="l-en">Available for architectural commissions, research collaborations, modelmaking and consultancy. Based in the Oslo region, splitting my time with S&atilde;o Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil.</span>
+        <span class="l-en">Available for architectural commissions, research collaborations, model making and consultancy. Based in the Oslo region, splitting my time with S&atilde;o Paulo, with clients in Norway, Sweden, Portugal, the United States and Brazil.</span>
         <span class="l-no">Tilgjengelig for arkitektoppdrag, forskningssamarbeid, modellbygging og r&aring;dgivning. Jeg holder til i Osloregionen, deler tiden med S&atilde;o Paulo og har kunder i Norge, Sverige, Portugal, USA og Brasil.</span>
         <span class="l-pt">Dispon&iacute;vel para encomendas de arquitetura, colabora&ccedil;&otilde;es de pesquisa, maquetes e consultoria. Baseado na regi&atilde;o de Oslo, dividindo meu tempo com S&atilde;o Paulo, com clientes na Noruega, Su&eacute;cia, Portugal, Estados Unidos e Brasil.</span>
       </p>
       <div class="contact-info__detail">
         ${EMAIL}
         <a href="${LINKEDIN_URL}" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="contact-info__address">${ADDRESS}</span>
       </div>
     </div>
 

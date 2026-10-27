@@ -15,7 +15,7 @@ Tinn is a desktop app for the least glamorous part of a building project: writin
 
 It started from frustration. The software sold for this, even the parts aimed at architects and engineers, was really made for someone else: project managers, retailers, online shops. None of it fit the way a building actually gets drawn up. So I made the one I wanted instead, while still doing the work it was meant to fix.
 
-I did all of it myself: the idea, the design, the brand and the code. It runs on Windows now, with macOS to follow. The look is deliberately quiet. Plain type, thin black lines, sharp corners. It owes a lot to the catalogues and books on my studio shelf: Sirotov, Ecohaus, Branco Arquitetura.
+I did all of it myself: the idea, the design, the brand and the code. It runs on Windows now, with macOS to follow. The look is deliberately quiet. Plain type, thin black lines, sharp corners. It owes a lot to the catalogs and books on my studio shelf: Sirotov, Ecohaus, Branco Arquitetura.
 
 Tinn is still being tested. I add to it most weeks, a bit more depth and a few rough edges sanded down. It has been the most satisfying thing I have built. If you plan spaces for a living and want to try it, it is at tinn.app.
 

@@ -11,9 +11,9 @@ role_no: Arkitekt og designer
 role_pt: Arquiteto e designer
 org: Bjørkå Flatin
 location: Norway · Brazil
-desc: Independent practice, registered as a sole proprietorship (ENK) in 2025 and VAT registered. Work includes a planning application for a care building (Omsorgsgruppen Våler), the SESC Mogi das Cruzes competition proposal in São Paulo with architect Denis Joelsons, architectural visualisation including the Von Sauna floating saunas, and the design and development of Tinn and hytteboka.app. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
+desc: Independent practice, registered as a sole proprietorship (ENK) in 2025 and VAT registered. Work includes a planning application for a care building (Omsorgsgruppen Våler), the SESC Mogi das Cruzes competition proposal in São Paulo with architect Denis Joelsons, architectural visualization including the Von Sauna floating saunas, and the design and development of Tinn and hytteboka.app. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
 desc_no: Egen praksis, registrert som enkeltpersonforetak i 2025 og mva-registrert. Arbeidet omfatter byggesøknad for en omsorgsbolig (Omsorgsgruppen Våler), konkurranseforslaget til SESC Mogi das Cruzes i São Paulo sammen med arkitekt Denis Joelsons, arkitekturvisualisering blant annet av de flytende badstuene Von Sauna, og design og utvikling av Tinn og hytteboka.app. Utvalgte kunder: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
-desc_pt: Escritório próprio, registrado como firma individual (ENK) em 2025 e inscrito para IVA. O trabalho inclui um pedido de licenciamento para um edifício de saúde (Omsorgsgruppen Våler), a proposta para o concurso do SESC Mogi das Cruzes em São Paulo com o arquiteto Denis Joelsons, visualização arquitetônica incluindo as saunas flutuantes Von Sauna, e o design e desenvolvimento do Tinn e do hytteboka.app. Clientes selecionados: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
+desc_pt: Escritório próprio, registrado como firma individual (ENK) em 2025 e inscrito para IVA. O trabalho inclui um pedido de licenciamento para moradia assistida (Omsorgsgruppen Våler), a proposta para o concurso do SESC Mogi das Cruzes em São Paulo com o arquiteto Denis Joelsons, visualização arquitetônica incluindo as saunas flutuantes Von Sauna, e o design e desenvolvimento do Tinn e do hytteboka.app. Clientes selecionados: Omsorgsgruppen AS (NO), Havn PropCo (SE), Millenniarch (PT), Maxxit Systems (US), Floresta Produções (BR).
 
 [experience]
 period: 2023 - 2024
@@ -57,7 +57,7 @@ role_no: Arkitektpraktikant
 role_pt: Estagiário de arquitetura
 org: Lüchinger Architects / Mieke Vink
 location: Rotterdam, The Netherlands
-desc: Transformation of a historic barn into a home (Oud Alblas), developed through iterative physical model-making while preserving the original structure.
+desc: Transformation of a historic barn into a home (Oud Alblas), developed through iterative physical model making while preserving the original structure.
 desc_no: Ombygging av en historisk låve til bolig (Oud Alblas), utviklet gjennom flere runder med fysiske modeller, samtidig som den opprinnelige konstruksjonen ble bevart.
 desc_pt: Transformação de um celeiro histórico em casa (Oud Alblas), desenvolvida por meio de maquetes físicas sucessivas, preservando a estrutura original.
 

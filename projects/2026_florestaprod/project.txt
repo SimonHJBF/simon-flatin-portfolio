@@ -16,7 +16,7 @@ weight: -5
 
 Floresta is an audiovisual production company in São Paulo. They have been making film and television since 2010 and produce for Netflix, HBO Max, Paramount+, Globoplay and Multishow among others. They came to me with an older site that no longer matched the work behind it.
 
-I did all of it, the design and the production. The site is built around the catalogue of productions, so the titles carry the page rather than sitting behind it.
+I did all of it, the design and the production. The site is built around the catalog of productions, so the titles carry the page rather than sitting behind it.
 
 It launched in August 2026 and is live at [florestaprod.com.br](https://florestaprod.com.br).
 

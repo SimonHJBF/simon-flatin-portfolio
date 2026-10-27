@@ -13,11 +13,11 @@ weight: 10
 
 Together with Denis, Miguel and Sofia, I developed a masterplan and architectural proposal for the new Sesc park unit at Mogi das Cruzes, sited between an avenue to the south and the Serra do Itapeti to the north. The design uses the valley's topography, running a continuous esplanade from the access road at +762.96 m down to the park level at +750 m, and carving out a sheltered outdoor foyer that buffers highway noise.
 
-A 200 m curved pavilion along the eastern edge frames views towards the Serra and works as a backdrop to the park. Its arc wraps the green courtyard and frees a service yard to the east, where loading docks and technical towers sit out of sight. Inside the pavilion the programme splits between sociocultural functions, an auditorium with its own foyer café, multipurpose rooms, a library and children's play, and sports amenities including indoor courts, pools and fitness spaces.
+A 200 m curved pavilion along the eastern edge frames views toward the Serra and works as a backdrop to the park. Its arc wraps the green courtyard and frees a service yard to the east, where loading docks and technical towers sit out of sight. Inside the pavilion the program splits between sociocultural functions, an auditorium with its own foyer café, multipurpose rooms, a library and children's play, and sports amenities including indoor courts, pools and fitness spaces.
 
 We specified a lightweight timber structure with off-the-shelf thermally insulated facade panels, and openings for daylight and natural ventilation. The service towers are sized to take solar-thermal and photovoltaic systems later.
 
-My part was concept development, site strategy and digital modelling, iterating the esplanade geometry and the pavilion curvature against each other until the built form and the landscape lined up.
+My part was concept development, site strategy and digital modeling, iterating the esplanade geometry and the pavilion curvature against each other until the built form and the landscape lined up.
 
 ===no===
 

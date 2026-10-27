@@ -5,12 +5,12 @@ year: 2017 - 2018
 location: Architecture faculty, TU Delft, The Netherlands
 typology: Form studies
 organization: TU Delft
-status: Realised
+status: Realized
 grid: third
 
 ---
 
-A substantial part of architecture is about form, composition and materialisation. Through these experiments, during our first year of the bachelor's, we were allowed to challenge our perception and our compositional skills. We worked mainly in clay, plaster and foam, learning to assemble different elements into new ones and exploring how shape and form play with light, shadow and sight lines.
+A substantial part of architecture is about form, composition and materialization. Through these experiments, during our first year of the bachelor's, we were allowed to challenge our perception and our compositional skills. We worked mainly in clay, plaster and foam, learning to assemble different elements into new ones and exploring how shape and form play with light, shadow and sight lines.
 
 ===no===
 

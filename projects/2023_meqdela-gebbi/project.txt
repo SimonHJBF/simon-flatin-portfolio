@@ -1,10 +1,10 @@
-title: Meqdela Gebbi modelmaking
+title: Meqdela Gebbi model making
 category: Model making
 tags: Models
 year: 2023
 location: Delft, The Netherlands
 typology: Architectural model
-status: Realised
+status: Realized
 organization: TU Delft / Venice Architecture Biennale
 collaborators: Alex Kirschstein
 exhibitions: Biennale Architettura 2023, Venice, May to November 2023
