@@ -9,7 +9,7 @@ status: Realized
 organization: TU Delft
 collaborators: Alex Kirschstein · Dick van Gameren
 exhibitions: TU Delft, 1 September to 1 November 2024
-grid: medium
+grid: wide
 featured: yes
 
 ---

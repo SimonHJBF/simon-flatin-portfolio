@@ -903,7 +903,7 @@ const WORK_LAYOUT = [
   ['tinn', 4],
   ['sknf-flagship', 1], ['von-sauna', 8],
   ['bjornasen-house-addition', 6],
-  ['the-nine-boxes', 1], ['lalibela-modelmaking', 8],
+  ['the-nine-boxes', 1], ['lalibela-modelmaking', 7],
   ['chicken-coop', 4],
   ['omsorgsgruppen-valer', 2], ['arctic-symphony', 6],
   ['meqdela-gebbi', 1], ['borders-transitions', 7],
