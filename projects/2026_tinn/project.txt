@@ -3,7 +3,7 @@ category: Software · Specification tool
 tags: Software
 year: 2026 (ongoing)
 typology: Desktop application (Windows)
-status: Released, in development
+status: Early version, in development
 client: Self-initiated
 live: tinn.app
 grid: wide
@@ -17,7 +17,7 @@ It started from frustration. The software sold for this, even the parts aimed at
 
 The spec sheet is the core. Around it sit smaller tools that are still maturing: boards, plans, permits, tasks and a schedule. I did all of it myself: the idea, the design, the brand and the code. The look is deliberately quiet, with plain type and thin lines, and it owes a lot to the catalogs and books on my studio shelf: Sirotov, Ecohaus, Branco Arquitetura.
 
-Tinn is public now and runs on Windows. It is still growing.
+Tinn is an early version, public and still in progress.
 
 ===no===
 
@@ -27,7 +27,7 @@ Det begynte med frustrasjon. Verktøyene som selges til dette, selv de som er re
 
 Produktlisten er kjernen. Rundt den ligger mindre verktøy som fortsatt modnes: tavler, plantegninger, byggesak, oppgaver og tidsplan. Jeg har gjort alt selv: ideen, designet, merkevaren og koden. Uttrykket er bevisst stille, med enkel typografi og tynne linjer, og det henter mye fra katalogene og bøkene i bokhyllen i studioet mitt: Sirotov, Ecohaus, Branco Arquitetura.
 
-Tinn er ute nå og kjører på Windows. Det vokser fortsatt.
+Tinn er en tidlig versjon, ute og fortsatt under arbeid.
 
 ===pt===
 
@@ -37,4 +37,4 @@ Começou de frustração. Os programas vendidos para isso, mesmo os voltados par
 
 A lista de especificação é o centro. Em volta dela ficam ferramentas menores, que ainda estão amadurecendo: quadros, plantas, aprovações, tarefas e cronograma. Fiz tudo sozinho: a ideia, o design, a marca e o código. A aparência é deliberadamente discreta, com tipografia simples e linhas finas, e deve muito aos catálogos e livros na estante do meu estúdio: Sirotov, Ecohaus, Branco Arquitetura.
 
-O Tinn já é público e roda no Windows. Ele continua crescendo.
+O Tinn é uma versão inicial, pública e ainda em andamento.

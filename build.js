@@ -182,7 +182,7 @@ const TERMS = {
   'Design proposal':              { no:'Prosjektforslag',                    pt:'Proposta de projeto' },
   'In Progress':                  { no:'Pågår',                      pt:'Em andamento' },
   'In testing':                   { no:'Under testing',              pt:'Em testes' },
-  'Released, in development':      { no:'Lansert, under utvikling',   pt:'Lançado, em desenvolvimento' },
+  'Early version, in development': { no:'Tidlig versjon, under utvikling', pt:'Versão inicial, em desenvolvimento' },
   'Live':                         { no:'I drift',                    pt:'No ar' },
   'Realized':                     { no:'Realisert',                  pt:'Realizado' },
 
