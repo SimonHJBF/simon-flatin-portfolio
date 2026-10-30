@@ -913,6 +913,11 @@ const WORK_LAYOUT = [
   ['billow-maas', 1],
   ['staircase-home', 1], ['form-studies', 8],
 ];
+function workOrder(projects) {
+  const order = WORK_LAYOUT.map(([slug]) => slug);
+  const rank = d => order.includes(d.slug) ? order.indexOf(d.slug) : order.length;
+  return [...projects].sort((a, b) => rank(a) - rank(b));
+}
 const GRID_SPANS = { 'card--full':12, 'card--large':7, 'card--wide':6, 'card--medium':5, 'card--third':4 };
 
 function cardHtml(data, index, prefix, column) {
@@ -943,6 +948,13 @@ function cardHtml(data, index, prefix, column) {
 // ─────────────────────────────────────────────
 //  Page generators
 // ─────────────────────────────────────────────
+
+// Shown whole, so a long section or a tall photo is never cropped.
+function pagerImage(p) {
+  if (!p._cover) return '';
+  const url = webSrc(`projects/${p._folder}`, p._cover);
+  return `<img src="${url}"${srcsetAttrs(url, '(max-width: 900px) 45vw, 540px')} alt="" loading="lazy" />`;
+}
 
 function generateProjectPage(data, folderName, images, prev, next) {
   const slug   = data.slug;
@@ -1093,9 +1105,11 @@ function generateProjectPage(data, folderName, images, prev, next) {
     .project-role { font-size:.95rem; line-height:1.7; color:var(--dark); margin:-1rem 0 2rem; max-width:620px; }
     .project-role__label { display:block; font-size:.68rem; font-weight:400; letter-spacing:.14em;
       text-transform:uppercase; color:var(--muted); margin-bottom:.3rem; }
-    .project-pager { max-width:1200px; margin:5rem auto 0; padding:2rem 4rem 0;
-      border-top:1px solid rgba(28,28,26,.1); display:flex; justify-content:space-between; gap:2rem; }
-    .project-pager a { text-decoration:none; color:var(--dark); display:flex; flex-direction:column; gap:.4rem; max-width:45%; }
+    .project-pager { max-width:1200px; margin:5rem auto 0; padding:2.5rem 4rem 0;
+      border-top:1px solid rgba(28,28,26,.1); display:flex; flex-direction:row; align-items:flex-start; justify-content:space-between; gap:2rem; }
+    .project-pager a { text-decoration:none; color:var(--dark); display:flex; flex-direction:column; gap:.4rem; flex:0 1 45%; }
+    .project-pager img { display:block; width:100%; height:clamp(110px,14vw,190px); object-fit:contain; object-position:left; margin-bottom:.8rem; }
+    .project-pager__next img { object-position:right; }
     .project-pager__next { text-align:right; margin-left:auto; }
     .project-pager__dir { font-size:.68rem; font-weight:400; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
     .project-pager__name { font-family:var(--serif); font-size:clamp(1.05rem,1.6vw,1.3rem); line-height:1.3; }
@@ -1150,8 +1164,8 @@ ${galleryHtml}
 ${videoHtml}
 ${prev && next && prev !== data ? `
   <nav class="project-pager" aria-label="__PAGER_LABEL__">
-    <a href="__LINKBASE__projects/${esc(prev.slug)}/" class="project-pager__prev"><span class="project-pager__dir"><span class="l-en">&larr; Previous</span><span class="l-no">&larr; Forrige</span><span class="l-pt">&larr; Anterior</span></span><span class="project-pager__name">${langSpans(prev.title, tTitle)}</span></a>
-    <a href="__LINKBASE__projects/${esc(next.slug)}/" class="project-pager__next"><span class="project-pager__dir"><span class="l-en">Next &rarr;</span><span class="l-no">Neste &rarr;</span><span class="l-pt">Pr&oacute;ximo &rarr;</span></span><span class="project-pager__name">${langSpans(next.title, tTitle)}</span></a>
+    <a href="__LINKBASE__projects/${esc(prev.slug)}/" class="project-pager__prev">${pagerImage(prev)}<span class="project-pager__dir"><span class="l-en">&larr; Previous</span><span class="l-no">&larr; Forrige</span><span class="l-pt">&larr; Anterior</span></span><span class="project-pager__name">${langSpans(prev.title, tTitle)}</span></a>
+    <a href="__LINKBASE__projects/${esc(next.slug)}/" class="project-pager__next">${pagerImage(next)}<span class="project-pager__dir"><span class="l-en">Next &rarr;</span><span class="l-no">Neste &rarr;</span><span class="l-pt">Pr&oacute;ximo &rarr;</span></span><span class="project-pager__name">${langSpans(next.title, tTitle)}</span></a>
   </nav>` : ''}
 
 ${footerHtml('../../')}
@@ -1163,9 +1177,7 @@ ${LANG_TOGGLE_SCRIPT}
 
 function generateWorkPage(projects) {
   const column = new Map(WORK_LAYOUT);
-  const order = WORK_LAYOUT.map(([slug]) => slug);
-  const rank = d => order.includes(d.slug) ? order.indexOf(d.slug) : order.length;
-  const cards = [...projects].sort((a, b) => rank(a) - rank(b))
+  const cards = workOrder(projects)
     .map((d, i) => cardHtml(d, i, '', column.get(d.slug))).join('');
   // The same projects as a plain list, for a reader who wants the whole body
   // of work at a glance rather than one image at a time.
@@ -2190,9 +2202,10 @@ function build() {
 
   // Project pages come after the sort, so each can link to its neighbours in
   // the same order as the Work page. The list wraps at both ends.
-  projects.forEach((data, i) => {
-    const prev = projects[(i - 1 + projects.length) % projects.length];
-    const next = projects[(i + 1) % projects.length];
+  const inOrder = workOrder(projects);
+  inOrder.forEach((data, i) => {
+    const prev = inOrder[(i - 1 + inOrder.length) % inOrder.length];
+    const next = inOrder[(i + 1) % inOrder.length];
     const html    = generateProjectPage(data, data._folder, data._images, prev, next);
     const projRel = 'projects/' + data.slug + '/index.html';
     // Register the localised <title>; emitLangVariants swaps it in per language.
