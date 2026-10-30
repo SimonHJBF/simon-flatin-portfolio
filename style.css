@@ -154,6 +154,11 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 .card--medium { grid-column: span 5; }
 .card--wide   { grid-column: span 6; }
 .card--third  { grid-column: span 4; }
+/* /work: hand-placed cards with air between them. Off when a filter is on. */
+@media (min-width: 901px) {
+  #work-projects:not(.is-filtered) { row-gap: 7rem; }
+  #work-projects:not(.is-filtered) .card--at { grid-column: var(--at); }
+}
 
 .card__img-wrap { width: 100%; overflow: hidden; }
 .card--full   .card__img-wrap { aspect-ratio: 40/19; }

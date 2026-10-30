@@ -592,7 +592,8 @@ const CARD_VIDEO_SCRIPT = `  <script>
         card.addEventListener('mouseenter', function(){
           var p = v.play(); if(p && p.catch) p.catch(function(){});
         });
-        card.addEventListener('mouseleave', function(){ v.pause(); v.currentTime = 0; });
+        // load() drops back to the poster; frame 0 of the loop is black.
+        card.addEventListener('mouseleave', function(){ v.pause(); v.load(); });
       });
     })();
   </script>`;
@@ -894,7 +895,27 @@ const AUTO_PATTERN = [
   'card--third','card--third','card--third', // row: 4+4+4=12
 ];
 
-function cardHtml(data, index, prefix) {
+// The /work grid is placed by hand: projects in this order, each starting at the
+// given column of 12. A card that starts left of the one before it opens a new
+// row. Projects not listed here follow at the end in the normal flow.
+const WORK_LAYOUT = [
+  ['sesc-mogi-das-cruzes', 1], ['florestaprod', 9],
+  ['tinn', 4],
+  ['sknf-flagship', 1], ['von-sauna', 8],
+  ['bjornasen-house-addition', 6],
+  ['the-nine-boxes', 1], ['lalibela-modelmaking', 8],
+  ['chicken-coop', 4],
+  ['omsorgsgruppen-valer', 2], ['arctic-symphony', 6],
+  ['meqdela-gebbi', 1], ['borders-transitions', 7],
+  ['symphony-time-architecture', 3],
+  ['erosion', 1], ['assembling-arctic-symphony', 6],
+  ['stilt-house', 2], ['oud-alblas', 8],
+  ['billow-maas', 1],
+  ['staircase-home', 1], ['form-studies', 8],
+];
+const GRID_SPANS = { 'card--full':12, 'card--large':7, 'card--wide':6, 'card--medium':5, 'card--third':4 };
+
+function cardHtml(data, index, prefix, column) {
   const cls     = GRID_CLASSES[(data.grid||'').toLowerCase()] || AUTO_PATTERN[index % AUTO_PATTERN.length];
   const slug    = data.slug;
   const folder  = data._folder; // e.g. 2024_lalibela-modelmaking
@@ -909,7 +930,7 @@ function cardHtml(data, index, prefix) {
   const cats    = (data.tags || data.category || '').split('·').map(t => t.trim()).filter(Boolean).join(',');
 
   return `
-      <a class="card ${cls}" href="__LINKBASE__projects/${esc(slug)}/" data-categories="${esc(cats)}">
+      <a class="card ${cls}${column ? ' card--at' : ''}" href="__LINKBASE__projects/${esc(slug)}/" data-categories="${esc(cats)}"${column ? ` style="--at:${column} / span ${GRID_SPANS[cls]}"` : ''}>
         <div class="card__img-wrap">${imgHtml}</div>
         <div class="card__info">
           <div class="card__category">${langSpans(data.category || '', tVal)}</div>
@@ -1141,7 +1162,11 @@ ${LANG_TOGGLE_SCRIPT}
 }
 
 function generateWorkPage(projects) {
-  const cards = projects.map((d, i) => cardHtml(d, i, '')).join('');
+  const column = new Map(WORK_LAYOUT);
+  const order = WORK_LAYOUT.map(([slug]) => slug);
+  const rank = d => order.includes(d.slug) ? order.indexOf(d.slug) : order.length;
+  const cards = [...projects].sort((a, b) => rank(a) - rank(b))
+    .map((d, i) => cardHtml(d, i, '', column.get(d.slug))).join('');
   // The same projects as a plain list, for a reader who wants the whole body
   // of work at a glance rather than one image at a time.
   const rows = projects.map(d => {
@@ -1252,6 +1277,7 @@ ${footerHtml()}
           btns.forEach(function(b){ b.classList.remove('active'); });
           btn.classList.add('active');
           var filter = btn.dataset.filter;
+          document.getElementById('work-projects').classList.toggle('is-filtered', filter !== 'All');
           cards.forEach(function(card){
             if(filter === 'All'){
               card.style.display = '';
