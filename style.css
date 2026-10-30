@@ -167,6 +167,8 @@ nav.nav--hero .lang-sep              { color: rgba(255,255,255,0.4); opacity: 1;
 /* Floresta's card is a screen recording of a 16/9 page. Match it, or cover
    crops the outer columns of the grid and cuts the titles in half. */
 .card[href*="/florestaprod/"] .card__img-wrap { aspect-ratio: 16/9; }
+/* Billow's cover is a long section. Match it, so the whole width shows. */
+.card[href*="/billow-maas/"] .card__img-wrap { aspect-ratio: 2000/548; }
 
 .card__img-wrap img,
 .card__img-wrap video,

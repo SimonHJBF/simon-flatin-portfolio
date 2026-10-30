@@ -6,7 +6,7 @@ location: Schiehaven 13, 3024 CE Rotterdam, The Netherlands
 typology: Sports school
 organization: TU Delft
 status: Concept
-grid: wide
+grid: full
 
 ---
 

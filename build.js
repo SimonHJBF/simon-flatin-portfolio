@@ -161,6 +161,7 @@ const TERMS = {
   'Architectural model':          { no:'Arkitekturmodell',           pt:'Maquete arquitetônica' },
   'Chicken coop':                 { no:'Hønsehus',                   pt:'Galinheiro' },
   'Desktop application (Windows · macOS)': { no:'Skrivebordsapp (Windows · macOS)', pt:'App de desktop (Windows · macOS)' },
+  'Desktop application (Windows)': { no:'Skrivebordsapp (Windows)', pt:'App de desktop (Windows)' },
   'Dwellings':                    { no:'Boliger',                    pt:'Habitações' },
   'Garage':                       { no:'Garasje',                    pt:'Garagem' },
   'Graduation design booklet':    { no:'Designhefte, avgangsprosjekt', pt:'Caderno de projeto de graduação' },
@@ -181,6 +182,7 @@ const TERMS = {
   'Design proposal':              { no:'Prosjektforslag',                    pt:'Proposta de projeto' },
   'In Progress':                  { no:'Pågår',                      pt:'Em andamento' },
   'In testing':                   { no:'Under testing',              pt:'Em testes' },
+  'Released, in development':      { no:'Lansert, under utvikling',   pt:'Lançado, em desenvolvimento' },
   'Live':                         { no:'I drift',                    pt:'No ar' },
   'Realized':                     { no:'Realisert',                  pt:'Realizado' },
 
@@ -881,7 +883,7 @@ function footerHtml(prefix) {
 //  Card HTML helper
 // ─────────────────────────────────────────────
 
-const GRID_CLASSES = { large:'card--large', medium:'card--medium', wide:'card--wide', third:'card--third' };
+const GRID_CLASSES = { full:'card--full', large:'card--large', medium:'card--medium', wide:'card--wide', third:'card--third' };
 // 14-step pattern: alternates large-on-left vs large-on-right every 7 cards
 const AUTO_PATTERN = [
   'card--large','card--medium',              // row: 7+5=12  (large LEFT)
