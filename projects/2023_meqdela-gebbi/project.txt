@@ -8,7 +8,7 @@ status: Realized
 organization: TU Delft / Venice Architecture Biennale
 collaborators: Alex Kirschstein
 exhibitions: Biennale Architettura 2023, Venice, May to November 2023
-grid: medium
+grid: large
 
 ---
 

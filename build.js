@@ -906,7 +906,7 @@ const WORK_LAYOUT = [
   ['the-nine-boxes', 1], ['lalibela-modelmaking', 7],
   ['chicken-coop', 4],
   ['omsorgsgruppen-valer', 2], ['arctic-symphony', 6],
-  ['meqdela-gebbi', 1], ['borders-transitions', 7],
+  ['meqdela-gebbi', 1], ['borders-transitions', 8],
   ['symphony-time-architecture', 3],
   ['erosion', 1], ['assembling-arctic-symphony', 6],
   ['stilt-house', 2], ['oud-alblas', 8],
