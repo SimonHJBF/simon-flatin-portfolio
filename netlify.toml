@@ -1,5 +1,5 @@
 [build]
-  command = "node build.js"
+  command = "node scripts/strip-image-metadata.js projects content && node build.js"
   publish = "."
 
 [build.environment]

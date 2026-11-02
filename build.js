@@ -1342,7 +1342,7 @@ ${JSON.stringify({
       url: `${SITE_URL}/`,
       founder: { '@id': `${SITE_URL}/#person` },
       areaServed: ['Norway', 'Brazil'],
-      address: { '@type': 'PostalAddress', streetAddress: 'Bjørnåsen 21', postalCode: '1560', addressLocality: 'Larkollen', addressCountry: 'NO' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Oslo region', addressCountry: 'NO' },
     },
   ],
 }, null, 2)}
@@ -1960,7 +1960,7 @@ ${LANG_TOGGLE_SCRIPT}
 // Cloudflare rewrites email addresses into a script-only link unless they sit
 // between these markers, which left "[email protected]" for anyone without JS.
 const EMAIL = '<!--email_off--><a href="mailto:simon@bjorkaflatin.com">simon@bjorkaflatin.com</a><!--/email_off-->';
-const ADDRESS = 'Bj&oslash;rn&aring;sen 21, 1560 Larkollen';
+const ADDRESS = `<span class="l-en">Oslo region, Norway &middot; S&atilde;o Paulo</span><span class="l-no">Osloregionen &middot; S&atilde;o Paulo</span><span class="l-pt">Regi&atilde;o de Oslo, Noruega &middot; S&atilde;o Paulo</span>`;
 
 function generatePrivacyPage() {
   const p = (en, no, pt) => `    <p><span class="l-en">${en}</span><span class="l-no">${no}</span><span class="l-pt">${pt}</span></p>`;
@@ -1989,9 +1989,9 @@ function generatePrivacyPage() {
 ${navHtml()}
   <div class="privacy">
     <h1><span class="l-en">Privacy</span><span class="l-no">Personvern</span><span class="l-pt">Privacidade</span></h1>
-${p(`This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. ${ORG_NR} in Enhetsregisteret, ${ADDRESS}, who is responsible for the personal data handled here. Questions about it go to ${EMAIL}.`,
-    `Dette nettstedet tilh&oslash;rer Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.nr. ${ORG_NR} i Enhetsregisteret, ${ADDRESS}, som er ansvarlig for personopplysningene som behandles her. Sp&oslash;rsm&aring;l om dem kan sendes til ${EMAIL}.`,
-    `Este site pertence a Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org. nº ${ORG_NR} no Enhetsregisteret, ${ADDRESS}, respons&aacute;vel pelos dados pessoais tratados aqui. Perguntas sobre eles podem ser enviadas para ${EMAIL}.`)}
+${p(`This site belongs to Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.no. ${ORG_NR} in Enhetsregisteret, who is responsible for the personal data handled here. Questions about it go to ${EMAIL}.`,
+    `Dette nettstedet tilh&oslash;rer Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org.nr. ${ORG_NR} i Enhetsregisteret, som er ansvarlig for personopplysningene som behandles her. Sp&oslash;rsm&aring;l om dem kan sendes til ${EMAIL}.`,
+    `Este site pertence a Simon H.J. Bj&oslash;rk&aring; Flatin, Bj&oslash;rk&aring; Flatin ENK, org. nº ${ORG_NR} no Enhetsregisteret, respons&aacute;vel pelos dados pessoais tratados aqui. Perguntas sobre eles podem ser enviadas para ${EMAIL}.`)}
 ${h('Analytics', 'Analyse', 'An&aacute;lise')}
 ${p('If you allow it, the site uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies, which last up to two years, and sends information about the visit, such as pages viewed, device type and an approximate location, to Google. Google may process this in the United States, under the EU-US Data Privacy Framework, and keeps it for up to 14 months. The legal basis is your consent. Nothing is stored or sent unless you choose Allow, and you can withdraw your consent at any time.',
     'Hvis du tillater det, bruker nettstedet Google Analytics til &aring; telle bes&oslash;k og se hvilke sider som leses. Google Analytics setter informasjonskapsler, som varer i opptil to &aring;r, og sender opplysninger om bes&oslash;ket, som sidene du ser, type enhet og omtrentlig sted, til Google. Google kan behandle dette i USA, under rammeverket EU-US Data Privacy Framework, og lagrer det i opptil 14 m&aring;neder. Behandlingsgrunnlaget er samtykket ditt. Ingenting lagres eller sendes med mindre du velger Tillat, og du kan trekke samtykket tilbake n&aring;r som helst.',
