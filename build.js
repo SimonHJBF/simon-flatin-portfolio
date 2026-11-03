@@ -190,6 +190,7 @@ const TERMS = {
   '2023 - Present':               { no:'2023 - i dag',               pt:'2023 - presente' },
   'Nov 2022 - Jun 2023':          { no:'nov. 2022 - juni 2023',      pt:'nov. 2022 - jun. 2023' },
   'Sep - Dec 2021':               { no:'sep. - des. 2021',           pt:'set. - dez. 2021' },
+  '2020 & 2024':                  { no:'2020 og 2024',               pt:'2020 e 2024' },
 
   // Client and year
   'Self-initiated':               { no:'Eget initiativ',             pt:'Iniciativa própria' },
@@ -700,9 +701,9 @@ function parseBioTxt(content) {
   };
 }
 
-/** Parse cv.txt → { experience: [], education: [] } */
+/** Parse cv.txt → { experience: [], education: [], project: [] } */
 function parseCvTxt(content) {
-  const result = { experience: [], education: [] };
+  const result = { experience: [], education: [], project: [] };
   const blocks = content.split(/\n(?=\[)/);
   for (const block of blocks) {
     const lines = block.trim().split('\n');
@@ -720,6 +721,7 @@ function parseCvTxt(content) {
     });
     if (type === 'experience') result.experience.push(entry);
     if (type === 'education')  result.education.push(entry);
+    if (type === 'project')    result.project.push(entry);
   }
   return result;
 }
@@ -1687,6 +1689,7 @@ function generateAboutPage(paragraphs, cv) {
 
   const expHtml = cv.experience.map(cvEntry).join('');
   const eduHtml = cv.education.map(cvEntry).join('');
+  const projHtml = cv.project.map(cvEntry).join('');
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -1750,10 +1753,13 @@ ${bioHtml}
     <div class="about-cv">
       <div class="cv-label">CV</div>
       ${expHtml.trim() ? `<div class="cv-section">
-        <div class="cv-section__title"><span class="l-en">Working Experience</span><span class="l-no">Arbeidserfaring</span><span class="l-pt">Experi&ecirc;ncia Profissional</span></div>${expHtml}
+        <div class="cv-section__title"><span class="l-en">Professional Experience</span><span class="l-no">Arbeidserfaring</span><span class="l-pt">Experi&ecirc;ncia Profissional</span></div>${expHtml}
       </div>` : ''}
       ${eduHtml.trim() ? `<div class="cv-section">
         <div class="cv-section__title"><span class="l-en">Education</span><span class="l-no">Utdanning</span><span class="l-pt">Educa&ccedil;&atilde;o</span></div>${eduHtml}
+      </div>` : ''}
+      ${projHtml.trim() ? `<div class="cv-section">
+        <div class="cv-section__title"><span class="l-en">Additional Projects</span><span class="l-no">Andre prosjekter</span><span class="l-pt">Outros Projetos</span></div>${projHtml}
       </div>` : ''}
     </div>
   </div>
