@@ -11,9 +11,9 @@ weight: 10
 
 ---
 
-Together with Denis, Miguel and Sofia, I developed a masterplan and architectural proposal for the new Sesc park unit at Mogi das Cruzes, sited between an avenue to the south and the Serra do Itapeti to the north. The design uses the valley's topography, running a continuous esplanade from the access road at +762.96 m down to the park level at +750 m, and carving out a sheltered outdoor foyer that buffers highway noise.
+With Denis, Miguel and Sofia, I developed a masterplan and architectural proposal for the new Sesc park unit in Mogi das Cruzes, sited between an avenue to the south and the Serra do Itapeti to the north. The design uses the valley's topography, running a continuous esplanade from the access road at +762.96 m down to the park level at +750 m, and carving out a sheltered outdoor foyer that buffers highway noise.
 
-A 200 m curved pavilion along the eastern edge frames views toward the Serra and works as a backdrop to the park. Its arc wraps the green courtyard and frees a service yard to the east, where loading docks and technical towers sit out of sight. Inside the pavilion the program splits between sociocultural functions, an auditorium with its own foyer café, multipurpose rooms, a library and children's play, and sports amenities including indoor courts, pools and fitness spaces.
+A 200 m curved pavilion along the eastern edge frames views toward the Serra and works as a backdrop to the park. Its arc wraps the green courtyard and frees a service yard to the east, where loading docks and technical towers sit out of sight. Inside the pavilion, the program splits in two: sociocultural functions (an auditorium with its own foyer café, multipurpose rooms, a library and children's play) and sports amenities, including indoor courts, pools and fitness spaces.
 
 We specified a lightweight timber structure with off-the-shelf thermally insulated facade panels, and openings for daylight and natural ventilation. The service towers are sized to take solar-thermal and photovoltaic systems later.
 
@@ -23,7 +23,7 @@ My part was concept development, site strategy and digital modeling, iterating t
 
 Sammen med Denis, Miguel og Sofia utviklet jeg en masterplan og et arkitektonisk forslag for det nye Sesc-parkanlegget i Mogi das Cruzes, som ligger mellom en aveny i sør og fjellkjeden Serra do Itapeti i nord. Designet bruker topografien i dalen, og legger en sammenhengende esplanade fra atkomstveien på kote +762,96 ned til parknivået på +750, samtidig som det skjærer ut et skjermet, utendørs forrom som demper trafikkstøyen fra hovedveien.
 
-En 200 meter lang buet paviljong langs østkanten rammer inn utsikten mot Serra og fungerer som bakteppe for parken. Buen omslutter det grønne gårdsrommet og frigjør en driftsgård mot øst, der varemottak og tekniske tårn ligger utenfor synsfeltet. Inne i paviljongen deler programmet seg mellom sosiokulturelle funksjoner, en sal med egen foajékafé, flerbruksrom, bibliotek og lekeareal for barn, og idrettsfunksjoner med innendørs baner, bassenger og treningsrom.
+En 200 meter lang buet paviljong langs østkanten rammer inn utsikten mot Serra og fungerer som bakteppe for parken. Buen omslutter det grønne gårdsrommet og frigjør en driftsgård mot øst, der varemottak og tekniske tårn ligger utenfor synsfeltet. Inne i paviljongen deler programmet seg i to: sosiokulturelle funksjoner (en sal med egen foajékafé, flerbruksrom, bibliotek og lekeareal for barn) og idrettsfunksjoner med innendørs baner, bassenger og treningsrom.
 
 Vi prosjekterte en lett trekonstruksjon med isolerte standardpaneler i fasaden, og åpninger for dagslys og naturlig ventilasjon. De tekniske tårnene er dimensjonert for å kunne ta solfangere og solceller senere.
 
@@ -33,7 +33,7 @@ Min rolle var konseptutvikling, tomtestrategi og digital modellering, der jeg be
 
 Junto com Denis, Miguel e Sofia, desenvolvi um plano diretor e uma proposta arquitetônica para a nova unidade do Sesc em Mogi das Cruzes, situada entre uma avenida ao sul e a Serra do Itapeti ao norte. O projeto aproveita a topografia do vale, conduzindo uma esplanada contínua da via de acesso na cota +762,96 m até o nível do parque em +750 m, e abrindo um saguão externo protegido que amortece o ruído da via.
 
-Um pavilhão curvo de 200 m ao longo da borda leste emoldura as vistas para a Serra e funciona como pano de fundo do parque. Seu arco envolve o pátio verde e libera um pátio de serviço a leste, onde as docas de carga e as torres técnicas ficam fora de vista. Dentro do pavilhão, o programa se divide entre funções socioculturais, um auditório com café e foyer próprios, salas multiuso, biblioteca e espaço infantil, e instalações esportivas, incluindo quadras cobertas, piscinas e espaços de ginástica.
+Um pavilhão curvo de 200 m ao longo da borda leste emoldura as vistas para a Serra e funciona como pano de fundo do parque. Seu arco envolve o pátio verde e libera um pátio de serviço a leste, onde as docas de carga e as torres técnicas ficam fora de vista. Dentro do pavilhão, o programa se divide em dois: funções socioculturais (um auditório com café e foyer próprios, salas multiuso, biblioteca e espaço infantil) e instalações esportivas, incluindo quadras cobertas, piscinas e espaços de ginástica.
 
 Especificamos uma estrutura leve de madeira com painéis de fachada termicamente isolados de linha, e aberturas para luz natural e ventilação. As torres de serviço foram dimensionadas para receber sistemas solares térmicos e fotovoltaicos no futuro.
 

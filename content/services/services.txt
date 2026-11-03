@@ -17,7 +17,7 @@ desc_pt: Projeto desde a análise do terreno e o conceito até o planejamento, o
 name: Building applications in Norway
 name_no: Byggesøknader i Norge
 name_pt: Licenciamento na Noruega
-desc: Preparation and follow-up of building applications in Norway, including the supporting documentation and answers to the municipality's questions. Most recently a change-of-use application for a care building for Omsorgsgruppen in Våler.
+desc: Preparation and follow-up of building applications in Norway, including the supporting documentation and answers to the municipality's questions. Most recently, a change-of-use application for a care building for Omsorgsgruppen in Våler.
 desc_no: Utarbeiding og oppfølging av byggesøknader i Norge, med tilhørende dokumentasjon og svar på spørsmål fra kommunen. Sist en søknad om bruksendring til omsorgsbolig for Omsorgsgruppen i Våler.
 desc_pt: Preparação e acompanhamento de processos de licenciamento na Noruega, incluindo a documentação de apoio e as respostas às exigências do município. O mais recente foi um pedido de mudança de uso para moradia assistida da Omsorgsgruppen, em Våler.
 
@@ -25,7 +25,7 @@ desc_pt: Preparação e acompanhamento de processos de licenciamento na Noruega,
 name: Drawings and BIM models
 name_no: Tegninger og BIM-modeller
 name_pt: Desenhos e modelos BIM
-desc: Technical drawing packages, plans, sections, elevations and details, for building applications and contractor tendering. Revit models with coordination and information management, and parametric workflows in Rhino and Grasshopper where geometry is better driven by rules than drawn by hand. Revit, Rhino, Grasshopper and AutoCAD at an advanced level.
+desc: Technical drawing packages, plans, sections, elevations and details, for building applications and contractor tendering. Revit models with coordination and information management, and parametric workflows in Rhino and Grasshopper where geometry is better driven by rules than drawn by hand. I use Revit, Rhino, Grasshopper and AutoCAD at an advanced level.
 desc_no: Tekniske tegningssett med plan-, snitt- og fasadetegninger og detaljer, til byggesøknader og anbudsgrunnlag. Revit-modeller med koordinering og informasjonshåndtering, og parametriske arbeidsflyter i Rhino og Grasshopper der geometrien er bedre tjent med å styres av regler enn å tegnes for hånd. Revit, Rhino, Grasshopper og AutoCAD på avansert nivå.
 desc_pt: Pacotes de desenho técnico, plantas, cortes, elevações e detalhes, para licenciamento e concorrências com empreiteiras. Modelos em Revit com coordenação e gestão da informação, e fluxos paramétricos em Rhino e Grasshopper onde a geometria funciona melhor governada por regras do que desenhada à mão. Revit, Rhino, Grasshopper e AutoCAD em nível avançado.
 

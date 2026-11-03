@@ -13,7 +13,7 @@ org: Bjørkå Flatin, independent practice
 org_no: Bjørkå Flatin, egen praksis
 org_pt: Bjørkå Flatin, escritório próprio
 location: Norway · Brazil
-desc: Designed and developed Tinn (tinn.app), a specification tool for the building industry, and hytteboka.app. Prepared a building application in Revit for a healthcare facility expansion, Omsorgsgruppen Våler, Norway. Design competition entry SESC Mogi das Cruzes, São Paulo, in collaboration with architect Denis Joelsons. Architectural visualization, including the Von Sauna floating saunas (2025). Websites for international clients, including Floresta Produções, Brazil. Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Maxxit Systems (US), Adspace Agency (US), Floresta Produções (BR).
+desc: Designed and developed Tinn (tinn.app), a specification tool for the building industry, and hytteboka.app. Prepared a Revit building application for a healthcare facility expansion, Omsorgsgruppen Våler, Norway. Design competition entry: SESC Mogi das Cruzes, São Paulo, in collaboration with architect Denis Joelsons. Architectural visualization, including the Von Sauna floating saunas (2025). Websites for international clients, including Floresta Produções (Brazil). Selected clients: Omsorgsgruppen AS (NO), Havn PropCo (SE), Maxxit Systems (US), Adspace Agency (US), Floresta Produções (BR).
 desc_no: Design og utvikling av Tinn (tinn.app), et beskrivelsesverktøy for byggebransjen, og hytteboka.app. Byggesøknad i Revit for utvidelse av helsebygg, Omsorgsgruppen Våler. Konkurranseforslag SESC Mogi das Cruzes, São Paulo, i samarbeid med arkitekt Denis Joelsons. Arkitekturvisualisering, blant annet Von Sauna flytende badstuer (2025). Nettsider for internasjonale kunder, blant annet Floresta Produções, Brasil. Utvalgte kunder: Omsorgsgruppen AS (NO), Havn PropCo (SE), Maxxit Systems (US), Adspace Agency (US), Floresta Produções (BR).
 desc_pt: Design e desenvolvimento do Tinn (tinn.app), uma ferramenta de especificação para a construção civil, e do hytteboka.app. Pedido de licenciamento em Revit para a ampliação de uma moradia assistida, Omsorgsgruppen Våler, Noruega. Proposta para o concurso do SESC Mogi das Cruzes, São Paulo, em colaboração com o arquiteto Denis Joelsons. Visualização arquitetônica, incluindo as saunas flutuantes Von Sauna (2025). Sites para clientes internacionais, incluindo a Floresta Produções, Brasil. Clientes selecionados: Omsorgsgruppen AS (NO), Havn PropCo (SE), Maxxit Systems (US), Adspace Agency (US), Floresta Produções (BR).
 
@@ -24,9 +24,9 @@ role_no: Designer (deltid ved siden av studiene), arkitekt fra 2023
 role_pt: Designer (meio período durante os estudos), arquiteto a partir de 2023
 org: Ebano AS / AKSIE AS
 location: Drøbak, Norway
-desc: Designed restaurants, bars and cafés across Norway with a focus on commercial kitchens, from AutoCAD layouts and equipment specifications to custom stainless-steel product design fabricated on-site. When the company expanded into residential construction, I managed planning and logistics for a full house build, coordinating the construction team through delivery.
-desc_no: Utforming av restauranter, barer og kafeer over hele Norge med vekt på storkjøkken, fra planløsning i AutoCAD og utstyrslister til spesialdesignede produkter i rustfritt stål, produsert på stedet. Da selskapet utvidet til boligbygging, hadde jeg ansvar for planlegging og logistikk for oppføring av en enebolig, med koordinering av byggeteamet frem til overlevering.
-desc_pt: Projeto de restaurantes, bares e cafés em toda a Noruega com foco em cozinhas industriais, das plantas em AutoCAD e especificações de equipamentos a produtos sob medida em aço inoxidável, fabricados no local. Quando a empresa passou a atuar em construção residencial, cuidei do planejamento e da logística da construção de uma casa completa, coordenando a equipe de obra até a entrega.
+desc: I designed restaurants, bars and cafés across Norway, mostly around their commercial kitchens: AutoCAD layouts, equipment lists and custom stainless steel pieces made on site. When the company started building houses, I ran the planning and logistics for one of them and coordinated the builders until handover.
+desc_no: Jeg tegnet restauranter, barer og kafeer over hele Norge, mest rundt storkjøkkenet: planløsninger i AutoCAD, utstyrslister og spesiallagde deler i rustfritt stål, produsert på stedet. Da selskapet begynte å bygge boliger, hadde jeg ansvaret for planlegging og logistikk for en av dem og koordinerte håndverkerne frem til overlevering.
+desc_pt: Projetei restaurantes, bares e cafés em toda a Noruega, principalmente em torno das cozinhas industriais: plantas em AutoCAD, listas de equipamentos e peças sob medida em aço inoxidável, feitas no local. Quando a empresa começou a construir casas, cuidei do planejamento e da logística de uma delas e coordenei a equipe de obra até a entrega.
 
 [experience]
 period: 2023 - 2024
@@ -46,9 +46,9 @@ role_no: Arkitektkonkurranse, delt seier
 role_pt: Concurso de projeto, vencedor compartilhado
 org: Upcycle Mall Rotterdam
 location: Rotterdam, The Netherlands
-desc: “Bounding Box” collective designed the winning “Harbour Box”, reusing waste materials from Rotterdam's harbor, turning industrial by-products into functional architectural elements for sustainable development.
-desc_no: Kollektivet «Bounding Box» tegnet vinnerforslaget «Harbour Box», basert på ombruk av avfallsmaterialer fra havna i Rotterdam: industrielle biprodukter omgjort til funksjonelle arkitektoniske elementer for bærekraftig utvikling.
-desc_pt: O coletivo “Bounding Box” projetou a vencedora “Harbour Box”, reaproveitando resíduos do porto de Roterdã e transformando subprodutos industriais em elementos arquitetônicos funcionais para o desenvolvimento sustentável.
+desc: With our collective Bounding Box, I worked on Harbour Box, one of the winning entries. It reused waste from Rotterdam's harbor and turned industrial leftovers into usable building parts.
+desc_no: Sammen med kollektivet vårt Bounding Box jobbet jeg med Harbour Box, ett av vinnerforslagene. Det brukte avfall fra havna i Rotterdam og gjorde industrielle restmaterialer om til brukbare bygningsdeler.
+desc_pt: Com o nosso coletivo Bounding Box, trabalhei no Harbour Box, uma das propostas vencedoras. O projeto reaproveitou resíduos do porto de Roterdã e transformou sobras industriais em peças de construção utilizáveis.
 
 [experience]
 period: Sep - Dec 2021
@@ -57,7 +57,7 @@ role_no: Arkitektpraktikant
 role_pt: Estagiário de arquitetura
 org: Lüchinger Architects
 location: Rotterdam, The Netherlands
-desc: Transformation of a historic barn into a home (Oud Alblas), designed through a process of iterative physical model-making while preserving the existing structure.
+desc: Transformation of a historic barn into a home (Oud Alblas), designed through iterative physical model-making while preserving the existing structure.
 desc_no: Transformasjon av en historisk låve til bolig (Oud Alblas), utviklet gjennom iterativ modellbygging med bevaring av den opprinnelige konstruksjonen.
 desc_pt: Transformação de um celeiro histórico em casa (Oud Alblas), projetada por meio de um processo iterativo de maquetes físicas, preservando a estrutura existente.
 
@@ -86,7 +86,7 @@ org: Noroff Vocational School
 org_no: Noroff fagskole
 org_pt: Escola técnica Noroff
 location: Oslo, Norway
-desc: Technical drafting foundation in AutoCAD, Revit, Inventor and 3ds Max, alongside the start of my professional work with Ebano.
+desc: Built a technical drafting foundation in AutoCAD, Revit, Inventor and 3ds Max, alongside the start of my professional work with Ebano.
 desc_no: Grunnlag i teknisk tegning med AutoCAD, Revit, Inventor og 3ds Max, parallelt med starten på arbeidet for Ebano.
 desc_pt: Base em desenho técnico com AutoCAD, Revit, Inventor e 3ds Max, junto com o início do meu trabalho profissional na Ebano.
 
@@ -97,7 +97,7 @@ role_no: Utvekslingsår
 role_pt: Ano de intercâmbio
 org: La Trobe University
 location: Melbourne, Australia
-desc: Enhanced my architectural perspective and network through a study abroad program, acquiring invaluable international contacts and diverse architectural insights. This valuable experience contributed greatly to my educational development.
+desc: I enhanced my architectural perspective and network through a study abroad program, gaining invaluable international contacts and diverse architectural insights. This valuable experience contributed greatly to my educational development.
 desc_no: Et år i utlandet som utvidet både det arkitektfaglige perspektivet og nettverket mitt, med internasjonale kontakter og innblikk i andre måter å tenke arkitektur på.
 desc_pt: Ampliei minha perspectiva arquitetônica e minha rede de contatos em um programa de intercâmbio, com contatos internacionais valiosos e diferentes visões sobre arquitetura. Essa experiência contribuiu muito para a minha formação.
 
@@ -108,7 +108,7 @@ role_no: Garasje, hønsehus og hage
 role_pt: Garagem, galinheiro e jardim
 org: Bjørnåsen garage
 location: Larkollen, Norway
-desc: Designed and built a 49 m² garage doubling as a social venue, and a matching chicken coop framing the garden as a courtyard, the full process from design through construction, for my family home in Larkollen.
+desc: Designed and built a 49 m² garage doubling as a social venue, and a matching chicken coop framing the garden as a courtyard, from design through construction, for my family home in Larkollen.
 desc_no: Tegnet og bygget en garasje på 49 m² som også fungerer som selskapslokale, samt et tilpasset hønsehus som rammer inn hagen som et tun, hele prosessen fra tegning til ferdig bygg, på familiens eiendom i Larkollen.
 desc_pt: Projetei e construí uma garagem de 49 m² que também serve de espaço social, e um galinheiro combinando que enquadra o jardim como um pátio, todo o processo do projeto à construção, na casa da minha família em Larkollen.
 
@@ -119,6 +119,6 @@ role_no: Forskningskollektiv, medgründer
 role_pt: Coletivo de pesquisa, cofundador
 org: Alternative Realities
 location: The Netherlands
-desc: Research on how architecture and urban space can evolve in harmony with natural processes, emphasizing adaptability, sustainability and public participation.
+desc: Research on how architecture and urban space can evolve in harmony with natural processes, stressing adaptability, sustainability and public participation.
 desc_no: Undersøker hvordan arkitektur og byrom kan utvikles i samspill med naturlige prosesser, med vekt på tilpasningsevne, bærekraft og medvirkning.
 desc_pt: Pesquisa sobre como a arquitetura e o espaço urbano podem evoluir em harmonia com processos naturais, com ênfase em adaptabilidade, sustentabilidade e participação pública.
