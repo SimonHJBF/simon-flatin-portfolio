@@ -15,7 +15,7 @@ video: https://youtu.be/4jFVfVUMrHc
 
 ---
 
-Arctic Symphony was my graduation project at TU Delft, done in the Explore Lab studio in 2022 and 2023. It comes in four parts: research, architecture, performance and photography. The site is Eibyelva, a wild river in the Alta valley in the Norwegian Arctic. Of the three stretches of the river basin I studied, it was the one that moved and changed the most over the years, which is why I chose it.
+Arctic Symphony was my graduation project at TU Delft, done in the Explore Lab studio in 2022 and 2023. It comes in four parts: research, architecture, performance and photography. The site is Eibyelva, a wild river in the Alta valley in the Norwegian Arctic. Of the three stretches of the river basin I studied, it moved and changed the most over the years, which is why I chose it.
 
 I grew up in Larkollen, with a view over the Oslofjord. In the woods there was a small hidden pond that changed slowly through the year. That pond is where the project started. It made me treat time as something architecture can meet rather than resist, so the project is as much about decay and regrowth as it is about building. The research booklet, Symphony of Time and Architecture, works through what time actually is, borrowing from physics, neuroscience and literature, before turning to the Arctic landscape and the site itself.
 
@@ -25,7 +25,7 @@ The performance grew out of the graduation project. Ewa Ziemiecka developed and 
 
 The photographs are the fourth part. My father Håvard and I made two expeditions to Alta, one in summer and one in winter, and documented the same landscape on both. The images set the material choices and the tectonic moves in the proposal, so that the fieldwork and the work at the drawing board kept pulling in the same direction.
 
-The full graduation work can be downloaded from the [TU Delft repository](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
+You can download the full graduation work from the [TU Delft repository](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
 
 ===no===
 

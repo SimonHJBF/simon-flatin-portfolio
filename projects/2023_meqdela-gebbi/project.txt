@@ -12,24 +12,24 @@ grid: large
 
 ---
 
-In collaboration with Alex Kirschstein, we were commissioned by the dean of the Faculty of Architecture at TU Delft to create an architectural model of a housing compound in Meqdela Gebbi.
+Alex Kirschstein and I were commissioned by the dean of the Faculty of Architecture at TU Delft to build an architectural model of a housing compound in Meqdela Gebbi.
 
-This model was inspired by research into some of the complex forms of Addis Ababa, particularly focusing on the typologies of informal settlements. These housing compounds, locally referred to as gebbi, are characterized by their organic composition of spaces and forms. They typically feature a public central space bounded by residential housing and fencing, which facilitates circulatory, social interaction, and different income based functions. Each compound includes at least one distinct social space that is central to the local community life, fostering tight-knit social relationships and economic activities.
+The model came out of research into informal settlements in Addis Ababa. These compounds, called gebbi locally, grow organically, one room and one wall at a time. Most have a shared open space in the middle, closed off by houses and fences, where people pass through, meet and run small businesses. Each has at least one social space the neighborhood gathers around, which keeps people close and keeps the local economy going.
 
-This model showcased the intricate social and spatial dynamics of this region and was used to emphasize the research conducted by Anteneh Tesfaye Tola. It was first exhibited at TU Delft before being featured at the Venice Architecture Biennale 2023.
+The model was made to show how the place works socially and spatially, and to support Anteneh Tesfaye Tola's research. It was shown at TU Delft first and then at the Venice Architecture Biennale 2023.
 
 ===no===
 
-Alex Kirschstein og jeg fikk i oppdrag av dekanen ved fakultetet for arkitektur ved TU Delft å lage en arkitekturmodell av et boligtun i Meqdela Gebbi.
+Alex Kirschstein og jeg fikk i oppdrag av dekanen ved fakultetet for arkitektur ved TU Delft å bygge en arkitekturmodell av et boligtun i Meqdela Gebbi.
 
-Modellen bygger på forskning om noen av de sammensatte byformene i Addis Abeba, med særlig vekt på typologiene i uformelle bosettinger. Disse boligtunene, lokalt kalt gebbi, kjennetegnes av en organisk sammensetning av rom og former. De har gjerne et offentlig sentralrom omkranset av boliger og gjerder, som legger til rette for ferdsel, sosialt samvær og ulike inntektsgivende aktiviteter. Hvert tun har minst ett tydelig sosialt rom som står sentralt i lokalsamfunnet, og som fremmer tette sosiale bånd og økonomisk aktivitet.
+Modellen kom ut av forskning på uformelle bosettinger i Addis Abeba. Disse tunene, lokalt kalt gebbi, vokser organisk, ett rom og én vegg om gangen. De fleste har et felles åpent rom i midten, avgrenset av hus og gjerder, der folk går gjennom, møtes og driver små forretninger. Hvert tun har minst ett sosialt rom som nabolaget samles rundt, og som holder folk tett sammen og den lokale økonomien i gang.
 
-Modellen viste den sammensatte sosiale og romlige dynamikken i området, og ble brukt til å løfte fram forskningen til Anteneh Tesfaye Tola. Den ble først vist ved TU Delft, før den ble stilt ut på arkitekturbiennalen i Venezia i 2023.
+Modellen ble laget for å vise hvordan stedet fungerer sosialt og romlig, og for å støtte forskningen til Anteneh Tesfaye Tola. Den ble først vist ved TU Delft og deretter på arkitekturbiennalen i Venezia i 2023.
 
 ===pt===
 
-Em colaboração com Alex Kirschstein, fomos encarregados pelo diretor da Faculdade de Arquitetura da TU Delft de criar um modelo arquitetônico de um conjunto habitacional em Meqdela Gebbi.
+Alex Kirschstein e eu fomos encarregados pelo diretor da Faculdade de Arquitetura da TU Delft de construir um modelo arquitetônico de um conjunto habitacional em Meqdela Gebbi.
 
-O modelo partiu de uma pesquisa sobre algumas das formas complexas de Adis Abeba, com foco nas tipologias de assentamentos informais. Esses conjuntos habitacionais, chamados localmente de gebbi, caracterizam-se pela composição orgânica de espaços e formas. Costumam ter um espaço central público delimitado por moradias e cercas, que facilita a circulação, o convívio social e diferentes funções ligadas à renda. Cada conjunto inclui ao menos um espaço social distinto, central para a vida da comunidade local, que estimula laços sociais estreitos e atividades econômicas.
+O modelo nasceu de uma pesquisa sobre assentamentos informais em Adis Abeba. Esses conjuntos, chamados localmente de gebbi, crescem de forma orgânica, um cômodo e um muro de cada vez. A maioria tem um espaço aberto comum no meio, fechado por casas e cercas, onde as pessoas passam, se encontram e mantêm pequenos negócios. Cada um tem ao menos um espaço social em torno do qual a vizinhança se reúne, o que mantém as pessoas próximas e a economia local funcionando.
 
-O modelo evidenciou a intrincada dinâmica social e espacial da região e foi usado para destacar a pesquisa conduzida por Anteneh Tesfaye Tola. Foi exibido primeiro na TU Delft, antes de ser apresentado na Bienal de Arquitetura de Veneza de 2023.
+O modelo foi feito para mostrar como o lugar funciona social e espacialmente, e para apoiar a pesquisa de Anteneh Tesfaye Tola. Foi exibido primeiro na TU Delft e depois na Bienal de Arquitetura de Veneza de 2023.

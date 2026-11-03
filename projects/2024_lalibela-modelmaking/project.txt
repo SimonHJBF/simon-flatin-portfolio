@@ -14,9 +14,9 @@ featured: yes
 
 ---
 
-As part of my work on Ethiopian architecture and model making, I worked with Alex Kirschstein on a detailed model of Biet Gabriel-Rufael in Lalibela, a UNESCO World Heritage site known for its rock-hewn churches. Biet Gabriel-Rufael is carved entirely out of a single mass of volcanic rock, with internal chambers, passageways and distinctive geometric forms.
+As part of my work on Ethiopian architecture and model making, I worked with Alex Kirschstein on a detailed model of Biet Gabriel-Rufael in Lalibela, a UNESCO World Heritage site known for its rock-hewn churches. Biet Gabriel-Rufael is carved entirely from a single mass of volcanic rock, with internal chambers, passageways and distinctive geometric forms.
 
-We worked from Lino Bianchi Barriviera's 1938 drawings of Lalibela, which record the churches and the landscape around them, alongside contemporary photography and 3D scans of the site. Most of the effort went into the textures of stone and lichen, since that is what ties the architecture to the rock it was cut from.
+We worked from Lino Bianchi Barriviera's 1938 drawings of Lalibela, which record the churches and the landscape around them, alongside contemporary photography and 3D scans of the site. Most of the effort went into the stone and lichen textures, since that is what ties the architecture to the rock it was cut from.
 
 The project comes out of an interest in taking historical research and turning it into something you can stand in front of.
 
