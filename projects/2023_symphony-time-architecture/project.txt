@@ -17,9 +17,9 @@ Symphony of Time and Architecture is the research booklet for my graduation at T
 
 The argument is that buildings are not static objects set against change, but things that live in time and can be designed to move with it. Rather than resisting weather, erosion and season, a structure can be set up to respond to them.
 
-Part of the work was practical. I ran a series of erosion studies in sand, testing how different interventions behave in a river system. A single column turns out to do almost nothing to sedimentation, and some elements even repel sediment and leave a void behind them. Grouped into clusters, the same elements increase sediment accumulation sharply. That finding fed straight into the design: you can place structures to encourage or discourage the river's own deposits.
+Part of the work was practical. I ran a series of erosion studies in sand, testing how different interventions behave in a river system. A single column turns out to do almost nothing to sedimentation, and some elements even push sediment away and leave a hollow behind them. Grouped into clusters, those elements make much more sediment build up. That finding fed straight into the design: you can place structures to encourage or discourage the river's own deposits.
 
-The full graduation work can be downloaded from the [TU Delft repository](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
+You can download the full graduation work from the [TU Delft repository](https://resolver.tudelft.nl/uuid:38f7ee6e-2106-47c2-aa23-cc94ab7f18c8).
 
 ===no===
 
