@@ -10,9 +10,9 @@ grid: wide
 
 ---
 
-This project, my first proper design project during my studies, involved creating a house for an elderly couple wishing to leave the city and establish a B&B in a typical Dutch landscape, next to a dike. The design had to include private living space for the couple, a few B&B rooms, camping spots for guests in tents, a communal kitchen, a swimming pool, and shared bathrooms.
+This project, my first proper design project during my studies, involved creating a house for an elderly couple wishing to leave the city and establish a B&B in a typical Dutch landscape, next to a dike. The design had to include private living space for the couple, a few B&B rooms, camping spots for guests in tents, a communal kitchen, a swimming pool and shared bathrooms.
 
-I designed a long, narrow house that enclosed a private garden for the couple. The communal kitchen faced the rest of the property, overseeing a swimming pool, tent area, and garden. Positioned on the slope of a dike, the house offered views of the flat Dutch landscape.
+I designed a long, narrow house that enclosed a private garden for the couple. The communal kitchen faced the rest of the property, overlooking a swimming pool, tent area and garden. Positioned on the slope of a dike, the house offered views of the flat Dutch landscape.
 
 The roof featured a walkable, folding concrete slab, while the walls were made of wood. Although we hadn't yet covered structural systems in our curriculum, the design anticipated a steel framework to support the roof. The light concrete floor and natural wood color helped the house sit easily against the dike and the surrounding vegetation.
 
